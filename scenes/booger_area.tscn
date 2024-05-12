@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2gwidylgas3t"]
+
+[ext_resource type="Texture2D" uid="uid://mdndm1kojvgn" path="res://assets/GameProjectile.png" id="1_3dic6"]
+[ext_resource type="Script" path="res://scripts/booger_area.gd" id="1_yp7um"]
+[ext_resource type="Shader" path="res://shaders/booger_area.gdshader" id="2_nyndg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52g37"]
+shader = ExtResource("2_nyndg")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3a1r5"]
+
+[node name="BoogerArea" type="Area2D"]
+scale = Vector2(0.189351, 0.189351)
+script = ExtResource("1_yp7um")
+
+[node name="GameProjectile" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_52g37")
+position = Vector2(-1, -2)
+texture = ExtResource("1_3dic6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, -14)
+rotation = -0.285019
+scale = Vector2(31.4553, 24.4595)
+shape = SubResource("CircleShape2D_3a1r5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

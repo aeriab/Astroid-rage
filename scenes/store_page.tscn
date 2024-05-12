@@ -1,0 +1,773 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqmli4p0vtbwy"]
+
+[ext_resource type="Script" path="res://scripts/store_page.gd" id="1_bits5"]
+[ext_resource type="Script" path="res://scripts/bulletSize.gd" id="2_t618q"]
+[ext_resource type="Script" path="res://scripts/ColorRectVisChange.gd" id="3_uh84b"]
+
+[node name="store_page" type="CanvasLayer"]
+script = ExtResource("1_bits5")
+
+[node name="StoreLabel" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 80
+text = "UPGRADE STORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bulletSize" type="Button" parent="."]
+offset_left = 336.0
+offset_top = 188.0
+offset_right = 816.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 50
+text = "Bullet Size"
+script = ExtResource("2_t618q")
+
+[node name="minusSize" type="Button" parent="bulletSize"]
+layout_mode = 0
+offset_left = -51.0
+offset_top = -1.0
+offset_right = -13.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 52
+text = "-"
+
+[node name="addSize" type="Button" parent="bulletSize"]
+layout_mode = 0
+offset_left = 495.0
+offset_top = -1.0
+offset_right = 520.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 52
+text = "+"
+
+[node name="ColorRect" type="ColorRect" parent="bulletSize"]
+z_index = -1
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 45.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+
+[node name="ColorRect2" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 45.0
+offset_top = 9.0
+offset_right = 75.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect3" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 75.0
+offset_top = 9.0
+offset_right = 105.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect4" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 105.0
+offset_top = 9.0
+offset_right = 135.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect5" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 135.0
+offset_top = 9.0
+offset_right = 165.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect6" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 165.0
+offset_top = 9.0
+offset_right = 195.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect7" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 195.0
+offset_top = 9.0
+offset_right = 225.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect8" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 225.0
+offset_top = 9.0
+offset_right = 255.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect9" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 255.0
+offset_top = 9.0
+offset_right = 285.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect10" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 285.0
+offset_top = 9.0
+offset_right = 315.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect11" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 315.0
+offset_top = 9.0
+offset_right = 345.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect12" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 345.0
+offset_top = 9.0
+offset_right = 375.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect13" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 375.0
+offset_top = 9.0
+offset_right = 405.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect14" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 405.0
+offset_top = 9.0
+offset_right = 435.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect15" type="ColorRect" parent="bulletSize"]
+visible = false
+z_index = -1
+offset_left = 435.0
+offset_top = 9.0
+offset_right = 465.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.299901, 0.759242, 0.395815, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="bulletSpeed" type="Button" parent="."]
+offset_left = 336.0
+offset_top = 294.0
+offset_right = 816.0
+offset_bottom = 372.0
+theme_override_font_sizes/font_size = 50
+text = "Bullet Speed"
+
+[node name="minusSpeed" type="Button" parent="bulletSpeed"]
+offset_left = -51.0
+offset_top = -1.0
+offset_right = -13.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 52
+text = "-"
+
+[node name="addSpeed" type="Button" parent="bulletSpeed"]
+offset_left = 495.0
+offset_top = -1.0
+offset_right = 533.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 52
+text = "+"
+
+[node name="ColorRect" type="ColorRect" parent="bulletSpeed"]
+z_index = -1
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 45.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.736281, 0.895679, 0.822453, 0.921569)
+
+[node name="ColorRect2" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 45.0
+offset_top = 9.0
+offset_right = 75.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect3" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 75.0
+offset_top = 9.0
+offset_right = 105.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect4" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 105.0
+offset_top = 9.0
+offset_right = 135.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect5" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 135.0
+offset_top = 9.0
+offset_right = 165.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect6" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 165.0
+offset_top = 9.0
+offset_right = 195.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect7" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 195.0
+offset_top = 9.0
+offset_right = 225.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect8" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 225.0
+offset_top = 9.0
+offset_right = 255.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect9" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 255.0
+offset_top = 9.0
+offset_right = 285.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect10" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 285.0
+offset_top = 9.0
+offset_right = 315.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect11" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 315.0
+offset_top = 9.0
+offset_right = 345.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect12" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 345.0
+offset_top = 9.0
+offset_right = 375.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect13" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 375.0
+offset_top = 9.0
+offset_right = 405.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect14" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 405.0
+offset_top = 9.0
+offset_right = 435.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="ColorRect15" type="ColorRect" parent="bulletSpeed"]
+visible = false
+z_index = -1
+offset_left = 435.0
+offset_top = 9.0
+offset_right = 465.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.737255, 0.894118, 0.823529, 0.921569)
+script = ExtResource("3_uh84b")
+
+[node name="damageUp" type="Button" parent="."]
+offset_left = 336.0
+offset_top = 406.0
+offset_right = 816.0
+offset_bottom = 484.0
+theme_override_font_sizes/font_size = 50
+text = "Damage"
+
+[node name="minusDam" type="Button" parent="damageUp"]
+offset_left = -51.0
+offset_top = -1.0
+offset_right = -13.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 52
+text = "-"
+
+[node name="addDam" type="Button" parent="damageUp"]
+offset_left = 495.0
+offset_top = -1.0
+offset_right = 520.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 52
+text = "+"
+
+[node name="ColorRect" type="ColorRect" parent="damageUp"]
+z_index = -1
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 45.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect2" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 45.0
+offset_top = 9.0
+offset_right = 75.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect3" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 75.0
+offset_top = 9.0
+offset_right = 105.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect4" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 105.0
+offset_top = 9.0
+offset_right = 135.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect5" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 135.0
+offset_top = 9.0
+offset_right = 165.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect6" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 165.0
+offset_top = 9.0
+offset_right = 195.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect7" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 195.0
+offset_top = 9.0
+offset_right = 225.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect8" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 225.0
+offset_top = 9.0
+offset_right = 255.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect9" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 255.0
+offset_top = 9.0
+offset_right = 285.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect10" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 285.0
+offset_top = 9.0
+offset_right = 315.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect11" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 315.0
+offset_top = 9.0
+offset_right = 345.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect12" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 345.0
+offset_top = 9.0
+offset_right = 375.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect13" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 375.0
+offset_top = 9.0
+offset_right = 405.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect14" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 405.0
+offset_top = 9.0
+offset_right = 435.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="ColorRect15" type="ColorRect" parent="damageUp"]
+visible = false
+z_index = -1
+offset_left = 435.0
+offset_top = 9.0
+offset_right = 465.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(1, 0.458824, 0.505882, 0.921569)
+
+[node name="rotationSpeed" type="Button" parent="."]
+offset_left = 336.0
+offset_top = 520.0
+offset_right = 816.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 50
+text = "Rotation Speed"
+
+[node name="minusRot" type="Button" parent="rotationSpeed"]
+offset_left = -51.0
+offset_top = -1.0
+offset_right = -13.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 52
+text = "-"
+
+[node name="addRot" type="Button" parent="rotationSpeed"]
+offset_left = 495.0
+offset_top = -1.0
+offset_right = 520.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 52
+text = "+"
+
+[node name="ColorRect" type="ColorRect" parent="rotationSpeed"]
+z_index = -1
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 45.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect2" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 45.0
+offset_top = 9.0
+offset_right = 75.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect3" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 75.0
+offset_top = 9.0
+offset_right = 105.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect4" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 105.0
+offset_top = 9.0
+offset_right = 135.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect5" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 135.0
+offset_top = 9.0
+offset_right = 165.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect6" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 165.0
+offset_top = 9.0
+offset_right = 195.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect7" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 195.0
+offset_top = 9.0
+offset_right = 225.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect8" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 225.0
+offset_top = 9.0
+offset_right = 255.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect9" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 255.0
+offset_top = 9.0
+offset_right = 285.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect10" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 285.0
+offset_top = 9.0
+offset_right = 315.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect11" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 315.0
+offset_top = 9.0
+offset_right = 345.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect12" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 345.0
+offset_top = 9.0
+offset_right = 375.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect13" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 375.0
+offset_top = 9.0
+offset_right = 405.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect14" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 405.0
+offset_top = 9.0
+offset_right = 435.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="ColorRect15" type="ColorRect" parent="rotationSpeed"]
+visible = false
+z_index = -1
+offset_left = 435.0
+offset_top = 9.0
+offset_right = 465.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.881087, 0.561688, 0.918654, 0.921569)
+
+[node name="BackToGame" type="Button" parent="."]
+offset_left = 922.0
+offset_top = 490.0
+offset_right = 1140.0
+offset_bottom = 636.0
+theme_override_font_sizes/font_size = 50
+text = "BACK TO
+GAME"
+
+[node name="UnspentPoints" type="Label" parent="."]
+offset_left = 849.0
+offset_top = 182.0
+offset_right = 1186.0
+offset_bottom = 269.0
+theme_override_font_sizes/font_size = 30
+text = "Unspent points:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="bulletSize" to="." method="_on_bullet_size_pressed"]
+[connection signal="pressed" from="bulletSize/minusSize" to="." method="_on_minus_size_pressed"]
+[connection signal="pressed" from="bulletSize/addSize" to="." method="_on_add_size_pressed"]
+[connection signal="pressed" from="bulletSpeed" to="." method="_on_bullet_speed_pressed"]
+[connection signal="pressed" from="bulletSpeed/minusSpeed" to="." method="_on_minus_speed_pressed"]
+[connection signal="pressed" from="bulletSpeed/addSpeed" to="." method="_on_add_speed_pressed"]
+[connection signal="pressed" from="damageUp" to="." method="_on_damage_up_pressed"]
+[connection signal="pressed" from="damageUp/minusDam" to="." method="_on_minus_dam_pressed"]
+[connection signal="pressed" from="damageUp/addDam" to="." method="_on_add_dam_pressed"]
+[connection signal="pressed" from="rotationSpeed" to="." method="_on_rotation_speed_pressed"]
+[connection signal="pressed" from="rotationSpeed/minusRot" to="." method="_on_minus_rot_pressed"]
+[connection signal="pressed" from="rotationSpeed/addRot" to="." method="_on_add_rot_pressed"]
+[connection signal="pressed" from="BackToGame" to="." method="_on_back_to_game_pressed"]

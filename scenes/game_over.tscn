@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg1tr1w13owj1"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_db6pj"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_db6pj")
+
+[node name="OverWords" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 126
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="."]
+offset_left = 336.0
+offset_top = 266.0
+offset_right = 816.0
+offset_bottom = 382.0
+theme_override_font_sizes/font_size = 70
+text = "RETRY"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 339.0
+offset_top = 420.0
+offset_right = 813.0
+offset_bottom = 539.0
+theme_override_font_sizes/font_size = 70
+text = "QUIT"
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

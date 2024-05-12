@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3yppwif0chd5"]
+
+[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
+[ext_resource type="Texture2D" uid="uid://c7fsqhg7x7u5q" path="res://assets/Tank Bird.png" id="2_ujku6"]
+[ext_resource type="Script" path="res://scripts/BulletHandler.gd" id="3_ojs0q"]
+[ext_resource type="PackedScene" uid="uid://bxm3i502jvnv2" path="res://scenes/goldyArea.tscn" id="4_pt163"]
+[ext_resource type="Shader" path="res://shaders/goldy.gdshader" id="5_ukyet"]
+[ext_resource type="Script" path="res://scripts/EnemyLabel.gd" id="5_wxsqs"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kbpy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rycil"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nmsx"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lp687"]
+
+[node name="Game" type="Node2D"]
+
+[node name="BirdBod" type="StaticBody2D" parent="."]
+z_index = 1
+script = ExtResource("1_vlman")
+
+[node name="TankBird" type="Sprite2D" parent="BirdBod"]
+texture = ExtResource("2_ujku6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdBod"]
+material = SubResource("CanvasItemMaterial_4kbpy")
+scale = Vector2(23.6306, 23.2323)
+shape = SubResource("CircleShape2D_rycil")
+
+[node name="Camera2D" type="Camera2D" parent="BirdBod"]
+zoom = Vector2(0.2, 0.2)
+
+[node name="SnoutPosition" type="Node2D" parent="BirdBod"]
+position = Vector2(0, -300)
+
+[node name="BulletHandler" type="Node" parent="."]
+script = ExtResource("3_ojs0q")
+
+[node name="FishyEnemys" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="GoldyArea" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea2" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea3" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea4" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea5" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea6" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea7" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea8" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea9" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="GoldyArea10" parent="FishyEnemys" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_8nmsx")
+position = Vector2(-5503, -2501)
+
+[node name="Texts" type="Node" parent="."]
+
+[node name="EnemyLabel" type="Label" parent="Texts"]
+offset_left = 908.0
+offset_top = 1333.0
+offset_right = 4725.0
+offset_bottom = 1955.0
+scale = Vector2(0.452112, 0.42142)
+theme_override_font_sizes/font_size = 400
+text = "ENEMIES LEFT: "
+script = ExtResource("5_wxsqs")
+
+[node name="AreaBulletCollection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(0, 3000)
+shape = SubResource("WorldBoundaryShape2D_lp687")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(-4000, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_lp687")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(4000, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_lp687")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(0, -3000)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_lp687")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://esiceevgexy5"]
+
+[ext_resource type="Script" path="res://scripts/OutdatedScript/physical_booger.gd" id="1_4wcfy"]
+[ext_resource type="Texture2D" uid="uid://mdndm1kojvgn" path="res://assets/GameProjectile.png" id="2_70761"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5emn"]
+radius = 1.60464
+
+[node name="PhysicalBooger" type="RigidBody2D"]
+scale = Vector2(1.00458, 1.00458)
+gravity_scale = 0.0
+script = ExtResource("1_4wcfy")
+
+[node name="GameProjectile" type="Sprite2D" parent="."]
+scale = Vector2(0.166758, 0.198841)
+texture = ExtResource("2_70761")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3.00722e-08, -1.99088)
+rotation = -0.382498
+scale = Vector2(33.7662, 29.0621)
+shape = SubResource("CircleShape2D_g5emn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

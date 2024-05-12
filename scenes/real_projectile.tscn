@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ta4ivf6ukbqu"]
+
+[ext_resource type="Texture2D" uid="uid://mdndm1kojvgn" path="res://assets/GameProjectile.png" id="1_7v2l6"]
+
+[node name="RealProjectile" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.18125, 0.208333)
+texture = ExtResource("1_7v2l6")

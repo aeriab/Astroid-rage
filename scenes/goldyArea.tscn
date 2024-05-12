@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxm3i502jvnv2"]
+
+[ext_resource type="Shader" path="res://shaders/goldy.gdshader" id="1_0slfb"]
+[ext_resource type="Script" path="res://scripts/GoldyArea2D.gd" id="2_peq7b"]
+[ext_resource type="Texture2D" uid="uid://q51wxcvn6nua" path="res://assets/Goldfish.png" id="3_ijdjv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6bmg"]
+resource_local_to_scene = true
+shader = ExtResource("1_0slfb")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kf688"]
+
+[node name="GoldyArea" type="Area2D"]
+material = SubResource("ShaderMaterial_g6bmg")
+position = Vector2(-8, 16)
+script = ExtResource("2_peq7b")
+
+[node name="Goldfish" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(-2, -8)
+texture = ExtResource("3_ijdjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(129, -23)
+scale = Vector2(22.021, 19.7792)
+shape = SubResource("CircleShape2D_kf688")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(2, -5)
+rotation = -0.0121245
+polygon = PackedVector2Array(-351.32, 106.748, -314, -220, -12.7808, -18.1563)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

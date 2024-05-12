@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctvdyertybvkv"]
+
+[ext_resource type="Texture2D" uid="uid://q51wxcvn6nua" path="res://assets/Goldfish.png" id="1_dnqmt"]
+[ext_resource type="Shader" path="res://shaders/goldy.gdshader" id="1_mqg7m"]
+[ext_resource type="Script" path="res://scripts/OutdatedScript/GoldyCharBody.gd" id="2_3nxxu"]
+[ext_resource type="Script" path="res://scripts/GoldfishSprite.gd" id="4_y0rfd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qao8"]
+shader = ExtResource("1_mqg7m")
+shader_parameter/damage_value = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7tktv"]
+shader = ExtResource("1_mqg7m")
+shader_parameter/damage_value = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lts8r"]
+resource_local_to_scene = true
+shader = ExtResource("1_mqg7m")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mmttk"]
+
+[node name="Goldy" type="Node2D"]
+material = SubResource("ShaderMaterial_3qao8")
+
+[node name="GoldRigidBody" type="RigidBody2D" parent="."]
+material = SubResource("ShaderMaterial_7tktv")
+gravity_scale = 0.0
+script = ExtResource("2_3nxxu")
+
+[node name="Goldfish" type="Sprite2D" parent="GoldRigidBody"]
+material = SubResource("ShaderMaterial_lts8r")
+position = Vector2(-6, 4)
+texture = ExtResource("1_dnqmt")
+script = ExtResource("4_y0rfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoldRigidBody"]
+visible = false
+position = Vector2(126, -11)
+scale = Vector2(21.6287, 19.6282)
+shape = SubResource("CircleShape2D_mmttk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GoldRigidBody"]
+visible = false
+polygon = PackedVector2Array(-352, 114, -317, -208, -21, -10)
