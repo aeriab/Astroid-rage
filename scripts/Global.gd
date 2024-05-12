@@ -13,7 +13,6 @@ var unspentPoints = 0
 
 func decreaseEnemyNum():
 	enemyNum -= 1
-	print(str(enemyNum))
 	
 	if enemyNum <= 0:
 		call_deferred("openStore")

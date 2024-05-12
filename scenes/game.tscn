@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=20 format=3 uid="uid://b3yppwif0chd5"]
 
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
 [ext_resource type="Texture2D" uid="uid://c7fsqhg7x7u5q" path="res://assets/Tank Bird.png" id="2_ujku6"]
@@ -12,6 +12,51 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rycil"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8nmsx"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gv0qx"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osu1i"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0qqo"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47dj5"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhco4"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2y8e"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdpbn"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s31ge"]
+resource_local_to_scene = true
+shader = ExtResource("5_ukyet")
+shader_parameter/damage_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3g4i7"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
@@ -49,39 +94,39 @@ material = SubResource("ShaderMaterial_8nmsx")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea2" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_gv0qx")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea3" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_osu1i")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea4" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_w0qqo")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea5" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_47dj5")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea6" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_fhco4")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea7" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_w2y8e")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea8" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_cdpbn")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea9" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_s31ge")
 position = Vector2(-5503, -2501)
 
 [node name="GoldyArea10" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
+material = SubResource("ShaderMaterial_3g4i7")
 position = Vector2(-5503, -2501)
 
 [node name="Texts" type="Node" parent="."]

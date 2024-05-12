@@ -29,11 +29,8 @@ func _ready():
 	if randi_range(0,1) == 1:
 		y = -y
 	
-	print(str(x) + ", " + str(y))
 	
 	hypotenuse = sqrt((x * x) + (y * y))
-	
-	#print(hypotenuse)
 	
 	if y < 0:
 		theta = acos(x / hypotenuse)

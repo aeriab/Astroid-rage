@@ -178,9 +178,5 @@ func tallyRotSpeed():
 ###########################################
 
 func _on_back_to_game_pressed():
-	print(str(Global.bulletSize))
-	print(str(Global.bulletSpeed))
-	print(str(Global.damage))
-	print(str(Global.rotationSpeed))
 	Global.enemyNum = Global.originalEnNum
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
