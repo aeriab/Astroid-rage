@@ -64,6 +64,7 @@ shader_parameter/damage_value = 0.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lp687"]
 
 [node name="Game" type="Node2D"]
+scale = Vector2(1.21821, 1.21821)
 
 [node name="BirdBod" type="StaticBody2D" parent="."]
 z_index = 1
@@ -132,12 +133,12 @@ position = Vector2(-5503, -2501)
 [node name="Texts" type="Node" parent="."]
 
 [node name="EnemyLabel" type="Label" parent="Texts"]
-offset_left = 908.0
-offset_top = 1333.0
-offset_right = 4725.0
-offset_bottom = 1955.0
+offset_left = 983.0
+offset_top = 2224.0
+offset_right = 6765.0
+offset_bottom = 3315.0
 scale = Vector2(0.452112, 0.42142)
-theme_override_font_sizes/font_size = 400
+theme_override_font_sizes/font_size = 800
 text = "ENEMIES LEFT: "
 script = ExtResource("5_wxsqs")
 

@@ -14,8 +14,11 @@ const SPEED = 200
 
 var innerBoundX = 1000
 var innerBoundY = 1000
-var outerBoundX = 3000
-var outerBoundY = 3000
+var outerBoundX = 5000
+var outerBoundY = 5000
+
+var targetX = 0
+var targetY = 0
 
 func _ready():
 	randomize()
@@ -29,13 +32,15 @@ func _ready():
 	if randi_range(0,1) == 1:
 		y = -y
 	
+	targetX = randi_range(-2000,2000)
+	targetY = randi_range(-1800,-1800)
 	
-	hypotenuse = sqrt((x * x) + (y * y))
+	hypotenuse = sqrt(((x-targetX) * (x-targetX)) + ((y - targetY) * (y-targetX)))
 	
 	if y < 0:
-		theta = acos(x / hypotenuse)
+		theta = acos((x-targetX) / hypotenuse)
 	else:
-		theta = 2 * PI -  acos(x / hypotenuse)
+		theta = 2 * PI -  acos((x-targetX) / hypotenuse)
 	
 	monitoring = true
 
