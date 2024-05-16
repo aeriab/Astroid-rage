@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctvdyertybvkv"]
 
 [ext_resource type="Texture2D" uid="uid://q51wxcvn6nua" path="res://assets/Goldfish.png" id="1_dnqmt"]
-[ext_resource type="Shader" path="res://shaders/goldy.gdshader" id="1_mqg7m"]
+[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_mqg7m"]
 [ext_resource type="Script" path="res://scripts/OutdatedScript/GoldyCharBody.gd" id="2_3nxxu"]
 [ext_resource type="Script" path="res://scripts/GoldfishSprite.gd" id="4_y0rfd"]
 

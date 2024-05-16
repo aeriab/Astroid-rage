@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxm3i502jvnv2"]
+
+[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_0slfb"]
+[ext_resource type="Script" path="res://scripts/GoldyArea2D.gd" id="2_peq7b"]
+[ext_resource type="Texture2D" uid="uid://cwrtpd1jy1myd" path="res://assets/Splatcho Enemy.png" id="3_nkhi3"]
+[ext_resource type="Texture2D" uid="uid://mdndm1kojvgn" path="res://assets/GameProjectile.png" id="4_dwtqd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6bmg"]
+resource_local_to_scene = true
+shader = ExtResource("1_0slfb")
+shader_parameter/damage_value = 0.0
+
+[node name="RedEnemy" type="Area2D"]
+material = SubResource("ShaderMaterial_g6bmg")
+position = Vector2(-8, 16)
+script = ExtResource("2_peq7b")
+
+[node name="SplatchoEnemy" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(10, -90)
+texture = ExtResource("3_nkhi3")
+
+[node name="CollisionPolygon2D_right" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(249, -33)
+rotation = -0.0121245
+polygon = PackedVector2Array(-239.316, -57.9058, -46.6258, -278.586, -3.34436, -219.057, 14.5025, -123.833, -0.502838, -41.0091, -68.9528, 78.1698, -134.736, 142.377, -206.228, 182.513, -288.477, 202.517, -365.386, 194.584, -427.981, 160.823)
+
+[node name="CollisionPolygon2D_left" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(-97, -59)
+rotation = -0.0121245
+polygon = PackedVector2Array(-102.598, -116.252, -56.9224, -171.703, 107.38, -30.7004, -73.4075, 198.125, -110.932, 158.667, -135.336, 109.367, -144.62, 50.2503, -137.65, -29.6711)
+
+[node name="GameProjectile" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(399, -17)
+scale = Vector2(0.728125, 0.105556)
+texture = ExtResource("4_dwtqd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

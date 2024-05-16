@@ -1,7 +1,5 @@
 extends Area2D
 
-@onready var goldfish = $Goldfish
-
 var shader_value = material.get_shader_parameter("value")
 var damage_chunk = Global.damage * 0.05
 
@@ -14,11 +12,12 @@ const SPEED = 200
 
 var innerBoundX = 1000
 var innerBoundY = 1000
-var outerBoundX = 5000
-var outerBoundY = 5000
+var outerBoundX = 3000
+var outerBoundY = 3000
 
-var targetX = 0
-var targetY = 0
+var time_ellapsed = 0
+
+var flipSprite: int = 1
 
 func _ready():
 	randomize()
@@ -27,28 +26,36 @@ func _ready():
 	x = randf_range(innerBoundX,outerBoundX)
 	if randi_range(0,1) == 1:
 		x = -x
+	else:
+		flipSprite = -1
+		#pass
 	
 	y = randf_range(innerBoundY,outerBoundY)
 	if randi_range(0,1) == 1:
 		y = -y
 	
-	targetX = randi_range(-2000,2000)
-	targetY = randi_range(-1800,-1800)
-	
-	hypotenuse = sqrt(((x-targetX) * (x-targetX)) + ((y - targetY) * (y-targetX)))
+	hypotenuse = sqrt((x * x) + (y * y))
 	
 	if y < 0:
-		theta = acos((x-targetX) / hypotenuse)
+		theta = acos(x / hypotenuse)
 	else:
-		theta = 2 * PI -  acos((x-targetX) / hypotenuse)
+		theta = 2 * PI -  acos(x / hypotenuse)
+	
+	rotation = -theta + PI
+	#if x <= 0:
+		#rotation = (theta - PI)
 	
 	monitoring = true
+
 
 func _physics_process(delta):
 	x -= cos(theta) * SPEED * delta
 	y -= -sin(theta) * SPEED * delta
 	
+	scale.y = ((sin(time_ellapsed) * 0.2) + 1.0) * flipSprite
+	
 	position = Vector2(x,y)
+	time_ellapsed += delta * 5
 
 func addDamage():
 	shader_value = shader_value + damage_chunk

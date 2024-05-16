@@ -4,10 +4,10 @@ const GREEN_SPOT = preload("res://scenes/booger_area.tscn")
 
 @onready var snout_position = $"../BirdBod/SnoutPosition"
 
-var x = 0
-var y = 0
+var x: float = 0.0
+var y: float = 0.0
 
-var theta = 0
+var theta: float = 0.0
 
 func shoot():
 	var greenspot = GREEN_SPOT.instantiate()
@@ -16,10 +16,12 @@ func shoot():
 	x = snout_position.global_position.x
 	y = snout_position.global_position.y
 	
+	var snout_length = sqrt((x * x) + (y * y))
+	
 	if y < 0:
-		theta = acos(x / 300)
+		theta = acos(x / snout_length)
 	else:
-		theta = 2 * PI -  acos(x / 300)
+		theta = 2 * PI -  acos(x / snout_length)
 	
 	greenspot.set_motion(x,y,theta)
 	

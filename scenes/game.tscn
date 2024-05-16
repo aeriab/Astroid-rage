@@ -1,62 +1,63 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=21 format=3 uid="uid://b3yppwif0chd5"]
 
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
 [ext_resource type="Texture2D" uid="uid://c7fsqhg7x7u5q" path="res://assets/Tank Bird.png" id="2_ujku6"]
 [ext_resource type="Script" path="res://scripts/BulletHandler.gd" id="3_ojs0q"]
-[ext_resource type="PackedScene" uid="uid://bxm3i502jvnv2" path="res://scenes/goldyArea.tscn" id="4_pt163"]
-[ext_resource type="Shader" path="res://shaders/goldy.gdshader" id="5_ukyet"]
+[ext_resource type="PackedScene" uid="uid://bxm3i502jvnv2" path="res://scenes/redEnemy.tscn" id="4_pt163"]
+[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="5_ukyet"]
 [ext_resource type="Script" path="res://scripts/EnemyLabel.gd" id="5_wxsqs"]
+[ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="7_phdcr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kbpy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rycil"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nmsx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yvqp"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gv0qx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mmyt"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_osu1i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlijh"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0qqo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrv0o"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_47dj5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxqgk"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhco4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbkjy"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2y8e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_upc6w"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdpbn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awlvt"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s31ge"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vn07"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3g4i7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcmnn"]
 resource_local_to_scene = true
 shader = ExtResource("5_ukyet")
 shader_parameter/damage_value = 0.0
@@ -70,6 +71,9 @@ scale = Vector2(1.21821, 1.21821)
 z_index = 1
 script = ExtResource("1_vlman")
 
+[node name="SnoutPosition" type="Node2D" parent="BirdBod"]
+position = Vector2(0, -300)
+
 [node name="TankBird" type="Sprite2D" parent="BirdBod"]
 texture = ExtResource("2_ujku6")
 
@@ -81,62 +85,76 @@ shape = SubResource("CircleShape2D_rycil")
 [node name="Camera2D" type="Camera2D" parent="BirdBod"]
 zoom = Vector2(0.2, 0.2)
 
-[node name="SnoutPosition" type="Node2D" parent="BirdBod"]
-position = Vector2(0, -300)
-
 [node name="BulletHandler" type="Node" parent="."]
 script = ExtResource("3_ojs0q")
 
-[node name="FishyEnemys" type="Node" parent="."]
+[node name="RedEnemies" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="GoldyArea" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_8nmsx")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_1yvqp")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea2" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_gv0qx")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy2" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_0mmyt")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea3" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_osu1i")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy3" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_qlijh")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea4" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_w0qqo")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy4" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_mrv0o")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea5" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_47dj5")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy5" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_cxqgk")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea6" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_fhco4")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy6" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_pbkjy")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea7" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_w2y8e")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy7" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_upc6w")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea8" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_cdpbn")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy8" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_awlvt")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea9" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_s31ge")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy9" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_4vn07")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
-[node name="GoldyArea10" parent="FishyEnemys" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_3g4i7")
-position = Vector2(-5503, -2501)
+[node name="RedEnemy10" parent="RedEnemies" instance=ExtResource("4_pt163")]
+material = SubResource("ShaderMaterial_gcmnn")
+position = Vector2(-5595.75, -2486.51)
+scale = Vector2(1.21821, 1.21821)
 
 [node name="Texts" type="Node" parent="."]
 
 [node name="EnemyLabel" type="Label" parent="Texts"]
-offset_left = 983.0
-offset_top = 2224.0
-offset_right = 6765.0
-offset_bottom = 3315.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -861.0
+offset_top = 1025.0
+offset_right = 4921.0
+offset_bottom = 2116.0
+grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(0.452112, 0.42142)
 theme_override_font_sizes/font_size = 800
 text = "ENEMIES LEFT: "
@@ -162,3 +180,8 @@ shape = SubResource("WorldBoundaryShape2D_lp687")
 position = Vector2(0, -3000)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_lp687")
+
+[node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
+position = Vector2(13.1335, 11.4919)
+scale = Vector2(8.36952, 6.2341)
+texture = ExtResource("7_phdcr")
