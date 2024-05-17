@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=22 format=3 uid="uid://b3yppwif0chd5"]
 
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
 [ext_resource type="Texture2D" uid="uid://c7fsqhg7x7u5q" path="res://assets/Tank Bird.png" id="2_ujku6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="5_ukyet"]
 [ext_resource type="Script" path="res://scripts/EnemyLabel.gd" id="5_wxsqs"]
 [ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="7_phdcr"]
+[ext_resource type="Script" path="res://scripts/WaveMaker.gd" id="8_5ewck"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kbpy"]
 
@@ -185,3 +186,9 @@ shape = SubResource("WorldBoundaryShape2D_lp687")
 position = Vector2(13.1335, 11.4919)
 scale = Vector2(8.36952, 6.2341)
 texture = ExtResource("7_phdcr")
+
+[node name="Stage1Waves" type="Node" parent="."]
+script = ExtResource("8_5ewck")
+wave1RedEnemyNum = 4
+wave2RedEnemyNum = 8
+wave3RedEnemyNum = 12
