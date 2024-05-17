@@ -1,10 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=10 format=3 uid="uid://b3yppwif0chd5"]
 
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
 [ext_resource type="Texture2D" uid="uid://c7fsqhg7x7u5q" path="res://assets/Tank Bird.png" id="2_ujku6"]
 [ext_resource type="Script" path="res://scripts/BulletHandler.gd" id="3_ojs0q"]
-[ext_resource type="PackedScene" uid="uid://bxm3i502jvnv2" path="res://scenes/redEnemy.tscn" id="4_pt163"]
-[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="5_ukyet"]
 [ext_resource type="Script" path="res://scripts/EnemyLabel.gd" id="5_wxsqs"]
 [ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="7_phdcr"]
 [ext_resource type="Script" path="res://scripts/WaveMaker.gd" id="8_5ewck"]
@@ -12,56 +10,6 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kbpy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rycil"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yvqp"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mmyt"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlijh"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrv0o"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxqgk"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbkjy"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_upc6w"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_awlvt"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vn07"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcmnn"]
-resource_local_to_scene = true
-shader = ExtResource("5_ukyet")
-shader_parameter/damage_value = 0.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lp687"]
 
@@ -88,59 +36,6 @@ zoom = Vector2(0.2, 0.2)
 
 [node name="BulletHandler" type="Node" parent="."]
 script = ExtResource("3_ojs0q")
-
-[node name="RedEnemies" type="Node" parent="."]
-unique_name_in_owner = true
-
-[node name="RedEnemy" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_1yvqp")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy2" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_0mmyt")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy3" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_qlijh")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy4" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_mrv0o")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy5" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_cxqgk")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy6" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_pbkjy")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy7" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_upc6w")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy8" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_awlvt")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy9" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_4vn07")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
-
-[node name="RedEnemy10" parent="RedEnemies" instance=ExtResource("4_pt163")]
-material = SubResource("ShaderMaterial_gcmnn")
-position = Vector2(-5595.75, -2486.51)
-scale = Vector2(1.21821, 1.21821)
 
 [node name="Texts" type="Node" parent="."]
 
@@ -189,6 +84,21 @@ texture = ExtResource("7_phdcr")
 
 [node name="Stage1Waves" type="Node" parent="."]
 script = ExtResource("8_5ewck")
-wave1RedEnemyNum = 4
+wave1RedEnemyNum = 5
 wave2RedEnemyNum = 8
 wave3RedEnemyNum = 12
+
+[node name="Wave1Timer" type="Timer" parent="Stage1Waves"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Wave2Timer" type="Timer" parent="Stage1Waves"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Wave3Timer" type="Timer" parent="Stage1Waves"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Stage1Waves/Wave1Timer" to="Stage1Waves" method="_on_wave_1_timer_timeout"]

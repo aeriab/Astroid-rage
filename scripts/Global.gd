@@ -1,7 +1,6 @@
 extends Node
 
-var originalEnNum = 10
-var enemyNum = 10
+var enemyNum = 0
 
 var bulletSize = 2
 var bulletSpeed = 3

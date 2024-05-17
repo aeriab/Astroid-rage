@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://q51wxcvn6nua" path="res://assets/Goldfish.png" id="1_dnqmt"]
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_mqg7m"]
 [ext_resource type="Script" path="res://scripts/OutdatedScript/GoldyCharBody.gd" id="2_3nxxu"]
-[ext_resource type="Script" path="res://scripts/GoldfishSprite.gd" id="4_y0rfd"]
+[ext_resource type="Script" path="res://scripts/OutdatedScript/GoldfishSprite.gd" id="4_y0rfd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3qao8"]
 shader = ExtResource("1_mqg7m")

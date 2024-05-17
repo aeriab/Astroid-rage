@@ -6,11 +6,17 @@ const RED_ENEMY = preload("res://scenes/redEnemy.tscn")
 @export var wave2RedEnemyNum: int
 @export var wave3RedEnemyNum: int
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var wave_1_timer = $Wave1Timer
+@onready var wave_2_timer = $Wave2Timer
+@onready var wave_3_timer = $Wave3Timer
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_wave_1_timer_timeout():
+	print("starting wave")
+	var i = 0
+	while i < wave1RedEnemyNum:
+		var enemy1 = RED_ENEMY.instantiate()
+		enemy1.spawn()
+		get_parent().add_child.call_deferred(enemy1)
+		i += 1
+	

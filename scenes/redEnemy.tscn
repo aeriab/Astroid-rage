@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxm3i502jvnv2"]
 
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_0slfb"]
-[ext_resource type="Script" path="res://scripts/GoldyArea2D.gd" id="2_peq7b"]
+[ext_resource type="Script" path="res://scripts/RedEnemy2D.gd" id="2_7j2wm"]
 [ext_resource type="Texture2D" uid="uid://cwrtpd1jy1myd" path="res://assets/Splatcho Enemy.png" id="3_nkhi3"]
 [ext_resource type="Texture2D" uid="uid://mdndm1kojvgn" path="res://assets/GameProjectile.png" id="4_dwtqd"]
 
@@ -9,11 +9,12 @@
 resource_local_to_scene = true
 shader = ExtResource("1_0slfb")
 shader_parameter/damage_value = 0.0
+shader_parameter/alpha_value = 1.0
 
 [node name="RedEnemy" type="Area2D"]
 material = SubResource("ShaderMaterial_g6bmg")
 position = Vector2(-8, 16)
-script = ExtResource("2_peq7b")
+script = ExtResource("2_7j2wm")
 
 [node name="SplatchoEnemy" type="Sprite2D" parent="."]
 use_parent_material = true
