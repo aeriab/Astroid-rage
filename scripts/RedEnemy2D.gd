@@ -56,7 +56,6 @@ func spawn():
 	rotation = -theta + PI
 
 func _physics_process(delta):
-	print(str(x) + ", " + str(y))
 	
 	x -= cos(theta) * SPEED * delta
 	y -= -sin(theta) * SPEED * delta

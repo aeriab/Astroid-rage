@@ -178,5 +178,5 @@ func tallyRotSpeed():
 ###########################################
 
 func _on_back_to_game_pressed():
-	Global.enemyNum = Global.originalEnNum
+	Global.enemyNum = 5
 	get_tree().change_scene_to_file("res://scenes/game.tscn")

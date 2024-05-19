@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bu5k7npfyyfio"]
 
 [ext_resource type="Shader" path="res://shaders/LevelCircle.gdshader" id="1_mjmj6"]
-[ext_resource type="Texture2D" uid="uid://divobbi45oy3d" path="res://assets/Level Circle Splatcho.png" id="2_lsjyv"]
+[ext_resource type="Texture2D" uid="uid://bg540j0dxff2c" path="res://assets/ConicalGradient.png" id="2_clot0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e5ws7"]
 shader = ExtResource("1_mjmj6")
+shader_parameter/level_progress = 0.675
 
 [node name="Level Circle" type="Node2D"]
 
@@ -23,4 +24,5 @@ grow_vertical = 0
 
 [node name="LevelCircleSplatcho" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_e5ws7")
-texture = ExtResource("2_lsjyv")
+position = Vector2(-5, 10)
+texture = ExtResource("2_clot0")

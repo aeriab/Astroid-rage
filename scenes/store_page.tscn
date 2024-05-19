@@ -8,18 +8,20 @@
 script = ExtResource("1_bits5")
 
 [node name="StoreLabel" type="Label" parent="."]
-offset_right = 1152.0
-offset_bottom = 216.0
+offset_left = 305.0
+offset_top = 180.0
+offset_right = 1457.0
+offset_bottom = 396.0
 theme_override_font_sizes/font_size = 80
 text = "UPGRADE STORE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="bulletSize" type="Button" parent="."]
-offset_left = 336.0
-offset_top = 188.0
-offset_right = 816.0
-offset_bottom = 266.0
+offset_left = 641.0
+offset_top = 368.0
+offset_right = 1121.0
+offset_bottom = 446.0
 theme_override_font_sizes/font_size = 50
 text = "Bullet Size"
 script = ExtResource("2_t618q")
@@ -221,10 +223,10 @@ color = Color(0.299901, 0.759242, 0.395815, 0.921569)
 script = ExtResource("3_uh84b")
 
 [node name="bulletSpeed" type="Button" parent="."]
-offset_left = 336.0
-offset_top = 294.0
-offset_right = 816.0
-offset_bottom = 372.0
+offset_left = 641.0
+offset_top = 474.0
+offset_right = 1121.0
+offset_bottom = 552.0
 theme_override_font_sizes/font_size = 50
 text = "Bullet Speed"
 
@@ -425,10 +427,10 @@ color = Color(0.737255, 0.894118, 0.823529, 0.921569)
 script = ExtResource("3_uh84b")
 
 [node name="damageUp" type="Button" parent="."]
-offset_left = 336.0
-offset_top = 406.0
-offset_right = 816.0
-offset_bottom = 484.0
+offset_left = 641.0
+offset_top = 586.0
+offset_right = 1121.0
+offset_bottom = 664.0
 theme_override_font_sizes/font_size = 50
 text = "Damage"
 
@@ -615,10 +617,10 @@ mouse_filter = 2
 color = Color(1, 0.458824, 0.505882, 0.921569)
 
 [node name="rotationSpeed" type="Button" parent="."]
-offset_left = 336.0
-offset_top = 520.0
-offset_right = 816.0
-offset_bottom = 598.0
+offset_left = 641.0
+offset_top = 700.0
+offset_right = 1121.0
+offset_bottom = 778.0
 theme_override_font_sizes/font_size = 50
 text = "Rotation Speed"
 
@@ -805,19 +807,19 @@ mouse_filter = 2
 color = Color(0.881087, 0.561688, 0.918654, 0.921569)
 
 [node name="BackToGame" type="Button" parent="."]
-offset_left = 922.0
-offset_top = 490.0
-offset_right = 1140.0
-offset_bottom = 636.0
+offset_left = 1227.0
+offset_top = 670.0
+offset_right = 1445.0
+offset_bottom = 816.0
 theme_override_font_sizes/font_size = 50
 text = "BACK TO
 GAME"
 
 [node name="UnspentPoints" type="Label" parent="."]
-offset_left = 849.0
-offset_top = 182.0
-offset_right = 1186.0
-offset_bottom = 269.0
+offset_left = 1154.0
+offset_top = 362.0
+offset_right = 1491.0
+offset_bottom = 449.0
 theme_override_font_sizes/font_size = 30
 text = "Unspent points:
 "

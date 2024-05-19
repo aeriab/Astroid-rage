@@ -10,6 +10,7 @@ shader = ExtResource("2_nyndg")
 [sub_resource type="CircleShape2D" id="CircleShape2D_3a1r5"]
 
 [node name="BoogerArea" type="Area2D"]
+z_index = 1
 scale = Vector2(0.189351, 0.189351)
 script = ExtResource("1_yp7um")
 

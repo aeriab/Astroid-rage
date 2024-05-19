@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=11 format=3 uid="uid://b3yppwif0chd5"]
 
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
 [ext_resource type="Texture2D" uid="uid://c7fsqhg7x7u5q" path="res://assets/Tank Bird.png" id="2_ujku6"]
 [ext_resource type="Script" path="res://scripts/BulletHandler.gd" id="3_ojs0q"]
 [ext_resource type="Script" path="res://scripts/EnemyLabel.gd" id="5_wxsqs"]
+[ext_resource type="Script" path="res://scripts/XPNodeCreater.gd" id="7_8nel5"]
 [ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="7_phdcr"]
 [ext_resource type="Script" path="res://scripts/WaveMaker.gd" id="8_5ewck"]
 
@@ -17,7 +18,7 @@
 scale = Vector2(1.21821, 1.21821)
 
 [node name="BirdBod" type="StaticBody2D" parent="."]
-z_index = 1
+z_index = 2
 script = ExtResource("1_vlman")
 
 [node name="SnoutPosition" type="Node2D" parent="BirdBod"]
@@ -101,4 +102,14 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="XPNodeCreater" type="Node" parent="."]
+script = ExtResource("7_8nel5")
+
+[node name="SquareCreateTimer" type="Timer" parent="XPNodeCreater"]
+autostart = true
+
+[node name="QuickSquareBuffer" type="Timer" parent="XPNodeCreater"]
+wait_time = 0.3
+
 [connection signal="timeout" from="Stage1Waves/Wave1Timer" to="Stage1Waves" method="_on_wave_1_timer_timeout"]
+[connection signal="timeout" from="XPNodeCreater/SquareCreateTimer" to="XPNodeCreater" method="_on_square_create_timer_timeout"]

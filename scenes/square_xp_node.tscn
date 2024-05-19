@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://davr71xnv0y8g"]
+
+[ext_resource type="Script" path="res://scripts/square_xp_node.gd" id="1_0x6uc"]
+[ext_resource type="Texture2D" uid="uid://b3upy326q2fsn" path="res://assets/Square XP Node.png" id="1_7faew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lp271"]
+size = Vector2(264, 264)
+
+[node name="SquareXPNode" type="Node2D"]
+script = ExtResource("1_0x6uc")
+
+[node name="SquareXpNode" type="Sprite2D" parent="."]
+texture = ExtResource("1_7faew")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_lp271")
