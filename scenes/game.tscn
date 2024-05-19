@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=13 format=3 uid="uid://b3yppwif0chd5"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_aytb3"]
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
 [ext_resource type="Texture2D" uid="uid://c7fsqhg7x7u5q" path="res://assets/Tank Bird.png" id="2_ujku6"]
 [ext_resource type="Script" path="res://scripts/BulletHandler.gd" id="3_ojs0q"]
-[ext_resource type="Script" path="res://scripts/EnemyLabel.gd" id="5_wxsqs"]
 [ext_resource type="Script" path="res://scripts/XPNodeCreater.gd" id="7_8nel5"]
 [ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="7_phdcr"]
 [ext_resource type="Script" path="res://scripts/WaveMaker.gd" id="8_5ewck"]
+[ext_resource type="PackedScene" uid="uid://bu5k7npfyyfio" path="res://scenes/LevelCircle.tscn" id="8_8gq6h"]
+[ext_resource type="PackedScene" uid="uid://cqmli4p0vtbwy" path="res://scenes/store_page.tscn" id="8_fvigt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kbpy"]
 
@@ -16,6 +18,7 @@
 
 [node name="Game" type="Node2D"]
 scale = Vector2(1.21821, 1.21821)
+script = ExtResource("1_aytb3")
 
 [node name="BirdBod" type="StaticBody2D" parent="."]
 z_index = 2
@@ -37,25 +40,6 @@ zoom = Vector2(0.2, 0.2)
 
 [node name="BulletHandler" type="Node" parent="."]
 script = ExtResource("3_ojs0q")
-
-[node name="Texts" type="Node" parent="."]
-
-[node name="EnemyLabel" type="Label" parent="Texts"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -861.0
-offset_top = 1025.0
-offset_right = 4921.0
-offset_bottom = 2116.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.452112, 0.42142)
-theme_override_font_sizes/font_size = 800
-text = "ENEMIES LEFT: "
-script = ExtResource("5_wxsqs")
 
 [node name="AreaBulletCollection" type="Area2D" parent="."]
 
@@ -90,26 +74,31 @@ wave2RedEnemyNum = 8
 wave3RedEnemyNum = 12
 
 [node name="Wave1Timer" type="Timer" parent="Stage1Waves"]
-wait_time = 5.0
-one_shot = true
+wait_time = 10.0
 autostart = true
 
 [node name="Wave2Timer" type="Timer" parent="Stage1Waves"]
-wait_time = 5.0
+wait_time = 15.0
 one_shot = true
 
 [node name="Wave3Timer" type="Timer" parent="Stage1Waves"]
-wait_time = 5.0
+wait_time = 15.0
 one_shot = true
 
 [node name="XPNodeCreater" type="Node" parent="."]
 script = ExtResource("7_8nel5")
 
 [node name="SquareCreateTimer" type="Timer" parent="XPNodeCreater"]
+wait_time = 0.3
 autostart = true
 
-[node name="QuickSquareBuffer" type="Timer" parent="XPNodeCreater"]
-wait_time = 0.3
+[node name="Level Circle" parent="." instance=ExtResource("8_8gq6h")]
+position = Vector2(3435.37, 1702.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="store_page" parent="." instance=ExtResource("8_fvigt")]
 
 [connection signal="timeout" from="Stage1Waves/Wave1Timer" to="Stage1Waves" method="_on_wave_1_timer_timeout"]
+[connection signal="timeout" from="Stage1Waves/Wave2Timer" to="Stage1Waves" method="_on_wave_2_timer_timeout"]
+[connection signal="timeout" from="Stage1Waves/Wave3Timer" to="Stage1Waves" method="_on_wave_3_timer_timeout"]
 [connection signal="timeout" from="XPNodeCreater/SquareCreateTimer" to="XPNodeCreater" method="_on_square_create_timer_timeout"]

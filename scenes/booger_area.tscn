@@ -12,6 +12,7 @@ shader = ExtResource("2_nyndg")
 [node name="BoogerArea" type="Area2D"]
 z_index = 1
 scale = Vector2(0.189351, 0.189351)
+collision_mask = 2
 script = ExtResource("1_yp7um")
 
 [node name="GameProjectile" type="Sprite2D" parent="."]

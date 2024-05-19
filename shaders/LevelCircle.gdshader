@@ -1,20 +1,30 @@
 shader_type canvas_item;
 
-uniform float level_progress : hint_range(0.65,0.88);
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+uniform float level_progress : hint_range(0.0,6.3);
+uniform float radius;
 
 void fragment() {
-	vec4 current_color = texture(TEXTURE,UV);
-	if(current_color.g < level_progress) {
-		current_color.a = 0.0;
+    // Texture coordinates (normalized)
+	vec2 uv = vec2(UV.x - 0.5, UV.y - 0.5);
+	float theta = 0.0;
+	float hypotenuse = sqrt((uv.x * uv.x) + (uv.y * uv.y));
+	
+	if (uv.y < 0.0) {
+		theta = acos(uv.x / hypotenuse);
+	} else {
+		theta = 2.0 * PI -  acos(uv.x / hypotenuse);
 	}
-	COLOR = current_color;
+    
+    // Check if the fragment is inside the visible part of the circle
+    bool insideCircle = level_progress > theta;
+    
+    // Sample the texture color
+    vec4 current_color = texture(TEXTURE, UV);
+    
+    // If inside the visible part, set the color to white
+    if (insideCircle) {
+        COLOR.a = current_color.a - 0.3; // White color
+    } else {
+        COLOR.a = 0.0; // Use the original texture color
+    }
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}

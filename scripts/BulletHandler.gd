@@ -30,5 +30,5 @@ func shoot():
 	
 
 func _process(_delta):
-	if Input.is_action_just_pressed("switch"):
+	if Input.is_action_just_pressed("switch") && Engine.time_scale != 0.0:
 		shoot()
