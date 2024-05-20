@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://ywkm5lhkpww"]
+
+[ext_resource type="Shader" path="res://shaders/healthBar.gdshader" id="1_inpcc"]
+[ext_resource type="Texture2D" uid="uid://ia3qliik1m4h" path="res://assets/HealthBarRed.png" id="2_vcba6"]
+[ext_resource type="Script" path="res://scripts/health_bar_red.gd" id="3_botky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2e7f"]
+shader = ExtResource("1_inpcc")
+shader_parameter/health_value = 100.0
+
+[node name="HealthBarRed" type="Sprite2D"]
+material = SubResource("ShaderMaterial_s2e7f")
+position = Vector2(474, 352)
+texture = ExtResource("2_vcba6")
+script = ExtResource("3_botky")

@@ -1,8 +1,7 @@
 extends Node
 
 const GREEN_SPOT = preload("res://scenes/booger_area.tscn")
-
-@onready var snout_position = $"../BirdBod/SnoutPosition"
+@onready var snout_position = $"../BirdBodArea/SnoutPosition"
 
 var x: float = 0.0
 var y: float = 0.0

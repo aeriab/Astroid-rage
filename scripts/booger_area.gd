@@ -12,6 +12,9 @@ func _ready():
 	
 	set_scale(_scale)
 
+func setFreeLater():
+	queue_free()
+
 func set_motion(x1,y1,theta1):
 	x = x1
 	y = y1

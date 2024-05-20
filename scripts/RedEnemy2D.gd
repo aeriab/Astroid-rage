@@ -35,14 +35,15 @@ func spawn():
 	randomize()
 	shader_value = 0.0
 	
-	x = randf_range(innerBoundX,outerBoundX)
+	x = randf_range(0,outerBoundX)
+	if x < innerBoundX:
+		y = randf_range(innerBoundY,outerBoundY)
+	else:
+		y = randf_range(0,outerBoundY)
 	if randi_range(0,1) == 1:
 		x = -x
 	else:
 		flipSprite = -1
-		#pass
-	
-	y = randf_range(innerBoundY,outerBoundY)
 	if randi_range(0,1) == 1:
 		y = -y
 	
@@ -83,5 +84,9 @@ func addDamage():
 
 func _on_area_entered(area):
 	if area.name.substr(0,1) == "@" || area.name == "BoogerArea":
-		area.free()
+		area.setFreeLater()
 		addDamage()
+	
+	if area.name.substr(0,4) == "Bird":
+		Global.decreaseHealth(1.0 - shader_value)
+		call_deferred("queue_free")

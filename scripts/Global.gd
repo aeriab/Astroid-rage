@@ -16,6 +16,8 @@ var unspentPoints = 0
 
 var xpAmount = 0.0
 
+var player_health = 100.0
+
 func addXP(num):
 	emit_signal("xpGoingUp")
 	xpAmount += num
@@ -27,8 +29,9 @@ func addXP(num):
 
 func upgradePopUp():
 	Engine.time_scale = 0.0
-	
-	
+
+func decreaseHealth(num):
+	player_health -= num * 31.0
 
 func decreaseEnemyNum():
 	enemyNum -= 1

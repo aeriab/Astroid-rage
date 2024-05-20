@@ -9,3 +9,6 @@ func _process(_delta):
 		
 	else:
 		store_page.visible = false
+
+func setFreeLater():
+	queue_free()

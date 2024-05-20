@@ -1,5 +1,4 @@
-extends StaticBody2D
-
+extends Area2D
 
 var clockwise = 1
 var SPEED = Global.rotationSpeed
@@ -15,7 +14,6 @@ func _physics_process(delta):
 	if !pause_rot:
 		rotation += (SPEED * clockwise * delta)
 
-func _on_body_entered(body):
-	if body.name == "GoldCharBody":
-		print("ending game")
-		Global.endGame()
+func _on_area_entered(area):
+	#print(str(area))
+	pass
