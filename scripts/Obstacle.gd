@@ -14,6 +14,3 @@ func _physics_process(delta):
 	if !pause_rot:
 		rotation += (SPEED * clockwise * delta)
 
-func _on_area_entered(area):
-	#print(str(area))
-	pass

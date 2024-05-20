@@ -1,12 +1,12 @@
 shader_type canvas_item;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+uniform float player_damage : hint_range(0.0,15.0);
 
 void fragment() {
 	vec4 current_color = texture(TEXTURE,UV);
-	current_color.r += 1.0;
+	current_color.r = player_damage / 15.0;
+	current_color.g = (15.0 / player_damage) - 1.0;
+	current_color.b = (7.5 / player_damage) - 0.5;
 	COLOR = current_color;
 }
 

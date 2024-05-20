@@ -25,16 +25,13 @@ script = ExtResource("1_aytb3")
 
 [node name="BirdBodArea" type="Area2D" parent="."]
 z_index = 2
-scale = Vector2(1, 1)
 collision_mask = 2
 script = ExtResource("1_vlman")
 
 [node name="SnoutPosition" type="Node2D" parent="BirdBodArea"]
 position = Vector2(0, -300)
-scale = Vector2(1, 1)
 
 [node name="TankBird" type="Sprite2D" parent="BirdBodArea"]
-scale = Vector2(1, 1)
 texture = ExtResource("2_ujku6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BirdBodArea"]
@@ -43,7 +40,6 @@ scale = Vector2(23.6306, 23.2323)
 shape = SubResource("CircleShape2D_rycil")
 
 [node name="Camera2D" type="Camera2D" parent="BirdBodArea"]
-scale = Vector2(1, 1)
 zoom = Vector2(0.2, 0.2)
 
 [node name="BulletHandler" type="Node" parent="."]
@@ -118,7 +114,6 @@ position = Vector2(-123.131, -201.936)
 scale = Vector2(9.97074, 9.97074)
 shape = SubResource("CircleShape2D_m11bs")
 
-[connection signal="area_entered" from="BirdBodArea" to="BirdBodArea" method="_on_area_entered"]
 [connection signal="timeout" from="Stage1Waves/Wave1Timer" to="Stage1Waves" method="_on_wave_1_timer_timeout"]
 [connection signal="timeout" from="Stage1Waves/Wave2Timer" to="Stage1Waves" method="_on_wave_2_timer_timeout"]
 [connection signal="timeout" from="Stage1Waves/Wave3Timer" to="Stage1Waves" method="_on_wave_3_timer_timeout"]
