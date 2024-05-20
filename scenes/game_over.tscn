@@ -5,28 +5,55 @@
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_db6pj")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 0.388235, 0.392157, 0.32549)
+metadata/_edit_use_anchors_ = true
+
 [node name="OverWords" type="Label" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 126
-text = "Game Over"
+text = "
+Game Over"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="RetryButton" type="Button" parent="."]
-offset_left = 336.0
-offset_top = 266.0
-offset_right = 816.0
-offset_bottom = 382.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 686.0
+offset_top = 455.0
+offset_right = -686.0
+offset_bottom = -455.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "RETRY"
+metadata/_edit_use_anchors_ = true
 
 [node name="QuitButton" type="Button" parent="."]
-offset_left = 339.0
-offset_top = 420.0
-offset_right = 813.0
-offset_bottom = 539.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 686.0
+offset_top = 687.0
+offset_right = -686.0
+offset_bottom = -241.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "QUIT"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

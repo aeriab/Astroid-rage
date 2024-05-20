@@ -4,6 +4,8 @@ signal xpGoingUp
 var xpNodesOnScreen = 0
 var level = 1
 
+var upgradePhase: bool = false
+
 var enemyNum = 0
 
 var bulletSize = 2
@@ -28,6 +30,7 @@ func addXP(num):
 		upgradePopUp()
 
 func upgradePopUp():
+	upgradePhase = true
 	Engine.time_scale = 0.0
 
 func decreaseHealth(num):

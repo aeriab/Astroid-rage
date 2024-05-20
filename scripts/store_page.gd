@@ -179,4 +179,5 @@ func tallyRotSpeed():
 
 func _on_back_to_game_pressed():
 	Engine.time_scale = 1.0
+	Global.upgradePhase = false
 	#get_tree().change_scene_to_file("res://scenes/game.tscn")

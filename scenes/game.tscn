@@ -10,14 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://bu5k7npfyyfio" path="res://scenes/LevelCircle.tscn" id="8_8gq6h"]
 [ext_resource type="PackedScene" uid="uid://cqmli4p0vtbwy" path="res://scenes/store_page.tscn" id="8_fvigt"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="10_y2x8a"]
+[ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="11_orek7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kbpy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rycil"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lp687"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_m11bs"]
 
 [node name="Game" type="Node2D"]
 scale = Vector2(1.21821, 1.21821)
@@ -78,7 +77,8 @@ wave2RedEnemyNum = 8
 wave3RedEnemyNum = 12
 
 [node name="Wave1Timer" type="Timer" parent="Stage1Waves"]
-wait_time = 5.0
+wait_time = 2.0
+one_shot = true
 autostart = true
 
 [node name="Wave2Timer" type="Timer" parent="Stage1Waves"]
@@ -103,16 +103,12 @@ scale = Vector2(0.5, 0.5)
 [node name="store_page" parent="." instance=ExtResource("8_fvigt")]
 visible = false
 
+[node name="GameOver" parent="." instance=ExtResource("11_orek7")]
+visible = false
+
 [node name="HealthBarRed" parent="." instance=ExtResource("10_y2x8a")]
 position = Vector2(4.76837e-07, 522.078)
 scale = Vector2(0.658475, 0.658475)
-
-[node name="testArea" type="Area2D" parent="."]
-position = Vector2(-123.131, -201.936)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testArea"]
-scale = Vector2(9.97074, 9.97074)
-shape = SubResource("CircleShape2D_m11bs")
 
 [connection signal="timeout" from="Stage1Waves/Wave1Timer" to="Stage1Waves" method="_on_wave_1_timer_timeout"]
 [connection signal="timeout" from="Stage1Waves/Wave2Timer" to="Stage1Waves" method="_on_wave_2_timer_timeout"]

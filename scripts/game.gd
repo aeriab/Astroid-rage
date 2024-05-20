@@ -3,10 +3,9 @@ extends Node2D
 
 
 func _process(_delta):
-	if Engine.time_scale == 0:
+	if Global.upgradePhase:
 		store_page.tallyPoints()
 		store_page.visible = true
-		
 	else:
 		store_page.visible = false
 
