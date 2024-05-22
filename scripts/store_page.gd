@@ -26,7 +26,6 @@ var rotVisArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 @onready var damRectArray = [$damageUp/ColorRect2,$damageUp/ColorRect3,$damageUp/ColorRect4,$damageUp/ColorRect5,$damageUp/ColorRect6,$damageUp/ColorRect7,$damageUp/ColorRect8,$damageUp/ColorRect9,$damageUp/ColorRect10,$damageUp/ColorRect11,$damageUp/ColorRect12,$damageUp/ColorRect13,$damageUp/ColorRect14,$damageUp/ColorRect15]
 @onready var rotRectArray = [$rotationSpeed/ColorRect2,$rotationSpeed/ColorRect3,$rotationSpeed/ColorRect4,$rotationSpeed/ColorRect5,$rotationSpeed/ColorRect6,$rotationSpeed/ColorRect7,$rotationSpeed/ColorRect8,$rotationSpeed/ColorRect9,$rotationSpeed/ColorRect10,$rotationSpeed/ColorRect11,$rotationSpeed/ColorRect12,$rotationSpeed/ColorRect13,$rotationSpeed/ColorRect14,$rotationSpeed/ColorRect15]
 
-
 func _ready():
 	tallyPoints()
 	
@@ -71,13 +70,19 @@ func _on_minus_rot_pressed():
 func incrBulSize():
 	if Global.unspentPoints > 0 && Global.bulletSize < 16:
 		Global.unspentPoints -= 1
+		if Global.unspentPoints == 0:
+			visible = false
+			Global.popup_shouldbe_visible = false
 		Global.bulletSize += 1
 		tallyPoints()
 		tallyBulSize()
 
 func incrBulSpeed():
-	if Global.unspentPoints > 0 && Global.bulletSpeed < 17:
+	if Global.unspentPoints > 0 && Global.bulletSpeed < 16:
 		Global.unspentPoints -= 1
+		if Global.unspentPoints == 0:
+			visible = false
+			Global.popup_shouldbe_visible = false
 		Global.bulletSpeed += 1
 		tallyPoints()
 		tallyBulSpeed()
@@ -85,6 +90,9 @@ func incrBulSpeed():
 func incrDamage():
 	if Global.unspentPoints > 0 && Global.damage < 18:
 		Global.unspentPoints -= 1
+		if Global.unspentPoints == 0:
+			visible = false
+			Global.popup_shouldbe_visible = false
 		Global.damage += 1
 		tallyPoints()
 		tallyDamage()
@@ -92,6 +100,9 @@ func incrDamage():
 func incrRotSpeed():
 	if Global.unspentPoints > 0 && Global.rotationSpeed < 17:
 		Global.unspentPoints -= 1
+		if Global.unspentPoints == 0:
+			visible = false
+			Global.popup_shouldbe_visible = false
 		Global.rotationSpeed += 1
 		tallyPoints()
 		tallyRotSpeed()
@@ -106,7 +117,7 @@ func decrBulSize():
 		tallyBulSize()
 
 func decrBulSpeed():
-	if Global.bulletSpeed > 3:
+	if Global.bulletSpeed > 2:
 		Global.unspentPoints += 1
 		Global.bulletSpeed -= 1
 		tallyPoints()
@@ -129,7 +140,7 @@ func decrRotSpeed():
 ###########################################
 
 func tallyPoints():
-	unspent_points.text = "Unspent points:\n" + str(Global.unspentPoints)
+	unspent_points.text = "Unspent points: " + str(Global.unspentPoints)
 
 func tallyBulSize():
 	var i = 0
@@ -145,7 +156,7 @@ func tallyBulSize():
 func tallyBulSpeed():
 	var i = 0
 	for bulSizeRect in bulSpVisArray:
-		if (Global.bulletSpeed - 3) > i:
+		if (Global.bulletSpeed - 2) > i:
 			bulSpVisArray[i] = 1
 			bulSpRectArray[i].visible = true
 		else:

@@ -1,35 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqmli4p0vtbwy"]
+[gd_scene load_steps=3 format=3 uid="uid://cfd1ic1slxtxy"]
 
-[ext_resource type="Script" path="res://scripts/store_page.gd" id="1_bits5"]
-[ext_resource type="Script" path="res://scripts/ColorRectVisChange.gd" id="3_uh84b"]
+[ext_resource type="Script" path="res://scripts/store_page.gd" id="1_mnm81"]
+[ext_resource type="Script" path="res://scripts/ColorRectVisChange.gd" id="2_j21s7"]
 
-[node name="store_page" type="CanvasLayer"]
-script = ExtResource("1_bits5")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-offset_left = -28.0
-offset_top = -35.0
-offset_right = 1965.0
-offset_bottom = 1134.0
-color = Color(0.470588, 0.470588, 0.470588, 0.623529)
-
-[node name="StoreLabel" type="Label" parent="."]
-offset_left = 305.0
-offset_top = 180.0
-offset_right = 1457.0
-offset_bottom = 396.0
-theme_override_font_sizes/font_size = 80
-text = "LEVEL UP"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+[node name="upgradePopup" type="CanvasLayer"]
+script = ExtResource("1_mnm81")
 
 [node name="bulletSize" type="Button" parent="."]
-offset_left = 641.0
-offset_top = 368.0
-offset_right = 1121.0
-offset_bottom = 446.0
+anchors_preset = -1
+anchor_left = -29.4232
+anchor_top = -8.99789
+anchor_right = -29.4232
+anchor_bottom = -8.99789
+offset_left = 58084.6
+offset_top = 10262.7
+offset_right = 58564.6
+offset_bottom = 10340.7
+scale = Vector2(0.596051, 0.596051)
 theme_override_font_sizes/font_size = 50
 text = "Bullet Size"
 metadata/_edit_use_anchors_ = true
@@ -72,7 +59,7 @@ offset_right = 75.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect3" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -84,7 +71,7 @@ offset_right = 105.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect4" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -96,7 +83,7 @@ offset_right = 135.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect5" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -108,7 +95,7 @@ offset_right = 165.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect6" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -120,7 +107,7 @@ offset_right = 195.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect7" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -132,7 +119,7 @@ offset_right = 225.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect8" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -144,7 +131,7 @@ offset_right = 255.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect9" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -156,7 +143,7 @@ offset_right = 285.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect10" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -168,7 +155,7 @@ offset_right = 315.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect11" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -180,7 +167,7 @@ offset_right = 345.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect12" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -192,7 +179,7 @@ offset_right = 375.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect13" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -204,7 +191,7 @@ offset_right = 405.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect14" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -216,7 +203,7 @@ offset_right = 435.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect15" type="ColorRect" parent="bulletSize"]
 visible = false
@@ -228,13 +215,19 @@ offset_right = 465.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.299901, 0.759242, 0.395815, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="bulletSpeed" type="Button" parent="."]
-offset_left = 641.0
-offset_top = 474.0
-offset_right = 1121.0
-offset_bottom = 552.0
+anchors_preset = -1
+anchor_left = -29.4232
+anchor_top = -8.99789
+anchor_right = -29.4232
+anchor_bottom = -8.99789
+offset_left = 58084.6
+offset_top = 10313.6
+offset_right = 58564.6
+offset_bottom = 10391.6
+scale = Vector2(0.59608, 0.59608)
 theme_override_font_sizes/font_size = 50
 text = "Bullet Speed"
 metadata/_edit_use_anchors_ = true
@@ -277,7 +270,7 @@ offset_right = 75.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect3" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -289,7 +282,7 @@ offset_right = 105.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect4" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -301,7 +294,7 @@ offset_right = 135.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect5" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -313,7 +306,7 @@ offset_right = 165.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect6" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -325,7 +318,7 @@ offset_right = 195.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect7" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -337,7 +330,7 @@ offset_right = 225.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect8" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -349,7 +342,7 @@ offset_right = 255.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect9" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -361,7 +354,7 @@ offset_right = 285.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect10" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -373,7 +366,7 @@ offset_right = 315.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect11" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -385,7 +378,7 @@ offset_right = 345.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect12" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -397,7 +390,7 @@ offset_right = 375.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect13" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -409,7 +402,7 @@ offset_right = 405.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect14" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -421,7 +414,7 @@ offset_right = 435.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="ColorRect15" type="ColorRect" parent="bulletSpeed"]
 visible = false
@@ -433,13 +426,19 @@ offset_right = 465.0
 offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.737255, 0.894118, 0.823529, 0.921569)
-script = ExtResource("3_uh84b")
+script = ExtResource("2_j21s7")
 
 [node name="damageUp" type="Button" parent="."]
-offset_left = 641.0
-offset_top = 586.0
-offset_right = 1121.0
-offset_bottom = 664.0
+anchors_preset = -1
+anchor_left = -29.4232
+anchor_top = -8.99789
+anchor_right = -29.4232
+anchor_bottom = -8.99789
+offset_left = 58084.6
+offset_top = 10367.3
+offset_right = 58564.6
+offset_bottom = 10445.3
+scale = Vector2(0.596199, 0.596199)
 theme_override_font_sizes/font_size = 50
 text = "Damage"
 metadata/_edit_use_anchors_ = true
@@ -627,10 +626,16 @@ mouse_filter = 2
 color = Color(1, 0.458824, 0.505882, 0.921569)
 
 [node name="rotationSpeed" type="Button" parent="."]
-offset_left = 641.0
-offset_top = 700.0
-offset_right = 1121.0
-offset_bottom = 778.0
+anchors_preset = -1
+anchor_left = -29.4232
+anchor_top = -8.99789
+anchor_right = -29.4232
+anchor_bottom = -8.99789
+offset_left = 58084.6
+offset_top = 10422.0
+offset_right = 58564.6
+offset_bottom = 10500.0
+scale = Vector2(0.596295, 0.596295)
 theme_override_font_sizes/font_size = 50
 text = "Rotation Speed"
 metadata/_edit_use_anchors_ = true
@@ -817,24 +822,18 @@ offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0.881087, 0.561688, 0.918654, 0.921569)
 
-[node name="BackToGame" type="Button" parent="."]
-offset_left = 1227.0
-offset_top = 670.0
-offset_right = 1445.0
-offset_bottom = 816.0
-theme_override_font_sizes/font_size = 50
-text = "BACK TO
-GAME"
-metadata/_edit_use_anchors_ = true
-
 [node name="UnspentPoints" type="Label" parent="."]
-offset_left = 1154.0
-offset_top = 362.0
-offset_right = 1491.0
-offset_bottom = 449.0
+anchors_preset = -1
+anchor_left = -27.2886
+anchor_top = -11.3883
+anchor_right = -27.0813
+anchor_bottom = -11.3494
+offset_left = 53742.2
+offset_top = 12743.4
+offset_right = 54079.2
+offset_bottom = 12830.4
 theme_override_font_sizes/font_size = 30
-text = "Unspent points:
-"
+text = "Unspent points:"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -851,4 +850,3 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="rotationSpeed" to="." method="_on_rotation_speed_pressed"]
 [connection signal="pressed" from="rotationSpeed/minusRot" to="." method="_on_minus_rot_pressed"]
 [connection signal="pressed" from="rotationSpeed/addRot" to="." method="_on_add_rot_pressed"]
-[connection signal="pressed" from="BackToGame" to="." method="_on_back_to_game_pressed"]

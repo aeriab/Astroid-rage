@@ -1,5 +1,7 @@
 extends Area2D
 
+const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
+
 var shader_value = material.get_shader_parameter("value")
 var shader_alpha = material.get_shader_parameter("alpha")
 var damage_chunk = Global.damage * 0.05
@@ -23,10 +25,20 @@ var flipSprite: int = 1
 
 var enemyIndex = 0
 
+var xpAmount: float
+var sizeOfEnemy: float
 
 func spawn():
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
+	
+	sizeOfEnemy = randf_range(0.5,1.5)
+	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
+	if sizeOfEnemy >= 1.45:
+		sizeOfEnemy = 3.0
+	scale.x = sizeOfEnemy
+	scale.y = sizeOfEnemy
+	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 10) 
 	
 	shader_alpha = 0.0
 	
@@ -61,7 +73,7 @@ func _physics_process(delta):
 	x -= cos(theta) * SPEED * delta
 	y -= -sin(theta) * SPEED * delta
 	
-	scale.y = ((sin(time_ellapsed) * 0.2) + 1.0) * flipSprite
+	scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
 	
 	position = Vector2(x,y)
 	time_ellapsed += delta * 5
@@ -80,6 +92,11 @@ func addDamage():
 	
 	if shader_value >= 0.9:
 		Global.decreaseEnemyNum()
+		Global.addXP(xpAmount)
+		var xpNotif = XP_NOTIFICATION.instantiate()
+		xpNotif.position = Vector2 (x,y)
+		xpNotif.getXPSize(xpAmount)
+		get_parent().add_child.call_deferred(xpNotif)
 		call_deferred("queue_free")
 
 func _on_area_entered(area):
@@ -88,5 +105,6 @@ func _on_area_entered(area):
 		addDamage()
 	
 	if area.name.substr(0,4) == "Bird":
-		Global.decreaseHealth(1.0 - shader_value)
+		Global.decreaseHealth(1.0 - (shader_value * sizeOfEnemy * 0.8) + 0.15)
+		Global.enemyNum -= 1
 		call_deferred("queue_free")

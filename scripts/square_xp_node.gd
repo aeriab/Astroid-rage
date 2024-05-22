@@ -14,6 +14,8 @@ var damage_chunk = Global.damage * 0.1
 
 var sizeOfNode: float
 
+const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
+
 @onready var square_xp_node_2 = $SquareXpNode2
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +33,7 @@ func _ready():
 	scale.x = sizeOfNode
 	scale.y = sizeOfNode
 	damage_chunk = Global.damage / (pow(sizeOfNode,2) * 10) 
-	xpAmount = 1.0 * pow(sizeOfNode,2)
+	xpAmount = pow(sizeOfNode,2)
 	position = Vector2(x,y)
 
 func addDamage():
@@ -46,6 +48,10 @@ func addDamage():
 func breakXPNode():
 	Global.addXP(xpAmount)
 	Global.xpNodesOnScreen += -1
+	var xpNotif = XP_NOTIFICATION.instantiate()
+	xpNotif.position = Vector2 (x,y)
+	xpNotif.getXPSize(xpAmount)
+	get_parent().add_child.call_deferred(xpNotif)
 	queue_free()
 
 func _on_area_entered(area):

@@ -1,6 +1,7 @@
 extends Node
 
 const SQUARE_NODE = preload("res://scenes/square_xp_node.tscn")
+
 @onready var square_create_timer = $SquareCreateTimer
 
 func _physics_process(_delta):

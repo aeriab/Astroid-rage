@@ -3,7 +3,7 @@ extends Area2D
 var x
 var y
 var theta
-var SPEED = 200 * Global.bulletSpeed
+var SPEED = 500 * Global.bulletSpeed - 300
 
 var _scale = Vector2(Global.bulletSize / 8.0,Global.bulletSize / 8.0)
 

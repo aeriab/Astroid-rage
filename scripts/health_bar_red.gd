@@ -10,7 +10,6 @@ func _process(delta):
 		game_over.visible = true
 	
 	if dying:
-		print("dying animation")
 		Engine.time_scale = Engine.time_scale - 0.01
 		if Engine.time_scale <= 0:
 			Engine.time_scale = 0
