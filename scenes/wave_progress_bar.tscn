@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl0l11fyxuanf"]
+
+[ext_resource type="Shader" path="res://shaders/wave_progress_bar.gdshader" id="1_r4mpr"]
+[ext_resource type="Texture2D" uid="uid://ia3qliik1m4h" path="res://assets/HealthBarRed.png" id="2_ol5c3"]
+[ext_resource type="Script" path="res://scripts/health_bar_red.gd" id="3_k5qyk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2e7f"]
+shader = ExtResource("1_r4mpr")
+shader_parameter/wave_progress = 87.806
+
+[node name="waveProgressBar" type="Sprite2D"]
+material = SubResource("ShaderMaterial_s2e7f")
+position = Vector2(474, 352)
+texture = ExtResource("2_ol5c3")
+script = ExtResource("3_k5qyk")

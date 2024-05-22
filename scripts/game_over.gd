@@ -3,7 +3,7 @@ extends CanvasLayer
 
 func _on_retry_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
-	Global.player_health = 100.0
+	Global.resetStats()
 	visible = false
 	Engine.time_scale = 1.0
 

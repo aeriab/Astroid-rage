@@ -47,7 +47,7 @@ script = ExtResource("3_ojs0q")
 [node name="AreaBulletCollection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(0, 3000)
+position = Vector2(0, 2300)
 shape = SubResource("WorldBoundaryShape2D_lp687")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaBulletCollection"]
@@ -61,7 +61,7 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_lp687")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(0, -3000)
+position = Vector2(0, -2300)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_lp687")
 

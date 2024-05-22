@@ -19,13 +19,31 @@ var player_health = 100.0
 
 var popup_shouldbe_visible: bool = false
 
+var difficulty: float = 1.0
+
 func addXP(num):
-	xpAmount += num
+	xpAmount += num * difficulty
 	if xpAmount >= 6.28:
 		xpAmount = xpAmount - 6.28
 		level += 1
 		unspentPoints += 1
 		popup_shouldbe_visible = true
+		difficulty -= difficulty * 0.1
+
+func resetStats():
+	bulletSize = 2
+	bulletSpeed = 2
+	damage = 4
+	rotationSpeed = 3
+	level = 1
+	xpAmount = 0.0
+	player_health = 100.0
+	difficulty = 1.0
+	xpNodesOnScreen = 0
+	enemyNum = 0
+	totalPoints = 0
+	unspentPoints = 0
+	popup_shouldbe_visible = false
 
 func decreaseHealth(num):
 	player_health -= num * 31.0
