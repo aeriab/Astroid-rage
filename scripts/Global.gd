@@ -20,6 +20,7 @@ var player_health = 100.0
 var popup_shouldbe_visible: bool = false
 
 var difficulty: float = 1.0
+var wave_progress: float = 100.0
 
 func addXP(num):
 	xpAmount += num * difficulty
@@ -50,3 +51,4 @@ func decreaseHealth(num):
 
 func decreaseEnemyNum():
 	enemyNum -= 1
+	wave_progress -= 5.0

@@ -7,13 +7,17 @@ var curWaveSpawning = 1
 @export var wave1RedEnemyNum: int
 @export var wave2RedEnemyNum: int
 @export var wave3RedEnemyNum: int
+@export var wave4RedEnemyNum: int
+@export var wave5RedEnemyNum: int
 
 @onready var wave_1_timer = $Wave1Timer
 @onready var wave_2_timer = $Wave2Timer
 @onready var wave_3_timer = $Wave3Timer
+@onready var wave_4_timer = $Wave4Timer
+@onready var wave_5_timer = $Wave5Timer
 
 func _process(_delta):
-	if (Global.enemyNum == 0 && wave_1_timer.is_stopped() && wave_2_timer.is_stopped() && wave_3_timer.is_stopped()):
+	if (Global.enemyNum == 0 && wave_1_timer.is_stopped() && wave_2_timer.is_stopped() && wave_3_timer.is_stopped() && wave_4_timer.is_stopped() && wave_5_timer.is_stopped()):
 		curWaveSpawning += 1
 		if curWaveSpawning == 2:
 			wave_2_timer.start()
@@ -43,3 +47,13 @@ func _on_wave_3_timer_timeout():
 	print("starting wave 3")
 	spawnEnemies(wave3RedEnemyNum)
 	wave_3_timer.stop()
+
+func _on_wave_4_timer_timeout():
+	print("starting wave 4")
+	spawnEnemies(wave4RedEnemyNum)
+	wave_4_timer.stop()
+
+func _on_wave_5_timer_timeout():
+	print("starting wave 5")
+	spawnEnemies(wave5RedEnemyNum)
+	wave_5_timer.stop()

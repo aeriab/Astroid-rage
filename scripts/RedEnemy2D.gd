@@ -34,7 +34,7 @@ func spawn():
 	
 	sizeOfEnemy = randf_range(0.5,1.5)
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
-	if sizeOfEnemy >= 1.45:
+	if sizeOfEnemy >= 1.48:
 		sizeOfEnemy = 3.0
 	scale.x = sizeOfEnemy
 	scale.y = sizeOfEnemy
