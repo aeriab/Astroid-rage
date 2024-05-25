@@ -28,14 +28,17 @@ var enemyIndex = 0
 var xpAmount: float
 var sizeOfEnemy: float
 
-func spawn():
+var difficulty: float = 1.0
+
+func spawn(dif):
+	difficulty = dif
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
 	
-	sizeOfEnemy = randf_range(0.5,1.5)
+	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
-	if sizeOfEnemy >= 1.48:
-		sizeOfEnemy = 3.0
+	if sizeOfEnemy >= 1.48 * difficulty:
+		sizeOfEnemy = 3.0 * difficulty
 	scale.x = sizeOfEnemy
 	scale.y = sizeOfEnemy
 	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 10) 
@@ -105,6 +108,6 @@ func _on_area_entered(area):
 		addDamage()
 	
 	if area.name.substr(0,4) == "Bird":
-		Global.decreaseHealth(1.0 - (shader_value * sizeOfEnemy * 0.8) + 0.15)
+		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
 		call_deferred("queue_free")

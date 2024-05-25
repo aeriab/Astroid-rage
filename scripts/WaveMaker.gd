@@ -2,58 +2,31 @@ extends Node
 
 const RED_ENEMY = preload("res://scenes/redEnemy.tscn")
 
-var curWaveSpawning = 1
+var difficulty: float = 1.0
+var time: float = 0.0
+var next_time: float = 0.0
 
-@export var wave1RedEnemyNum: int
-@export var wave2RedEnemyNum: int
-@export var wave3RedEnemyNum: int
-@export var wave4RedEnemyNum: int
-@export var wave5RedEnemyNum: int
+func _ready():
+	next_time = randf_range(3.0, 6.0)
 
-@onready var wave_1_timer = $Wave1Timer
-@onready var wave_2_timer = $Wave2Timer
-@onready var wave_3_timer = $Wave3Timer
-@onready var wave_4_timer = $Wave4Timer
-@onready var wave_5_timer = $Wave5Timer
+func _process(delta):
+	time += delta
+	
+	if time >= next_time:
+		spawnEnemy()
+		difficulty += 0.05
+		next_time = randf_range(1.5, 7.0)
+		time = 0.0
 
-func _process(_delta):
-	if (Global.enemyNum == 0 && wave_1_timer.is_stopped() && wave_2_timer.is_stopped() && wave_3_timer.is_stopped() && wave_4_timer.is_stopped() && wave_5_timer.is_stopped()):
-		curWaveSpawning += 1
-		if curWaveSpawning == 2:
-			wave_2_timer.start()
-		elif curWaveSpawning == 3:
-			wave_3_timer.start()
-
-func _on_wave_1_timer_timeout():
-	print("starting wave 1")
-	spawnEnemies(wave1RedEnemyNum)
-	wave_1_timer.stop()
+func spawnEnemy():
+	var enemy1 = RED_ENEMY.instantiate()
+	enemy1.spawn(difficulty)
+	get_parent().add_child.call_deferred(enemy1)
 
 func spawnEnemies(num):
 	var i = 0
 	while i < num:
 		var enemy1 = RED_ENEMY.instantiate()
-		enemy1.spawn()
+		enemy1.spawn(difficulty)
 		get_parent().add_child.call_deferred(enemy1)
 		i += 1
-
-
-func _on_wave_2_timer_timeout():
-	print("starting wave 2")
-	spawnEnemies(wave2RedEnemyNum)
-	wave_2_timer.stop()
-
-func _on_wave_3_timer_timeout():
-	print("starting wave 3")
-	spawnEnemies(wave3RedEnemyNum)
-	wave_3_timer.stop()
-
-func _on_wave_4_timer_timeout():
-	print("starting wave 4")
-	spawnEnemies(wave4RedEnemyNum)
-	wave_4_timer.stop()
-
-func _on_wave_5_timer_timeout():
-	print("starting wave 5")
-	spawnEnemies(wave5RedEnemyNum)
-	wave_5_timer.stop()
