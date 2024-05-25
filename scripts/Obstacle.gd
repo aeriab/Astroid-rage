@@ -8,6 +8,7 @@ func _ready():
 	rotation = (starting_rot / 360) * 2 * PI
 
 func _physics_process(delta):
+	Global.prior_dir = clockwise
 	if Input.is_action_just_pressed("switch"):
 		clockwise *= -1
 	if !pause_rot:

@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://2u4i6ttf1rh7"]
+[gd_scene load_steps=3 format=3 uid="uid://bje4ed7l1231b"]
 
-[ext_resource type="Script" path="res://scripts/shoot_particles.gd" id="1_hawqu"]
+[ext_resource type="Script" path="res://scripts/shoot_particles.gd" id="1_dhu00"]
 
 [sub_resource type="Curve" id="Curve_hjlmy"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
 point_count = 2
 
-[node name="shootParticles" type="Node2D"]
-script = ExtResource("1_hawqu")
+[node name="bulletLandParticles" type="Node2D"]
+script = ExtResource("1_dhu00")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 5

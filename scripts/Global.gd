@@ -10,17 +10,18 @@ var bulletSpeed = 2
 var damage = 4
 var rotationSpeed = 3
 
-var totalPoints = 0
-var unspentPoints = 0
+var totalPoints = 35
+var unspentPoints = 35
 
 var xpAmount = 0.0
 
 var player_health = 100.0
 
-var popup_shouldbe_visible: bool = false
+var popup_shouldbe_visible: bool = true
 
 var difficulty: float = 1.0
 var wave_progress: float = 100.0
+var prior_dir: float = 1.0
 
 func addXP(num):
 	xpAmount += num * difficulty

@@ -28,7 +28,7 @@ collision_mask = 2
 script = ExtResource("1_vlman")
 
 [node name="SnoutPosition" type="Node2D" parent="BirdBodArea"]
-position = Vector2(0, -300)
+position = Vector2(0, -321.419)
 
 [node name="TankBird" type="Sprite2D" parent="BirdBodArea"]
 texture = ExtResource("2_ujku6")
