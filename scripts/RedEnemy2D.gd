@@ -29,6 +29,29 @@ var xpAmount: float
 var sizeOfEnemy: float
 
 var difficulty: float = 1.0
+@onready var splatcho_enemy = $SplatchoEnemy
+var randEnSprite: int
+
+func _ready():
+	randEnSprite = randi_range(0,100)
+	if randEnSprite <= 15:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDefault.png")
+	elif randEnSprite <= 30:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyBored.png")
+	elif randEnSprite <= 48:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
+	elif randEnSprite <= 61:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
+	elif randEnSprite <= 78:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
+	elif randEnSprite <= 89:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyMouth.png")
+	elif randEnSprite <= 94:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyNose.png")
+	elif randEnSprite <= 99:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
+	else:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyEYES.png")
 
 func spawn(dif):
 	difficulty = dif

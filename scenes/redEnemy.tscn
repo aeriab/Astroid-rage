@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxm3i502jvnv2"]
+[gd_scene load_steps=5 format=3 uid="uid://bxm3i502jvnv2"]
 
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_0slfb"]
 [ext_resource type="Script" path="res://scripts/RedEnemy2D.gd" id="2_7j2wm"]
-[ext_resource type="Texture2D" uid="uid://cwrtpd1jy1myd" path="res://assets/redEnemySprites/Splatcho Enemy.png" id="3_nkhi3"]
-[ext_resource type="Texture2D" uid="uid://mdndm1kojvgn" path="res://assets/GameProjectile.png" id="4_dwtqd"]
+[ext_resource type="Texture2D" uid="uid://dmmnwgwhopfe2" path="res://assets/redEnemySprites/SplatchoEnemyDefault.png" id="3_vt4nn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g6bmg"]
 resource_local_to_scene = true
@@ -21,7 +20,7 @@ script = ExtResource("2_7j2wm")
 [node name="SplatchoEnemy" type="Sprite2D" parent="."]
 use_parent_material = true
 position = Vector2(10, -90)
-texture = ExtResource("3_nkhi3")
+texture = ExtResource("3_vt4nn")
 
 [node name="CollisionPolygon2D_right" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -34,11 +33,5 @@ visible = false
 position = Vector2(-97, -59)
 rotation = -0.0121245
 polygon = PackedVector2Array(-102.598, -116.252, -56.9224, -171.703, 107.38, -30.7004, -73.4075, 198.125, -110.932, 158.667, -135.336, 109.367, -144.62, 50.2503, -137.65, -29.6711)
-
-[node name="GameProjectile" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(399, -17)
-scale = Vector2(0.728125, 0.105556)
-texture = ExtResource("4_dwtqd")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

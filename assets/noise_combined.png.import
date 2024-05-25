@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7fsqhg7x7u5q"
-path="res://.godot/imported/Tank Bird.png-c172f69eab21ba3d565305e5eebdb188.ctex"
+uid="uid://0k77qygao1ks"
+path="res://.godot/imported/noise_combined.png-edcb8791a2ef2b118ddc51ff341f99c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tank Bird.png"
-dest_files=["res://.godot/imported/Tank Bird.png-c172f69eab21ba3d565305e5eebdb188.ctex"]
+source_file="res://assets/noise_combined.png"
+dest_files=["res://.godot/imported/noise_combined.png-edcb8791a2ef2b118ddc51ff341f99c4.ctex"]
 
 [params]
 
