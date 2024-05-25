@@ -10,26 +10,25 @@ var _scale = Vector2(Global.bulletSize / 8.0,Global.bulletSize / 8.0)
 var rot_motion: float = 1.0
 
 var orig_speed: float = Global.bulletSpeed
+var orig_rotate_speed: float
 @onready var game_projectile = $GameProjectile
 
-var randImageNum: int
-
 func _ready():
+	orig_rotate_speed = randf_range(0.8,1.2)
 	monitoring = true
 	set_scale(_scale)
 	position.x = x
 	position.y = y
-	randImageNum = randi_range(0,4)
-	if randImageNum == 0:
-		game_projectile.texture = preload("res://assets/damage1Projectiles/Dam1GameProjectile.png")
-	elif randImageNum == 1:
-		game_projectile.texture = preload("res://assets/damage1Projectiles/Dam1GameProjectile (1).png")
-	elif randImageNum == 2:
-		game_projectile.texture = preload("res://assets/damage1Projectiles/Dam1GameProjectile (2).png")
-	elif randImageNum == 3:
-		game_projectile.texture = preload("res://assets/damage1Projectiles/Dam1GameProjectile (3).png")
+	if Global.damage == 4:
+		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile1.png")
+	elif Global.damage <= 8:
+		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile2.png")
+	elif Global.damage <= 13:
+		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile3.png")
+	elif Global.damage <= 17:
+		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile4.png")
 	else:
-		game_projectile.texture = preload("res://assets/damage1Projectiles/Dam1GameProjectile (4).png")
+		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile5.png")
 	
 	rotation = randf_range(0.0,6.3)
 
@@ -50,7 +49,7 @@ func _physics_process(delta):
 	position.x = x
 	position.y = y
 	
-	rotate(delta * (orig_speed - 1) * rot_motion * 2 * randf_range(0.8,1.2))
+	rotate(delta * (orig_speed - 1) * rot_motion * 2 * orig_rotate_speed)
 
 func _on_area_entered(area):
 	if area.name == "AreaBulletCollection":

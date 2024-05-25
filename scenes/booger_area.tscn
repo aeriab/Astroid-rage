@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/booger_area.gd" id="1_yp7um"]
 [ext_resource type="Shader" path="res://shaders/booger_area.gdshader" id="2_nyndg"]
-[ext_resource type="Texture2D" uid="uid://cbeuvyt5egjb7" path="res://assets/damage1Projectiles/Dam1GameProjectile (2).png" id="3_dfqrg"]
+[ext_resource type="Texture2D" uid="uid://dietwv2tbrab2" path="res://assets/damageProjectiles/DamGameProjectile1.png" id="3_50wf8"]
 [ext_resource type="Script" path="res://scripts/GameProjectile.gd" id="4_rwm84"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_52g37"]
 resource_local_to_scene = true
 shader = ExtResource("2_nyndg")
-shader_parameter/player_damage = 15.0
+shader_parameter/player_damage = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3a1r5"]
 
@@ -21,7 +21,8 @@ script = ExtResource("1_yp7um")
 [node name="GameProjectile" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_52g37")
 position = Vector2(-1, -2)
-texture = ExtResource("3_dfqrg")
+scale = Vector2(1, 0.993421)
+texture = ExtResource("3_50wf8")
 script = ExtResource("4_rwm84")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

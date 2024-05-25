@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c06hnls6fi7er"
-path="res://.godot/imported/Dam1GameProjectile.png-92fdb4dfe7b08d938b7b79c5f2951c18.ctex"
+path="res://.godot/imported/DamGameProjectile3.png-c689f650934a5e67ca671adff5f69261.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/damage1Projectiles/Dam1GameProjectile.png"
-dest_files=["res://.godot/imported/Dam1GameProjectile.png-92fdb4dfe7b08d938b7b79c5f2951c18.ctex"]
+source_file="res://assets/damageProjectiles/DamGameProjectile3.png"
+dest_files=["res://.godot/imported/DamGameProjectile3.png-c689f650934a5e67ca671adff5f69261.ctex"]
 
 [params]
 

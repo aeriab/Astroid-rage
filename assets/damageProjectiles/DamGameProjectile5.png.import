@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddwgsy0rswssq"
-path="res://.godot/imported/Dam1GameProjectile (1).png-a2b94f0b298a8b20aa277ff24bb754a2.ctex"
+uid="uid://dgjccj87sos3a"
+path="res://.godot/imported/DamGameProjectile5.png-a5ef69814dd5f43df8be4e0e347b9cf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/damage1Projectiles/Dam1GameProjectile (1).png"
-dest_files=["res://.godot/imported/Dam1GameProjectile (1).png-a2b94f0b298a8b20aa277ff24bb754a2.ctex"]
+source_file="res://assets/damageProjectiles/DamGameProjectile5.png"
+dest_files=["res://.godot/imported/DamGameProjectile5.png-a5ef69814dd5f43df8be4e0e347b9cf5.ctex"]
 
 [params]
 

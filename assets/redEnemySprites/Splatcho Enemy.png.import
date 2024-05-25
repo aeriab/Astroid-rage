@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d21kcbr6p4alh"
-path="res://.godot/imported/Dam1GameProjectile (4).png-6b08b53b0a2e7254c3a0142916c54447.ctex"
+uid="uid://cwrtpd1jy1myd"
+path="res://.godot/imported/Splatcho Enemy.png-284501f1f6e8f514cc3ae6960472b404.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/damage1Projectiles/Dam1GameProjectile (4).png"
-dest_files=["res://.godot/imported/Dam1GameProjectile (4).png-6b08b53b0a2e7254c3a0142916c54447.ctex"]
+source_file="res://assets/redEnemySprites/Splatcho Enemy.png"
+dest_files=["res://.godot/imported/Splatcho Enemy.png-284501f1f6e8f514cc3ae6960472b404.ctex"]
 
 [params]
 

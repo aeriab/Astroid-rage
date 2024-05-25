@@ -10,7 +10,7 @@ func _physics_process(_delta):
 
 func _on_square_create_timer_timeout():
 	square_create_timer.stop()
-	square_create_timer.wait_time = (Global.xpNodesOnScreen / 5.0) + randf_range(0.1,(Global.xpNodesOnScreen / 5.0) + 0.3)
+	square_create_timer.wait_time = clamp((Global.xpNodesOnScreen / 5.0) + randf_range(0.1,(Global.xpNodesOnScreen / 5.0) + 0.3),0.05,999.0)
 	spawnSquares()
 
 func spawnSquares():

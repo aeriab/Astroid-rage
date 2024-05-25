@@ -3,7 +3,7 @@ extends Sprite2D
 
 var dying: bool = false
 
-func _process(delta):
+func _process(_delta):
 	material.set_shader_parameter("health_value",Global.player_health)
 	if Global.player_health <= 0:
 		dying = true

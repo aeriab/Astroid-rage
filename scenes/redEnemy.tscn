@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_0slfb"]
 [ext_resource type="Script" path="res://scripts/RedEnemy2D.gd" id="2_7j2wm"]
-[ext_resource type="Texture2D" uid="uid://cwrtpd1jy1myd" path="res://assets/Splatcho Enemy.png" id="3_nkhi3"]
+[ext_resource type="Texture2D" uid="uid://cwrtpd1jy1myd" path="res://assets/redEnemySprites/Splatcho Enemy.png" id="3_nkhi3"]
 [ext_resource type="Texture2D" uid="uid://mdndm1kojvgn" path="res://assets/GameProjectile.png" id="4_dwtqd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g6bmg"]
