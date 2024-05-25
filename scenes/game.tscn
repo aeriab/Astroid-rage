@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=19 format=3 uid="uid://b3yppwif0chd5"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_aytb3"]
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
@@ -10,22 +10,15 @@
 [ext_resource type="Script" path="res://scripts/XPNodeCreater.gd" id="7_8nel5"]
 [ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="7_phdcr"]
 [ext_resource type="Texture2D" uid="uid://dlc25btw33ur7" path="res://assets/tankBird/BirdEyelid.png" id="7_wps2l"]
-[ext_resource type="Shader" path="res://shaders/veins.gdshader" id="8_1icaf"]
 [ext_resource type="Script" path="res://scripts/WaveMaker.gd" id="8_5ewck"]
 [ext_resource type="PackedScene" uid="uid://bu5k7npfyyfio" path="res://scenes/LevelCircle.tscn" id="8_8gq6h"]
 [ext_resource type="PackedScene" uid="uid://cfd1ic1slxtxy" path="res://scenes/upgrade_popup.tscn" id="9_lb6xu"]
-[ext_resource type="Texture2D" uid="uid://hmq0bnlalvxo" path="res://assets/tankBird/BirdBodyVeins.png" id="9_pj8on"]
-[ext_resource type="Script" path="res://scripts/BirdBodyVeins.gd" id="10_or21o"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="10_y2x8a"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="11_orek7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kbpy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rycil"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_21jww"]
-shader = ExtResource("8_1icaf")
-shader_parameter/alpha_value = 0.685
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lp687"]
 
@@ -59,9 +52,12 @@ zoom = Vector2(0.2, 0.2)
 
 [node name="TankBirdPupil" type="Sprite2D" parent="BirdBodArea"]
 z_index = 2
-position = Vector2(-37.7603, 7.38789)
+position = Vector2(144.474, -20.5219)
 scale = Vector2(1.20325, 1.20325)
 texture = ExtResource("5_ndkm2")
+region_enabled = true
+region_rect = Rect2(605.068, 309.284, 58.8481, 52.6057)
+region_filter_clip_enabled = true
 
 [node name="TankBirdEyeWhite" type="Sprite2D" parent="BirdBodArea"]
 position = Vector2(-6.56701, -15.5967)
@@ -71,14 +67,6 @@ texture = ExtResource("6_mk42o")
 position = Vector2(67.3119, 1.64175)
 scale = Vector2(0.1, 1.378)
 texture = ExtResource("7_wps2l")
-
-[node name="BirdBodyVeins" type="Sprite2D" parent="BirdBodArea"]
-material = SubResource("ShaderMaterial_21jww")
-position = Vector2(1.64175, -1.64175)
-rotation = -0.237747
-scale = Vector2(1, 1)
-texture = ExtResource("9_pj8on")
-script = ExtResource("10_or21o")
 
 [node name="BulletHandler" type="Node" parent="."]
 script = ExtResource("3_ojs0q")

@@ -5,6 +5,7 @@ var clockwise = 1
 @export var starting_rot: float
 @onready var tank_bird_nose = $SnoutPosition/TankBirdNose
 @onready var bird_eyelid = $BirdEyelid
+@onready var tank_bird_pupil = $TankBirdPupil
 
 var eyelidHeight: float = 0.0
 
@@ -14,6 +15,8 @@ func _ready():
 func _physics_process(delta):
 	tank_bird_nose.scale.x = Global.bulletSize / 8.0 + 0.5
 	bird_eyelid.scale.x = eyelidHeight
+	tank_bird_pupil.scale.x = Global.bulletSpeed / 6.0 + 1.0
+	tank_bird_pupil.scale.y = Global.bulletSpeed / 6.0 + 1.0
 	
 	Global.prior_dir = clockwise
 	if Input.is_action_just_pressed("switch"):
