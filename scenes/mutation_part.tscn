@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dukd2mn150ti1"]
+
+[ext_resource type="Texture2D" uid="uid://bial11bqrxmow" path="res://assets/BirdBeak.png" id="1_dd0qi"]
+[ext_resource type="Script" path="res://scripts/mutation_part.gd" id="1_xbrwj"]
+[ext_resource type="Texture2D" uid="uid://dmaj06en0kk08" path="res://assets/tankBird/TankBirdPupil.png" id="2_2vq4h"]
+[ext_resource type="Texture2D" uid="uid://bidbntqd3ladf" path="res://assets/tankBird/TankBirdEyeWhite.png" id="3_jt46p"]
+[ext_resource type="Texture2D" uid="uid://dlc25btw33ur7" path="res://assets/tankBird/BirdEyelid.png" id="4_85u1n"]
+
+[node name="mutationPart" type="Node2D"]
+z_index = 2
+z_as_relative = false
+script = ExtResource("1_xbrwj")
+
+[node name="SnoutPosition" type="Node2D" parent="."]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("1_dd0qi")
+
+[node name="TankBirdEyeWhite" type="Sprite2D" parent="."]
+z_index = 4
+z_as_relative = false
+position = Vector2(-6.56701, -15.5967)
+texture = ExtResource("3_jt46p")
+
+[node name="BirdEyelid" type="Sprite2D" parent="."]
+z_index = 4
+z_as_relative = false
+position = Vector2(67.3119, 1.64175)
+scale = Vector2(0.1, 1.378)
+texture = ExtResource("4_85u1n")
+
+[node name="TankBirdPupil" type="Sprite2D" parent="."]
+z_index = 4
+z_as_relative = false
+position = Vector2(144.474, -20.5219)
+scale = Vector2(1.20325, 1.20325)
+texture = ExtResource("2_2vq4h")
+region_enabled = true
+region_rect = Rect2(605.068, 309.284, 58.8481, 52.6057)
+region_filter_clip_enabled = true

@@ -3,7 +3,7 @@ extends Node
 const GREEN_SPOT = preload("res://scenes/booger_area.tscn")
 const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
 
-@onready var snout_position = $"../BirdBodArea/SnoutPosition"
+@onready var mutation_part = $"../Player/mutationPart"
 
 var x: float = 0.0
 var y: float = 0.0
@@ -16,8 +16,10 @@ func shoot():
 	
 	get_parent().add_child.call_deferred(greenspot)
 	get_parent().add_child.call_deferred(shotparticles)
-	x = snout_position.global_position.x
-	y = snout_position.global_position.y
+	x = mutation_part.snoutPositionX()
+	y = mutation_part.snoutPositionY()
+	#x = snout_position.global_position.x
+	#y = snout_position.global_position.y
 	
 	var snout_length = sqrt((x * x) + (y * y))
 	
