@@ -34,19 +34,19 @@ var randEnSprite: int
 
 func _ready():
 	randEnSprite = randi_range(0,100)
-	if randEnSprite <= 15:
+	if randEnSprite <= 20:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDefault.png")
-	elif randEnSprite <= 30:
+	elif randEnSprite <= 25:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyBored.png")
-	elif randEnSprite <= 48:
+	elif randEnSprite <= 30:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
-	elif randEnSprite <= 61:
+	elif randEnSprite <= 35:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
-	elif randEnSprite <= 78:
+	elif randEnSprite <= 40:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
-	elif randEnSprite <= 89:
+	elif randEnSprite <= 45:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyMouth.png")
-	elif randEnSprite <= 94:
+	elif randEnSprite <= 50:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyNose.png")
 	elif randEnSprite <= 99:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
@@ -126,11 +126,11 @@ func addDamage():
 		call_deferred("queue_free")
 
 func _on_area_entered(area):
-	if area.name.substr(0,1) == "@" || area.name == "BoogerArea":
+	if area.is_in_group("BoogerArea"):
 		area.setFreeLater()
 		addDamage()
-	
-	if area.name.substr(0,4) == "Bird":
+	 
+	if area.is_in_group("Player"):
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
 		call_deferred("queue_free")

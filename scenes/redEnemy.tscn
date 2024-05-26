@@ -10,7 +10,7 @@ shader = ExtResource("1_0slfb")
 shader_parameter/damage_value = 0.0
 shader_parameter/alpha_value = 1.0
 
-[node name="RedEnemy" type="Area2D"]
+[node name="RedEnemy" type="Area2D" groups=["Enemy"]]
 z_index = 3
 material = SubResource("ShaderMaterial_g6bmg")
 position = Vector2(-8, 16)

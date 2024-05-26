@@ -12,8 +12,8 @@ func _ready():
 	cpu_particles_2d.color = Color (1.0 - Global.damage / 20.0,1.0 - Global.damage / 20.0,1.0 + Global.damage / 20.0)
 	cpu_particles_2d.scale_amount_min = 10 * Global.bulletSize
 	cpu_particles_2d.scale_amount_max = 15 * Global.bulletSize
-	cpu_particles_2d.speed_scale = 0.05 * Global.bulletSpeed
-	cpu_particles_2d.lifetime = 0.01 * Global.bulletSpeed
+	cpu_particles_2d.speed_scale = 0.05 * Global.bulletSpeed + 0.3
+	cpu_particles_2d.lifetime = 0.01 * Global.bulletSpeed + 0.1
 
 func start_emit(x,y,theta):
 	position.x = x

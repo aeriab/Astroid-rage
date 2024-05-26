@@ -1,5 +1,7 @@
 extends Node
 
+var squareWaitTime = 3.1
+var healthWaitTime = 12.0
 var xpNodesOnScreen = 0
 var level = 1
 
@@ -10,8 +12,8 @@ var bulletSpeed = 2
 var damage = 4
 var rotationSpeed = 3
 
-var totalPoints = 35
-var unspentPoints = 35
+var totalPoints = 40
+var unspentPoints = 40
 
 var xpAmount = 0.0
 

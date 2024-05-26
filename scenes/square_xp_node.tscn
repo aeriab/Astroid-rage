@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aur3"]
 size = Vector2(264, 264)
 
-[node name="SquareXPNode" type="Area2D"]
+[node name="SquareXPNode" type="Area2D" groups=["SquareNode"]]
 collision_layer = 2
 script = ExtResource("1_0x6uc")
 

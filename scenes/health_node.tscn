@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cst3p62uc6v60"]
+
+[ext_resource type="Script" path="res://scripts/health_node.gd" id="1_266pc"]
+[ext_resource type="Texture2D" uid="uid://dx7ythk86k5tr" path="res://assets/healthNode (1).png" id="2_7kdu3"]
+
+[node name="HealthNode" type="Area2D" groups=["HealthNode"]]
+script = ExtResource("1_266pc")
+
+[node name="HealthNode" type="Sprite2D" parent="."]
+scale = Vector2(0.941667, 0.941667)
+texture = ExtResource("2_7kdu3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-83, -233, 83, -233, 83, -83, 233, -83, 234, 84, 83, 81, 83, 235, -85, 233, -83, 82, -233, 83, -234, -84, -83, -83)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

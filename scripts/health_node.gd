@@ -16,7 +16,10 @@ var sizeOfNode: float
 
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
 
-@onready var square_xp_node_2 = $SquareXpNode2
+@onready var health_node = $HealthNode
+
+func areaName():
+	return "HealthNode"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,10 +43,13 @@ func addDamage():
 	damage_value += damage_chunk
 	if damage_value >= 0.9:
 		breakXPNode()
-	square_xp_node_2.modulate.a += -0.15
-	square_xp_node_2.modulate.r += 0.15
-	square_xp_node_2.modulate.g += -0.05
-	square_xp_node_2.modulate.b += -0.15
+		Global.player_health += sizeOfNode * 30.0
+		if Global.player_health > 100.0:
+			Global.player_health = 100.0
+	health_node.modulate.a += -0.15
+	health_node.modulate.r += -0.15
+	health_node.modulate.g += 0.15
+	health_node.modulate.b += -0.15
 
 func breakXPNode():
 	Global.addXP(xpAmount)

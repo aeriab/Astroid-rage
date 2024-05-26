@@ -13,6 +13,9 @@ var orig_speed: float = Global.bulletSpeed
 var orig_rotate_speed: float
 @onready var game_projectile = $GameProjectile
 
+func areaName():
+	return "Booger"
+
 func _ready():
 	orig_rotate_speed = randf_range(0.8,1.2)
 	monitoring = true
