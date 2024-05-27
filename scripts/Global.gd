@@ -1,5 +1,8 @@
 extends Node
 
+var mutateNumber: int = 1
+var evolutionPoints: int = 0
+
 var squareWaitTime = 3.1
 var healthWaitTime = 12.0
 var xpNodesOnScreen = 0
@@ -12,18 +15,20 @@ var bulletSpeed = 2
 var damage = 4
 var rotationSpeed = 3
 
-var totalPoints = 40
-var unspentPoints = 40
+var totalPoints = 0
+var unspentPoints = 0
 
 var xpAmount = 0.0
 
 var player_health = 100.0
 
-var popup_shouldbe_visible: bool = true
+var popup_shouldbe_visible: bool = false
 
 var difficulty: float = 1.0
 var wave_progress: float = 100.0
 var prior_dir: float = 1.0
+
+var firstEvolveCheck: bool = true
 
 func addXP(num):
 	xpAmount += num * difficulty
@@ -33,6 +38,11 @@ func addXP(num):
 		unspentPoints += 1
 		popup_shouldbe_visible = true
 		difficulty -= difficulty * 0.1
+		if level % 10 == 0 && firstEvolveCheck == true:
+			Global.evolutionPoints += 1
+			firstEvolveCheck = false
+		if level % 10 == 1:
+			firstEvolveCheck = true
 
 func resetStats():
 	bulletSize = 2
@@ -48,6 +58,8 @@ func resetStats():
 	totalPoints = 0
 	unspentPoints = 0
 	popup_shouldbe_visible = false
+	mutateNumber = 1
+	evolutionPoints = 0
 
 func decreaseHealth(num):
 	player_health -= num * 31.0

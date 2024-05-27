@@ -29,29 +29,18 @@ var xpAmount: float
 var sizeOfEnemy: float
 
 var difficulty: float = 1.0
-@onready var splatcho_enemy = $SplatchoEnemy
+@onready var spiral_enemy = $SpiralEnemy
+
 var randEnSprite: int
 
 func _ready():
 	randEnSprite = randi_range(0,100)
-	if randEnSprite <= 20:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDefault.png")
-	elif randEnSprite <= 25:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyBored.png")
-	elif randEnSprite <= 30:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
-	elif randEnSprite <= 35:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
-	elif randEnSprite <= 40:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
-	elif randEnSprite <= 45:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyMouth.png")
-	elif randEnSprite <= 50:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyNose.png")
-	elif randEnSprite <= 99:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
+	if randEnSprite <= 35:
+		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemy.png")
+	elif randEnSprite <= 65:
+		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemyStar.png")
 	else:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyEYES.png")
+		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemyBrow.png")
 
 func spawn(dif):
 	difficulty = dif
@@ -62,8 +51,8 @@ func spawn(dif):
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
 	if sizeOfEnemy >= 1.48 * difficulty:
 		sizeOfEnemy = 3.0 * difficulty
-	scale.x = sizeOfEnemy
-	scale.y = sizeOfEnemy
+	
+	
 	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 10) 
 	
 	shader_alpha = 0.0
@@ -93,13 +82,15 @@ func spawn(dif):
 		theta = 2 * PI -  acos(x / hypotenuse)
 	
 	rotation = -theta + PI
+	scale.x = sizeOfEnemy
+	scale.y = sizeOfEnemy * flipSprite
 
 func _physics_process(delta):
 	
 	x -= cos(theta) * SPEED * delta
 	y -= -sin(theta) * SPEED * delta
 	
-	scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
+	scale.x = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy)
 	
 	position = Vector2(x,y)
 	time_ellapsed += delta * 5

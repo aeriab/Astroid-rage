@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://460x26t4mvnp"]
+
+[ext_resource type="Script" path="res://scripts/evo_selection.gd" id="1_mxuwe"]
+
+[node name="evo_selection" type="CanvasLayer"]
+script = ExtResource("1_mxuwe")
+
+[node name="evoTitle" type="Label" parent="."]
+offset_left = 1059.0
+offset_top = -28.0
+offset_right = 2211.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 80
+text = "EVOLUTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MutateButton" type="Button" parent="."]
+offset_left = 1395.0
+offset_top = 160.0
+offset_right = 1875.0
+offset_bottom = 238.0
+theme_override_font_sizes/font_size = 50
+text = "Mutate"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MutateButton" to="." method="_on_bullet_size_pressed"]
+[connection signal="pressed" from="MutateButton" to="." method="_on_mutate_button_pressed"]

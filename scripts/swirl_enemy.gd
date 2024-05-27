@@ -11,7 +11,7 @@ var y = 5000
 var hypotenuse
 var theta
 
-const SPEED = 200
+const SPEED = 1000
 const FADE_SPEED = 0.5
 
 var innerBoundX = 5000
@@ -29,41 +29,36 @@ var xpAmount: float
 var sizeOfEnemy: float
 
 var difficulty: float = 1.0
-@onready var splatcho_enemy = $SplatchoEnemy
+@onready var swirl_enemy = $SwirlEnemy
+
 var randEnSprite: int
+var direction: int = 1
 
 func _ready():
 	randEnSprite = randi_range(0,100)
-	if randEnSprite <= 20:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDefault.png")
-	elif randEnSprite <= 25:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyBored.png")
-	elif randEnSprite <= 30:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
-	elif randEnSprite <= 35:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
-	elif randEnSprite <= 40:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
-	elif randEnSprite <= 45:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyMouth.png")
+	if randEnSprite <= 25:
+		swirl_enemy.texture = preload("res://assets/swirlEnemySprites/SwirlEnemyBoth.png")
 	elif randEnSprite <= 50:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyNose.png")
-	elif randEnSprite <= 99:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
+		swirl_enemy.texture = preload("res://assets/swirlEnemySprites/SwirlEnemySquare.png")
+	elif randEnSprite <= 75:
+		swirl_enemy.texture = preload("res://assets/swirlEnemySprites/SwirlEnemyTriangle.png")
 	else:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyEYES.png")
+		swirl_enemy.texture = preload("res://assets/swirlEnemySprites/SwirlEnemyTrifront.png")
 
 func spawn(dif):
 	difficulty = dif
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
 	
+	if randi_range(0,1) == 0:
+		direction = -1
+	
 	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
 	if sizeOfEnemy >= 1.48 * difficulty:
 		sizeOfEnemy = 3.0 * difficulty
-	scale.x = sizeOfEnemy
-	scale.y = sizeOfEnemy
+	
+	
 	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 10) 
 	
 	shader_alpha = 0.0
@@ -92,14 +87,35 @@ func spawn(dif):
 	else:
 		theta = 2 * PI -  acos(x / hypotenuse)
 	
-	rotation = -theta + PI
+	scale.x = sizeOfEnemy * 0.6
+	scale.y = sizeOfEnemy * flipSprite * 0.6
 
 func _physics_process(delta):
+
+	if direction == 1:
+		x -= sin(theta) * SPEED * delta
+		y -= cos(theta) * SPEED * delta
+	else:
+		x += sin(theta) * SPEED * delta
+		y += cos(theta) * SPEED * delta
 	
-	x -= cos(theta) * SPEED * delta
-	y -= -sin(theta) * SPEED * delta
+	hypotenuse = sqrt((x * x) + (y * y))
+	if direction == 1:
+		if y < 0:
+			theta = acos(x / hypotenuse) + 0.3
+		else:
+			theta = 2 * PI -  acos(x / hypotenuse) + 0.3
+	else:
+		if y < 0:
+			theta = acos(x / hypotenuse) - 0.3
+		else:
+			theta = 2 * PI -  acos(x / hypotenuse) - 0.3
 	
-	scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
+	if direction == 1:
+		rotation = -theta - PI / 2
+	else:
+		rotation = -theta + PI / 2
+	#scale.x = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy)
 	
 	position = Vector2(x,y)
 	time_ellapsed += delta * 5

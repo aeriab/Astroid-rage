@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://n3pfbthhjb2o"]
+
+[ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_uwpo3"]
+
+[node name="HomeMenu" type="Node2D"]
+
+[node name="HomeCanvas" type="CanvasLayer" parent="."]
+script = ExtResource("1_uwpo3")
+
+[node name="OverWords" type="Label" parent="HomeCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 126
+text = "SPLATCHO"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="EndlessButton" type="Button" parent="HomeCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 707.0
+offset_top = 514.0
+offset_right = -665.0
+offset_bottom = -396.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "ENDLESS"
+metadata/_edit_use_anchors_ = true
+
+[node name="StorePageButton" type="Button" parent="HomeCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = 236.0
+offset_right = -1319.0
+offset_bottom = -674.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "STORE"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="HomeCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1335.0
+offset_top = 901.0
+offset_right = -37.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "QUIT"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="HomeCanvas/EndlessButton" to="HomeCanvas" method="_on_endless_button_pressed"]
+[connection signal="pressed" from="HomeCanvas/StorePageButton" to="HomeCanvas" method="_on_store_page_button_pressed"]
+[connection signal="pressed" from="HomeCanvas/QuitButton" to="HomeCanvas" method="_on_quit_button_pressed"]

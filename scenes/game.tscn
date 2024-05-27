@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=17 format=3 uid="uid://b3yppwif0chd5"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_aytb3"]
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
 [ext_resource type="Script" path="res://scripts/BulletHandler.gd" id="3_ojs0q"]
 [ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="3_s5d5e"]
 [ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="4_4kuwd"]
+[ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="6_miqrx"]
 [ext_resource type="Script" path="res://scripts/XPNodeCreater.gd" id="7_8nel5"]
 [ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="7_phdcr"]
 [ext_resource type="Script" path="res://scripts/WaveMaker.gd" id="8_5ewck"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cfd1ic1slxtxy" path="res://scenes/upgrade_popup.tscn" id="9_lb6xu"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="10_y2x8a"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="11_orek7"]
+[ext_resource type="PackedScene" uid="uid://460x26t4mvnp" path="res://scenes/evo_selection.tscn" id="13_7wxo2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nk8va"]
 
@@ -40,6 +42,7 @@ shape = SubResource("CircleShape2D_nk8va")
 scale = Vector2(1, 1)
 
 [node name="mutationPart2" parent="Player" instance=ExtResource("3_s5d5e")]
+visible = false
 rotation = -3.14159
 scale = Vector2(1, 1)
 
@@ -50,23 +53,24 @@ zoom = Vector2(0.2, 0.2)
 script = ExtResource("3_ojs0q")
 
 [node name="AreaBulletCollection" type="Area2D" parent="."]
+script = ExtResource("6_miqrx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(0, 2300)
+position = Vector2(0, 3000)
 shape = SubResource("WorldBoundaryShape2D_lp687")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(-4000, 0)
+position = Vector2(-5000, 0)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_lp687")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(4000, 0)
+position = Vector2(5000, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_lp687")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(0, -2300)
+position = Vector2(0, -3000)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_lp687")
 
@@ -98,9 +102,13 @@ visible = false
 [node name="GameOver" parent="." instance=ExtResource("11_orek7")]
 visible = false
 
+[node name="evo_selection" parent="." instance=ExtResource("13_7wxo2")]
+visible = false
+
 [node name="HealthBarRed" parent="." instance=ExtResource("10_y2x8a")]
 position = Vector2(4.76837e-07, 522.078)
 scale = Vector2(0.658475, 0.658475)
 
+[connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]
 [connection signal="timeout" from="XPNodeCreater/SquareCreateTimer" to="XPNodeCreater" method="_on_square_create_timer_timeout"]
 [connection signal="timeout" from="XPNodeCreater/HealthCreateTimer" to="XPNodeCreater" method="_on_health_create_timer_timeout"]

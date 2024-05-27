@@ -41,7 +41,7 @@ theme_override_font_sizes/font_size = 70
 text = "RETRY"
 metadata/_edit_use_anchors_ = true
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="HomeButton" type="Button" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,8 +52,8 @@ offset_bottom = -241.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "QUIT"
+text = "HOME"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HomeButton" to="." method="_on_home_button_pressed"]
