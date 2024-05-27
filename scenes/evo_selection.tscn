@@ -25,5 +25,5 @@ theme_override_font_sizes/font_size = 50
 text = "Mutate"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="MutateButton" to="." method="_on_bullet_size_pressed"]
 [connection signal="pressed" from="MutateButton" to="." method="_on_mutate_button_pressed"]
+[connection signal="pressed" from="MutateButton" to="." method="_on_bullet_size_pressed"]

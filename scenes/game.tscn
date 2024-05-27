@@ -24,12 +24,10 @@ scale = Vector2(1.21821, 1.21821)
 script = ExtResource("1_aytb3")
 
 [node name="Player" type="Area2D" parent="." groups=["Player"]]
-scale = Vector2(1, 1)
 script = ExtResource("1_vlman")
 
 [node name="TankBirdBod(1)" type="Sprite2D" parent="Player"]
 z_index = 3
-scale = Vector2(1, 1)
 texture = ExtResource("4_4kuwd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -39,12 +37,10 @@ scale = Vector2(23.58, 23.2821)
 shape = SubResource("CircleShape2D_nk8va")
 
 [node name="mutationPart" parent="Player" instance=ExtResource("3_s5d5e")]
-scale = Vector2(1, 1)
 
 [node name="mutationPart2" parent="Player" instance=ExtResource("3_s5d5e")]
 visible = false
 rotation = -3.14159
-scale = Vector2(1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.2, 0.2)
