@@ -57,3 +57,6 @@ func _physics_process(delta):
 func _on_area_entered(area):
 	if area.name == "AreaBulletCollection":
 		queue_free()
+
+func makeFree():
+	queue_free()

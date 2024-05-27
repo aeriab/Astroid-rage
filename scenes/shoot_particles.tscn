@@ -29,3 +29,5 @@ angle_max = 90.0
 scale_amount_min = 30.0
 scale_amount_max = 45.0
 scale_amount_curve = SubResource("Curve_hjlmy")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

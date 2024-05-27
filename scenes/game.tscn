@@ -42,6 +42,30 @@ shape = SubResource("CircleShape2D_nk8va")
 visible = false
 rotation = -3.14159
 
+[node name="mutationPart3" parent="Player" instance=ExtResource("3_s5d5e")]
+visible = false
+rotation = -1.57079
+
+[node name="mutationPart4" parent="Player" instance=ExtResource("3_s5d5e")]
+visible = false
+rotation = 1.57079
+
+[node name="mutationPart5" parent="Player" instance=ExtResource("3_s5d5e")]
+visible = false
+rotation = 0.785397
+
+[node name="mutationPart6" parent="Player" instance=ExtResource("3_s5d5e")]
+visible = false
+rotation = 2.35619
+
+[node name="mutationPart7" parent="Player" instance=ExtResource("3_s5d5e")]
+visible = false
+rotation = 3.92699
+
+[node name="mutationPart8" parent="Player" instance=ExtResource("3_s5d5e")]
+visible = false
+rotation = 5.49778
+
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.2, 0.2)
 

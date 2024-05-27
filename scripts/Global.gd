@@ -38,10 +38,10 @@ func addXP(num):
 		unspentPoints += 1
 		popup_shouldbe_visible = true
 		difficulty -= difficulty * 0.1
-		if level % 10 == 0 && firstEvolveCheck == true:
+		if level % 4 == 0 && firstEvolveCheck == true:
 			Global.evolutionPoints += 1
 			firstEvolveCheck = false
-		if level % 10 == 1:
+		if level % 4 == 1:
 			firstEvolveCheck = true
 
 func resetStats():

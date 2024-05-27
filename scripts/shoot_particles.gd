@@ -21,3 +21,7 @@ func start_emit(x,y,theta):
 	
 	x_dir = cos(theta)
 	y_dir = -sin(theta)
+
+
+func _on_cpu_particles_2d_finished():
+	queue_free()
