@@ -56,5 +56,5 @@ func breakXPNode():
 
 func _on_area_entered(area):
 	if area.is_in_group("BoogerArea"):
-		area.free()
+		area.setFreeSequence()
 		addDamage()

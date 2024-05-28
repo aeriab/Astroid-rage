@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://460x26t4mvnp"]
+[gd_scene load_steps=3 format=3 uid="uid://460x26t4mvnp"]
 
 [ext_resource type="Script" path="res://scripts/evo_selection.gd" id="1_mxuwe"]
+
+[sub_resource type="Curve" id="Curve_8u4ui"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
 
 [node name="evo_selection" type="CanvasLayer"]
 script = ExtResource("1_mxuwe")
@@ -10,6 +14,7 @@ offset_left = 1059.0
 offset_top = -28.0
 offset_right = 2211.0
 offset_bottom = 188.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 text = "EVOLUTION"
 horizontal_alignment = 1
@@ -21,9 +26,36 @@ offset_left = 1395.0
 offset_top = 160.0
 offset_right = 1875.0
 offset_bottom = 238.0
+rotation = -0.00185706
 theme_override_font_sizes/font_size = 50
 text = "Mutate"
 metadata/_edit_use_anchors_ = true
 
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 5
+position = Vector2(1635, 200)
+scale = Vector2(3, 3)
+emitting = false
+amount = 20
+lifetime = 0.1
+one_shot = true
+speed_scale = 0.2
+explosiveness = 0.8
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_8u4ui")
+color = Color(0, 0, 1, 1)
+
 [connection signal="pressed" from="MutateButton" to="." method="_on_bullet_size_pressed"]
 [connection signal="pressed" from="MutateButton" to="." method="_on_mutate_button_pressed"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

@@ -126,7 +126,8 @@ visible = false
 visible = false
 
 [node name="HealthBarRed" parent="." instance=ExtResource("10_y2x8a")]
-position = Vector2(4.76837e-07, 522.078)
+z_index = 7
+position = Vector2(2.84217e-14, 720.73)
 scale = Vector2(0.658475, 0.658475)
 
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

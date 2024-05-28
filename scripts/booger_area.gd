@@ -11,12 +11,21 @@ var rot_motion: float = 1.0
 
 var orig_speed: float = Global.bulletSpeed
 var orig_rotate_speed: float
+
 @onready var game_projectile = $GameProjectile
+@onready var cpu_particles_2d_2 = $CPUParticles2D2
+@onready var timer = $Timer
 
 func areaName():
 	return "Booger"
 
 func _ready():
+	cpu_particles_2d_2.amount = int(Global.bulletSize * 4)
+	cpu_particles_2d_2.speed_scale = Global.bulletSpeed * 0.03 + 0.1
+	cpu_particles_2d_2.scale_amount_min = int(Global.damage * 6 + 10)
+	cpu_particles_2d_2.scale_amount_max = int(Global.damage * 7 + 20)
+	cpu_particles_2d_2.color = Color (1.0 - Global.damage / 20.0,1.0 - Global.damage / 20.0,1.0 + Global.damage / 20.0)
+	
 	orig_rotate_speed = randf_range(0.8,1.2)
 	monitoring = true
 	set_scale(_scale)
@@ -54,9 +63,19 @@ func _physics_process(delta):
 	
 	rotate(delta * (orig_speed - 1) * rot_motion * 2 * orig_rotate_speed)
 
+@onready var collision_shape_2d = $CollisionShape2D
+
+func setFreeSequence():
+	cpu_particles_2d_2.emitting = true
+	game_projectile.free()
+	collision_shape_2d.free()
+	timer.start()
+
+
 func _on_area_entered(area):
 	if area.name == "AreaBulletCollection":
 		queue_free()
 
-func makeFree():
+
+func _on_timer_timeout():
 	queue_free()

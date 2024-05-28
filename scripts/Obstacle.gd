@@ -28,7 +28,6 @@ func _physics_process(delta):
 	var i: int = 1
 	for indiv_mutation in mutation_array:
 		if Global.mutateNumber >= i:
-			print(str(i))
 			indiv_mutation.visible = true
 		indiv_mutation.scaleEyelid(eyelidHeight)
 		indiv_mutation.scalePupil(Global.bulletSpeed / 6.0 + 1.0)

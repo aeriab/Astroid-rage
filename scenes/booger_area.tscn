@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2gwidylgas3t"]
+[gd_scene load_steps=8 format=3 uid="uid://d2gwidylgas3t"]
 
 [ext_resource type="Script" path="res://scripts/booger_area.gd" id="1_yp7um"]
 [ext_resource type="Shader" path="res://shaders/booger_area.gdshader" id="2_nyndg"]
@@ -11,6 +11,10 @@ shader = ExtResource("2_nyndg")
 shader_parameter/player_damage = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3a1r5"]
+
+[sub_resource type="Curve" id="Curve_wt3ny"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
 
 [node name="BoogerArea" type="Area2D" groups=["BoogerArea"]]
 z_index = 1
@@ -33,7 +37,28 @@ scale = Vector2(31.4553, 24.4595)
 shape = SubResource("CircleShape2D_3a1r5")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
 one_shot = true
 
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+z_index = 5
+scale = Vector2(15, 15)
+emitting = false
+amount = 20
+lifetime = 0.1
+one_shot = true
+speed_scale = 0.2
+explosiveness = 0.8
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_wt3ny")
+color = Color(0, 0, 1, 1)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

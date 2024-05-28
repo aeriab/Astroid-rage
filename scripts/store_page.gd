@@ -2,21 +2,6 @@ extends CanvasLayer
 
 @onready var unspent_points = $UnspentPoints
 
-#@onready var color_rect_2 = $bulletSize/ColorRect2
-#@onready var color_rect_3 = $bulletSize/ColorRect3
-#@onready var color_rect_4 = $bulletSize/ColorRect4
-#@onready var color_rect_5 = $bulletSize/ColorRect5
-#@onready var color_rect_6 = $bulletSize/ColorRect6
-#@onready var color_rect_7 = $bulletSize/ColorRect7
-#@onready var color_rect_8 = $bulletSize/ColorRect8
-#@onready var color_rect_9 = $bulletSize/ColorRect9
-#@onready var color_rect_10 = $bulletSize/ColorRect10
-#@onready var color_rect_11 = $bulletSize/ColorRect11
-#@onready var color_rect_12 = $bulletSize/ColorRect12
-#@onready var color_rect_13 = $bulletSize/ColorRect13
-#@onready var color_rect_14 = $bulletSize/ColorRect14
-#@onready var color_rect_15 = $bulletSize/ColorRect15
-
 var bulVisArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 var bulSpVisArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 var damVisArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -26,6 +11,7 @@ var rotVisArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 @onready var damRectArray = [$damageUp/ColorRect2,$damageUp/ColorRect3,$damageUp/ColorRect4,$damageUp/ColorRect5,$damageUp/ColorRect6,$damageUp/ColorRect7,$damageUp/ColorRect8,$damageUp/ColorRect9,$damageUp/ColorRect10,$damageUp/ColorRect11,$damageUp/ColorRect12,$damageUp/ColorRect13,$damageUp/ColorRect14,$damageUp/ColorRect15]
 @onready var rotRectArray = [$rotationSpeed/ColorRect2,$rotationSpeed/ColorRect3,$rotationSpeed/ColorRect4,$rotationSpeed/ColorRect5,$rotationSpeed/ColorRect6,$rotationSpeed/ColorRect7,$rotationSpeed/ColorRect8,$rotationSpeed/ColorRect9,$rotationSpeed/ColorRect10,$rotationSpeed/ColorRect11,$rotationSpeed/ColorRect12,$rotationSpeed/ColorRect13,$rotationSpeed/ColorRect14,$rotationSpeed/ColorRect15]
 
+
 func _ready():
 	tallyPoints()
 	
@@ -33,6 +19,43 @@ func _ready():
 	tallyBulSpeed()
 	tallyDamage()
 	tallyRotSpeed()
+
+var startFlash: bool = true
+var endFlash: bool = false
+var textColor: Color = Color.BLACK
+@onready var flash_timer = $FlashTimer
+
+func _process(delta):
+	if startFlash:
+		textColor.b += delta * 2.0
+		if textColor.b >= 0.9:
+			startFlash = false
+			endFlash = true
+		print(str(textColor.b))
+		unspent_points.add_theme_color_override("font_color",textColor)
+	elif endFlash:
+		textColor.b -= delta
+		if textColor.b <= 0.001:
+			textColor.b = 0.0
+			endFlash = false
+		unspent_points.add_theme_color_override("font_color",textColor)
+
+
+func storeSelectStart():
+	print("made here")
+	flash_timer.start()
+
+func storeSelectFinish():
+	flash_timer.stop()
+	startFlash = false
+	endFlash = false
+	textColor = Color.BLACK
+	unspent_points.add_theme_color_override("font_color",textColor)
+
+func _on_flash_timer_timeout():
+	startFlash = true
+
+
 
 
 ###########################################

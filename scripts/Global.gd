@@ -1,5 +1,7 @@
 extends Node
 
+var evoLevel: int = 2
+
 var mutateNumber: int = 1
 var evolutionPoints: int = 0
 
@@ -15,14 +17,14 @@ var bulletSpeed = 2
 var damage = 4
 var rotationSpeed = 3
 
-var totalPoints = 0
-var unspentPoints = 0
+var totalPoints = 40
+var unspentPoints = 40
 
 var xpAmount = 0.0
 
 var player_health = 100.0
 
-var popup_shouldbe_visible: bool = false
+var popup_shouldbe_visible: bool = true
 
 var difficulty: float = 1.0
 var wave_progress: float = 100.0
@@ -38,10 +40,10 @@ func addXP(num):
 		unspentPoints += 1
 		popup_shouldbe_visible = true
 		difficulty -= difficulty * 0.1
-		if level % 4 == 0 && firstEvolveCheck == true:
+		if level % evoLevel == 0 && firstEvolveCheck == true:
 			Global.evolutionPoints += 1
 			firstEvolveCheck = false
-		if level % 4 == 1:
+		if level % evoLevel == 1:
 			firstEvolveCheck = true
 
 func resetStats():
