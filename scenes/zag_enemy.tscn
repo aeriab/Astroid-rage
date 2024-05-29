@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3pewf58jorgb"]
+
+[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_rlfsv"]
+[ext_resource type="Script" path="res://scripts/ZagEnemy2D.gd" id="2_mvlng"]
+[ext_resource type="Texture2D" uid="uid://qi4p8kg16tvp" path="res://assets/ZagEnemy/ZigZagEnemy.png" id="3_tinfg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6bmg"]
+resource_local_to_scene = true
+shader = ExtResource("1_rlfsv")
+shader_parameter/damage_value = 0.0
+shader_parameter/alpha_value = 1.0
+
+[sub_resource type="Curve" id="Curve_exf2e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
+
+[node name="ZagEnemy" type="Area2D" groups=["Enemy"]]
+z_index = 3
+material = SubResource("ShaderMaterial_g6bmg")
+position = Vector2(-201, -9)
+rotation = 1.57079
+collision_layer = 2
+script = ExtResource("2_mvlng")
+
+[node name="ZigZagEnemy" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(10, -90)
+texture = ExtResource("3_tinfg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-186, -371, -140, -371, -141, -325, -187, -279, -96, -187, -96, -270, 10, -353, 117, -271, 117, -187, 211, -281, 164, -328, 164, -374, 210, -373, 304, -280, 117, -90, 117, -32, 278, 128, 184, 223, 137, 223, 137, 176, 184, 131, 115, 62, -93, 62, -167, 137, -121, 183, -121, 229, -167, 229, -261, 134, -97, -31, -96, -93, -281, -277)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 5
+scale = Vector2(15, 15)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 600)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 30.0
+scale_amount_max = 45.0
+scale_amount_curve = SubResource("Curve_exf2e")
+color = Color(0.807843, 0, 1, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

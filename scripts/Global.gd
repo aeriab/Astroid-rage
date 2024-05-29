@@ -17,14 +17,14 @@ var bulletSpeed = 2
 var damage = 4
 var rotationSpeed = 3
 
-var totalPoints = 40
-var unspentPoints = 40
+var totalPoints = 0
+var unspentPoints = 0
 
 var xpAmount = 0.0
 
 var player_health = 100.0
 
-var popup_shouldbe_visible: bool = true
+var popup_shouldbe_visible: bool = false
 
 var difficulty: float = 1.0
 var wave_progress: float = 100.0

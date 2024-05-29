@@ -10,9 +10,13 @@ var endFlash: bool = false
 var textColor: Color = Color.BLACK
 var buttonColor: Color = Color.WHITE
 
+@onready var color_rect = $ColorRect
 
 
 func _process(delta):
+	if Global.mutateNumber >= 8:
+		color_rect.visible = true
+	
 	if startFlash:
 		textColor.b += delta * 2.0
 		buttonColor.r -= delta * 2.0

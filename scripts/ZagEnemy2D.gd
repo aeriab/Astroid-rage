@@ -3,8 +3,7 @@ extends Area2D
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
 
 @onready var cpu_particles_2d = $CPUParticles2D
-@onready var collision_polygon_2d_right = $CollisionPolygon2D_right
-@onready var collision_polygon_2d_left = $CollisionPolygon2D_left
+@onready var collision_polygon_2d = $CollisionPolygon2D
 @onready var timer = $Timer
 
 var shader_value = material.get_shader_parameter("value")
@@ -16,13 +15,13 @@ var y = 5000
 var hypotenuse
 var theta
 
-const SPEED = 200
+const SPEED = 300
 const FADE_SPEED = 0.5
 
-var innerBoundX = 5000
-var innerBoundY = 5000
-var outerBoundX = 6000
-var outerBoundY = 6000
+var innerBoundX = 5000 + 1000 * difficulty
+var innerBoundY = 5000 + 1000 * difficulty
+var outerBoundX = 6000 + 1000 * difficulty
+var outerBoundY = 6000 + 1000 * difficulty
 
 var time_ellapsed = 0
 
@@ -34,33 +33,22 @@ var xpAmount: float
 var sizeOfEnemy: float
 
 var difficulty: float = 1.0
-@onready var splatcho_enemy = $SplatchoEnemy
+@onready var zig_zag_enemy = $ZigZagEnemy
 var randEnSprite: int
 
 func _ready():
 	randEnSprite = randi_range(0,100)
-	if randEnSprite <= 20:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDefault.png")
-	elif randEnSprite <= 25:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyBored.png")
-	elif randEnSprite <= 30:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
-	elif randEnSprite <= 35:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
-	elif randEnSprite <= 40:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
-	elif randEnSprite <= 45:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyMouth.png")
-	elif randEnSprite <= 50:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyNose.png")
-	elif randEnSprite <= 99:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
-	else:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyEYES.png")
+	zig_zag_enemy.texture = preload("res://assets/ZagEnemy/ZigZagEnemy.png")
 	
 	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
+	
+	innerBoundX = 5000 + 1000 * difficulty
+	innerBoundY = 5000 + 1000 * difficulty
+	outerBoundX = 6000 + 1000 * difficulty
+	outerBoundY = 6000 + 1000 * difficulty
+	print(str(difficulty))
 
 func spawn(dif):
 	difficulty = dif
@@ -101,14 +89,51 @@ func spawn(dif):
 	else:
 		theta = 2 * PI -  acos(x / hypotenuse)
 	
-	rotation = -theta + PI
+	rotation = -theta - PI/2
+
+var randJump: float = randf_range(0.5,4.0)
+var randTime: float = randf_range(0.1,1)
+var randZag: float = randf_range(-PI/2,PI/2)
+var summedTime: float = 0.0
+
+var startingFree: bool = false
 
 func _physics_process(delta):
 	
-	x -= cos(theta) * SPEED * delta
-	y -= -sin(theta) * SPEED * delta
+	hypotenuse = sqrt((x * x) + (y * y))
 	
-	scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
+	if y < 0:
+		theta = acos(x / hypotenuse)
+	else:
+		theta = 2 * PI -  acos(x / hypotenuse)
+	if rotation < (-theta - PI/2 - randZag) - PI/16:
+		rotation += delta * 5.0
+	elif rotation >= -theta - PI/2 - randZag + PI/16:
+		rotation -= delta * 5.0
+	
+	summedTime += delta
+	if summedTime >= randTime:
+		var rand_i = randi_range(0,4)
+		if rand_i == 0 && !startingFree:
+			zig_zag_enemy.texture = preload("res://assets/ZagEnemy/ZigZagEnemy.png")
+		elif rand_i == 1 && !startingFree:
+			zig_zag_enemy.texture = preload("res://assets/ZagEnemy/ZigZagEnemy (1).png")
+		elif rand_i == 2 && !startingFree:
+			zig_zag_enemy.texture = preload("res://assets/ZagEnemy/ZigZagEnemy (2).png")
+		elif rand_i == 3 && !startingFree:
+			zig_zag_enemy.texture = preload("res://assets/ZagEnemy/ZigZagEnemy (3).png")
+		elif rand_i == 4 && !startingFree:
+			zig_zag_enemy.texture = preload("res://assets/ZagEnemy/ZigZagEnemy (4).png")
+		
+		randJump = randf_range(0.5,2.0)
+		randTime = randf_range(0.1,1)
+		randZag = randf_range(-PI/2,PI/2)
+		summedTime = 0.0
+	else:
+		x -= (cos(theta + randZag) * SPEED * delta) * randJump
+		y -= (-sin(theta + randZag) * SPEED * delta) * randJump
+	
+	
 	
 	position = Vector2(x,y)
 	time_ellapsed += delta * 5
@@ -142,13 +167,13 @@ func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
-		call_deferred("queue_free")
+		setFreeSequence()
 
 func setFreeSequence():
+	startingFree = true
 	cpu_particles_2d.emitting = true
-	splatcho_enemy.free()
-	collision_polygon_2d_left.free()
-	collision_polygon_2d_right.free()
+	zig_zag_enemy.free()
+	collision_polygon_2d.free()
 	timer.start()
 
 func _on_timer_timeout():
