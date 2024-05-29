@@ -16,6 +16,9 @@ var sizeOfNode: float
 
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
 
+@onready var collision_polygon_2d = $CollisionPolygon2D
+@onready var timer = $Timer
+@onready var cpu_particles_2d = $CPUParticles2D
 @onready var health_node = $HealthNode
 
 func areaName():
@@ -38,18 +41,23 @@ func _ready():
 	damage_chunk = Global.damage / (pow(sizeOfNode,2) * 10) 
 	xpAmount = pow(sizeOfNode,2)
 	position = Vector2(x,y)
+	
+	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfNode
+	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfNode
+	cpu_particles_2d.amount = sizeOfNode * 3 + 10
 
 func addDamage():
 	damage_value += damage_chunk
+	health_node.modulate.a += -0.15
+	health_node.modulate.r += -0.15
+	health_node.modulate.g += 0.15
+	health_node.modulate.b += -0.15
 	if damage_value >= 0.9:
 		breakXPNode()
 		Global.player_health += sizeOfNode * 30.0
 		if Global.player_health > 100.0:
 			Global.player_health = 100.0
-	health_node.modulate.a += -0.15
-	health_node.modulate.r += -0.15
-	health_node.modulate.g += 0.15
-	health_node.modulate.b += -0.15
+
 
 func breakXPNode():
 	Global.addXP(xpAmount)
@@ -58,9 +66,18 @@ func breakXPNode():
 	xpNotif.position = Vector2 (x,y)
 	xpNotif.getXPSize(xpAmount)
 	get_parent().add_child.call_deferred(xpNotif)
-	queue_free()
+	setFreeSequence()
 
 func _on_area_entered(area):
 	if area.is_in_group("BoogerArea"):
 		area.setFreeSequence()
 		addDamage()
+
+func setFreeSequence():
+	cpu_particles_2d.emitting = true
+	health_node.free()
+	collision_polygon_2d.free()
+	timer.start()
+
+func _on_timer_timeout():
+	queue_free()

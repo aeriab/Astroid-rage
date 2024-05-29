@@ -56,6 +56,6 @@ scale_amount_max = 20.0
 scale_amount_curve = SubResource("Curve_8u4ui")
 color = Color(0, 0, 1, 1)
 
-[connection signal="pressed" from="MutateButton" to="." method="_on_bullet_size_pressed"]
 [connection signal="pressed" from="MutateButton" to="." method="_on_mutate_button_pressed"]
+[connection signal="pressed" from="MutateButton" to="." method="_on_bullet_size_pressed"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

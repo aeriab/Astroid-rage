@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxm3i502jvnv2"]
+[gd_scene load_steps=6 format=3 uid="uid://bxm3i502jvnv2"]
 
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_0slfb"]
 [ext_resource type="Script" path="res://scripts/RedEnemy2D.gd" id="2_7j2wm"]
@@ -9,6 +9,10 @@ resource_local_to_scene = true
 shader = ExtResource("1_0slfb")
 shader_parameter/damage_value = 0.0
 shader_parameter/alpha_value = 1.0
+
+[sub_resource type="Curve" id="Curve_exf2e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
 
 [node name="RedEnemy" type="Area2D" groups=["Enemy"]]
 z_index = 3
@@ -34,4 +38,31 @@ position = Vector2(-97, -59)
 rotation = -0.0121245
 polygon = PackedVector2Array(-102.598, -116.252, -56.9224, -171.703, 107.38, -30.7004, -73.4075, 198.125, -110.932, 158.667, -135.336, 109.367, -144.62, 50.2503, -137.65, -29.6711)
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 5
+scale = Vector2(15, 15)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 600)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 30.0
+scale_amount_max = 45.0
+scale_amount_curve = SubResource("Curve_exf2e")
+color = Color(0.807843, 0, 1, 1)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

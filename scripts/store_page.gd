@@ -31,7 +31,6 @@ func _process(delta):
 		if textColor.b >= 0.9:
 			startFlash = false
 			endFlash = true
-		print(str(textColor.b))
 		unspent_points.add_theme_color_override("font_color",textColor)
 	elif endFlash:
 		textColor.b -= delta
@@ -42,7 +41,6 @@ func _process(delta):
 
 
 func storeSelectStart():
-	print("made here")
 	flash_timer.start()
 
 func storeSelectFinish():

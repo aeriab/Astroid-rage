@@ -2,6 +2,11 @@ extends Area2D
 
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
 
+@onready var cpu_particles_2d = $CPUParticles2D
+@onready var collision_polygon_2d_right = $CollisionPolygon2D_right
+@onready var collision_polygon_2d_left = $CollisionPolygon2D_left
+@onready var timer = $Timer
+
 var shader_value = material.get_shader_parameter("value")
 var shader_alpha = material.get_shader_parameter("alpha")
 var damage_chunk = Global.damage * 0.05
@@ -52,6 +57,10 @@ func _ready():
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
 	else:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyEYES.png")
+	
+	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
+	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
+	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
 
 func spawn(dif):
 	difficulty = dif
@@ -123,7 +132,7 @@ func addDamage():
 		xpNotif.position = Vector2 (x,y)
 		xpNotif.getXPSize(xpAmount)
 		get_parent().add_child.call_deferred(xpNotif)
-		call_deferred("queue_free")
+		setFreeSequence()
 
 func _on_area_entered(area):
 	if area.is_in_group("BoogerArea"):
@@ -134,3 +143,13 @@ func _on_area_entered(area):
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
 		call_deferred("queue_free")
+
+func setFreeSequence():
+	cpu_particles_2d.emitting = true
+	splatcho_enemy.free()
+	collision_polygon_2d_left.free()
+	collision_polygon_2d_right.free()
+	timer.start()
+
+func _on_timer_timeout():
+	queue_free()
