@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dm2plj15lpb6f"]
 
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_i08wc"]
-[ext_resource type="Texture2D" uid="uid://bial11bqrxmow" path="res://assets/BirdBeak.png" id="2_icvtl"]
+[ext_resource type="Texture2D" uid="uid://bial11bqrxmow" path="res://assets/tankBird/BirdBeak.png" id="2_icvtl"]
 [ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="3_5lvn5"]
 [ext_resource type="Texture2D" uid="uid://dmaj06en0kk08" path="res://assets/tankBird/TankBirdPupil.png" id="4_anaj2"]
 [ext_resource type="Texture2D" uid="uid://bidbntqd3ladf" path="res://assets/tankBird/TankBirdEyeWhite.png" id="5_xo31a"]

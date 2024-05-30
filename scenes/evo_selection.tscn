@@ -31,12 +31,22 @@ theme_override_font_sizes/font_size = 50
 text = "Mutate"
 metadata/_edit_use_anchors_ = true
 
+[node name="BarrelUpgradeButton" type="Button" parent="."]
+offset_left = 1395.0
+offset_top = 272.0
+offset_right = 1875.0
+offset_bottom = 350.0
+rotation = -0.00185706
+theme_override_font_sizes/font_size = 50
+text = "Barrel Upgrade"
+metadata/_edit_use_anchors_ = true
+
 [node name="FlashTimer" type="Timer" parent="."]
 wait_time = 5.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 5
-position = Vector2(1635, 200)
+position = Vector2(1635, 82)
 scale = Vector2(3, 3)
 emitting = false
 amount = 20
@@ -56,7 +66,8 @@ scale_amount_max = 20.0
 scale_amount_curve = SubResource("Curve_8u4ui")
 color = Color(0, 0, 1, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="MutateColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = 1387.0
 offset_top = 147.0
 offset_right = 1885.0
@@ -65,4 +76,5 @@ color = Color(0.521569, 0.521569, 0.521569, 0.729412)
 
 [connection signal="pressed" from="MutateButton" to="." method="_on_mutate_button_pressed"]
 [connection signal="pressed" from="MutateButton" to="." method="_on_bullet_size_pressed"]
+[connection signal="pressed" from="BarrelUpgradeButton" to="." method="_on_barrel_upgrade_button_pressed"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

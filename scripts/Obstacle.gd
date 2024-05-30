@@ -31,6 +31,9 @@ func _physics_process(delta):
 			indiv_mutation.visible = true
 		indiv_mutation.scaleEyelid(eyelidHeight)
 		indiv_mutation.scalePupil(Global.bulletSpeed / 6.0 + 1.0)
+		if i == Global.mutateNumber:
+			indiv_mutation.changeBarrelUpgrade(Global.barrelUpNumArray[i - 1])
+		
 		i += 1
 	
 	Global.prior_dir = clockwise

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxsd31w5pwy5k"
-path="res://.godot/imported/TankBirdNose (1).png-13b5ff168924f118005615e9ee881d6b.ctex"
+uid="uid://bial11bqrxmow"
+path="res://.godot/imported/BirdBeak.png-b5ecc50d9ac72b66520814953908da28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tankBird/TankBirdNose (1).png"
-dest_files=["res://.godot/imported/TankBirdNose (1).png-13b5ff168924f118005615e9ee881d6b.ctex"]
+source_file="res://assets/tankBird/BirdBeak.png"
+dest_files=["res://.godot/imported/BirdBeak.png-b5ecc50d9ac72b66520814953908da28.ctex"]
 
 [params]
 

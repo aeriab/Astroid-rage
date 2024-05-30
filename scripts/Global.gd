@@ -3,6 +3,7 @@ extends Node
 var evoLevel: int = 2
 
 var mutateNumber: int = 1
+var barrelUpNumArray: Array = [1,0,0,0,0,0,0,0]
 var evolutionPoints: int = 0
 
 var squareWaitTime = 3.1
@@ -62,6 +63,7 @@ func resetStats():
 	popup_shouldbe_visible = false
 	mutateNumber = 1
 	evolutionPoints = 0
+	barrelUpNumArray = [1,0,0,0,0,0,0,0]
 
 func decreaseHealth(num):
 	player_health -= num * 31.0

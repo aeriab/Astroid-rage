@@ -119,10 +119,10 @@ scale = Vector2(0.5, 0.5)
 [node name="upgradePopup" parent="." instance=ExtResource("9_lb6xu")]
 visible = false
 
-[node name="GameOver" parent="." instance=ExtResource("11_orek7")]
+[node name="evo_selection" parent="." instance=ExtResource("13_7wxo2")]
 visible = false
 
-[node name="evo_selection" parent="." instance=ExtResource("13_7wxo2")]
+[node name="GameOver" parent="." instance=ExtResource("11_orek7")]
 visible = false
 
 [node name="HealthBarRed" parent="." instance=ExtResource("10_y2x8a")]

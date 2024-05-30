@@ -30,3 +30,6 @@ func _process(_delta):
 		evo_selection.evoSelectFinish()
 		firstEvoOff = false
 		firstEvoOn = true
+	
+	if upgrade_popup.visible == true:
+		upgrade_popup.tallyPoints()

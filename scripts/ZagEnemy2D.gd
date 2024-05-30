@@ -48,7 +48,6 @@ func _ready():
 	innerBoundY = 5000 + 1000 * difficulty
 	outerBoundX = 6000 + 1000 * difficulty
 	outerBoundY = 6000 + 1000 * difficulty
-	print(str(difficulty))
 
 func spawn(dif):
 	difficulty = dif

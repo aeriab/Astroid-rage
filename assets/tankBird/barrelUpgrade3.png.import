@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bial11bqrxmow"
-path="res://.godot/imported/BirdBeak.png-3835c5a0f0c51a0946b0de896fbcf176.ctex"
+uid="uid://btnkgrq0kxrdp"
+path="res://.godot/imported/barrelUpgrade3.png-eb78bffb415a65bd912b4de6eb5c2829.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BirdBeak.png"
-dest_files=["res://.godot/imported/BirdBeak.png-3835c5a0f0c51a0946b0de896fbcf176.ctex"]
+source_file="res://assets/tankBird/barrelUpgrade3.png"
+dest_files=["res://.godot/imported/barrelUpgrade3.png-eb78bffb415a65bd912b4de6eb5c2829.ctex"]
 
 [params]
 

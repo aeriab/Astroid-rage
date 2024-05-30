@@ -5,12 +5,15 @@ var y
 var theta
 var SPEED = 500 * Global.bulletSpeed - 300
 
-var _scale = Vector2(Global.bulletSize / 15.0 + 0.1,Global.bulletSize / 15.0 + 0.1)
+var _scale = Vector2(Global.bulletSize / 30.0 + 0.1 + (upgradeLevel / 5),Global.bulletSize / 30.0 + 0.1 + (upgradeLevel / 5))
 
 var rot_motion: float = 1.0
 
 var orig_speed: float = Global.bulletSpeed
 var orig_rotate_speed: float
+
+var mutationPart: int = 0
+var upgradeLevel: float = Global.barrelUpNumArray[mutationPart - 1]
 
 @onready var game_projectile = $GameProjectile
 @onready var cpu_particles_2d_2 = $CPUParticles2D2
@@ -31,13 +34,13 @@ func _ready():
 	set_scale(_scale)
 	position.x = x
 	position.y = y
-	if Global.damage == 4:
+	if Global.barrelUpNumArray[mutationPart - 1] == 1:
 		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile1.png")
-	elif Global.damage <= 8:
+	elif Global.barrelUpNumArray[mutationPart - 1] == 2:
 		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile2.png")
-	elif Global.damage <= 13:
+	elif Global.barrelUpNumArray[mutationPart - 1] == 3:
 		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile3.png")
-	elif Global.damage <= 17:
+	elif Global.barrelUpNumArray[mutationPart - 1] == 4:
 		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile4.png")
 	else:
 		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile5.png")
@@ -47,11 +50,12 @@ func _ready():
 func setFreeLater():
 	queue_free()
 
-func set_motion(x1,y1,theta1):
+func set_motion(x1,y1,theta1,mutPart):
 	x = x1
 	y = y1
 	theta = theta1
 	rot_motion = Global.prior_dir
+	mutationPart = mutPart
 
 func _physics_process(delta):
 	

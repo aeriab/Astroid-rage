@@ -10,12 +10,12 @@ var endFlash: bool = false
 var textColor: Color = Color.BLACK
 var buttonColor: Color = Color.WHITE
 
-@onready var color_rect = $ColorRect
+@onready var mutate_color_rect = $MutateColorRect
 
 
 func _process(delta):
 	if Global.mutateNumber >= 8:
-		color_rect.visible = true
+		mutate_color_rect.visible = true
 	
 	if startFlash:
 		textColor.b += delta * 2.0
@@ -40,6 +40,7 @@ func _process(delta):
 func _on_mutate_button_pressed():
 	Global.mutateNumber += 1
 	Global.evolutionPoints -= 1
+	Global.barrelUpNumArray[Global.mutateNumber - 1] += 1
 
 func evoSelectStart():
 	flash_timer.start()
@@ -57,3 +58,8 @@ func evoSelectFinish():
 
 func _on_flash_timer_timeout():
 	startFlash = true
+
+
+func _on_barrel_upgrade_button_pressed():
+	Global.barrelUpNumArray[Global.mutateNumber - 1] += 1
+	Global.evolutionPoints -= 1
