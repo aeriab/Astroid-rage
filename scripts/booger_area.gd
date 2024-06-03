@@ -5,15 +5,15 @@ var y
 var theta
 var SPEED = 500 * Global.bulletSpeed - 300
 
-var _scale = Vector2(Global.bulletSize / 30.0 + 0.1 + (upgradeLevel / 5),Global.bulletSize / 30.0 + 0.1 + (upgradeLevel / 5))
+var _scale = Vector2(Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3),Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3))
 
 var rot_motion: float = 1.0
 
 var orig_speed: float = Global.bulletSpeed
 var orig_rotate_speed: float
 
-var mutationPart: int = 0
-var upgradeLevel: float = Global.barrelUpNumArray[mutationPart - 1]
+var mutationPart: int
+var upgradeLevel: float = Global.barrelUpNumArray[mutationPart]
 
 @onready var game_projectile = $GameProjectile
 @onready var cpu_particles_2d_2 = $CPUParticles2D2
@@ -31,6 +31,7 @@ func _ready():
 	
 	orig_rotate_speed = randf_range(0.8,1.2)
 	monitoring = true
+	_scale = Vector2(Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10,Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10)
 	set_scale(_scale)
 	position.x = x
 	position.y = y
