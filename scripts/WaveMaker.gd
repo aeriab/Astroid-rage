@@ -18,7 +18,6 @@ func _process(delta):
 	time += delta
 	
 	if time >= next_time:
-		spawnZagEnemy()
 		randomEnNum = randi_range(0,99)
 		if randomEnNum <= 40:
 			spawnRedEnemy()

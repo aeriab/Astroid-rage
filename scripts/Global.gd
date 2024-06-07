@@ -4,7 +4,7 @@ var evoLevel: int = 2
 
 var mutateNumber: int = 1
 var barrelUpNumArray: Array = [1,0,0,0,0,0,0,0]
-var evolutionPoints: int = 0
+var evolutionPoints: int = 10
 
 var squareWaitTime = 3.1
 var healthWaitTime = 12.0
@@ -18,14 +18,14 @@ var bulletSpeed = 2
 var damage = 4
 var rotationSpeed = 3
 
-var totalPoints = 0
-var unspentPoints = 0
+var totalPoints = 30
+var unspentPoints = 30
 
 var xpAmount = 0.0
 
 var player_health = 100.0
 
-var popup_shouldbe_visible: bool = false
+var popup_shouldbe_visible: bool = true
 
 var difficulty: float = 1.0
 var wave_progress: float = 100.0

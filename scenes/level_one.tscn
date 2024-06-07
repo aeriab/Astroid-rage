@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://c1yvy6ufkh83k"]
+
+[ext_resource type="Script" path="res://scripts/StOnePlayer.gd" id="1_6iipf"]
+[ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="2_nx8m7"]
+[ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="3_njjnb"]
+[ext_resource type="Script" path="res://scripts/BulletHandlerSt1.gd" id="4_yknu3"]
+[ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="5_80jyu"]
+[ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="6_l4cbt"]
+[ext_resource type="Script" path="res://scripts/EndlessWavesSt1.gd" id="7_6w537"]
+[ext_resource type="Script" path="res://scripts/game_overst1.gd" id="9_2pe3h"]
+[ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="12_np6lh"]
+[ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="13_po755"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x7pr6"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xs4y7"]
+
+[node name="LevelOne" type="Node2D"]
+scale = Vector2(1.218, 1.218)
+
+[node name="Player" type="Area2D" parent="." groups=["Player"]]
+script = ExtResource("1_6iipf")
+
+[node name="TankBirdBod(1)" type="Sprite2D" parent="Player"]
+z_index = 3
+texture = ExtResource("2_nx8m7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+z_index = 4
+scale = Vector2(23.58, 23.2821)
+shape = SubResource("CircleShape2D_x7pr6")
+
+[node name="mutationPart" parent="Player" instance=ExtResource("3_njjnb")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.2, 0.2)
+
+[node name="BulletHandlerSt1" type="Node" parent="."]
+script = ExtResource("4_yknu3")
+
+[node name="AreaBulletCollection" type="Area2D" parent="."]
+script = ExtResource("5_80jyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(0, 3000)
+shape = SubResource("WorldBoundaryShape2D_xs4y7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(-5000, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_xs4y7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(5000, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_xs4y7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(0, -3000)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_xs4y7")
+
+[node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
+position = Vector2(13.1335, 11.4919)
+scale = Vector2(8.36952, 6.2341)
+texture = ExtResource("6_l4cbt")
+
+[node name="EndlessWavesSt1" type="Node" parent="."]
+script = ExtResource("7_6w537")
+
+[node name="GameOverSt1" parent="." instance=ExtResource("12_np6lh")]
+visible = false
+script = ExtResource("9_2pe3h")
+
+[node name="HealthBarRed" parent="." instance=ExtResource("13_po755")]
+z_index = 7
+position = Vector2(2.84217e-14, 720.73)
+scale = Vector2(0.658475, 0.658475)
+
+[connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

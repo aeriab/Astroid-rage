@@ -31,6 +31,8 @@ func _ready():
 	
 	orig_rotate_speed = randf_range(0.8,1.2)
 	monitoring = true
+	
+	upgradeLevel = Global.barrelUpNumArray[mutationPart - 1]
 	_scale = Vector2(Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10,Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10)
 	set_scale(_scale)
 	position.x = x
