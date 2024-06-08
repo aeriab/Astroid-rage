@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch6rxn7kcf2vt"]
+
+[ext_resource type="Script" path="res://scripts/AudioStreamPlayerS1.gd" id="1_d6r8b"]
+
+[node name="AudioPreload" type="AudioStreamPlayer"]
+autoplay = true
+script = ExtResource("1_d6r8b")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

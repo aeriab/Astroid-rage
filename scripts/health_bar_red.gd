@@ -1,5 +1,5 @@
 extends Sprite2D
-@onready var game_over = $"../GameOverSt1"
+@onready var game_over = $"../GameOver"
 
 var dying: bool = false
 

@@ -19,10 +19,10 @@ var theta
 const SPEED = 200
 const FADE_SPEED = 0.5
 
-var innerBoundX = 2000
-var innerBoundY = 2000
-var outerBoundX = 3000
-var outerBoundY = 3000
+var innerBoundX: float
+var innerBoundY: float
+var outerBoundX: float
+var outerBoundY: float
 
 var time_ellapsed = 0
 
@@ -33,6 +33,8 @@ var enemyIndex = 0
 var xpAmount: float
 var sizeOfEnemy: float
 
+var speed: float
+
 var difficulty: float = 1.0
 @onready var splatcho_enemy = $SplatchoEnemy
 var randEnSprite: int
@@ -42,8 +44,16 @@ func _ready():
 	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
+	
 
-func spawn(dif):
+
+func spawn(dif,spd):
+	speed = spd
+	innerBoundX = 2000 * speed
+	innerBoundY = 2000 * speed
+	outerBoundX = 3000 * speed
+	outerBoundY = 3000 * speed
+	
 	difficulty = dif
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
@@ -86,10 +96,10 @@ func spawn(dif):
 
 func _physics_process(delta):
 	
-	x -= cos(theta) * SPEED * delta
-	y -= -sin(theta) * SPEED * delta
+	x -= cos(theta) * SPEED * speed * delta
+	y -= -sin(theta) * SPEED * speed * delta
 	
-	scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
+	scale.y = ((sin((time_ellapsed / sizeOfEnemy) * speed) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
 	
 	position = Vector2(x,y)
 	time_ellapsed += delta * 5

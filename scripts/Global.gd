@@ -14,9 +14,9 @@ var level = 1
 var enemyNum = 0
 
 var bulletSize = 2
-var bulletSpeed = 2
+var bulletSpeed: float = 2.0
 var damage = 4
-var rotationSpeed = 3
+var rotationSpeed: float = 3.0
 
 var totalPoints = 30
 var unspentPoints = 30

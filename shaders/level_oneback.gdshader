@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float speedScale : hint_range(0,5);
+uniform float speedScale : hint_range(0,100);
 
 void fragment() {
 	
