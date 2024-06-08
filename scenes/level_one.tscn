@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1yvy6ufkh83k"]
+[gd_scene load_steps=15 format=3 uid="uid://c1yvy6ufkh83k"]
 
 [ext_resource type="Script" path="res://scripts/StOnePlayer.gd" id="1_6iipf"]
 [ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="2_nx8m7"]
 [ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="3_njjnb"]
 [ext_resource type="Script" path="res://scripts/BulletHandlerSt1.gd" id="4_yknu3"]
 [ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="5_80jyu"]
-[ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="6_l4cbt"]
+[ext_resource type="Shader" path="res://shaders/level_oneback.gdshader" id="6_icf87"]
 [ext_resource type="Script" path="res://scripts/EndlessWavesSt1.gd" id="7_6w537"]
+[ext_resource type="Texture2D" uid="uid://756wd12i4202" path="res://assets/StageBackground/Stage1Background (5).png" id="7_gjwjh"]
 [ext_resource type="Script" path="res://scripts/game_overst1.gd" id="9_2pe3h"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="12_np6lh"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="13_po755"]
@@ -14,6 +15,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7pr6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xs4y7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6va2"]
+shader = ExtResource("6_icf87")
+shader_parameter/speedScale = 1.598
 
 [node name="LevelOne" type="Node2D"]
 scale = Vector2(1.218, 1.218)
@@ -62,9 +67,10 @@ rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_xs4y7")
 
 [node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
-position = Vector2(13.1335, 11.4919)
-scale = Vector2(8.36952, 6.2341)
-texture = ExtResource("6_l4cbt")
+material = SubResource("ShaderMaterial_a6va2")
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(8.20992, 8.20992)
+texture = ExtResource("7_gjwjh")
 
 [node name="EndlessWavesSt1" type="Node" parent="."]
 script = ExtResource("7_6w537")
