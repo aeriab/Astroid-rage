@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://crjv3dgr7w1e6"]
+[gd_scene load_steps=9 format=3 uid="uid://crjv3dgr7w1e6"]
 
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_5i8u7"]
-[ext_resource type="Script" path="res://scripts/target_enemy.gd" id="2_c0um6"]
+[ext_resource type="Script" path="res://scripts/target_enemy_top.gd" id="1_iqmo0"]
+[ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="3_7ihkl"]
 [ext_resource type="Texture2D" uid="uid://dbaqv6l82cm7m" path="res://assets/Target Enemy (1).png" id="3_tnqhr"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbbrr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xlu5"]
 resource_local_to_scene = true
 shader = ExtResource("1_5i8u7")
 shader_parameter/damage_value = null
@@ -14,23 +15,26 @@ shader_parameter/alpha_value = 1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
 point_count = 2
 
-[node name="targetEnemy" type="Area2D" groups=["Enemy"]]
-material = SubResource("ShaderMaterial_jbbrr")
-script = ExtResource("2_c0um6")
+[sub_resource type="Gradient" id="Gradient_78qml"]
+offsets = PackedFloat32Array(0, 0.42)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
 
-[node name="SplatchoEnemy" type="Sprite2D" parent="."]
-use_parent_material = true
-position = Vector2(10, -90)
-texture = ExtResource("3_tnqhr")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbbrr"]
+resource_local_to_scene = true
+shader = ExtResource("1_5i8u7")
+shader_parameter/damage_value = null
+shader_parameter/alpha_value = 1.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(11, -450, 14, 260, -62, 238, -119, 171, -149, 101, -176, 5, -185, -123, -171, -212, -146, -298, -111, -369, -60, -422)
+[node name="TargetEnemy" type="Node2D"]
+material = SubResource("ShaderMaterial_2xlu5")
+script = ExtResource("1_iqmo0")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 5
+position = Vector2(13, -97)
 scale = Vector2(15, 15)
 emitting = false
 amount = 10
@@ -38,6 +42,7 @@ lifetime = 2.0
 one_shot = true
 speed_scale = 2.0
 explosiveness = 0.9
+texture = ExtResource("3_7ihkl")
 emission_shape = 1
 emission_sphere_radius = 5.0
 direction = Vector2(1, 1)
@@ -47,10 +52,47 @@ initial_velocity_min = 25.0
 initial_velocity_max = 50.0
 angle_min = -90.0
 angle_max = 90.0
-scale_amount_min = 30.0
-scale_amount_max = 45.0
+scale_amount_min = 0.15
+scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_6ofj4")
-color = Color(0.807843, 0, 1, 1)
+color_ramp = SubResource("Gradient_78qml")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="SplatchoEnemy" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(10, -90)
+texture = ExtResource("3_tnqhr")
+
+[node name="targetEnemy" type="Area2D" parent="." groups=["Outer"]]
+
+[node name="CollisionPolygon2D1" type="CollisionPolygon2D" parent="targetEnemy"]
+position = Vector2(4, 0)
+polygon = PackedVector2Array(12, -449, 11, -359, -129, -345, -67, -421, -27, -443)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="targetEnemy"]
+position = Vector2(4, -181)
+scale = Vector2(1, -1)
+polygon = PackedVector2Array(11, -448, 11, -359, -129, -345, -63, -424, -25, -443)
+
+[node name="targetEnemy2" type="Area2D" parent="." groups=["Mid"]]
+material = SubResource("ShaderMaterial_jbbrr")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="targetEnemy2"]
+position = Vector2(4, 0)
+polygon = PackedVector2Array(11, -359, 11, -214, -176, -216, -158, -281, -129, -345)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="targetEnemy2"]
+position = Vector2(4, -181)
+scale = Vector2(1, -1)
+polygon = PackedVector2Array(11, -359, 11, -214, -176, -216, -158, -281, -129, -345)
+
+[node name="targetEnemy3" type="Area2D" parent="." groups=["Center"]]
+material = SubResource("ShaderMaterial_jbbrr")
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="targetEnemy3"]
+position = Vector2(-2, 163)
+polygon = PackedVector2Array(17, -377, 17, -130, -170, -128, -181, -241, -170, -379)
+
+[connection signal="timeout" from="Timer" to="targetEnemy" method="_on_timer_timeout"]
+[connection signal="area_entered" from="targetEnemy" to="." method="_on_target_enemy_area_entered"]
+[connection signal="area_entered" from="targetEnemy2" to="." method="_on_target_enemy_2_area_entered"]
+[connection signal="area_entered" from="targetEnemy3" to="." method="_on_target_enemy_3_area_entered"]

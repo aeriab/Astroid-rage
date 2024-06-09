@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1yvy6ufkh83k"]
+[gd_scene load_steps=16 format=3 uid="uid://c1yvy6ufkh83k"]
 
 [ext_resource type="Script" path="res://scripts/StOnePlayer.gd" id="1_6iipf"]
 [ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="2_nx8m7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/EndlessWavesSt1.gd" id="7_6w537"]
 [ext_resource type="Texture2D" uid="uid://756wd12i4202" path="res://assets/StageBackground/Stage1Background (5).png" id="7_gjwjh"]
 [ext_resource type="Script" path="res://scripts/game_overst1.gd" id="9_2pe3h"]
+[ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="12_grx4e"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="12_np6lh"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="13_po755"]
 
@@ -83,5 +84,17 @@ script = ExtResource("9_2pe3h")
 z_index = 7
 position = Vector2(2.84217e-14, 720.73)
 scale = Vector2(0.658475, 0.658475)
+
+[node name="Score" type="Label" parent="."]
+z_index = 5
+offset_left = -3818.55
+offset_top = 1753.69
+offset_right = -1694.55
+offset_bottom = 2162.69
+theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/shadow_outline_size = 60
+theme_override_font_sizes/font_size = 300
+text = "SCORE: 0 PTS"
+script = ExtResource("12_grx4e")
 
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

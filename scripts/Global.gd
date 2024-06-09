@@ -1,5 +1,8 @@
 extends Node
 
+var points: int = 0
+var consecBulls: int = 0
+
 var evoLevel: int = 2
 
 var mutateNumber: int = 1
@@ -64,6 +67,8 @@ func resetStats():
 	mutateNumber = 1
 	evolutionPoints = 0
 	barrelUpNumArray = [1,0,0,0,0,0,0,0]
+	points = 0
+	consecBulls = 0
 
 func decreaseHealth(num):
 	player_health -= num * 31.0

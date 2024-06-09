@@ -1,11 +1,14 @@
-extends Area2D
+extends Node2D
 
-const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
+const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
 
 @onready var cpu_particles_2d = $CPUParticles2D
 
 @onready var timer = $Timer
 
+@onready var target_enemy = $targetEnemy
+@onready var target_enemy_2 = $targetEnemy2
+@onready var target_enemy_3 = $targetEnemy3
 
 var shader_value = material.get_shader_parameter("value")
 var shader_alpha = material.get_shader_parameter("alpha")
@@ -40,14 +43,14 @@ var difficulty: float = 1.0
 var randEnSprite: int
 
 func _ready():
-	
-	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
-	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
-	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
+	pass
+	#cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
+	#cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
+	#cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
 	
 
 
-func spawning(dif,spd):
+func spawn(dif,spd):
 	speed = spd
 	innerBoundX = 2000 * speed
 	innerBoundY = 2000 * speed
@@ -107,47 +110,67 @@ func _physics_process(delta):
 		shader_alpha += FADE_SPEED * delta
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
-	
+
+var tsize: float = 100.0
+var points: float = 0.0
+var fadeSpeed: float = 0.001
+var tcolor: Color = Color.WHITE
 
 func addDamage():
 	Global.decreaseEnemyNum()
 	Global.addXP(xpAmount)
-	var xpNotif = XP_NOTIFICATION.instantiate()
-	xpNotif.position = Vector2 (x,y)
-	xpNotif.getXPSize(xpAmount)
-	get_parent().add_child.call_deferred(xpNotif)
+	var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+	pointsNotif.position = Vector2 (x,y)
+	pointsNotif.establishText(str(points) + " POINTS",tsize,tcolor,fadeSpeed,0.0)
+	get_parent().add_child.call_deferred(pointsNotif)
 	setFreeSequence()
-
-func _on_area_entered(area):
-	if area.is_in_group("BoogerArea"):
-		area.setFreeSequence()
-		addDamage()
-		print("Outer")
-	 
-	if area.is_in_group("Player"):
-		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
-		Global.enemyNum -= 1
-		setFreeSequence()
 
 func setFreeSequence():
 	cpu_particles_2d.emitting = true
-	splatcho_enemy.free()
-	collision_polygon_2d_1.free()
-	collision_polygon_2d_2.free()
-	collision_polygon_2d_3.free()
-	collision_polygon_2d_4.free()
-	collision_polygon_2d_5.free()
+	splatcho_enemy.queue_free()
+	target_enemy.queue_free()
+	target_enemy_2.queue_free()
+	target_enemy_3.queue_free()
 	timer.start()
 
 func _on_timer_timeout():
 	queue_free()
 
 
-func _on_target_enemy_2_area_entered(area):
+func _on_target_enemy_area_entered(area):
+	tcolor = Color.WHITE
+	fadeSpeed = 0.2
+	tsize = 1.0
+	points = 20
+	
 	if area.is_in_group("BoogerArea"):
+		Global.consecBulls = 0
+		Global.points += 20
+		cpu_particles_2d.speed_scale = 1.0
+		cpu_particles_2d.scale_amount_min = 0.1
+		cpu_particles_2d.amount = 5.0
 		area.setFreeSequence()
 		addDamage()
-		print("Mid")
+	 
+	if area.is_in_group("Player"):
+		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
+		Global.enemyNum -= 1
+		setFreeSequence()
+
+func _on_target_enemy_2_area_entered(area):
+	tcolor = Color.WHITE
+	fadeSpeed = 0.15
+	tsize = 2.0
+	points = 40
+	
+	if area.is_in_group("BoogerArea"):
+		Global.consecBulls = 0
+		Global.points += 40
+		cpu_particles_2d.speed_scale = 1.5
+		cpu_particles_2d.scale_amount_min = 0.3
+		cpu_particles_2d.amount = 15.0
+		area.setFreeSequence()
+		addDamage()
 	 
 	if area.is_in_group("Player"):
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
@@ -156,12 +179,31 @@ func _on_target_enemy_2_area_entered(area):
 
 
 func _on_target_enemy_3_area_entered(area):
+	tcolor = Color.WHITE
+	fadeSpeed = 0.1
+	tsize = 3.0
+	
 	if area.is_in_group("BoogerArea"):
+		Global.consecBulls += 1
+		points = 100 * Global.consecBulls
+		Global.points += 100 * Global.consecBulls
+		
+		if Global.consecBulls >= 2:
+			var bonusNotif = DEFAULT_NOTIFICATION.instantiate()
+			bonusNotif.position = Vector2 (x + 900,y - 600)
+			bonusNotif.establishText("x" + str(Global.consecBulls) + "  BULL'S EYE!",tsize/5 + (tsize / 10) * Global.consecBulls,tcolor,fadeSpeed,20)
+			get_parent().add_child.call_deferred(bonusNotif)
+		
+		cpu_particles_2d.speed_scale = 2.0
+		cpu_particles_2d.scale_amount_min = 0.5
+		cpu_particles_2d.amount = 30.0
 		area.setFreeSequence()
 		addDamage()
-		print("Center")
 	 
 	if area.is_in_group("Player"):
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
 		setFreeSequence()
+
+
+
