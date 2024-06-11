@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3yppwif0chd5"]
+[gd_scene load_steps=18 format=3 uid="uid://b3yppwif0chd5"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_aytb3"]
 [ext_resource type="Script" path="res://scripts/Obstacle.gd" id="1_vlman"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cfd1ic1slxtxy" path="res://scenes/upgrade_popup.tscn" id="9_lb6xu"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="10_y2x8a"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="11_orek7"]
+[ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="13_2mh5a"]
 [ext_resource type="PackedScene" uid="uid://460x26t4mvnp" path="res://scenes/evo_selection.tscn" id="13_7wxo2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nk8va"]
@@ -120,6 +121,9 @@ scale = Vector2(0.5, 0.5)
 visible = false
 
 [node name="evo_selection" parent="." instance=ExtResource("13_7wxo2")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_2mh5a")]
 visible = false
 
 [node name="GameOver" parent="." instance=ExtResource("11_orek7")]

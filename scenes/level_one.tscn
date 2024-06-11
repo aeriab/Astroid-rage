@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1yvy6ufkh83k"]
+[gd_scene load_steps=19 format=3 uid="uid://c1yvy6ufkh83k"]
 
 [ext_resource type="Script" path="res://scripts/StOnePlayer.gd" id="1_6iipf"]
+[ext_resource type="Script" path="res://scripts/level_one.gd" id="1_gaw40"]
 [ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="2_nx8m7"]
 [ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="3_njjnb"]
 [ext_resource type="Script" path="res://scripts/BulletHandlerSt1.gd" id="4_yknu3"]
@@ -9,9 +10,11 @@
 [ext_resource type="Script" path="res://scripts/EndlessWavesSt1.gd" id="7_6w537"]
 [ext_resource type="Texture2D" uid="uid://756wd12i4202" path="res://assets/StageBackground/Stage1Background (5).png" id="7_gjwjh"]
 [ext_resource type="Script" path="res://scripts/game_overst1.gd" id="9_2pe3h"]
+[ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="11_1mr6p"]
 [ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="12_grx4e"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="12_np6lh"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="13_po755"]
+[ext_resource type="Script" path="res://scripts/HighscoreS1.gd" id="15_01eah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7pr6"]
 
@@ -23,6 +26,7 @@ shader_parameter/speedScale = 2.0
 
 [node name="LevelOne" type="Node2D"]
 scale = Vector2(1.218, 1.218)
+script = ExtResource("1_gaw40")
 
 [node name="Player" type="Area2D" parent="." groups=["Player"]]
 script = ExtResource("1_6iipf")
@@ -80,6 +84,9 @@ script = ExtResource("7_6w537")
 visible = false
 script = ExtResource("9_2pe3h")
 
+[node name="PauseMenu" parent="." instance=ExtResource("11_1mr6p")]
+visible = false
+
 [node name="HealthBarRed" parent="." instance=ExtResource("13_po755")]
 z_index = 7
 position = Vector2(2.84217e-14, 720.73)
@@ -88,13 +95,25 @@ scale = Vector2(0.658475, 0.658475)
 [node name="Score" type="Label" parent="."]
 z_index = 5
 offset_left = -3818.55
-offset_top = 1753.69
+offset_top = 1623.97
 offset_right = -1694.55
-offset_bottom = 2162.69
+offset_bottom = 2032.97
 theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
 theme_override_constants/shadow_outline_size = 60
 theme_override_font_sizes/font_size = 300
 text = "SCORE: 0 PTS"
 script = ExtResource("12_grx4e")
+
+[node name="Highscore" type="Label" parent="."]
+z_index = 5
+offset_left = -3818.55
+offset_top = 1982.75
+offset_right = -1694.55
+offset_bottom = 2391.75
+theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/shadow_outline_size = 60
+theme_override_font_sizes/font_size = 150
+text = "HIGHSCORE: 0 PTS"
+script = ExtResource("15_01eah")
 
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

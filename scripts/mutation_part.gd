@@ -32,3 +32,17 @@ func snoutPositionX():
 
 func snoutPositionY():
 	return snout_position.global_position.y
+
+@onready var cpu_particles_2d = $SnoutPosition/CPUParticles2D
+
+func setFire(val):
+	if val > 0:
+		
+		cpu_particles_2d.speed_scale = val + 1
+		cpu_particles_2d.scale.x = 5 / (val+1)
+		cpu_particles_2d.lifetime = val + 2
+		
+		cpu_particles_2d.emitting = true
+	else:
+		cpu_particles_2d.emitting = false
+	

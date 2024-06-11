@@ -1,5 +1,7 @@
 extends Node
 
+var highscore: int = 0
+
 var points: int = 0
 var consecBulls: int = 0
 
@@ -67,6 +69,8 @@ func resetStats():
 	mutateNumber = 1
 	evolutionPoints = 0
 	barrelUpNumArray = [1,0,0,0,0,0,0,0]
+	if points > highscore:
+		highscore = points
 	points = 0
 	consecBulls = 0
 

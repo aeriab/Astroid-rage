@@ -12,10 +12,15 @@ var eyelidHeight: float = 0.0
 func _ready():
 	rotation = (starting_rot / 360) * 2 * PI
 
+var lastConsec: int = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mutation_part.scaleEyelid(eyelidHeight)
+	
+	if Global.consecBulls != lastConsec:
+		mutation_part.setFire(Global.consecBulls)
+		lastConsec = Global.consecBulls
 	
 	Global.prior_dir = clockwise
 	if Input.is_action_just_pressed("switch"):

@@ -6,6 +6,8 @@ const _54 = preload("res://assets/trainingSongOne/5452190569857024.wav")
 const _59 = preload("res://assets/trainingSongOne/5946900010893312.wav")
 
 var lastTrack: int = 99
+var volValue: int = 0
+
 
 func _ready():
 	var i: int = randi_range(0,3)
@@ -38,3 +40,7 @@ func _on_finished():
 	lastTrack = i
 	
 	play()
+
+func volChange(vol):
+	
+	volume_db = vol

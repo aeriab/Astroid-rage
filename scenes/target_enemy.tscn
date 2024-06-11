@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_5i8u7"]
 [ext_resource type="Script" path="res://scripts/target_enemy_top.gd" id="1_iqmo0"]
-[ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="3_7ihkl"]
+[ext_resource type="Texture2D" uid="uid://kpwsiqvv67lu" path="res://assets/Square Particle.png" id="3_2wiie"]
 [ext_resource type="Texture2D" uid="uid://dbaqv6l82cm7m" path="res://assets/Target Enemy (1).png" id="3_tnqhr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2xlu5"]
@@ -42,7 +42,7 @@ lifetime = 2.0
 one_shot = true
 speed_scale = 2.0
 explosiveness = 0.9
-texture = ExtResource("3_7ihkl")
+texture = ExtResource("3_2wiie")
 emission_shape = 1
 emission_sphere_radius = 5.0
 direction = Vector2(1, 1)

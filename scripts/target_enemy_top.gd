@@ -147,8 +147,10 @@ func _on_target_enemy_area_entered(area):
 		Global.consecBulls = 0
 		Global.points += 20
 		cpu_particles_2d.speed_scale = 1.0
-		cpu_particles_2d.scale_amount_min = 0.1
+		cpu_particles_2d.scale_amount_min = 0.02
+		cpu_particles_2d.scale_amount_max = 0.04
 		cpu_particles_2d.amount = 5.0
+		cpu_particles_2d.texture = preload("res://assets/Square Particle.png")
 		area.setFreeSequence()
 		addDamage()
 	 
@@ -160,15 +162,17 @@ func _on_target_enemy_area_entered(area):
 func _on_target_enemy_2_area_entered(area):
 	tcolor = Color.WHITE
 	fadeSpeed = 0.15
-	tsize = 2.0
+	tsize = 1.5
 	points = 40
 	
 	if area.is_in_group("BoogerArea"):
 		Global.consecBulls = 0
 		Global.points += 40
 		cpu_particles_2d.speed_scale = 1.5
-		cpu_particles_2d.scale_amount_min = 0.3
+		cpu_particles_2d.scale_amount_min = 0.03
+		cpu_particles_2d.scale_amount_max = 0.06
 		cpu_particles_2d.amount = 15.0
+		cpu_particles_2d.texture = preload("res://assets/Square Particle.png")
 		area.setFreeSequence()
 		addDamage()
 	 
@@ -181,7 +185,7 @@ func _on_target_enemy_2_area_entered(area):
 func _on_target_enemy_3_area_entered(area):
 	tcolor = Color.WHITE
 	fadeSpeed = 0.1
-	tsize = 3.0
+	tsize = 2.5
 	
 	if area.is_in_group("BoogerArea"):
 		Global.consecBulls += 1
@@ -196,7 +200,10 @@ func _on_target_enemy_3_area_entered(area):
 		
 		cpu_particles_2d.speed_scale = 2.0
 		cpu_particles_2d.scale_amount_min = 0.5
-		cpu_particles_2d.amount = 30.0
+		cpu_particles_2d.scale_amount_max = 0.8
+		cpu_particles_2d.amount = int(10.0 + log(Global.consecBulls) * 10.0)
+		cpu_particles_2d.texture = preload("res://assets/Star Particle (1).png")
+		
 		area.setFreeSequence()
 		addDamage()
 	 

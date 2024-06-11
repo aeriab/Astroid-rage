@@ -1,6 +1,7 @@
 extends Node2D
 @onready var upgrade_popup = $upgradePopup
 @onready var evo_selection = $evo_selection
+@onready var pause_menu = $PauseMenu
 
 var firstEvoOn: bool = true
 var firstEvoOff: bool = true
@@ -33,3 +34,7 @@ func _process(_delta):
 	
 	if upgrade_popup.visible == true:
 		upgrade_popup.tallyPoints()
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		pause_menu.visible = true
+		Engine.time_scale = 0.0

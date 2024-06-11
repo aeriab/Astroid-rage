@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dukd2mn150ti1"]
+[gd_scene load_steps=8 format=3 uid="uid://dukd2mn150ti1"]
 
 [ext_resource type="Script" path="res://scripts/mutation_part.gd" id="1_xbrwj"]
 [ext_resource type="Texture2D" uid="uid://dmaj06en0kk08" path="res://assets/tankBird/TankBirdPupil.png" id="2_2vq4h"]
 [ext_resource type="Texture2D" uid="uid://bial11bqrxmow" path="res://assets/tankBird/BirdBeak.png" id="2_e1dre"]
 [ext_resource type="Texture2D" uid="uid://bidbntqd3ladf" path="res://assets/tankBird/TankBirdEyeWhite.png" id="3_jt46p"]
 [ext_resource type="Texture2D" uid="uid://dlc25btw33ur7" path="res://assets/tankBird/BirdEyelid.png" id="4_85u1n"]
+
+[sub_resource type="Curve" id="Curve_4yrby"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kyblx"]
+colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 1, 1, 1, 0)
 
 [node name="mutationPart" type="Node2D"]
 z_index = 2
@@ -21,6 +28,27 @@ z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("2_e1dre")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+amount = 11
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(1, 0.415686, 0, 1)
+color_ramp = SubResource("Gradient_kyblx")
 
 [node name="TankBirdEyeWhite" type="Sprite2D" parent="."]
 z_index = 4
