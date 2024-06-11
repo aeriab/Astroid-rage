@@ -9,6 +9,7 @@ const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
 @onready var target_enemy = $targetEnemy
 @onready var target_enemy_2 = $targetEnemy2
 @onready var target_enemy_3 = $targetEnemy3
+@onready var bulls_eye_hit_player = $BullsEyeHitPlayer
 
 var shader_value = material.get_shader_parameter("value")
 var shader_alpha = material.get_shader_parameter("alpha")
@@ -137,6 +138,18 @@ func _on_timer_timeout():
 	queue_free()
 
 
+@onready var char_hit_player = $CharHitPlayer
+func playHitSound():
+	char_hit_player.pitch_scale = randf_range(0.8,1.2)
+	var k = randi_range(0,2)
+	if k == 0:
+		char_hit_player.stream = preload("res://assets/hitSounds/punch-1-166694.mp3")
+	if k == 1:
+		char_hit_player.stream = preload("res://assets/hitSounds/punch-2-166695.mp3")
+	else:
+		char_hit_player.stream = preload("res://assets/hitSounds/punch-3-166696.mp3")
+	char_hit_player.play()
+
 func _on_target_enemy_area_entered(area):
 	tcolor = Color.WHITE
 	fadeSpeed = 0.2
@@ -151,13 +164,21 @@ func _on_target_enemy_area_entered(area):
 		cpu_particles_2d.scale_amount_max = 0.04
 		cpu_particles_2d.amount = 5.0
 		cpu_particles_2d.texture = preload("res://assets/Square Particle.png")
+		
+		bulls_eye_hit_player.stream = preload("res://assets/error-5-199276.mp3")
+		bulls_eye_hit_player.pitch_scale = randf_range(0.6,1.4)
+		bulls_eye_hit_player.play()
+		
 		area.setFreeSequence()
 		addDamage()
 	 
 	if area.is_in_group("Player"):
+		playHitSound()
+		
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
 		setFreeSequence()
+
 
 func _on_target_enemy_2_area_entered(area):
 	tcolor = Color.WHITE
@@ -173,10 +194,17 @@ func _on_target_enemy_2_area_entered(area):
 		cpu_particles_2d.scale_amount_max = 0.06
 		cpu_particles_2d.amount = 15.0
 		cpu_particles_2d.texture = preload("res://assets/Square Particle.png")
+		
+		bulls_eye_hit_player.stream = preload("res://assets/error-5-199276.mp3")
+		bulls_eye_hit_player.pitch_scale = randf_range(0.6,1.4)
+		bulls_eye_hit_player.play()
+		
 		area.setFreeSequence()
 		addDamage()
 	 
 	if area.is_in_group("Player"):
+		playHitSound()
+		
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
 		setFreeSequence()
@@ -204,10 +232,16 @@ func _on_target_enemy_3_area_entered(area):
 		cpu_particles_2d.amount = int(10.0 + log(Global.consecBulls) * 10.0)
 		cpu_particles_2d.texture = preload("res://assets/Star Particle (1).png")
 		
+		bulls_eye_hit_player.stream = preload("res://assets/bullsEyeHit.mp3")
+		bulls_eye_hit_player.pitch_scale = randf_range(0.6,0.8) + Global.consecBulls * 0.2
+		bulls_eye_hit_player.play()
+		
 		area.setFreeSequence()
 		addDamage()
 	 
 	if area.is_in_group("Player"):
+		playHitSound()
+		
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
 		setFreeSequence()

@@ -5,6 +5,7 @@ var clockwise = 1
 @export var starting_rot: float
 
 @onready var mutation_part = $mutationPart
+@onready var pop_sfx_player = $"../PopSfxPlayer"
 
 var eyelidHeight: float = 0.0
 
@@ -24,6 +25,17 @@ func _process(delta):
 	
 	Global.prior_dir = clockwise
 	if Input.is_action_just_pressed("switch"):
+		
+		pop_sfx_player.pitch_scale = randf_range(0.40,1.1)
+		var k = randi_range(0,2)
+		if k == 0:
+			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-1-185286.mp3")
+		if k == 1:
+			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-2-185287.mp3")
+		else:
+			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-3-185288.mp3")
+		pop_sfx_player.play()
+		
 		clockwise *= -1
 		
 		if eyelidHeight <= 0.5:

@@ -34,6 +34,7 @@ z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
 scale = Vector2(5, 5)
+emitting = false
 amount = 11
 lifetime = 2.0
 direction = Vector2(1, -1)
@@ -47,7 +48,7 @@ angle_max = 90.0
 scale_amount_min = 60.0
 scale_amount_max = 75.0
 scale_amount_curve = SubResource("Curve_4yrby")
-color = Color(1, 0.415686, 0, 1)
+color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
 [node name="TankBirdEyeWhite" type="Sprite2D" parent="."]

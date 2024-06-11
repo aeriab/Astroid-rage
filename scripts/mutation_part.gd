@@ -38,9 +38,8 @@ func snoutPositionY():
 func setFire(val):
 	if val > 0:
 		
-		cpu_particles_2d.speed_scale = val + 1
-		cpu_particles_2d.scale.x = 5 / (val+1)
-		cpu_particles_2d.lifetime = val + 2
+		cpu_particles_2d.color = Color8(100 + val*20,100 - val*20,100 - val*20,255)
+		cpu_particles_2d.speed_scale = log(val) + 1
 		
 		cpu_particles_2d.emitting = true
 	else:
