@@ -140,6 +140,7 @@ func _on_timer_timeout():
 
 @onready var char_hit_player = $CharHitPlayer
 func playHitSound():
+	char_hit_player.volume_db = AudioPreload.effectsVolDB
 	char_hit_player.pitch_scale = randf_range(0.8,1.2)
 	var k = randi_range(0,2)
 	if k == 0:
@@ -165,6 +166,7 @@ func _on_target_enemy_area_entered(area):
 		cpu_particles_2d.amount = 5.0
 		cpu_particles_2d.texture = preload("res://assets/Square Particle.png")
 		
+		bulls_eye_hit_player.volume_db = AudioPreload.effectsVolDB
 		bulls_eye_hit_player.stream = preload("res://assets/error-5-199276.mp3")
 		bulls_eye_hit_player.pitch_scale = randf_range(0.6,1.4)
 		bulls_eye_hit_player.play()
@@ -195,6 +197,7 @@ func _on_target_enemy_2_area_entered(area):
 		cpu_particles_2d.amount = 15.0
 		cpu_particles_2d.texture = preload("res://assets/Square Particle.png")
 		
+		bulls_eye_hit_player.volume_db = AudioPreload.effectsVolDB
 		bulls_eye_hit_player.stream = preload("res://assets/error-5-199276.mp3")
 		bulls_eye_hit_player.pitch_scale = randf_range(0.6,1.4)
 		bulls_eye_hit_player.play()
@@ -232,6 +235,7 @@ func _on_target_enemy_3_area_entered(area):
 		cpu_particles_2d.amount = int(10.0 + log(Global.consecBulls) * 10.0)
 		cpu_particles_2d.texture = preload("res://assets/Star Particle (1).png")
 		
+		bulls_eye_hit_player.volume_db = AudioPreload.effectsVolDB
 		bulls_eye_hit_player.stream = preload("res://assets/bullsEyeHit.mp3")
 		bulls_eye_hit_player.pitch_scale = randf_range(0.6,0.8) + Global.consecBulls * 0.2
 		bulls_eye_hit_player.play()

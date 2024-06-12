@@ -18,6 +18,7 @@ var lastConsec: int = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mutation_part.scaleEyelid(eyelidHeight)
+	mutation_part.scalePupil(log(Global.consecBulls + 1) + 1)
 	
 	if Global.consecBulls != lastConsec:
 		mutation_part.setFire(Global.consecBulls)
@@ -25,7 +26,7 @@ func _process(delta):
 	
 	Global.prior_dir = clockwise
 	if Input.is_action_just_pressed("switch"):
-		
+		pop_sfx_player.volume_db = AudioPreload.effectsVolDB
 		pop_sfx_player.pitch_scale = randf_range(0.40,1.1)
 		var k = randi_range(0,2)
 		if k == 0:

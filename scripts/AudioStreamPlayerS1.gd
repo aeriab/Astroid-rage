@@ -7,6 +7,8 @@ const _59 = preload("res://assets/trainingSongOne/5946900010893312.wav")
 
 var lastTrack: int = 99
 var volValue: int = 52
+var effectsVolValue: int = 52
+var effectsVolDB: float = 0.0
 
 
 func _ready():
