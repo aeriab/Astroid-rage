@@ -17,7 +17,7 @@ func _ready():
 	Global.bulletSpeed = log(progress + 2) / log(e) + 1.0
 
 func _process(delta):
-	time += delta
+	time += delta * Global.gameTimeScale
 	
 	if time >= next_time:
 		spawnTargetEnemy()

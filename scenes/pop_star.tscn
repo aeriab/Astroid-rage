@@ -1,0 +1,229 @@
+[gd_scene load_steps=25 format=3 uid="uid://di6c7ve8350jp"]
+
+[ext_resource type="Script" path="res://scripts/level_two.gd" id="1_10eie"]
+[ext_resource type="Script" path="res://scripts/StOnePlayer.gd" id="1_wlira"]
+[ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="2_3eu3e"]
+[ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="3_ri2y8"]
+[ext_resource type="Script" path="res://scripts/BulletHandlerSt1.gd" id="4_d1qfm"]
+[ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="5_kb3rd"]
+[ext_resource type="Shader" path="res://shaders/level_oneback.gdshader" id="6_0k8lj"]
+[ext_resource type="Texture2D" uid="uid://756wd12i4202" path="res://assets/StageBackground/Stage1Background (5).png" id="7_hqjjf"]
+[ext_resource type="Script" path="res://scripts/EndlessWavesSt1.gd" id="8_bamts"]
+[ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="9_tvsoy"]
+[ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="10_c4mor"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="11_eu36a"]
+[ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="12_uvx2n"]
+[ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="13_c62fy"]
+[ext_resource type="Script" path="res://scripts/PopHighscore.gd" id="14_v3axn"]
+[ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="15_nnk7x"]
+[ext_resource type="Texture2D" uid="uid://cnx5tvuh1ovar" path="res://assets/Stage 1 Instructions.png" id="16_amy0v"]
+[ext_resource type="Texture2D" uid="uid://djk6wt2num5i7" path="res://assets/PopStarLetters.png" id="18_gbjqq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkb15"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o6nwr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibogi"]
+shader = ExtResource("6_0k8lj")
+shader_parameter/speedScale = 2.0
+
+[sub_resource type="Animation" id="Animation_0tmod"]
+resource_name = "S1Instructions"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4009.03, -2320.2), Vector2(-2186.37, -251.231), Vector2(-2186.37, -251.231), Vector2(-4009.03, -2320.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.000512142, -0.000512138), Vector2(5.00014, 5.00014), Vector2(5.00014, 5.00014), Vector2(-0.000512142, -0.000512138)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-6.28319, 0.0, 0.0, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_620mn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3432.68, -1695.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.36874, 0.36874)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43s2g"]
+_data = {
+"RESET": SubResource("Animation_620mn"),
+"S1Instructions": SubResource("Animation_0tmod")
+}
+
+[node name="PopStar" type="Node2D"]
+scale = Vector2(1.218, 1.218)
+script = ExtResource("1_10eie")
+
+[node name="Player" type="Area2D" parent="." groups=["Player"]]
+script = ExtResource("1_wlira")
+
+[node name="TankBirdBod(1)" type="Sprite2D" parent="Player"]
+z_index = 3
+texture = ExtResource("2_3eu3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+z_index = 4
+scale = Vector2(23.58, 23.2821)
+shape = SubResource("CircleShape2D_jkb15")
+
+[node name="mutationPart" parent="Player" instance=ExtResource("3_ri2y8")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.2, 0.2)
+
+[node name="BulletHandlerSt1" type="Node" parent="."]
+script = ExtResource("4_d1qfm")
+
+[node name="AreaBulletCollection" type="Area2D" parent="."]
+script = ExtResource("5_kb3rd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(0, 3000)
+shape = SubResource("WorldBoundaryShape2D_o6nwr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(-5000, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_o6nwr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(5000, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_o6nwr")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(0, -3000)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_o6nwr")
+
+[node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ibogi")
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(8.20992, 8.20992)
+texture = ExtResource("7_hqjjf")
+
+[node name="EndlessWavesSt1" type="Node" parent="."]
+script = ExtResource("8_bamts")
+
+[node name="GameOver" parent="." instance=ExtResource("9_tvsoy")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_c4mor")]
+visible = false
+script = ExtResource("11_eu36a")
+
+[node name="HealthBarRed" parent="." instance=ExtResource("12_uvx2n")]
+z_index = 7
+position = Vector2(2.84217e-14, 720.73)
+scale = Vector2(0.658475, 0.658475)
+
+[node name="Score" type="Label" parent="."]
+z_index = 5
+offset_left = -3818.55
+offset_top = 1623.97
+offset_right = -1694.55
+offset_bottom = 2032.97
+theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/shadow_outline_size = 60
+theme_override_font_sizes/font_size = 300
+text = "SCORE: 0 PTS"
+script = ExtResource("13_c62fy")
+metadata/_edit_use_anchors_ = true
+
+[node name="Highscore" type="Label" parent="."]
+z_index = 5
+offset_left = -3818.55
+offset_top = 1982.75
+offset_right = -1694.55
+offset_bottom = 2391.75
+theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/shadow_outline_size = 60
+theme_override_font_sizes/font_size = 150
+text = "HIGHSCORE: 0 PTS"
+script = ExtResource("14_v3axn")
+metadata/_edit_use_anchors_ = true
+
+[node name="PopSfxPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_nnk7x")
+
+[node name="Stage2Instructions" type="Sprite2D" parent="."]
+position = Vector2(-3432.68, -1695.4)
+scale = Vector2(0.36874, 0.36874)
+texture = ExtResource("16_amy0v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stage2Instructions"]
+libraries = {
+"": SubResource("AnimationLibrary_43s2g")
+}
+autoplay = "S1Instructions"
+
+[node name="PopStarLetters" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(2985.22, 1767.65)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("18_gbjqq")
+
+[connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

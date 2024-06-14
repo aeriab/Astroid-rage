@@ -1,6 +1,38 @@
 extends Node
 
+const tarPracS1: int = 1000
+const tarPracS2: int = 2000
+const tarPracS3: int = 4000
+const tarPracS4: int = 10000
+const tarPracS5: int = 20000
+const tarPracS6: int = 50000
+const tarPracS7: int = 100000
+
+const popS1: int = 1000
+const popS2: int = 2000
+const popS3: int = 4000
+const popS4: int = 10000
+const popS5: int = 20000
+const popS6: int = 50000
+const popS7: int = 100000
+
+var curS1: int = 1
+var curS2: int = 2
+var curS3: int = 4
+var curS4: int = 10
+var curS5: int = 20
+var curS6: int = 50
+var curS7: int = 100
+
+var curStage: int = 0
+
+var gameOver: bool = false
+
+var gameTimeScale: float = 1.0
+
 var highscore: int = 0
+var popHighscore: int = 0
+var curHighscore: int = 0
 
 var points: int = 0
 var consecBulls: int = 0
@@ -69,8 +101,14 @@ func resetStats():
 	mutateNumber = 1
 	evolutionPoints = 0
 	barrelUpNumArray = [1,0,0,0,0,0,0,0]
-	if points > highscore:
-		highscore = points
+	
+	if curStage == 1:
+		if points > highscore:
+			highscore = points
+	if curStage == 2:
+		if points > popHighscore:
+			popHighscore = points
+	
 	points = 0
 	consecBulls = 0
 

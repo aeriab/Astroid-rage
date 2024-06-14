@@ -62,13 +62,13 @@ func set_motion(x1,y1,theta1,mutPart):
 
 func _physics_process(delta):
 	
-	x += cos(theta) * SPEED * delta
-	y -= sin(theta) * SPEED * delta
+	x += cos(theta) * SPEED * delta * Global.gameTimeScale
+	y -= sin(theta) * SPEED * delta * Global.gameTimeScale
 	
 	position.x = x
 	position.y = y
 	
-	rotate(delta * (orig_speed - 1) * rot_motion * 2 * orig_rotate_speed)
+	rotate(delta * (orig_speed - 1) * rot_motion * 2 * orig_rotate_speed * Global.gameTimeScale)
 
 @onready var collision_shape_2d = $CollisionShape2D
 

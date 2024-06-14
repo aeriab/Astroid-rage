@@ -25,7 +25,7 @@ func _process(delta):
 		lastConsec = Global.consecBulls
 	
 	Global.prior_dir = clockwise
-	if Input.is_action_just_pressed("switch"):
+	if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1:
 		pop_sfx_player.volume_db = AudioPreload.effectsVolDB
 		pop_sfx_player.pitch_scale = randf_range(0.40,1.1)
 		var k = randi_range(0,2)
@@ -45,6 +45,6 @@ func _process(delta):
 			eyelidHeight = 0.5
 	else:
 		if eyelidHeight > 0:
-			eyelidHeight -= delta * 0.5
+			eyelidHeight -= delta * 0.5 * Global.gameTimeScale
 	if !pause_rot:
-		rotation += (Global.rotationSpeed * clockwise * delta)
+		rotation += (Global.rotationSpeed * clockwise * delta * Global.gameTimeScale)

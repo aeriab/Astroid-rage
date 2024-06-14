@@ -3,6 +3,10 @@ extends Node2D
 @onready var bird_eyelid = $BirdEyelid
 @onready var tank_bird_pupil = $TankBirdPupil
 @onready var snout_position = $SnoutPosition
+@onready var cpu_particles_2d = $SnoutPosition/CPUParticles2D
+
+func _process(_delta):
+	cpu_particles_2d.speed_scale = Global.gameTimeScale
 
 func changeBarrelUpgrade(num):
 	if num == 2:
@@ -33,13 +37,11 @@ func snoutPositionX():
 func snoutPositionY():
 	return snout_position.global_position.y
 
-@onready var cpu_particles_2d = $SnoutPosition/CPUParticles2D
+
 
 func setFire(val):
 	if val > 0:
-		
 		cpu_particles_2d.color = Color8(100 + val*20,100 - val*20,100 - val*20,255)
-		cpu_particles_2d.speed_scale = log(val) + 1
 		
 		cpu_particles_2d.emitting = true
 	else:

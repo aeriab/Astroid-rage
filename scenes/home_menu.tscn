@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://n3pfbthhjb2o"]
+[gd_scene load_steps=5 format=3 uid="uid://n3pfbthhjb2o"]
 
 [ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_uwpo3"]
+[ext_resource type="Script" path="res://scripts/MusicVolume.gd" id="2_ovd1b"]
+[ext_resource type="Texture2D" uid="uid://cva3wsbyec1c2" path="res://assets/VolumeSprites/Splatcho Volume Slider (1).png" id="3_k4sxx"]
+[ext_resource type="Script" path="res://scripts/SFXVolume.gd" id="4_4kyg5"]
 
 [node name="HomeMenu" type="Node2D"]
 
@@ -32,7 +35,7 @@ theme_override_font_sizes/font_size = 70
 text = "ENDLESS"
 metadata/_edit_use_anchors_ = true
 
-[node name="LevelSelect" type="Button" parent="HomeCanvas"]
+[node name="MinigameSelect" type="Button" parent="HomeCanvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,7 +46,7 @@ offset_bottom = -669.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "LEVEL SELECT"
+text = "MINI GAMES"
 metadata/_edit_use_anchors_ = true
 
 [node name="StorePageButton" type="Button" parent="HomeCanvas"]
@@ -74,7 +77,73 @@ theme_override_font_sizes/font_size = 70
 text = "QUIT"
 metadata/_edit_use_anchors_ = true
 
+[node name="MusicVolume" type="Control" parent="HomeCanvas"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 480.0
+offset_right = 90.0
+offset_bottom = 520.0
+script = ExtResource("2_ovd1b")
+
+[node name="SplatchoVolumeSlider" type="Sprite2D" parent="HomeCanvas/MusicVolume"]
+position = Vector2(416, 54)
+scale = Vector2(0.194444, 0.194444)
+texture = ExtResource("3_k4sxx")
+
+[node name="HSlider" type="HSlider" parent="HomeCanvas/MusicVolume"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 75.0
+offset_right = 500.0
+offset_bottom = 181.0
+value = 56.0
+
+[node name="MusicLabel" type="Label" parent="HomeCanvas/MusicVolume"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 13.0
+offset_right = 236.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "MUSIC"
+
+[node name="SFXVolume" type="Control" parent="HomeCanvas"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 702.0
+offset_right = 90.0
+offset_bottom = 742.0
+script = ExtResource("4_4kyg5")
+
+[node name="SplatchoVolumeSlider" type="Sprite2D" parent="HomeCanvas/SFXVolume"]
+position = Vector2(416, 54)
+scale = Vector2(0.194444, 0.194444)
+texture = ExtResource("3_k4sxx")
+
+[node name="HSlider" type="HSlider" parent="HomeCanvas/SFXVolume"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 75.0
+offset_right = 500.0
+offset_bottom = 181.0
+value = 56.0
+
+[node name="SFXLabel" type="Label" parent="HomeCanvas/SFXVolume"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 13.0
+offset_right = 236.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "EFFECTS"
+
 [connection signal="pressed" from="HomeCanvas/EndlessButton" to="HomeCanvas" method="_on_endless_button_pressed"]
-[connection signal="pressed" from="HomeCanvas/LevelSelect" to="HomeCanvas" method="_on_level_select_pressed"]
+[connection signal="pressed" from="HomeCanvas/MinigameSelect" to="HomeCanvas" method="_on_minigame_select_pressed"]
 [connection signal="pressed" from="HomeCanvas/StorePageButton" to="HomeCanvas" method="_on_store_page_button_pressed"]
 [connection signal="pressed" from="HomeCanvas/QuitButton" to="HomeCanvas" method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="HomeCanvas/MusicVolume/HSlider" to="HomeCanvas/MusicVolume" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="HomeCanvas/SFXVolume/HSlider" to="HomeCanvas/SFXVolume" method="_on_h_slider_value_changed"]

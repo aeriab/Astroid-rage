@@ -100,15 +100,15 @@ func spawn(dif,spd):
 
 func _physics_process(delta):
 	
-	x -= cos(theta) * SPEED * speed * delta
-	y -= -sin(theta) * SPEED * speed * delta
+	x -= cos(theta) * SPEED * speed * delta * Global.gameTimeScale
+	y -= -sin(theta) * SPEED * speed * delta * Global.gameTimeScale
 	
 	scale.y = ((sin((time_ellapsed / sizeOfEnemy) * speed) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
 	
 	position = Vector2(x,y)
-	time_ellapsed += delta * 5
+	time_ellapsed += delta * 5 * Global.gameTimeScale
 	if shader_alpha != 1.0:
-		shader_alpha += FADE_SPEED * delta
+		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
 

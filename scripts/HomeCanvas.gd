@@ -12,7 +12,6 @@ func _on_store_page_button_pressed():
 func _on_quit_button_pressed():
 	get_tree().quit()
 
-
-func _on_level_select_pressed():
+func _on_minigame_select_pressed():
 	Global.resetStats()
-	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
+	get_tree().change_scene_to_file("res://scenes/minigame_select.tscn")

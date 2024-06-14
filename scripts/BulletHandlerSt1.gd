@@ -55,7 +55,7 @@ var theta: float = 0.0
 	##greenspot.linear_velocity = Vector2(cos(theta) * SPEED,-sin(theta) * SPEED)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("switch") && Engine.time_scale != 0.0:
+	if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1:
 		var greenspot = GREEN_SPOT.instantiate()
 		var shotparticles = SHOT_PARTICLES.instantiate()
 		

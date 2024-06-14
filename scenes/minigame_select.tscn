@@ -1,0 +1,299 @@
+[gd_scene load_steps=6 format=3 uid="uid://i4q5advf7jam"]
+
+[ext_resource type="Script" path="res://scripts/LevelSelectCanvas.gd" id="1_gqo8a"]
+[ext_resource type="Script" path="res://scripts/TargetStars.gd" id="2_2wafb"]
+[ext_resource type="Texture2D" uid="uid://du2hhb0k4p8hp" path="res://assets/Dark Star Particle.png" id="2_vo1k4"]
+[ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="3_km13l"]
+[ext_resource type="Script" path="res://scripts/PopStarContainer.gd" id="5_m1pha"]
+
+[node name="LevelSelect" type="Node2D"]
+
+[node name="LevelSelectCanvas" type="CanvasLayer" parent="."]
+script = ExtResource("1_gqo8a")
+
+[node name="OverWords" type="Label" parent="LevelSelectCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 126
+text = "MINI-GAME SELECT"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HomeButton" type="Button" parent="LevelSelectCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1335.0
+offset_top = 901.0
+offset_right = -37.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "HOME"
+metadata/_edit_use_anchors_ = true
+
+[node name="TargetStars" type="Node2D" parent="LevelSelectCanvas"]
+position = Vector2(23, 157)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("2_2wafb")
+
+[node name="StarOutlines" type="Node2D" parent="LevelSelectCanvas/TargetStars"]
+position = Vector2(1, -291)
+scale = Vector2(0.35, 0.35)
+
+[node name="DarkStarParticle" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarOutlines"]
+position = Vector2(980, 940)
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle2" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarOutlines"]
+position = Vector2(730, 945)
+rotation = -0.0872665
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle3" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarOutlines"]
+position = Vector2(1230, 945)
+rotation = 0.0872665
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle4" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarOutlines"]
+position = Vector2(480, 950)
+rotation = -0.174533
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle5" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarOutlines"]
+position = Vector2(1480, 950)
+rotation = 0.174533
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle6" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarOutlines"]
+position = Vector2(230, 960)
+rotation = -0.261799
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle7" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarOutlines"]
+position = Vector2(1730, 960)
+rotation = 0.261799
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="StarCompletes" type="Node2D" parent="LevelSelectCanvas/TargetStars"]
+position = Vector2(1, -291)
+scale = Vector2(0.35, 0.35)
+
+[node name="StarParticle1" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarCompletes"]
+visible = false
+position = Vector2(230, 960)
+rotation = -0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle2" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarCompletes"]
+visible = false
+position = Vector2(480, 950)
+rotation = -0.174533
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle3" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarCompletes"]
+visible = false
+position = Vector2(730, 945)
+rotation = -0.0872665
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle4" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarCompletes"]
+visible = false
+position = Vector2(980, 940)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle5" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarCompletes"]
+visible = false
+position = Vector2(1230, 945)
+rotation = 0.0872665
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle6" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarCompletes"]
+visible = false
+position = Vector2(1480, 950)
+rotation = 0.174533
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle7" type="Sprite2D" parent="LevelSelectCanvas/TargetStars/StarCompletes"]
+visible = false
+position = Vector2(1730, 960)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="TargetPractice" type="Button" parent="LevelSelectCanvas/TargetStars"]
+anchors_preset = -1
+anchor_left = -0.015625
+anchor_top = 0.0398148
+anchor_right = 1.04115
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 89.0
+offset_right = 630.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "TARGET PRACTICE"
+metadata/_edit_use_anchors_ = true
+
+[node name="TargetHighscore" type="Label" parent="LevelSelectCanvas/TargetStars/TargetPractice"]
+layout_mode = 0
+offset_left = -53.0
+offset_top = 134.0
+offset_right = 677.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 50
+text = "HIGHSCORE: 0 PTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PopStarContainer" type="Node2D" parent="LevelSelectCanvas"]
+position = Vector2(631, 155)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("5_m1pha")
+
+[node name="StarOutlines" type="Node2D" parent="LevelSelectCanvas/PopStarContainer"]
+position = Vector2(1, -291)
+scale = Vector2(0.35, 0.35)
+
+[node name="DarkStarParticle" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarOutlines"]
+position = Vector2(980, 940)
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle2" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarOutlines"]
+position = Vector2(730, 945)
+rotation = -0.0872665
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle3" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarOutlines"]
+position = Vector2(1230, 945)
+rotation = 0.0872665
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle4" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarOutlines"]
+position = Vector2(480, 950)
+rotation = -0.174533
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle5" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarOutlines"]
+position = Vector2(1480, 950)
+rotation = 0.174533
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle6" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarOutlines"]
+position = Vector2(230, 960)
+rotation = -0.261799
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="DarkStarParticle7" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarOutlines"]
+position = Vector2(1730, 960)
+rotation = 0.261799
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_vo1k4")
+
+[node name="StarCompletes" type="Node2D" parent="LevelSelectCanvas/PopStarContainer"]
+position = Vector2(1, -291)
+scale = Vector2(0.35, 0.35)
+
+[node name="StarParticle1" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarCompletes"]
+visible = false
+position = Vector2(230, 960)
+rotation = -0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle2" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarCompletes"]
+visible = false
+position = Vector2(480, 950)
+rotation = -0.174533
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle3" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarCompletes"]
+visible = false
+position = Vector2(730, 945)
+rotation = -0.0872665
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle4" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarCompletes"]
+visible = false
+position = Vector2(980, 940)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle5" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarCompletes"]
+visible = false
+position = Vector2(1230, 945)
+rotation = 0.0872665
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle6" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarCompletes"]
+visible = false
+position = Vector2(1480, 950)
+rotation = 0.174533
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="StarParticle7" type="Sprite2D" parent="LevelSelectCanvas/PopStarContainer/StarCompletes"]
+visible = false
+position = Vector2(1730, 960)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_km13l")
+
+[node name="PopStarButton" type="Button" parent="LevelSelectCanvas/PopStarContainer"]
+anchors_preset = -1
+anchor_left = -0.015625
+anchor_top = 0.0398148
+anchor_right = 1.04115
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 89.0
+offset_right = 630.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "POP STAR"
+metadata/_edit_use_anchors_ = true
+
+[node name="PopHighscore" type="Label" parent="LevelSelectCanvas/PopStarContainer/PopStarButton"]
+layout_mode = 0
+offset_left = -53.0
+offset_top = 134.0
+offset_right = 677.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 50
+text = "HIGHSCORE: 0 PTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="LevelSelectCanvas/HomeButton" to="LevelSelectCanvas" method="_on_home_button_pressed"]
+[connection signal="pressed" from="LevelSelectCanvas/TargetStars/TargetPractice" to="LevelSelectCanvas" method="_on_target_practice_pressed"]
+[connection signal="pressed" from="LevelSelectCanvas/PopStarContainer/PopStarButton" to="LevelSelectCanvas" method="_on_pop_star_button_pressed"]

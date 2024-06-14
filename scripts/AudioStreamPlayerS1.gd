@@ -6,12 +6,13 @@ const _54 = preload("res://assets/trainingSongOne/5452190569857024.wav")
 const _59 = preload("res://assets/trainingSongOne/5946900010893312.wav")
 
 var lastTrack: int = 99
-var volValue: int = 52
+var volValue: int = 0
 var effectsVolValue: int = 52
 var effectsVolDB: float = 0.0
 
 
 func _ready():
+	
 	var i: int = randi_range(0,3)
 	if i == 0:
 		stream = _47
