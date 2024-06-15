@@ -1,5 +1,9 @@
 extends Node
 
+var explodeShotAmount: int = 8
+
+var explodeBoogers: bool = false
+
 const tarPracS1: int = 1000
 const tarPracS2: int = 2000
 const tarPracS3: int = 4000
@@ -13,8 +17,8 @@ const popS2: int = 2000
 const popS3: int = 4000
 const popS4: int = 10000
 const popS5: int = 20000
-const popS6: int = 50000
-const popS7: int = 100000
+const popS6: int = 30000
+const popS7: int = 40000
 
 var curS1: int = 1
 var curS2: int = 2
@@ -111,6 +115,7 @@ func resetStats():
 	
 	points = 0
 	consecBulls = 0
+	explodeBoogers = false
 
 func decreaseHealth(num):
 	player_health -= num * 31.0

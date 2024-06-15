@@ -1,6 +1,7 @@
 extends Area2D
 
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
+const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
 
 @onready var cpu_particles_2d = $CPUParticles2D
 @onready var collision_polygon_2d_right = $CollisionPolygon2D_right
@@ -68,6 +69,7 @@ func spawn(dif):
 	enemyIndex = Global.enemyNum
 	
 	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
+	
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
 	if sizeOfEnemy >= 1.48 * difficulty:
 		sizeOfEnemy = 3.0 * difficulty
@@ -105,18 +107,19 @@ func spawn(dif):
 
 func _physics_process(delta):
 	
-	x -= cos(theta) * SPEED * delta
-	y -= -sin(theta) * SPEED * delta
+	x -= cos(theta) * SPEED * delta * Global.gameTimeScale
+	y -= -sin(theta) * SPEED * delta * Global.gameTimeScale
 	
 	scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
 	
 	position = Vector2(x,y)
-	time_ellapsed += delta * 5
+	time_ellapsed += delta * 5 * Global.gameTimeScale
 	if shader_alpha != 1.0:
-		shader_alpha += FADE_SPEED * delta
+		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
-	
+
+var points: float = 0.0
 
 func addDamage():
 	shader_value = shader_value + damage_chunk
@@ -128,10 +131,12 @@ func addDamage():
 	if shader_value >= 0.9:
 		Global.decreaseEnemyNum()
 		Global.addXP(xpAmount)
-		var xpNotif = XP_NOTIFICATION.instantiate()
-		xpNotif.position = Vector2 (x,y)
-		xpNotif.getXPSize(xpAmount)
-		get_parent().add_child.call_deferred(xpNotif)
+		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+		pointsNotif.position = Vector2 (x,y)
+		points = sizeOfEnemy * 100
+		Global.points += points
+		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		get_parent().add_child.call_deferred(pointsNotif)
 		setFreeSequence()
 
 func _on_area_entered(area):

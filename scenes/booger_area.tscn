@@ -11,6 +11,7 @@ shader = ExtResource("2_nyndg")
 shader_parameter/player_damage = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3a1r5"]
+radius = 11.1925
 
 [sub_resource type="Curve" id="Curve_wt3ny"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]

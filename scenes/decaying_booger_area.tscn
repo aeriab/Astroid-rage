@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvehop87gcxxe"]
+
+[ext_resource type="Script" path="res://scripts/decaying_booger_area.gd" id="1_nf0ob"]
+[ext_resource type="Shader" path="res://shaders/booger_area.gdshader" id="2_b62jd"]
+[ext_resource type="Texture2D" uid="uid://dietwv2tbrab2" path="res://assets/damageProjectiles/DamGameProjectile1.png" id="3_21t5u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52g37"]
+resource_local_to_scene = true
+shader = ExtResource("2_b62jd")
+shader_parameter/player_damage = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3a1r5"]
+radius = 11.1925
+
+[node name="DecayingBoogerArea" type="Area2D" groups=["BoogerArea"]]
+z_index = 1
+scale = Vector2(0.189351, 0.189351)
+collision_mask = 2
+script = ExtResource("1_nf0ob")
+
+[node name="GameProjectile" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_52g37")
+position = Vector2(-1, -2)
+scale = Vector2(1, 0.993421)
+texture = ExtResource("3_21t5u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, -14)
+rotation = -0.285019
+scale = Vector2(31.4553, 24.4595)
+shape = SubResource("CircleShape2D_3a1r5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

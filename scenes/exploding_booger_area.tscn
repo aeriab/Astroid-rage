@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0luik374wxle"]
+
+[ext_resource type="Script" path="res://scripts/exploding_booger_area.gd" id="1_sl6w2"]
+[ext_resource type="Shader" path="res://shaders/exploding_booger_area.gdshader" id="2_hxb34"]
+[ext_resource type="Texture2D" uid="uid://0le58qhrrcno" path="res://assets/ExplodingBooger (1).png" id="3_jk82d"]
+[ext_resource type="AudioStream" uid="uid://bor47jglby10q" path="res://assets/bass-dropmp3-14596.mp3" id="4_2u83p"]
+[ext_resource type="AudioStream" uid="uid://cbsjxjqu3r31w" path="res://assets/riser-fx-nebula-rise.wav" id="5_5ti7w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6w30"]
+resource_local_to_scene = true
+shader = ExtResource("2_hxb34")
+shader_parameter/explosiveValue = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4s0ys"]
+radius = 288.925
+
+[sub_resource type="Curve" id="Curve_wt3ny"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
+
+[node name="ExplodingBoogerArea" type="Area2D"]
+z_index = 1
+material = SubResource("ShaderMaterial_x6w30")
+collision_mask = 2
+script = ExtResource("1_sl6w2")
+
+[node name="GameProjectile" type="Sprite2D" parent="."]
+z_index = 8
+use_parent_material = true
+position = Vector2(-1, -2)
+scale = Vector2(1, 0.993421)
+texture = ExtResource("3_jk82d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_4s0ys")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+z_index = 5
+scale = Vector2(15, 15)
+emitting = false
+amount = 20
+lifetime = 0.1
+one_shot = true
+speed_scale = 0.2
+explosiveness = 0.8
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_wt3ny")
+color = Color(0, 0, 1, 1)
+
+[node name="BassBoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2u83p")
+volume_db = 10.0
+
+[node name="RisingNebula" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5ti7w")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
