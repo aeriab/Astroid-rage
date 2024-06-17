@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0luik374wxle"]
+[gd_scene load_steps=10 format=3 uid="uid://c0luik374wxle"]
 
 [ext_resource type="Script" path="res://scripts/exploding_booger_area.gd" id="1_sl6w2"]
 [ext_resource type="Shader" path="res://shaders/exploding_booger_area.gdshader" id="2_hxb34"]
 [ext_resource type="Texture2D" uid="uid://0le58qhrrcno" path="res://assets/ExplodingBooger (1).png" id="3_jk82d"]
 [ext_resource type="AudioStream" uid="uid://bor47jglby10q" path="res://assets/bass-dropmp3-14596.mp3" id="4_2u83p"]
 [ext_resource type="AudioStream" uid="uid://cbsjxjqu3r31w" path="res://assets/riser-fx-nebula-rise.wav" id="5_5ti7w"]
+[ext_resource type="Script" path="res://scripts/SFXVolScript.gd" id="6_0xill"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x6w30"]
 resource_local_to_scene = true
@@ -70,6 +71,8 @@ pitch_scale = 1.5
 stream = ExtResource("5_5ti7w")
 volume_db = -20.0
 pitch_scale = 1.3
+script = ExtResource("6_0xill")
+startingDB = -20.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

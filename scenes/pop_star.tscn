@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="13_c62fy"]
 [ext_resource type="Script" path="res://scripts/PopHighscore.gd" id="14_v3axn"]
 [ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="15_nnk7x"]
-[ext_resource type="Texture2D" uid="uid://cnx5tvuh1ovar" path="res://assets/Stage 1 Instructions.png" id="16_amy0v"]
+[ext_resource type="Texture2D" uid="uid://d3mppwhwsnoru" path="res://assets/S2 Instructions.png" id="17_86h3r"]
 [ext_resource type="Texture2D" uid="uid://djk6wt2num5i7" path="res://assets/PopStarLetters.png" id="18_gbjqq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkb15"]
@@ -25,7 +25,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ibogi"]
 shader = ExtResource("6_0k8lj")
-shader_parameter/speedScale = 2.0
+shader_parameter/speedScale = 1.0
 
 [sub_resource type="Animation" id="Animation_620mn"]
 length = 0.001
@@ -79,7 +79,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5, 6, 7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-4009.03, -2320.2), Vector2(-2186.37, -251.231), Vector2(-2186.37, -251.231), Vector2(-4009.03, -2320.2)]
+"values": [Vector2(-6055.83, -3481.12), Vector2(-3701.15, -1392.45), Vector2(-3701.15, -1392.45), Vector2(-4441.71, -3087.85)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -91,7 +91,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.5, 6, 7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-0.000512142, -0.000512138), Vector2(5.00014, 5.00014), Vector2(5.00014, 5.00014), Vector2(-0.000512142, -0.000512138)]
+"values": [Vector2(-0.000512153, -0.000512153), Vector2(5.00014, 5.00014), Vector2(5.00014, 5.00014), Vector2(-0.000512142, -0.000512138)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -212,7 +212,7 @@ stream = ExtResource("15_nnk7x")
 [node name="Stage2Instructions" type="Sprite2D" parent="."]
 position = Vector2(-3432.68, -1695.4)
 scale = Vector2(0.36874, 0.36874)
-texture = ExtResource("16_amy0v")
+texture = ExtResource("17_86h3r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stage2Instructions"]
 libraries = {

@@ -48,7 +48,7 @@ func spawnSpecific(sze,x1,y1):
 	enemy.spawn(sze,x1,y1,flipSprite)
 	get_parent().add_child.call_deferred(enemy)
 
-var bossConst: float = 1.5
+var bossConst: float = 3
 
 func spawnEnemyBoss():
 	x = randf_range(0,outerBoundX * bossConst)
@@ -65,7 +65,7 @@ func spawnEnemyBoss():
 		y = -y
 	
 	var enemy = PURPLE_BOSS.instantiate()
-	enemy.spawn(randf_range(7.0,12.0),x,y,flipSprite)
+	enemy.spawn(randf_range(7.0,10.0),x,y,flipSprite)
 	get_parent().add_child.call_deferred(enemy)
 
 var innerBoundX = 5000

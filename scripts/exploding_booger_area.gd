@@ -113,7 +113,7 @@ func _physics_process(delta):
 @onready var collision_shape_2d = $CollisionShape2D
 
 func setFreeSequence():
-	bass_boom.volume_db = 10 * log(explosiveLifetime / 5) + 5
+	bass_boom.volume_db = AudioPreload.effectsVolDB + (10 * log(explosiveLifetime / 5) + 5)
 	bass_boom.pitch_scale = (1 / (explosiveLifetime + 1)) + 1.5
 	bass_boom.play(0.1)
 	rising_nebula.stop()
