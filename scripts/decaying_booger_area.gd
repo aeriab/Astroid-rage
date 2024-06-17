@@ -3,7 +3,7 @@ extends Area2D
 var x
 var y
 var theta
-var SPEED = 500 * Global.bulletSpeed - 300
+var speed = 500 * Global.bulletSpeed - 300
 
 var _scale = Vector2(Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3),Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3))
 
@@ -22,12 +22,14 @@ func areaName():
 
 func _ready():
 	
+	material.set_shader_parameter("redness",randf_range(0.0,1.0))
+	
 	orig_rotate_speed = randf_range(0.8,1.2)
 	monitoring = true
 	
 	upgradeLevel = Global.barrelUpNumArray[mutationPart - 1]
-	_scale = Vector2(Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10,Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10)
-	set_scale(_scale)
+	#_scale = Vector2(Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10,Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10)
+	#set_scale(_scale)
 	position.x = x
 	position.y = y
 	if Global.barrelUpNumArray[mutationPart - 1] == 1:
@@ -55,21 +57,33 @@ func set_motion(x1,y1,theta1,mutPart,sDown):
 	rot_motion = Global.prior_dir
 	mutationPart = mutPart
 	scaleDown = sDown
+	speed = randf_range(100,600) / scaleDown
+	origSpeed = speed
+
+var decayLifetime: float = 0.0
+var origSpeed: float = 0.0
 
 func _physics_process(delta):
-	x += cos(theta) * SPEED * delta * Global.gameTimeScale
-	y -= sin(theta) * SPEED * delta * Global.gameTimeScale
+	
+	material.set_shader_parameter("explosiveValue",speed/origSpeed)
+	
+	speed -= ((speed / 3) + 200) * delta * Global.gameTimeScale
+	
+	x += cos(theta) * speed * delta * Global.gameTimeScale
+	y -= sin(theta) * speed * delta * Global.gameTimeScale
 	
 	position.x = x
 	position.y = y
 	
 	rotate(delta * (orig_speed - 1) * rot_motion * 2 * orig_rotate_speed * Global.gameTimeScale)
 	
-	if scale.x - delta * Global.gameTimeScale < 0.05:
+	decayLifetime += delta * Global.gameTimeScale
+	
+	if speed < 1:
 		queue_free()
 	else:
-		scale.x -= delta * Global.gameTimeScale * 0.1 * scaleDown
-		scale.y -= delta * Global.gameTimeScale * 0.1 * scaleDown
+		scale.x = speed / 800
+		scale.y = speed / 800
 
 @onready var collision_shape_2d = $CollisionShape2D
 

@@ -1,25 +1,27 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvehop87gcxxe"]
 
 [ext_resource type="Script" path="res://scripts/decaying_booger_area.gd" id="1_nf0ob"]
-[ext_resource type="Shader" path="res://shaders/booger_area.gdshader" id="2_b62jd"]
+[ext_resource type="Shader" path="res://shaders/exploding_booger_area.gdshader" id="1_tdfjm"]
 [ext_resource type="Texture2D" uid="uid://dietwv2tbrab2" path="res://assets/damageProjectiles/DamGameProjectile1.png" id="3_21t5u"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_52g37"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnmr8"]
 resource_local_to_scene = true
-shader = ExtResource("2_b62jd")
-shader_parameter/player_damage = 0.0
+shader = ExtResource("1_tdfjm")
+shader_parameter/explosiveValue = 1.0
+shader_parameter/redness = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3a1r5"]
 radius = 11.1925
 
 [node name="DecayingBoogerArea" type="Area2D" groups=["BoogerArea"]]
 z_index = 1
+material = SubResource("ShaderMaterial_mnmr8")
 scale = Vector2(0.189351, 0.189351)
 collision_mask = 2
 script = ExtResource("1_nf0ob")
 
 [node name="GameProjectile" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_52g37")
+use_parent_material = true
 position = Vector2(-1, -2)
 scale = Vector2(1, 0.993421)
 texture = ExtResource("3_21t5u")

@@ -40,19 +40,19 @@ var randEnSprite: int
 
 func _ready():
 	randEnSprite = randi_range(0,100)
-	if randEnSprite <= 20:
+	if randEnSprite <= 15:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDefault.png")
 	elif randEnSprite <= 25:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyBored.png")
-	elif randEnSprite <= 30:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
 	elif randEnSprite <= 35:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
-	elif randEnSprite <= 40:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
 	elif randEnSprite <= 45:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
+	elif randEnSprite <= 60:
+		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
+	elif randEnSprite <= 75:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyMouth.png")
-	elif randEnSprite <= 50:
+	elif randEnSprite <= 85:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyNose.png")
 	elif randEnSprite <= 99:
 		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
@@ -63,7 +63,7 @@ func _ready():
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
 
-func spawn(dif):
+func spawn(dif,xgiven,ygiven,flipgiven):
 	difficulty = dif
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
@@ -84,17 +84,9 @@ func spawn(dif):
 	randomize()
 	shader_value = 0.0
 	
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
-	else:
-		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
+	x = xgiven
+	y = ygiven
+	flipSprite = flipgiven
 	
 	hypotenuse = sqrt((x * x) + (y * y))
 	

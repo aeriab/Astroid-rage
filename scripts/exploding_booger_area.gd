@@ -5,7 +5,7 @@ extends Area2D
 var x
 var y
 var theta
-var SPEED = 500 * Global.bulletSpeed - 300
+var speed = 500 * Global.bulletSpeed - 300
 
 var _scale = Vector2(Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3),Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3))
 
@@ -73,9 +73,8 @@ func set_motion(x1,y1,theta1,mutPart):
 	mutationPart = mutPart
 
 func _physics_process(delta):
-	
-	x += cos(theta) * SPEED * delta * Global.gameTimeScale
-	y -= sin(theta) * SPEED * delta * Global.gameTimeScale
+	x += cos(theta) * speed * delta * Global.gameTimeScale
+	y -= sin(theta) * speed * delta * Global.gameTimeScale
 	
 	explosiveLifetime += delta * Global.gameTimeScale
 	material.set_shader_parameter("explosiveValue",explosiveLifetime / 5.0)
@@ -114,9 +113,8 @@ func _physics_process(delta):
 @onready var collision_shape_2d = $CollisionShape2D
 
 func setFreeSequence():
-	print(str(explosiveLifetime))
 	bass_boom.volume_db = 10 * log(explosiveLifetime / 5) + 5
-	bass_boom.pitch_scale = (1 / (explosiveLifetime + 1)) + 1
+	bass_boom.pitch_scale = (1 / (explosiveLifetime + 1)) + 1.5
 	bass_boom.play(0.1)
 	rising_nebula.stop()
 	firstTimeExploding = false

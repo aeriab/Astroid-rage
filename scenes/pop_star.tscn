@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="5_kb3rd"]
 [ext_resource type="Script" path="res://scripts/BulletHandlerSt2.gd" id="5_m7hk0"]
 [ext_resource type="Shader" path="res://shaders/level_oneback.gdshader" id="6_0k8lj"]
-[ext_resource type="Texture2D" uid="uid://c3yeb4whjsl72" path="res://assets/image-from-rawpixel-id-5924106-jpeg.jpg" id="8_ecva4"]
+[ext_resource type="Texture2D" uid="uid://dc3hwl8kqvpc" path="res://assets/S2Background.png" id="8_xfa7c"]
 [ext_resource type="Script" path="res://scripts/EndlessWavesSt2.gd" id="9_8cern"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="9_tvsoy"]
 [ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="10_c4mor"]
@@ -162,8 +162,8 @@ shape = SubResource("WorldBoundaryShape2D_o6nwr")
 [node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ibogi")
 position = Vector2(0, 1.90735e-06)
-scale = Vector2(4.63596, 4.63596)
-texture = ExtResource("8_ecva4")
+scale = Vector2(15.2025, 15.2025)
+texture = ExtResource("8_xfa7c")
 
 [node name="EndlessWavesSt2" type="Node" parent="."]
 script = ExtResource("9_8cern")
@@ -182,26 +182,26 @@ scale = Vector2(0.658475, 0.658475)
 
 [node name="Score" type="Label" parent="."]
 z_index = 5
-offset_left = -3818.55
-offset_top = 1623.97
-offset_right = -1694.55
-offset_bottom = 2032.97
+offset_left = -6013.14
+offset_top = 2342.36
+offset_right = -2880.14
+offset_bottom = 3024.36
 theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
-theme_override_constants/shadow_outline_size = 60
-theme_override_font_sizes/font_size = 300
+theme_override_constants/shadow_outline_size = 120
+theme_override_font_sizes/font_size = 500
 text = "SCORE: 0 PTS"
 script = ExtResource("13_c62fy")
 metadata/_edit_use_anchors_ = true
 
 [node name="Highscore" type="Label" parent="."]
 z_index = 5
-offset_left = -3818.55
-offset_top = 1982.75
-offset_right = -1694.55
-offset_bottom = 2391.75
+offset_left = -5994.25
+offset_top = 3019.7
+offset_right = -3707.25
+offset_bottom = 3428.7
 theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
-theme_override_constants/shadow_outline_size = 60
-theme_override_font_sizes/font_size = 150
+theme_override_constants/shadow_outline_size = 100
+theme_override_font_sizes/font_size = 260
 text = "HIGHSCORE: 0 PTS"
 script = ExtResource("14_v3axn")
 metadata/_edit_use_anchors_ = true
@@ -222,8 +222,8 @@ autoplay = "S1Instructions"
 
 [node name="PopStarLetters" type="Sprite2D" parent="."]
 z_index = 10
-position = Vector2(2985.22, 1767.65)
-scale = Vector2(1.8, 1.8)
+position = Vector2(4568.14, 2954.02)
+scale = Vector2(3.28164, 3.28164)
 texture = ExtResource("18_gbjqq")
 
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]
