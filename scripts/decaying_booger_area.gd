@@ -5,8 +5,6 @@ var y
 var theta
 var speed = 500 * Global.bulletSpeed - 300
 
-var _scale = Vector2(Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3),Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3))
-
 var rot_motion: float = 1.0
 
 var orig_speed: float = Global.bulletSpeed

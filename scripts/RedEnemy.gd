@@ -17,7 +17,7 @@ var y = 5000
 var hypotenuse
 var theta
 
-const SPEED = 200
+const SPEED = 130
 const FADE_SPEED = 0.5
 
 var innerBoundX = 5000
@@ -126,7 +126,7 @@ func addDamage():
 		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
 		pointsNotif.position = Vector2 (x,y)
 		points = sizeOfEnemy * 100
-		Global.points += points
+		Global.points += int(points)
 		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
 		get_parent().add_child.call_deferred(pointsNotif)
 		setFreeSequence()

@@ -1,10 +1,12 @@
 extends Area2D
 
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
+const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
 
 @onready var cpu_particles_2d = $CPUParticles2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var collision_polygon_2d = $CollisionPolygon2D
+
 @onready var timer = $Timer
 
 var shader_value = material.get_shader_parameter("value")
@@ -16,7 +18,7 @@ var y = 5000
 var hypotenuse
 var theta
 
-const SPEED = 200
+const SPEED = 130
 const FADE_SPEED = 0.5
 
 var innerBoundX = 5000
@@ -34,34 +36,29 @@ var xpAmount: float
 var sizeOfEnemy: float
 
 var difficulty: float = 1.0
+
 @onready var spiral_enemy = $SpiralEnemy
 
 var randEnSprite: int
 
 func _ready():
-	randEnSprite = randi_range(0,100)
-	if randEnSprite <= 35:
-		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemy.png")
-	elif randEnSprite <= 65:
-		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemyStar.png")
-	else:
-		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemyBrow.png")
 	
 	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
 
-func spawn(dif):
+func spawn(dif,xgiven,ygiven,flipgiven):
 	difficulty = dif
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
 	
 	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
+	
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
 	if sizeOfEnemy >= 1.48 * difficulty:
 		sizeOfEnemy = 3.0 * difficulty
-	
-	
+	scale.x = sizeOfEnemy
+	scale.y = sizeOfEnemy
 	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 10) 
 	
 	shader_alpha = 0.0
@@ -71,17 +68,9 @@ func spawn(dif):
 	randomize()
 	shader_value = 0.0
 	
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
-	else:
-		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
+	x = xgiven
+	y = ygiven
+	flipSprite = flipgiven
 	
 	hypotenuse = sqrt((x * x) + (y * y))
 	
@@ -91,26 +80,26 @@ func spawn(dif):
 		theta = 2 * PI -  acos(x / hypotenuse)
 	
 	rotation = -theta + PI
-	scale.x = sizeOfEnemy
 	scale.y = sizeOfEnemy * flipSprite
 
 func _physics_process(delta):
 	
-	x -= cos(theta) * SPEED * delta
-	y -= -sin(theta) * SPEED * delta
+	x -= cos(theta) * SPEED * delta * Global.gameTimeScale
+	y -= -sin(theta) * SPEED * delta * Global.gameTimeScale
 	
 	scale.x = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy)
 	
 	position = Vector2(x,y)
-	time_ellapsed += delta * 5
+	time_ellapsed += delta * 5 * Global.gameTimeScale
 	if shader_alpha != 1.0:
-		shader_alpha += FADE_SPEED * delta
+		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
-	
+
+var points: float = 0.0
 
 func addDamage():
-	shader_value = shader_value + damage_chunk
+	shader_value = shader_value + (damage_chunk * 5)
 	
 	shader_value = clamp(shader_value,0.0,1.0)
 	
@@ -119,10 +108,12 @@ func addDamage():
 	if shader_value >= 0.9:
 		Global.decreaseEnemyNum()
 		Global.addXP(xpAmount)
-		var xpNotif = XP_NOTIFICATION.instantiate()
-		xpNotif.position = Vector2 (x,y)
-		xpNotif.getXPSize(xpAmount)
-		get_parent().add_child.call_deferred(xpNotif)
+		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+		pointsNotif.position = Vector2 (x,y)
+		points = sizeOfEnemy * 100
+		Global.points += int(points)
+		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		get_parent().add_child.call_deferred(pointsNotif)
 		setFreeSequence()
 
 func _on_area_entered(area):
@@ -133,7 +124,7 @@ func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
 		Global.enemyNum -= 1
-		call_deferred("queue_free")
+		setFreeSequence()
 
 func setFreeSequence():
 	cpu_particles_2d.emitting = true
@@ -144,3 +135,6 @@ func setFreeSequence():
 
 func _on_timer_timeout():
 	queue_free()
+
+
+

@@ -1,6 +1,7 @@
 extends Node
 
 const RED_ENEMY = preload("res://scenes/redEnemy.tscn")
+const PURPLE_BOSS = preload("res://scenes/purple_worm.tscn")
 
 var time: float = 0.0
 var next_time: float = 0.0
@@ -16,7 +17,7 @@ var next_boss_time: float
 
 func _ready():
 	next_time = randf_range(1.0, 2.0)
-	next_boss_time = randf_range(20.0,25.0)
+	next_boss_time = randf_range(10.0,12.0)
 	Global.rotationSpeed = log(progress + 2) / log(e) + 1.5
 	Global.bulletSpeed = log(progress + 2) / log(e) + 1.0
 
@@ -25,16 +26,16 @@ func _process(delta):
 	
 	if time >= next_time:
 		spawnEnemyGroup()
-		Global.gameTimeScale += 0.01
-		next_time = randf_range(10.0,20.0)
+		Global.gameTimeScale += 0.02
+		next_time = randf_range(8.0,16.0)
 		time = 0.0
 	
 	bossTime += delta * Global.gameTimeScale
 	
 	if bossTime >= next_boss_time:
 		spawnEnemyBoss()
-		Global.gameTimeScale += 0.005
-		next_boss_time = randf_range(30.0,50.0)
+		Global.gameTimeScale += 0.01
+		next_boss_time = randf_range(15.0,25.0)
 		bossTime = 0.0
 
 func spawnTargetEnemy():
@@ -42,12 +43,12 @@ func spawnTargetEnemy():
 	enemy.spawn(randf_range(1.0,1.5))
 	get_parent().add_child.call_deferred(enemy)
 
-func spawnSpecific(sze,x,y):
+func spawnSpecific(sze,x1,y1):
 	var enemy = RED_ENEMY.instantiate()
-	enemy.spawn(sze,x,y,flipSprite)
+	enemy.spawn(sze,x1,y1,flipSprite)
 	get_parent().add_child.call_deferred(enemy)
 
-var bossConst: float = 5.0
+var bossConst: float = 1.5
 
 func spawnEnemyBoss():
 	x = randf_range(0,outerBoundX * bossConst)
@@ -63,8 +64,9 @@ func spawnEnemyBoss():
 	if randi_range(0,1) == 1:
 		y = -y
 	
-	spawnSpecific(randf_range(10.0,15.0),x,y)
-	
+	var enemy = PURPLE_BOSS.instantiate()
+	enemy.spawn(randf_range(7.0,12.0),x,y,flipSprite)
+	get_parent().add_child.call_deferred(enemy)
 
 var innerBoundX = 5000
 var innerBoundY = 5000

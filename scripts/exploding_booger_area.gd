@@ -93,17 +93,17 @@ func _physics_process(delta):
 			var greenspot = DECAYING_GREEN_SPOT.instantiate()
 			
 			get_parent().add_child.call_deferred(greenspot)
-			var x: float = position.x
-			var y: float = position.y
+			var x1: float = position.x
+			var y1: float = position.y
 			
-			var snout_length = sqrt((x * x) + (y * y))
+			var snout_length = sqrt((x1 * x1) + (y1 * y1))
 			
-			if y < 0:
-				theta = acos(x / snout_length) + randf_range(-PI,PI)
+			if y1 < 0:
+				theta = acos(x1 / snout_length) + randf_range(-PI,PI)
 			else:
-				theta = 2 * PI -  acos(x / snout_length)  + randf_range(-PI,PI)
+				theta = 2 * PI -  acos(x1 / snout_length)  + randf_range(-PI,PI)
 			
-			greenspot.set_motion(x,y,theta,1,1/explosiveLifetime)
+			greenspot.set_motion(x1,y1,theta,1,1/explosiveLifetime)
 			i += 1
 		
 		
