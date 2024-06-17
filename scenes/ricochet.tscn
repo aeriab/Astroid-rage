@@ -1,0 +1,229 @@
+[gd_scene load_steps=25 format=3 uid="uid://ba5lbis2655l6"]
+
+[ext_resource type="Script" path="res://scripts/level_three.gd" id="1_m6bgb"]
+[ext_resource type="Script" path="res://scripts/StTwoPlayer.gd" id="2_t6ll8"]
+[ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="3_2lvl2"]
+[ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="4_vdtun"]
+[ext_resource type="Script" path="res://scripts/BulletHandlerSt2.gd" id="5_7hhsl"]
+[ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="6_l5r5s"]
+[ext_resource type="Shader" path="res://shaders/level_oneback.gdshader" id="7_actfv"]
+[ext_resource type="Texture2D" uid="uid://dc3hwl8kqvpc" path="res://assets/S2Background.png" id="8_0vxsv"]
+[ext_resource type="Script" path="res://scripts/EndlessWavesSt2.gd" id="9_tbeal"]
+[ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="10_tntsu"]
+[ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="11_hvru1"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_cy8yo"]
+[ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="13_h8oyy"]
+[ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="14_ra27o"]
+[ext_resource type="Script" path="res://scripts/PopHighscore.gd" id="15_ww6nt"]
+[ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="16_3qx6s"]
+[ext_resource type="Texture2D" uid="uid://d3mppwhwsnoru" path="res://assets/S2 Instructions.png" id="17_xmcne"]
+[ext_resource type="Texture2D" uid="uid://djk6wt2num5i7" path="res://assets/PopStarLetters.png" id="18_qlshi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkb15"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o6nwr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibogi"]
+shader = ExtResource("7_actfv")
+shader_parameter/speedScale = 1.0
+
+[sub_resource type="Animation" id="Animation_620mn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3432.68, -1695.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.36874, 0.36874)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0tmod"]
+resource_name = "S1Instructions"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-6055.83, -3481.12), Vector2(-3701.15, -1392.45), Vector2(-3701.15, -1392.45), Vector2(-4441.71, -3087.85)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.000512153, -0.000512153), Vector2(5.00014, 5.00014), Vector2(5.00014, 5.00014), Vector2(-0.000512142, -0.000512138)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-6.28319, 0.0, 0.0, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43s2g"]
+_data = {
+"RESET": SubResource("Animation_620mn"),
+"S1Instructions": SubResource("Animation_0tmod")
+}
+
+[node name="Ricochet" type="Node2D"]
+scale = Vector2(1.218, 1.218)
+script = ExtResource("1_m6bgb")
+
+[node name="Player" type="Area2D" parent="." groups=["Player"]]
+script = ExtResource("2_t6ll8")
+
+[node name="TankBirdBod(1)" type="Sprite2D" parent="Player"]
+z_index = 3
+texture = ExtResource("3_2lvl2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+z_index = 4
+scale = Vector2(23.58, 23.2821)
+shape = SubResource("CircleShape2D_jkb15")
+
+[node name="mutationPart" parent="Player" instance=ExtResource("4_vdtun")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.12, 0.12)
+
+[node name="BulletHandlerSt2" type="Node" parent="."]
+script = ExtResource("5_7hhsl")
+
+[node name="AreaBulletCollection" type="Area2D" parent="."]
+script = ExtResource("6_l5r5s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(0, 6000)
+shape = SubResource("WorldBoundaryShape2D_o6nwr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(-9000, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_o6nwr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(9000, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_o6nwr")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AreaBulletCollection"]
+position = Vector2(0, -6000)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_o6nwr")
+
+[node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ibogi")
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(15.2025, 15.2025)
+texture = ExtResource("8_0vxsv")
+
+[node name="EndlessWavesSt2" type="Node" parent="."]
+script = ExtResource("9_tbeal")
+
+[node name="GameOver" parent="." instance=ExtResource("10_tntsu")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("11_hvru1")]
+visible = false
+script = ExtResource("12_cy8yo")
+
+[node name="HealthBarRed" parent="." instance=ExtResource("13_h8oyy")]
+z_index = 7
+position = Vector2(2.84217e-14, 720.73)
+scale = Vector2(0.658475, 0.658475)
+
+[node name="Score" type="Label" parent="."]
+z_index = 5
+offset_left = -6013.14
+offset_top = 2342.36
+offset_right = -2880.14
+offset_bottom = 3024.36
+theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/shadow_outline_size = 120
+theme_override_font_sizes/font_size = 500
+text = "SCORE: 0 PTS"
+script = ExtResource("14_ra27o")
+metadata/_edit_use_anchors_ = true
+
+[node name="Highscore" type="Label" parent="."]
+z_index = 5
+offset_left = -5994.25
+offset_top = 3019.7
+offset_right = -3707.25
+offset_bottom = 3428.7
+theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/shadow_outline_size = 100
+theme_override_font_sizes/font_size = 260
+text = "HIGHSCORE: 0 PTS"
+script = ExtResource("15_ww6nt")
+metadata/_edit_use_anchors_ = true
+
+[node name="PopSfxPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_3qx6s")
+
+[node name="Stage2Instructions" type="Sprite2D" parent="."]
+position = Vector2(-3432.68, -1695.4)
+scale = Vector2(0.36874, 0.36874)
+texture = ExtResource("17_xmcne")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stage2Instructions"]
+libraries = {
+"": SubResource("AnimationLibrary_43s2g")
+}
+autoplay = "S1Instructions"
+
+[node name="PopStarLetters" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(4568.14, 2954.02)
+scale = Vector2(3.28164, 3.28164)
+texture = ExtResource("18_qlshi")
+
+[connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

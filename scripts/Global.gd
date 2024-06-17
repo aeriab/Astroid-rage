@@ -18,7 +18,15 @@ const popS3: int = 4000
 const popS4: int = 10000
 const popS5: int = 20000
 const popS6: int = 30000
-const popS7: int = 40000
+const popS7: int = 50000
+
+const ricoS1: int = 1000
+const ricoS2: int = 2000
+const ricoS3: int = 4000
+const ricoS4: int = 10000
+const ricoS5: int = 20000
+const ricoS6: int = 30000
+const ricoS7: int = 50000
 
 var curS1: int = 1
 var curS2: int = 2
@@ -36,6 +44,7 @@ var gameTimeScale: float = 1.0
 
 var highscore: int = 0
 var popHighscore: int = 0
+var ricoHighscore: int = 0
 var curHighscore: int = 0
 
 var points: int = 0
@@ -112,6 +121,9 @@ func resetStats():
 	if curStage == 2:
 		if points > popHighscore:
 			popHighscore = points
+	if curStage == 3:
+		if points > ricoHighscore:
+			ricoHighscore = points
 	
 	points = 0
 	consecBulls = 0

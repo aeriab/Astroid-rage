@@ -1,4 +1,4 @@
 extends Label
 
 func _ready():
-	text = "HIGHSCORE: " + str(Global.popHighscore) + " PTS"
+	text = "HIGHSCORE: " + str(Global.ricoHighscore) + " PTS"
