@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnpaqa1rqa208"]
+
+[ext_resource type="Texture2D" uid="uid://cde5sab6d26r5" path="res://assets/ricoBall.png" id="1_24wlh"]
+[ext_resource type="Script" path="res://scripts/rico_ball.gd" id="1_dfvwm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_12sr8"]
+radius = 249.25
+
+[sub_resource type="Curve" id="Curve_wt3ny"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
+
+[node name="RicoBall" type="Area2D" groups=["BoogerArea", "RicoBall"]]
+z_index = 1
+scale = Vector2(0.189351, 0.189351)
+collision_mask = 2
+script = ExtResource("1_dfvwm")
+
+[node name="GameProjectile" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(1, 0.993421)
+texture = ExtResource("1_24wlh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_12sr8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+z_index = 5
+scale = Vector2(15, 15)
+emitting = false
+amount = 20
+lifetime = 0.1
+one_shot = true
+speed_scale = 0.2
+explosiveness = 0.8
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_wt3ny")
+color = Color(0, 0, 1, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

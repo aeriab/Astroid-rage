@@ -8,19 +8,19 @@ extends Node2D
 @onready var star_particle_7 = $StarCompletes/StarParticle7
 
 func _ready():
-	if Global.highscore > Global.tarPracS1:
+	if Global.highscore >= Global.tarPracS1:
 		star_particle_1.visible = true
-	if Global.highscore > Global.tarPracS2:
+	if Global.highscore >= Global.tarPracS2:
 		star_particle_2.visible = true
-	if Global.highscore > Global.tarPracS3:
+	if Global.highscore >= Global.tarPracS3:
 		star_particle_3.visible = true
-	if Global.highscore > Global.tarPracS4:
+	if Global.highscore >= Global.tarPracS4:
 		star_particle_4.visible = true
-	if Global.highscore > Global.tarPracS5:
+	if Global.highscore >= Global.tarPracS5:
 		star_particle_5.visible = true
-	if Global.highscore > Global.tarPracS6:
+	if Global.highscore >= Global.tarPracS6:
 		star_particle_6.visible = true
-	if Global.highscore > Global.tarPracS7:
+	if Global.highscore >= Global.tarPracS7:
 		star_particle_7.visible = true
 	
 
