@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://n3pfbthhjb2o"]
 
-[ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_uwpo3"]
-[ext_resource type="Script" path="res://scripts/MusicVolume.gd" id="2_ovd1b"]
-[ext_resource type="Texture2D" uid="uid://cva3wsbyec1c2" path="res://assets/VolumeSprites/Splatcho Volume Slider (1).png" id="3_k4sxx"]
-[ext_resource type="Script" path="res://scripts/SFXVolume.gd" id="4_4kyg5"]
+[ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_mbgcs"]
+[ext_resource type="Script" path="res://scripts/MusicVolume.gd" id="2_v7yv8"]
+[ext_resource type="Texture2D" uid="uid://cva3wsbyec1c2" path="res://assets/VolumeSprites/Splatcho Volume Slider (1).png" id="3_aovcj"]
+[ext_resource type="Script" path="res://scripts/SFXVolume.gd" id="4_bd81k"]
 
 [node name="HomeMenu" type="Node2D"]
 
 [node name="HomeCanvas" type="CanvasLayer" parent="."]
-script = ExtResource("1_uwpo3")
+script = ExtResource("1_mbgcs")
 
 [node name="OverWords" type="Label" parent="HomeCanvas"]
 anchors_preset = 15
@@ -84,12 +84,12 @@ offset_left = 50.0
 offset_top = 480.0
 offset_right = 90.0
 offset_bottom = 520.0
-script = ExtResource("2_ovd1b")
+script = ExtResource("2_v7yv8")
 
 [node name="SplatchoVolumeSlider" type="Sprite2D" parent="HomeCanvas/MusicVolume"]
 position = Vector2(416, 54)
 scale = Vector2(0.194444, 0.194444)
-texture = ExtResource("3_k4sxx")
+texture = ExtResource("3_aovcj")
 
 [node name="HSlider" type="HSlider" parent="HomeCanvas/MusicVolume"]
 layout_mode = 0
@@ -116,12 +116,12 @@ offset_left = 50.0
 offset_top = 702.0
 offset_right = 90.0
 offset_bottom = 742.0
-script = ExtResource("4_4kyg5")
+script = ExtResource("4_bd81k")
 
 [node name="SplatchoVolumeSlider" type="Sprite2D" parent="HomeCanvas/SFXVolume"]
 position = Vector2(416, 54)
 scale = Vector2(0.194444, 0.194444)
-texture = ExtResource("3_k4sxx")
+texture = ExtResource("3_aovcj")
 
 [node name="HSlider" type="HSlider" parent="HomeCanvas/SFXVolume"]
 layout_mode = 0

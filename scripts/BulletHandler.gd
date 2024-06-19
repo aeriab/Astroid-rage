@@ -1,6 +1,5 @@
 extends Node
-
-const GREEN_SPOT = preload("res://scenes/booger_area.tscn")
+const GREEN_SPOT = preload("res://scenes/boogers/booger_area.tscn")
 const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
 
 @onready var mutation_part = $"../Player/mutationPart"

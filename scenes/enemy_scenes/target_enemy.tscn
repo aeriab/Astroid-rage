@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://crjv3dgr7w1e6"]
 
-[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_5i8u7"]
-[ext_resource type="Script" path="res://scripts/target_enemy_top.gd" id="1_iqmo0"]
-[ext_resource type="Texture2D" uid="uid://kpwsiqvv67lu" path="res://assets/Square Particle.png" id="3_2wiie"]
-[ext_resource type="Texture2D" uid="uid://dbaqv6l82cm7m" path="res://assets/Target Enemy (1).png" id="3_tnqhr"]
-[ext_resource type="AudioStream" uid="uid://b5c018x3t50w0" path="res://assets/bullsEyeHit.mp3" id="5_eypkn"]
-[ext_resource type="AudioStream" uid="uid://bv11k7rmmyyf4" path="res://assets/hitSounds/punch-1-166694.mp3" id="6_dceka"]
+[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_og3l6"]
+[ext_resource type="Script" path="res://scripts/target_enemy_top.gd" id="2_1iq1k"]
+[ext_resource type="Texture2D" uid="uid://kpwsiqvv67lu" path="res://assets/Square Particle.png" id="3_2gmsw"]
+[ext_resource type="Texture2D" uid="uid://dbaqv6l82cm7m" path="res://assets/Target Enemy (1).png" id="4_8voyu"]
+[ext_resource type="AudioStream" uid="uid://b5c018x3t50w0" path="res://assets/bullsEyeHit.mp3" id="5_nk5p1"]
+[ext_resource type="AudioStream" uid="uid://bv11k7rmmyyf4" path="res://assets/hitSounds/punch-1-166694.mp3" id="6_nysq6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2xlu5"]
 resource_local_to_scene = true
-shader = ExtResource("1_5i8u7")
+shader = ExtResource("1_og3l6")
 shader_parameter/damage_value = null
 shader_parameter/alpha_value = 1.0
 
@@ -23,13 +23,13 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jbbrr"]
 resource_local_to_scene = true
-shader = ExtResource("1_5i8u7")
+shader = ExtResource("1_og3l6")
 shader_parameter/damage_value = null
 shader_parameter/alpha_value = 1.0
 
 [node name="TargetEnemy" type="Node2D"]
 material = SubResource("ShaderMaterial_2xlu5")
-script = ExtResource("1_iqmo0")
+script = ExtResource("2_1iq1k")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -44,7 +44,7 @@ lifetime = 2.0
 one_shot = true
 speed_scale = 2.0
 explosiveness = 0.9
-texture = ExtResource("3_2wiie")
+texture = ExtResource("3_2gmsw")
 emission_shape = 1
 emission_sphere_radius = 5.0
 direction = Vector2(1, 1)
@@ -62,7 +62,7 @@ color_ramp = SubResource("Gradient_78qml")
 [node name="SplatchoEnemy" type="Sprite2D" parent="."]
 use_parent_material = true
 position = Vector2(10, -90)
-texture = ExtResource("3_tnqhr")
+texture = ExtResource("4_8voyu")
 
 [node name="targetEnemy" type="Area2D" parent="." groups=["Outer"]]
 
@@ -96,10 +96,10 @@ scale = Vector2(1.02399, 1)
 polygon = PackedVector2Array(17, -377, 17, -130, -170, -128, -181, -241, -170, -379)
 
 [node name="BullsEyeHitPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_eypkn")
+stream = ExtResource("5_nk5p1")
 
 [node name="CharHitPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_dceka")
+stream = ExtResource("6_nysq6")
 
 [connection signal="timeout" from="Timer" to="targetEnemy" method="_on_timer_timeout"]
 [connection signal="area_entered" from="targetEnemy" to="." method="_on_target_enemy_area_entered"]

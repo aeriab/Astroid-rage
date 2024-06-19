@@ -61,7 +61,7 @@ func _physics_process(delta):
 
 @onready var collision_shape_2d = $CollisionShape2D
 const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
-const RICO_BALL = preload("res://scenes/rico_ball.tscn")
+const RICO_BALL = preload("res://scenes/boogers/rico_ball.tscn")
 
 func setFreeSequence():
 	if canBounce:

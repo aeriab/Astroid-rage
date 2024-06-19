@@ -1,7 +1,7 @@
 extends Node
 
-const RED_ENEMY = preload("res://scenes/redEnemy.tscn")
-const PURPLE_BOSS = preload("res://scenes/purple_worm.tscn")
+const RED_ENEMY = preload("res://scenes/enemy_scenes/redEnemy.tscn")
+const PURPLE_BOSS = preload("res://scenes/enemy_scenes/purple_worm.tscn")
 
 var time: float = 0.0
 var next_time: float = 0.0

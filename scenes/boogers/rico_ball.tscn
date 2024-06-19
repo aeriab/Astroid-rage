@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnpaqa1rqa208"]
 
-[ext_resource type="Texture2D" uid="uid://cde5sab6d26r5" path="res://assets/ricoBall.png" id="1_24wlh"]
-[ext_resource type="Script" path="res://scripts/rico_ball.gd" id="1_dfvwm"]
+[ext_resource type="Script" path="res://scripts/rico_ball.gd" id="1_jl7l4"]
+[ext_resource type="Texture2D" uid="uid://cde5sab6d26r5" path="res://assets/ricoBall.png" id="2_u8yx4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_12sr8"]
 radius = 249.25
@@ -14,12 +14,12 @@ point_count = 2
 z_index = 1
 scale = Vector2(0.189351, 0.189351)
 collision_mask = 2
-script = ExtResource("1_dfvwm")
+script = ExtResource("1_jl7l4")
 
 [node name="GameProjectile" type="Sprite2D" parent="."]
 position = Vector2(-1, -2)
 scale = Vector2(1, 0.993421)
-texture = ExtResource("1_24wlh")
+texture = ExtResource("2_u8yx4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

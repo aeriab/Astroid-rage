@@ -1,6 +1,6 @@
 extends Node
 
-const TARGET_ENEMY = preload("res://scenes/target_enemy.tscn")
+const TARGET_ENEMY = preload("res://scenes/enemy_scenes/target_enemy.tscn")
 
 var time: float = 0.0
 var next_time: float = 0.0

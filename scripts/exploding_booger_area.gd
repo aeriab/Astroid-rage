@@ -25,7 +25,7 @@ var explosiveLifetime: float = 0.0
 @onready var cpu_particles_2d_2 = $CPUParticles2D2
 @onready var timer = $Timer
 
-const DECAYING_GREEN_SPOT = preload("res://scenes/decaying_booger_area.tscn")
+const DECAYING_GREEN_SPOT = preload("res://scenes/boogers/decaying_booger_area.tscn")
 
 func areaName():
 	return "Booger"

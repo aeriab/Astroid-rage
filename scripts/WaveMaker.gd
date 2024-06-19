@@ -1,9 +1,9 @@
 extends Node
 
-const RED_ENEMY = preload("res://scenes/redEnemy.tscn")
-const PURPLE_ENEMY = preload("res://scenes/purple_worm.tscn")
-const SWIRL_ENEMY = preload("res://scenes/swirl_enemy.tscn")
-const ZAG_ENEMY = preload("res://scenes/zag_enemy.tscn")
+const RED_ENEMY = preload("res://scenes/enemy_scenes/redEnemy.tscn")
+const PURPLE_ENEMY = preload("res://scenes/enemy_scenes/purple_worm.tscn")
+const SWIRL_ENEMY = preload("res://scenes/enemy_scenes/swirl_enemy.tscn")
+const ZAG_ENEMY = preload("res://scenes/enemy_scenes/zag_enemy.tscn")
 
 var difficulty: float = 1.0
 var time: float = 0.0

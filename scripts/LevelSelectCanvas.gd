@@ -9,16 +9,16 @@ func _ready():
 	rico_highscore.text = "HIGHSCORE: " + str(Global.ricoHighscore) + " PTS"
 
 func _on_home_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/home_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/playable_scenes/home_menu.tscn")
 
 
 func _on_target_practice_pressed():
-	get_tree().change_scene_to_file("res://scenes/target_practice.tscn")
+	get_tree().change_scene_to_file("res://scenes/playable_scenes/target_practice.tscn")
 
 
 func _on_pop_star_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/pop_star.tscn")
+	get_tree().change_scene_to_file("res://scenes/playable_scenes/pop_star.tscn")
 
 
 func _on_ricochet_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/ricochet.tscn")
+	get_tree().change_scene_to_file("res://scenes/playable_scenes/ricochet.tscn")
