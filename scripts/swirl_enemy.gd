@@ -1,6 +1,8 @@
 extends Area2D
 
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
+const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
+var points: float = 0.0
 
 @onready var cpu_particles_2d = $CPUParticles2D
 @onready var collision_polygon_2d = $CollisionPolygon2D
@@ -53,20 +55,18 @@ func _ready():
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
 
-func spawn(dif):
+func spawn(dif,xgiven,ygiven,flipgiven):
 	difficulty = dif
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
 	
-	if randi_range(0,1) == 0:
-		direction = -1
-	
 	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
+	
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
 	if sizeOfEnemy >= 1.48 * difficulty:
 		sizeOfEnemy = 3.0 * difficulty
-	
-	
+	scale.x = sizeOfEnemy
+	scale.y = sizeOfEnemy
 	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 10) 
 	
 	shader_alpha = 0.0
@@ -76,17 +76,9 @@ func spawn(dif):
 	randomize()
 	shader_value = 0.0
 	
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
-	else:
-		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
+	x = xgiven
+	y = ygiven
+	flipSprite = flipgiven
 	
 	hypotenuse = sqrt((x * x) + (y * y))
 	
@@ -101,11 +93,11 @@ func spawn(dif):
 func _physics_process(delta):
 
 	if direction == 1:
-		x -= sin(theta) * SPEED * delta
-		y -= cos(theta) * SPEED * delta
+		x -= sin(theta) * SPEED * delta * Global.gameTimeScale
+		y -= cos(theta) * SPEED * delta * Global.gameTimeScale
 	else:
-		x += sin(theta) * SPEED * delta
-		y += cos(theta) * SPEED * delta
+		x += sin(theta) * SPEED * delta * Global.gameTimeScale
+		y += cos(theta) * SPEED * delta * Global.gameTimeScale
 	
 	hypotenuse = sqrt((x * x) + (y * y))
 	if direction == 1:
@@ -143,10 +135,12 @@ func addDamage():
 	if shader_value >= 0.9:
 		Global.decreaseEnemyNum()
 		Global.addXP(xpAmount)
-		var xpNotif = XP_NOTIFICATION.instantiate()
-		xpNotif.position = Vector2 (x,y)
-		xpNotif.getXPSize(xpAmount)
-		get_parent().add_child.call_deferred(xpNotif)
+		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+		pointsNotif.position = Vector2 (x,y)
+		points = sizeOfEnemy * 100
+		Global.points += int(points)
+		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		get_parent().add_child.call_deferred(pointsNotif)
 		setFreeSequence()
 
 func _on_area_entered(area):

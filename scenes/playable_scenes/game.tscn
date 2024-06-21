@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/BulletHandler.gd" id="5_tedwm"]
 [ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="6_e74tl"]
 [ext_resource type="Texture2D" uid="uid://3dftx2hvi7bg" path="res://assets/Splatcho Stage 1 Background (3).png" id="7_su4iq"]
-[ext_resource type="Script" path="res://scripts/WaveMaker.gd" id="8_wea5h"]
+[ext_resource type="Script" path="res://scripts/EndlessWavesSt3.gd" id="8_wea5h"]
 [ext_resource type="Script" path="res://scripts/XPNodeCreater.gd" id="9_x7ac8"]
 [ext_resource type="PackedScene" uid="uid://bu5k7npfyyfio" path="res://scenes/LevelCircle.tscn" id="10_y3b38"]
 [ext_resource type="PackedScene" uid="uid://cfd1ic1slxtxy" path="res://scenes/upgrade_popup.tscn" id="11_yrhk4"]

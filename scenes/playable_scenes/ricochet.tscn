@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="6_l5r5s"]
 [ext_resource type="Shader" path="res://shaders/level_oneback.gdshader" id="7_actfv"]
 [ext_resource type="Texture2D" uid="uid://756wd12i4202" path="res://assets/StageBackground/Stage1Background (5).png" id="8_bsfl2"]
-[ext_resource type="Script" path="res://scripts/WaveMaker.gd" id="9_a5kfb"]
+[ext_resource type="Script" path="res://scripts/EndlessWavesSt3.gd" id="9_a5kfb"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="10_tntsu"]
 [ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="11_hvru1"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_cy8yo"]
@@ -165,7 +165,7 @@ position = Vector2(0, 1.90735e-06)
 scale = Vector2(8.20992, 8.20992)
 texture = ExtResource("8_bsfl2")
 
-[node name="EndlessWavesSt1" type="Node" parent="."]
+[node name="EndlessWavesSt3" type="Node" parent="."]
 script = ExtResource("9_a5kfb")
 
 [node name="GameOver" parent="." instance=ExtResource("10_tntsu")]

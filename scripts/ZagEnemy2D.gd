@@ -1,6 +1,8 @@
 extends Area2D
 
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
+const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
+var points: float = 0.0
 
 @onready var cpu_particles_2d = $CPUParticles2D
 @onready var collision_polygon_2d = $CollisionPolygon2D
@@ -37,24 +39,19 @@ var difficulty: float = 1.0
 var randEnSprite: int
 
 func _ready():
-	randEnSprite = randi_range(0,100)
 	zig_zag_enemy.texture = preload("res://assets/ZagEnemy/ZigZagEnemy.png")
 	
 	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
-	
-	innerBoundX = 5000 + 1000 * difficulty
-	innerBoundY = 5000 + 1000 * difficulty
-	outerBoundX = 6000 + 1000 * difficulty
-	outerBoundY = 6000 + 1000 * difficulty
 
-func spawn(dif):
+func spawn(dif,xgiven,ygiven,flipgiven):
 	difficulty = dif
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
 	
 	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
+	
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
 	if sizeOfEnemy >= 1.48 * difficulty:
 		sizeOfEnemy = 3.0 * difficulty
@@ -69,17 +66,9 @@ func spawn(dif):
 	randomize()
 	shader_value = 0.0
 	
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
-	else:
-		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
+	x = xgiven
+	y = ygiven
+	flipSprite = flipgiven
 	
 	hypotenuse = sqrt((x * x) + (y * y))
 	
@@ -87,6 +76,8 @@ func spawn(dif):
 		theta = acos(x / hypotenuse)
 	else:
 		theta = 2 * PI -  acos(x / hypotenuse)
+	
+	#scale.y = sizeOfEnemy * flipSprite
 	
 	rotation = -theta - PI/2
 
@@ -105,12 +96,13 @@ func _physics_process(delta):
 		theta = acos(x / hypotenuse)
 	else:
 		theta = 2 * PI -  acos(x / hypotenuse)
+	
 	if rotation < (-theta - PI/2 - randZag) - PI/16:
 		rotation += delta * 5.0
 	elif rotation >= -theta - PI/2 - randZag + PI/16:
 		rotation -= delta * 5.0
 	
-	summedTime += delta
+	summedTime += delta * Global.gameTimeScale
 	if summedTime >= randTime:
 		var rand_i = randi_range(0,4)
 		if rand_i == 0 && !startingFree:
@@ -129,15 +121,15 @@ func _physics_process(delta):
 		randZag = randf_range(-PI/2,PI/2)
 		summedTime = 0.0
 	else:
-		x -= (cos(theta + randZag) * SPEED * delta) * randJump
-		y -= (-sin(theta + randZag) * SPEED * delta) * randJump
+		x -= (cos(theta + randZag) * SPEED * delta * Global.gameTimeScale) * randJump
+		y -= (-sin(theta + randZag) * SPEED * delta * Global.gameTimeScale) * randJump
 	
 	
 	
 	position = Vector2(x,y)
-	time_ellapsed += delta * 5
+	time_ellapsed += delta * 5 * Global.gameTimeScale
 	if shader_alpha != 1.0:
-		shader_alpha += FADE_SPEED * delta
+		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
 	
@@ -152,10 +144,12 @@ func addDamage():
 	if shader_value >= 0.9:
 		Global.decreaseEnemyNum()
 		Global.addXP(xpAmount)
-		var xpNotif = XP_NOTIFICATION.instantiate()
-		xpNotif.position = Vector2 (x,y)
-		xpNotif.getXPSize(xpAmount)
-		get_parent().add_child.call_deferred(xpNotif)
+		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+		pointsNotif.position = Vector2 (x,y)
+		points = sizeOfEnemy * 100
+		Global.points += int(points)
+		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		get_parent().add_child.call_deferred(pointsNotif)
 		setFreeSequence()
 
 func _on_area_entered(area):

@@ -19,16 +19,16 @@ func _process(delta):
 	
 	if time >= next_time:
 		randomEnNum = randi_range(0,99)
-		if randomEnNum <= 40:
+		if randomEnNum <= 30:
 			spawnRedEnemy()
-		elif randomEnNum <= 65:
+		elif randomEnNum <= 60:
 			spawnSwirlEnemy()
-		elif randomEnNum <= 85:
+		elif randomEnNum <= 90:
 			spawnPurpleEnemy()
-		elif randomEnNum <= 99:
+		else:
 			spawnZagEnemy()
-		difficulty += 0.05
-		next_time = randf_range(1.0 / difficulty, 2.0 / difficulty)
+		difficulty += 0.001
+		next_time = randf_range(0.1, 1.0)
 		time = 0.0
 
 var innerBoundX = 5000
@@ -58,7 +58,7 @@ func spawnRedEnemy():
 		y = -y
 	
 	var enemy = RED_ENEMY.instantiate()
-	enemy.spawn(randf_range(0.8,1.6),x,y,flipSprite)
+	enemy.spawn(randf_range(0.8,1.6) * difficulty,x,y,flipSprite)
 	get_parent().add_child.call_deferred(enemy)
 
 func spawnPurpleEnemy():
@@ -76,15 +76,41 @@ func spawnPurpleEnemy():
 		y = -y
 	
 	var enemy = PURPLE_ENEMY.instantiate()
-	enemy.spawn(randf_range(1.0,2.0),x,y,flipSprite)
+	enemy.spawn(randf_range(1.0,2.0) * difficulty,x,y,flipSprite)
 	get_parent().add_child.call_deferred(enemy)
 
 func spawnSwirlEnemy():
+	x = randf_range(0,outerBoundX)
+	if x < innerBoundX:
+		y = randf_range(innerBoundY,outerBoundY)
+	else:
+		y = randf_range(0,outerBoundY)
+	if randi_range(0,1) == 1:
+		x = -x
+		flipSprite = 1
+	else:
+		flipSprite = -1
+	if randi_range(0,1) == 1:
+		y = -y
+	
 	var enemy = SWIRL_ENEMY.instantiate()
-	enemy.spawn(difficulty)
+	enemy.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
 	get_parent().add_child.call_deferred(enemy)
 
 func spawnZagEnemy():
+	x = randf_range(0,outerBoundX)
+	if x < innerBoundX:
+		y = randf_range(innerBoundY,outerBoundY)
+	else:
+		y = randf_range(0,outerBoundY)
+	if randi_range(0,1) == 1:
+		x = -x
+		flipSprite = 1
+	else:
+		flipSprite = -1
+	if randi_range(0,1) == 1:
+		y = -y
+	
 	var enemy = ZAG_ENEMY.instantiate()
-	enemy.spawn(difficulty)
+	enemy.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
 	get_parent().add_child.call_deferred(enemy)

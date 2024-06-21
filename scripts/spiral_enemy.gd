@@ -42,6 +42,13 @@ var difficulty: float = 1.0
 var randEnSprite: int
 
 func _ready():
+	randEnSprite = randi_range(0,100)
+	if randEnSprite <= 33:
+		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemy.png")
+	elif randEnSprite <= 67:
+		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemyBrow.png")
+	else:
+		spiral_enemy.texture = preload("res://assets/spiralEnemySprites/SpiralEnemyStar.png")
 	
 	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
