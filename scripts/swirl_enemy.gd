@@ -56,6 +56,7 @@ func _ready():
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
 
 func spawn(dif,xgiven,ygiven,flipgiven):
+	direction = randi_range(0,1)
 	difficulty = dif
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum

@@ -28,6 +28,14 @@ const ricoS5: int = 20000
 const ricoS6: int = 30000
 const ricoS7: int = 50000
 
+const autoS1: int = 1000
+const autoS2: int = 2000
+const autoS3: int = 4000
+const autoS4: int = 10000
+const autoS5: int = 20000
+const autoS6: int = 30000
+const autoS7: int = 50000
+
 var curS1: int = 1
 var curS2: int = 2
 var curS3: int = 4
@@ -45,6 +53,8 @@ var gameTimeScale: float = 1.0
 var highscore: int = 0
 var popHighscore: int = 0
 var ricoHighscore: int = 0
+var autoHighscore: int = 0
+
 var curHighscore: int = 0
 
 var points: int = 0
@@ -101,7 +111,7 @@ func resetStats():
 	bulletSize = 2
 	bulletSpeed = 2
 	damage = 4
-	rotationSpeed = 3
+	rotationSpeed = 3.0
 	level = 1
 	xpAmount = 0.0
 	player_health = 100.0
@@ -124,6 +134,9 @@ func resetStats():
 	if curStage == 3:
 		if points > ricoHighscore:
 			ricoHighscore = points
+	if curStage == 4:
+		if points > autoHighscore:
+			autoHighscore = points
 	
 	points = 0
 	consecBulls = 0

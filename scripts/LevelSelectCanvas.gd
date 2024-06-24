@@ -22,3 +22,7 @@ func _on_pop_star_button_pressed():
 
 func _on_ricochet_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/playable_scenes/ricochet.tscn")
+
+
+func _on_automatic_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/playable_scenes/automatic.tscn")
