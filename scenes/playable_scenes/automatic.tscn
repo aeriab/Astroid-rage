@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxsc6vru56eai"]
+[gd_scene load_steps=21 format=3 uid="uid://dxsc6vru56eai"]
 
 [ext_resource type="Script" path="res://scripts/level_four.gd" id="1_udvp5"]
 [ext_resource type="Script" path="res://scripts/auto_player.gd" id="2_crlm2"]
@@ -16,8 +16,7 @@
 [ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="14_stnsh"]
 [ext_resource type="Script" path="res://scripts/ricoHighscore.gd" id="15_pjqat"]
 [ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="16_8w3k0"]
-[ext_resource type="Texture2D" uid="uid://cnx5tvuh1ovar" path="res://assets/Stage 1 Instructions.png" id="17_2xc3g"]
-[ext_resource type="Texture2D" uid="uid://xjwlf5b0rm20" path="res://assets/ricochetLevelLogo (2).png" id="18_1400s"]
+[ext_resource type="Texture2D" uid="uid://dp56yy01r34bl" path="res://assets/AutoDrawing2.png" id="17_ttcv5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -26,91 +25,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6nxat"]
 shader = ExtResource("7_h043p")
 shader_parameter/speedScale = 2.0
-
-[sub_resource type="Animation" id="Animation_620mn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-3432.68, -1695.4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.36874, 0.36874)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_0tmod"]
-resource_name = "S1Instructions"
-length = 7.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 6, 7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-4009.03, -2320.2), Vector2(-2186.37, -251.231), Vector2(-2186.37, -251.231), Vector2(-4009.03, -2320.2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 6, 7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-0.000512142, -0.000512138), Vector2(5.00014, 5.00014), Vector2(5.00014, 5.00014), Vector2(-0.000512142, -0.000512138)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5, 6, 7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-6.28319, 0.0, 0.0, -6.28319]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_43s2g"]
-_data = {
-"RESET": SubResource("Animation_620mn"),
-"S1Instructions": SubResource("Animation_0tmod")
-}
 
 [node name="Automatic" type="Node2D"]
 scale = Vector2(1.218, 1.218)
@@ -138,7 +52,7 @@ zoom = Vector2(0.2, 0.2)
 script = ExtResource("5_j32wi")
 
 [node name="AutoTimer" type="Timer" parent="AutoBulletHandler"]
-wait_time = 0.003
+wait_time = 0.05
 autostart = true
 
 [node name="AreaBulletCollection" type="Area2D" parent="."]
@@ -213,22 +127,11 @@ metadata/_edit_use_anchors_ = true
 [node name="PopSfxPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_8w3k0")
 
-[node name="Stage1Instructions" type="Sprite2D" parent="."]
-position = Vector2(-3432.68, -1695.4)
-scale = Vector2(0.36874, 0.36874)
-texture = ExtResource("17_2xc3g")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stage1Instructions"]
-libraries = {
-"": SubResource("AnimationLibrary_43s2g")
-}
-autoplay = "S1Instructions"
-
 [node name="TargetPracticeLetters" type="Sprite2D" parent="."]
 z_index = 10
 position = Vector2(2933.5, 1834.98)
 scale = Vector2(2, 2)
-texture = ExtResource("18_1400s")
+texture = ExtResource("17_ttcv5")
 
 [connection signal="timeout" from="AutoBulletHandler/AutoTimer" to="AutoBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

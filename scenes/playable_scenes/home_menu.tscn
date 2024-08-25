@@ -35,6 +35,17 @@ theme_override_font_sizes/font_size = 70
 text = "ENDLESS"
 metadata/_edit_use_anchors_ = true
 
+[node name="GameHLabel" type="Label" parent="HomeCanvas/EndlessButton"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 166.0
+offset_right = 390.0
+offset_bottom = 234.0
+theme_override_font_sizes/font_size = 30
+text = "Highscore: 0 PTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MinigameSelect" type="Button" parent="HomeCanvas"]
 anchors_preset = 15
 anchor_right = 1.0

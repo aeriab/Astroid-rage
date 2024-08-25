@@ -1,5 +1,8 @@
 extends CanvasLayer
+@onready var game_h_label = $EndlessButton/GameHLabel
 
+func _ready():
+	game_h_label.text = "Highscore: " + str(Global.gameHighscore) + " PTS"
 
 func _on_endless_button_pressed():
 	Global.resetStats()
@@ -15,3 +18,4 @@ func _on_quit_button_pressed():
 func _on_minigame_select_pressed():
 	Global.resetStats()
 	get_tree().change_scene_to_file("res://scenes/playable_scenes/minigame_select.tscn")
+

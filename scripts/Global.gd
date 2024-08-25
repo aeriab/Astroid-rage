@@ -54,6 +54,7 @@ var highscore: int = 0
 var popHighscore: int = 0
 var ricoHighscore: int = 0
 var autoHighscore: int = 0
+var gameHighscore: int = 0
 
 var curHighscore: int = 0
 
@@ -124,6 +125,11 @@ func resetStats():
 	mutateNumber = 1
 	evolutionPoints = 0
 	barrelUpNumArray = [1,0,0,0,0,0,0,0]
+	
+	if curStage == -1:
+		if points > highscore:
+			gameHighscore = points
+			print("changed highscore")
 	
 	if curStage == 1:
 		if points > highscore:
