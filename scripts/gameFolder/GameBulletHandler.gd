@@ -9,12 +9,16 @@ const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
 
 
 var theta: float = 0.0
+var auto: bool = false
 
 func _process(_delta):
+	if auto:
+		auto_timer.start()
+	else:
+		auto_timer.stop()
 	
-	#if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1:
-		#shootBall()
-	pass
+	if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1:
+		shootBall()
 
 
 func shootBall():

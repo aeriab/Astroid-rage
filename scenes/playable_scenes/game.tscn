@@ -66,7 +66,6 @@ script = ExtResource("5_t80kh")
 
 [node name="AutoTimer" type="Timer" parent="GameBulletHandler"]
 wait_time = 0.2
-autostart = true
 
 [node name="AreaBulletCollection" type="Area2D" parent="."]
 script = ExtResource("6_e74tl")
@@ -142,13 +141,12 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("16_j4gmb")
 
 [node name="Crasher" type="Sprite2D" parent="."]
-position = Vector2(-5.74713, -598.522)
 texture = ExtResource("18_xhnup")
 script = ExtResource("19_6jffq")
 
 [node name="Camera2D" type="Camera2D" parent="Crasher"]
 scale = Vector2(0.3, 0.3)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.2, 0.2)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Crasher"]
 position = Vector2(1.64204, 119.869)

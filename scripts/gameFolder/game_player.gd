@@ -6,6 +6,7 @@ var clockwise = 1
 
 @onready var mutation_part = $mutationPart
 @onready var pop_sfx_player = $"../PopSfxPlayer"
+@onready var crasher = $"../Crasher"
 
 var eyelidHeight: float = 0.0
 
@@ -18,6 +19,9 @@ var lastConsec: int = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mutation_part.scaleEyelid(eyelidHeight)
+	
+	if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1 && !Global.startCrasher:
+		Global.startCrasher = true
 	
 	Global.prior_dir = clockwise
 	if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1:
@@ -32,4 +36,4 @@ func _process(delta):
 		if eyelidHeight > 0:
 			eyelidHeight -= delta * 0.5 * Global.gameTimeScale
 	if !pause_rot:
-		rotation += (Global.rotationSpeed * clockwise * delta * Global.gameTimeScale) * 0.1
+		rotation += (Global.rotationSpeed * clockwise * delta * Global.gameTimeScale)
