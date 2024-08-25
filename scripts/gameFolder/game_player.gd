@@ -32,4 +32,4 @@ func _process(delta):
 		if eyelidHeight > 0:
 			eyelidHeight -= delta * 0.5 * Global.gameTimeScale
 	if !pause_rot:
-		rotation += (Global.rotationSpeed * clockwise * delta * Global.gameTimeScale)
+		rotation += (Global.rotationSpeed * clockwise * delta * Global.gameTimeScale) * 0.1
