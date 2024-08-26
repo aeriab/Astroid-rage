@@ -1,5 +1,6 @@
-extends Sprite2D
-@onready var cpu_particles_2d = $CPUParticles2D
+extends Area2D
+@onready var cpu_particles_2d = $Crasher/CPUParticles2D
+
 
 var clockwise: float = 1
 
@@ -9,16 +10,25 @@ func _ready():
 
 var speedScale: float = 4.0
 
+var force: float = 0.0
+var thrust: float = 0.0
+var resistance: float = 0.05
+var fric: float = 30.0
+
+var inPull: float = 50.0
+
 var moveScale: float = 0.0
 var moveAccel: float = 1000
 var moveDeccel: float = 6000
 var rotScale: float = 1.0
 var rotAccel: float = 8.0
+
+var top_rotation: float = 0.0
+var length_out: float = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if !Global.startCrasher:
-	
+	if !Global.startCrasher && Global.crashStarted:
 		rotation += (Global.rotationSpeed * delta * Global.gameTimeScale * clockwise) * rotScale * speedScale
 		
 		if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1:
@@ -26,24 +36,41 @@ func _process(delta):
 		
 		if Input.is_action_pressed("ui_up") && Global.gameTimeScale > 0.1:
 			cpu_particles_2d.emitting = true
-			if moveScale < 1500:
-				moveScale += delta * moveAccel * Global.gameTimeScale * speedScale
-			else:
-				moveScale = 1500
+			thrust = 150
 			
 			rotScale = 0.0
 		else:
 			cpu_particles_2d.emitting = false
-			if moveScale > 0:
-				moveScale -= delta * moveDeccel * Global.gameTimeScale * speedScale
-			else:
-				moveScale = 0
+			thrust = 0
 			
-			if moveScale <= 0.01:
+			if force <= 5.0 && force >= -5.0:
 				if rotScale < 1.0:
 					rotScale += delta * rotAccel * Global.gameTimeScale * speedScale
 				else:
 					rotScale = 1.0
 		
-		position.x += delta * Global.gameTimeScale * moveScale * sin(rotation) * speedScale
-		position.y -= delta * Global.gameTimeScale * moveScale * cos(rotation) * speedScale
+		
+		force += thrust
+		
+		if force > 0:
+			force -= force * resistance + fric
+			if force < 0:
+				force = 0
+		else:
+			force += force * resistance + fric
+			if force > 0:
+				force = 0
+		
+		position.x += delta * Global.gameTimeScale * force * sin(rotation) * speedScale
+		position.y -= delta * Global.gameTimeScale * force * cos(rotation) * speedScale
+		
+		length_out = sqrt((position.x * position.x) + (position.y * position.y))
+		
+		if position.y < 0:
+			top_rotation = acos(position.x / length_out)
+		else:
+			top_rotation = 2 * PI -  acos(position.x / length_out)
+		
+		if length_out > 4400:
+			position.x -= delta * Global.gameTimeScale * inPull * sin(top_rotation + PI/2) * (length_out - 4400)
+			position.y -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4400)

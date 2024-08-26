@@ -1,7 +1,9 @@
 extends Node2D
 @onready var pause_menu = $PauseMenu
-@onready var camera_2d = $Crasher/Camera2D
-@onready var crasher = $Crasher
+@onready var camera_2d = $Camera2D
+
+@onready var crasher = $CrasherArea2D
+
 @onready var mutation_part = $Player/mutationPart
 
 const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
@@ -25,10 +27,12 @@ func _ready():
 func _process(delta):
 	if Global.startCrasher:
 		if crashTransPlace < 1.0:
+			
+			
 			crashTransPlace += delta * transScale
 			camera_2d.zoom.x = (0.3 * crashTransPlace) + 0.2
 			camera_2d.zoom.y = (0.3 * crashTransPlace) + 0.2
-			Global.gameTimeScale = 1.0 - (crashTransPlace * 0.85)
+			Global.gameTimeScale = 0
 			
 			if firstCrash:
 			
@@ -46,17 +50,22 @@ func _process(delta):
 				
 				shotparticles.start_emit(x,y,theta)
 				firstCrash = false
+				
+				x = 0
+				y = 0
 			
 			crasher.rotation = theta - PI
-			x += cos(theta) * delta * Global.gameTimeScale * 1000
-			y -= sin(theta) * delta * Global.gameTimeScale * 1000
+			x += cos(theta) * delta * 1000
+			y -= sin(theta) * delta * 1000
 			crasher.position.x = x
 			crasher.position.y = y
 			
 		else:
+			Global.gameTimeScale = 0.15
 			firstCrash = true
 			crashTransPlace = 1.0
 			Global.startCrasher = false
+			Global.crashStarted = true
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		pause_menu.visible = true

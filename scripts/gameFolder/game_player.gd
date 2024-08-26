@@ -6,7 +6,7 @@ var clockwise = 1
 
 @onready var mutation_part = $mutationPart
 @onready var pop_sfx_player = $"../PopSfxPlayer"
-@onready var crasher = $"../Crasher"
+@onready var crasher = $"../CrasherArea2D"
 
 var eyelidHeight: float = 0.0
 

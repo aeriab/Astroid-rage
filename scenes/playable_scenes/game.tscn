@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=28 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -17,8 +17,10 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/gameHighscore.gd" id="15_nmvl1"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="15_tvgir"]
 [ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="16_j4gmb"]
+[ext_resource type="Script" path="res://scripts/gameFolder/Game_Camera2D.gd" id="18_chv7v"]
 [ext_resource type="Texture2D" uid="uid://cj4sij6pg682x" path="res://assets/Crasher2.png" id="18_xhnup"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Crasher.gd" id="19_6jffq"]
+[ext_resource type="Texture2D" uid="uid://pgt6n3ajivpu" path="res://assets/radial background big.png" id="20_rltlv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -140,15 +142,18 @@ metadata/_edit_use_anchors_ = true
 [node name="PopSfxPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_j4gmb")
 
-[node name="Crasher" type="Sprite2D" parent="."]
-texture = ExtResource("18_xhnup")
-script = ExtResource("19_6jffq")
-
-[node name="Camera2D" type="Camera2D" parent="Crasher"]
+[node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.3, 0.3)
 zoom = Vector2(0.2, 0.2)
+script = ExtResource("18_chv7v")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Crasher"]
+[node name="CrasherArea2D" type="Area2D" parent="." groups=["Crasher"]]
+script = ExtResource("19_6jffq")
+
+[node name="Crasher" type="Sprite2D" parent="CrasherArea2D"]
+texture = ExtResource("18_xhnup")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CrasherArea2D/Crasher"]
 position = Vector2(1.64204, 119.869)
 emitting = false
 amount = 12
@@ -168,6 +173,15 @@ scale_amount_max = 102.01
 scale_amount_curve = SubResource("Curve_qkfoy")
 color = Color(0.791999, 0.791999, 0.791999, 1)
 color_ramp = SubResource("Gradient_y4ple")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CrasherArea2D"]
+build_mode = 1
+polygon = PackedVector2Array(-46.798, 73.8917, -76.3547, 84.5649, -103.448, 48.4401, -110.016, -15.5993, -88.67, -77.1757, -35.3038, -109.195, 29.5566, -109.195, 77.9967, -81.2808, 103.448, -45.1559, 113.3, -4.92609, 103.448, 47.6191, 73.8916, 84.5649, 48.4401, 74.7126, 47.6191, 141.215, 22.9885, 147.783, -18.8834, 147.783, -49.261, 137.931)
+
+[node name="RadialBackground" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("20_rltlv")
 
 [connection signal="timeout" from="GameBulletHandler/AutoTimer" to="GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

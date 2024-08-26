@@ -95,6 +95,7 @@ var prior_dir: float = 1.0
 var firstEvolveCheck: bool = true
 
 var startCrasher: bool = false
+var crashStarted: bool = false
 
 func addXP(num):
 	xpAmount += num * difficulty
