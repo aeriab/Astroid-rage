@@ -20,7 +20,8 @@ var inPull: float = 50.0
 var moveScale: float = 0.0
 var moveAccel: float = 1000
 var moveDeccel: float = 6000
-var rotScale: float = 1.0
+var ROT_SCALE: float = 2.0
+var rotScale: float = 0.0
 var rotAccel: float = 8.0
 
 var top_rotation: float = 0.0
@@ -44,10 +45,10 @@ func _process(delta):
 			thrust = 0
 			
 			if force <= 5.0 && force >= -5.0:
-				if rotScale < 1.0:
+				if rotScale < ROT_SCALE:
 					rotScale += delta * rotAccel * Global.gameTimeScale * speedScale
 				else:
-					rotScale = 1.0
+					rotScale = ROT_SCALE
 		
 		
 		force += thrust
@@ -74,3 +75,27 @@ func _process(delta):
 		if length_out > 4400:
 			position.x -= delta * Global.gameTimeScale * inPull * sin(top_rotation + PI/2) * (length_out - 4400)
 			position.y -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4400)
+
+func _on_area_entered(area):
+	if area.is_in_group("Player") && Global.crashStarted && !Global.startCrasher:
+		Global.startCrasher = false
+		Global.crashStarted = false
+		Global.impactSequence = true
+		cpu_particles_2d.emitting = false
+		reset_stats()
+
+func reset_stats():
+	speedScale = 4.0
+	force = 0.0
+	thrust = 0.0
+	resistance = 0.05
+	fric = 30.0
+	inPull = 50.0
+	moveScale = 0.0
+	moveAccel = 1000
+	moveDeccel = 6000
+	ROT_SCALE = 2.0
+	rotScale = 0.0
+	rotAccel = 8.0
+	top_rotation = 0.0
+	length_out = 0.0

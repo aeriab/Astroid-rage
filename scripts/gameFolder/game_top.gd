@@ -14,6 +14,8 @@ var firstCrash: bool = true
 var x: float = 0
 var y: float = 0
 var theta: float
+var impact_length: float = 0.0
+var first_impact: bool = true
 
 func _ready():
 	Global.gameTimeScale = 1.0
@@ -25,10 +27,30 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !Global.startCrasher and !Global.crashStarted:
+		firstCrash = true
+		if crashTransPlace > 0.0:
+			crashTransPlace -= delta * transScale
+			camera_2d.zoom.x = (0.3 * crashTransPlace) + 0.2
+			camera_2d.zoom.y = (0.3 * crashTransPlace) + 0.2
+			
+			if first_impact:
+				Global.softCam = true
+				crasher.position.x = 0
+				crasher.position.y = 0
+				first_impact = false
+			
+		else:
+			Global.impactSequence = false
+			Global.gameTimeScale = 1.0
+			Global.softCam = false
+			crashTransPlace = 0.0
+			crasher.position.x = 0
+			crasher.position.y = 0
+	
 	if Global.startCrasher:
+		Global.softCam = true
 		if crashTransPlace < 1.0:
-			
-			
 			crashTransPlace += delta * transScale
 			camera_2d.zoom.x = (0.3 * crashTransPlace) + 0.2
 			camera_2d.zoom.y = (0.3 * crashTransPlace) + 0.2
@@ -54,7 +76,8 @@ func _process(delta):
 				x = 0
 				y = 0
 			
-			crasher.rotation = theta - PI
+			crasher.rotation = PI/2 - theta
+			print(str(crasher.rotation))
 			x += cos(theta) * delta * 1000
 			y -= sin(theta) * delta * 1000
 			crasher.position.x = x
@@ -66,6 +89,8 @@ func _process(delta):
 			crashTransPlace = 1.0
 			Global.startCrasher = false
 			Global.crashStarted = true
+			Global.softCam = false
+			first_impact = true
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		pause_menu.visible = true

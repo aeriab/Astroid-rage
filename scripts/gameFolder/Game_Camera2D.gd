@@ -5,7 +5,7 @@ var orig_follow_speed: float = 20.0
 var follow_speed: float = 70.0
 
 func _process(delta):
-	if Global.startCrasher:
+	if Global.softCam:
 		if position.x < crasher_area_2d.position.x - 5.0:
 			position.x -= orig_follow_speed * delta * (position.x - crasher_area_2d.position.x)
 		elif position.x > crasher_area_2d.position.x + 5.0:

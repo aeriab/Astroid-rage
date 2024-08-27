@@ -96,6 +96,8 @@ var firstEvolveCheck: bool = true
 
 var startCrasher: bool = false
 var crashStarted: bool = false
+var impactSequence: bool = false
+var softCam: bool = false
 
 func addXP(num):
 	xpAmount += num * difficulty

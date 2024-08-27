@@ -185,3 +185,4 @@ texture = ExtResource("20_rltlv")
 
 [connection signal="timeout" from="GameBulletHandler/AutoTimer" to="GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]
+[connection signal="area_entered" from="CrasherArea2D" to="CrasherArea2D" method="_on_area_entered"]
