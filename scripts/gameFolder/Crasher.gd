@@ -28,8 +28,12 @@ var top_rotation: float = 0.0
 var length_out: float = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Global.gameOver:
+		Global.softCam = true
+		position.x = 0
+		position.y = 0
 	
-	if !Global.startCrasher && Global.crashStarted:
+	if !Global.startCrasher && Global.crashStarted && !Global.gameOver:
 		rotation += (Global.rotationSpeed * delta * Global.gameTimeScale * clockwise) * rotScale * speedScale
 		
 		if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1:

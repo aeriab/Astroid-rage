@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=29 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -12,15 +12,16 @@
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_1ef7u"]
 [ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="13_3wdue"]
 [ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="14_6ye3i"]
+[ext_resource type="Texture2D" uid="uid://128dlw2ygthe" path="res://assets/HealthBarRedCenter.png" id="14_rfjs2"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="14_wwlja"]
 [ext_resource type="Script" path="res://scripts/gameFolder/top_health_bar.gd" id="15_1r5es"]
 [ext_resource type="Script" path="res://scripts/gameFolder/gameHighscore.gd" id="15_nmvl1"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="15_tvgir"]
 [ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="16_j4gmb"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Game_Camera2D.gd" id="18_chv7v"]
-[ext_resource type="Texture2D" uid="uid://cj4sij6pg682x" path="res://assets/Crasher2.png" id="18_xhnup"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Crasher.gd" id="19_6jffq"]
 [ext_resource type="Texture2D" uid="uid://pgt6n3ajivpu" path="res://assets/radial background big.png" id="20_rltlv"]
+[ext_resource type="Texture2D" uid="uid://dy7qrl58soocx" path="res://assets/Crasher3.png" id="20_slatg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -109,8 +110,9 @@ script = ExtResource("12_1ef7u")
 
 [node name="HealthBarRed" parent="." instance=ExtResource("15_tvgir")]
 z_index = 7
-position = Vector2(2.84217e-14, 720.73)
-scale = Vector2(0.658475, 0.658475)
+position = Vector2(0, 500)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_rfjs2")
 script = ExtResource("15_1r5es")
 
 [node name="Score" type="Label" parent="."]
@@ -151,7 +153,7 @@ script = ExtResource("18_chv7v")
 script = ExtResource("19_6jffq")
 
 [node name="Crasher" type="Sprite2D" parent="CrasherArea2D"]
-texture = ExtResource("18_xhnup")
+texture = ExtResource("20_slatg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CrasherArea2D/Crasher"]
 position = Vector2(1.64204, 119.869)
@@ -176,7 +178,7 @@ color_ramp = SubResource("Gradient_y4ple")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CrasherArea2D"]
 build_mode = 1
-polygon = PackedVector2Array(-46.798, 73.8917, -76.3547, 84.5649, -103.448, 48.4401, -110.016, -15.5993, -88.67, -77.1757, -35.3038, -109.195, 29.5566, -109.195, 77.9967, -81.2808, 103.448, -45.1559, 113.3, -4.92609, 103.448, 47.6191, 73.8916, 84.5649, 48.4401, 74.7126, 47.6191, 141.215, 22.9885, 147.783, -18.8834, 147.783, -49.261, 137.931)
+polygon = PackedVector2Array(-45.1558, 57.4713, -87.0278, 117.406, -87.0278, 64.0394, -136.289, 64.0394, 0, -128.9, 137.11, 64.0394, 87.0278, 64.0394, 87.8491, 117.406, 48.4399, 62.3974, 48.4399, 115.764, 41.0508, 121.511, 25.4517, 125.616, 0.820801, 127.258, -19.7046, 125.616, -32.0195, 123.153, -39.4087, 119.869, -45.1558, 114.122)
 
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10

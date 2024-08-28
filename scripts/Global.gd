@@ -99,6 +99,8 @@ var crashStarted: bool = false
 var impactSequence: bool = false
 var softCam: bool = false
 
+var lastTimeScale: float = 0.0
+
 func addXP(num):
 	xpAmount += num * difficulty
 	if xpAmount >= 6.28:

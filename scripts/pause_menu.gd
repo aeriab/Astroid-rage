@@ -16,4 +16,4 @@ func _on_resume_button_pressed():
 
 func resume():
 	visible = false
-	Global.gameTimeScale = 1.0
+	Global.gameTimeScale = Global.lastTimeScale

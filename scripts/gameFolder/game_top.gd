@@ -42,18 +42,23 @@ func _process(delta):
 			
 		else:
 			Global.impactSequence = false
-			Global.gameTimeScale = 1.0
-			Global.softCam = false
+			if !Global.gameOver && !pause_menu.visible:
+				Global.gameTimeScale = 1.0
+				Global.softCam = false
 			crashTransPlace = 0.0
+			camera_2d.zoom.x = 0.2
+			camera_2d.zoom.y = 0.2
 			crasher.position.x = 0
 			crasher.position.y = 0
 	
 	if Global.startCrasher:
 		Global.softCam = true
 		if crashTransPlace < 1.0:
+			Global.lastTimeScale = 0.15
 			crashTransPlace += delta * transScale
 			camera_2d.zoom.x = (0.3 * crashTransPlace) + 0.2
 			camera_2d.zoom.y = (0.3 * crashTransPlace) + 0.2
+			mutation_part.scaleNose(3.5 * sqrt(1 - ((1.8*crashTransPlace) -0.9) * ((1.8*crashTransPlace) -0.9)) - 0.526)
 			Global.gameTimeScale = 0
 			
 			if firstCrash:
@@ -77,21 +82,22 @@ func _process(delta):
 				y = 0
 			
 			crasher.rotation = PI/2 - theta
-			print(str(crasher.rotation))
 			x += cos(theta) * delta * 1000
 			y -= sin(theta) * delta * 1000
 			crasher.position.x = x
 			crasher.position.y = y
 			
 		else:
-			Global.gameTimeScale = 0.15
+			if !Global.gameOver && !pause_menu.visible:
+				Global.gameTimeScale = 0.15
+				Global.softCam = false
 			firstCrash = true
 			crashTransPlace = 1.0
 			Global.startCrasher = false
 			Global.crashStarted = true
-			Global.softCam = false
 			first_impact = true
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		pause_menu.visible = true
+		Global.lastTimeScale = Global.gameTimeScale
 		Global.gameTimeScale = 0.0
