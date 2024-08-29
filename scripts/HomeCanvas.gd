@@ -4,9 +4,9 @@ extends CanvasLayer
 func _ready():
 	game_h_label.text = "Highscore: " + str(Global.gameHighscore) + " PTS"
 
-func _on_endless_button_pressed():
+func _on_play_button_pressed():
 	Global.resetStats()
-	get_tree().change_scene_to_file("res://scenes/playable_scenes/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/playable_scenes/stage_select.tscn")
 
 
 func _on_store_page_button_pressed():

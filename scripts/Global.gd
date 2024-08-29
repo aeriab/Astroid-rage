@@ -98,8 +98,11 @@ var startCrasher: bool = false
 var crashStarted: bool = false
 var impactSequence: bool = false
 var softCam: bool = false
-
 var lastTimeScale: float = 0.0
+var crashTime: float = 6.3
+var camXSet: bool = true
+var camYSet: bool = true
+var canDeployCrasher: bool = true
 
 func addXP(num):
 	xpAmount += num * difficulty

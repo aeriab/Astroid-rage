@@ -42,7 +42,7 @@ func _process(delta):
 			
 		else:
 			Global.impactSequence = false
-			if !Global.gameOver && !pause_menu.visible:
+			if !Global.gameOver && !pause_menu.visible && Global.camXSet && Global.camYSet:
 				Global.gameTimeScale = 1.0
 				Global.softCam = false
 			crashTransPlace = 0.0
@@ -88,16 +88,31 @@ func _process(delta):
 			crasher.position.y = y
 			
 		else:
-			if !Global.gameOver && !pause_menu.visible:
+			if !Global.gameOver && !pause_menu.visible && Global.camXSet && Global.camYSet:
 				Global.gameTimeScale = 0.15
 				Global.softCam = false
-			firstCrash = true
-			crashTransPlace = 1.0
-			Global.startCrasher = false
-			Global.crashStarted = true
-			first_impact = true
+				firstCrash = true
+				crashTransPlace = 1.0
+				Global.startCrasher = false
+				Global.crashStarted = true
+				first_impact = true
 	
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") && !pause_menu.visible && !Global.gameOver:
 		pause_menu.visible = true
 		Global.lastTimeScale = Global.gameTimeScale
 		Global.gameTimeScale = 0.0
+
+func origVars():
+	crashTransPlace = 0.0
+	transScale = 1.0
+	firstCrash = true
+	x = 0
+	y = 0
+	theta = 0
+	impact_length = 0.0
+	first_impact = true
+	Global.startCrasher = false
+	Global.crashStarted = false
+	Global.impactSequence = false
+	Global.softCam = false
+	Global.crashTime = 6.3

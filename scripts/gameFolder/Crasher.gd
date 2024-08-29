@@ -24,16 +24,33 @@ var ROT_SCALE: float = 2.0
 var rotScale: float = 0.0
 var rotAccel: float = 8.0
 
+var crashTimeScale: float = 4.0
+
 var top_rotation: float = 0.0
 var length_out: float = 0.0
+
+var firstCrashTimeout: bool = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Global.crashTime <= 0:
+		if firstCrashTimeout:
+			Global.startCrasher = false
+			Global.crashStarted = false
+			cpu_particles_2d.emitting = false
+			reset_stats()
+			firstCrashTimeout = false
+			Global.gameTimeScale = 0.0
+	
 	if Global.gameOver:
 		Global.softCam = true
 		position.x = 0
 		position.y = 0
 	
 	if !Global.startCrasher && Global.crashStarted && !Global.gameOver:
+		firstCrashTimeout = true
+		if Global.crashTime > 0:
+			Global.crashTime -= crashTimeScale * delta * Global.gameTimeScale
+		
 		rotation += (Global.rotationSpeed * delta * Global.gameTimeScale * clockwise) * rotScale * speedScale
 		
 		if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1:
@@ -81,7 +98,7 @@ func _process(delta):
 			position.y -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4400)
 
 func _on_area_entered(area):
-	if area.is_in_group("Player") && Global.crashStarted && !Global.startCrasher:
+	if area.is_in_group("Player") && Global.crashStarted && !Global.startCrasher && Global.crashTime > 0:
 		Global.startCrasher = false
 		Global.crashStarted = false
 		Global.impactSequence = true

@@ -9,6 +9,7 @@ var MAX: float = 30.0
 func _process(delta):
 	if Global.softCam:
 		if position.x < crasher_area_2d.position.x - 5.0:
+			Global.camXSet = false
 			if orig_follow_speed * delta * (position.x - crasher_area_2d.position.x) > MAX:
 				position.x -= MAX
 			elif orig_follow_speed * delta * (position.x - crasher_area_2d.position.x) < -MAX:
@@ -16,14 +17,18 @@ func _process(delta):
 			else:
 				position.x -= orig_follow_speed * delta * (position.x - crasher_area_2d.position.x)
 		elif position.x > crasher_area_2d.position.x + 5.0:
+			Global.camXSet = false
 			if orig_follow_speed * delta * (position.x - crasher_area_2d.position.x) > MAX:
 				position.x -= MAX
 			elif orig_follow_speed * delta * (position.x - crasher_area_2d.position.x) < -MAX:
 				position.x += MAX
 			else:
 				position.x -= orig_follow_speed * delta * (position.x - crasher_area_2d.position.x)
+		else:
+			Global.camXSet = true
 		
 		if position.y < crasher_area_2d.position.y - 5.0:
+			Global.camYSet = false
 			if orig_follow_speed * delta * (position.y - crasher_area_2d.position.y) > MAX:
 				position.y -= MAX
 			elif orig_follow_speed * delta * (position.y - crasher_area_2d.position.y) < -MAX:
@@ -31,12 +36,15 @@ func _process(delta):
 			else:
 				position.y -= orig_follow_speed * delta * (position.y - crasher_area_2d.position.y)
 		elif position.y > crasher_area_2d.position.y + 5.0:
+			Global.camYSet = false
 			if orig_follow_speed * delta * (position.y - crasher_area_2d.position.y) > MAX:
 				position.y -= MAX
 			elif orig_follow_speed * delta * (position.y - crasher_area_2d.position.y) < -MAX:
 				position.y += MAX
 			else:
 				position.y -= orig_follow_speed * delta * (position.y - crasher_area_2d.position.y)
+		else:
+			Global.camYSet = true
 	else:
 		if position.x < crasher_area_2d.position.x - 5.0:
 			position.x -= follow_speed * delta * Global.gameTimeScale * (position.x - crasher_area_2d.position.x)

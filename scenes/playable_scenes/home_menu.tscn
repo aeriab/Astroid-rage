@@ -21,7 +21,7 @@ text = "SPLATCHO"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="EndlessButton" type="Button" parent="HomeCanvas"]
+[node name="PlayButton" type="Button" parent="HomeCanvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,17 +32,17 @@ offset_bottom = -396.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "ENDLESS"
+text = "PLAY GAME"
 metadata/_edit_use_anchors_ = true
 
-[node name="GameHLabel" type="Label" parent="HomeCanvas/EndlessButton"]
+[node name="GameHLabel" type="Label" parent="HomeCanvas/PlayButton"]
 layout_mode = 0
 offset_left = 156.0
 offset_top = 166.0
 offset_right = 390.0
 offset_bottom = 234.0
 theme_override_font_sizes/font_size = 30
-text = "Highscore: 0 PTS"
+text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -57,7 +57,7 @@ offset_bottom = -669.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "MINI GAMES"
+text = "TRAINING"
 metadata/_edit_use_anchors_ = true
 
 [node name="StorePageButton" type="Button" parent="HomeCanvas"]
@@ -152,7 +152,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "EFFECTS"
 
-[connection signal="pressed" from="HomeCanvas/EndlessButton" to="HomeCanvas" method="_on_endless_button_pressed"]
+[connection signal="pressed" from="HomeCanvas/PlayButton" to="HomeCanvas" method="_on_play_button_pressed"]
 [connection signal="pressed" from="HomeCanvas/MinigameSelect" to="HomeCanvas" method="_on_minigame_select_pressed"]
 [connection signal="pressed" from="HomeCanvas/StorePageButton" to="HomeCanvas" method="_on_store_page_button_pressed"]
 [connection signal="pressed" from="HomeCanvas/QuitButton" to="HomeCanvas" method="_on_quit_button_pressed"]

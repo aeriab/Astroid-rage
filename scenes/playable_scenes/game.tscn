@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=36 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -20,8 +20,13 @@
 [ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="16_j4gmb"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Game_Camera2D.gd" id="18_chv7v"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Crasher.gd" id="19_6jffq"]
+[ext_resource type="Shader" path="res://shaders/crashOutline.gdshader" id="20_16gop"]
 [ext_resource type="Texture2D" uid="uid://pgt6n3ajivpu" path="res://assets/radial background big.png" id="20_rltlv"]
 [ext_resource type="Texture2D" uid="uid://dy7qrl58soocx" path="res://assets/Crasher3.png" id="20_slatg"]
+[ext_resource type="Texture2D" uid="uid://bmr3mfd1wge0a" path="res://assets/CrasherOutline3.png" id="21_wb7rs"]
+[ext_resource type="Script" path="res://scripts/gameFolder/CrasherOutline.gd" id="22_i2wgh"]
+[ext_resource type="Shader" path="res://shaders/crashBoostBar.gdshader" id="26_te00n"]
+[ext_resource type="Script" path="res://scripts/gameFolder/CrashBoost.gd" id="27_b45ey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -44,6 +49,16 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_y4ple"]
 offsets = PackedFloat32Array(0, 0.48, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.48, 0.48, 0.48, 1, 0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ih00v"]
+shader = ExtResource("20_16gop")
+shader_parameter/crash_progress = 6.3
+shader_parameter/radius = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4yd7u"]
+shader = ExtResource("26_te00n")
+shader_parameter/boost_value = 3.113
+shader_parameter/gaining_boost = false
 
 [node name="game" type="Node2D"]
 scale = Vector2(1.218, 1.218)
@@ -115,32 +130,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_rfjs2")
 script = ExtResource("15_1r5es")
 
-[node name="Score" type="Label" parent="."]
-z_index = 5
-offset_left = -3818.55
-offset_top = 1623.97
-offset_right = -1694.55
-offset_bottom = 2032.97
-theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
-theme_override_constants/shadow_outline_size = 60
-theme_override_font_sizes/font_size = 300
-text = "SCORE: 0 PTS"
-script = ExtResource("14_6ye3i")
-metadata/_edit_use_anchors_ = true
-
-[node name="Highscore" type="Label" parent="."]
-z_index = 5
-offset_left = -3818.55
-offset_top = 1982.75
-offset_right = -1694.55
-offset_bottom = 2391.75
-theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
-theme_override_constants/shadow_outline_size = 60
-theme_override_font_sizes/font_size = 150
-text = "HIGHSCORE: 0 PTS"
-script = ExtResource("15_nmvl1")
-metadata/_edit_use_anchors_ = true
-
 [node name="PopSfxPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_j4gmb")
 
@@ -150,9 +139,11 @@ zoom = Vector2(0.2, 0.2)
 script = ExtResource("18_chv7v")
 
 [node name="CrasherArea2D" type="Area2D" parent="." groups=["Crasher"]]
+position = Vector2(-648.604, -10.6732)
 script = ExtResource("19_6jffq")
 
 [node name="Crasher" type="Sprite2D" parent="CrasherArea2D"]
+z_index = 1
 texture = ExtResource("20_slatg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CrasherArea2D/Crasher"]
@@ -180,10 +171,61 @@ color_ramp = SubResource("Gradient_y4ple")
 build_mode = 1
 polygon = PackedVector2Array(-45.1558, 57.4713, -87.0278, 117.406, -87.0278, 64.0394, -136.289, 64.0394, 0, -128.9, 137.11, 64.0394, 87.0278, 64.0394, 87.8491, 117.406, 48.4399, 62.3974, 48.4399, 115.764, 41.0508, 121.511, 25.4517, 125.616, 0.820801, 127.258, -19.7046, 125.616, -32.0195, 123.153, -39.4087, 119.869, -45.1558, 114.122)
 
+[node name="CrasherOutline" type="Sprite2D" parent="CrasherArea2D"]
+material = SubResource("ShaderMaterial_ih00v")
+position = Vector2(0, -3.28407)
+rotation = -1.5708
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("21_wb7rs")
+script = ExtResource("22_i2wgh")
+
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10
 scale = Vector2(3.7, 3.7)
 texture = ExtResource("20_rltlv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+z_index = 5
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 918.0
+offset_right = -1251.0
+offset_bottom = -79.0
+theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 60
+text = "SCORE: 0 PTS"
+script = ExtResource("14_6ye3i")
+metadata/_edit_use_anchors_ = true
+
+[node name="Highscore" type="Label" parent="CanvasLayer"]
+z_index = 5
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 1014.0
+offset_right = -1236.0
+offset_bottom = 3.0
+theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/font_size = 40
+text = "HIGHSCORE: 0 PTS"
+script = ExtResource("15_nmvl1")
+metadata/_edit_use_anchors_ = true
+
+[node name="CrashBoost" type="Sprite2D" parent="CanvasLayer"]
+z_index = 7
+material = SubResource("ShaderMaterial_4yd7u")
+position = Vector2(1880, 159)
+rotation = 4.71238
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_rfjs2")
+script = ExtResource("27_b45ey")
 
 [connection signal="timeout" from="GameBulletHandler/AutoTimer" to="GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]

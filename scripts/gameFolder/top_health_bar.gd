@@ -1,7 +1,7 @@
 extends Sprite2D
 @onready var game_over = $"../GameOver"
-@onready var score = $"../Score"
-@onready var highscore = $"../Highscore"
+@onready var score = $"../CanvasLayer/Score"
+@onready var highscore = $"../CanvasLayer/Highscore"
 @onready var camera_2d = $"../Camera2D"
 
 var MAX_X: float = 1200
