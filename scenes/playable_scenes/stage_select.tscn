@@ -880,7 +880,7 @@ texture = ExtResource("4_2hyju")
 [node name="StarParticle4" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_5"]
 visible = false
 position = Vector2(1708, 1004)
-rotation = -5.34943
+rotation = 0.933751
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 

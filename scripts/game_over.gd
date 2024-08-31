@@ -147,15 +147,40 @@ func _on_retry_button_pressed():
 	Global.gameOver = false
 	Global.gameTimeScale = 1.0
 
-func _on_home_button_pressed():
+func _on_stage_button_pressed():
 	Global.gameOver = false
 	Global.gameTimeScale = 1.0
 	Global.resetStats()
-	get_tree().change_scene_to_file("res://scenes/playable_scenes/home_menu.tscn")
-	
-
+	get_tree().change_scene_to_file("res://scenes/playable_scenes/stage_select.tscn")
 
 func _on_earning_timer_timeout():
 	earning_points.pitch_scale = randf_range(0.7,1.3)
 	earning_points.play()
 	earning_timer.stop()
+
+func three_star_level():
+	dark_star_particle_1.visible = false
+	dark_star_particle_2.visible = false
+	dark_star_particle_3.visible = true
+	dark_star_particle_4.visible = true
+	dark_star_particle_5.visible = true
+	dark_star_particle_6.visible = false
+	dark_star_particle_7.visible = false
+
+func five_star_level():
+	dark_star_particle_1.visible = false
+	dark_star_particle_2.visible = true
+	dark_star_particle_3.visible = true
+	dark_star_particle_4.visible = true
+	dark_star_particle_5.visible = true
+	dark_star_particle_6.visible = true
+	dark_star_particle_7.visible = false
+
+func seven_star_level():
+	dark_star_particle_1.visible = true
+	dark_star_particle_2.visible = true
+	dark_star_particle_3.visible = true
+	dark_star_particle_4.visible = true
+	dark_star_particle_5.visible = true
+	dark_star_particle_6.visible = true
+	dark_star_particle_7.visible = true

@@ -103,7 +103,33 @@ var camXSet: bool = true
 var camYSet: bool = true
 var canDeployCrasher: bool = true
 
-var unspentPoints: int = 0
+var unspentPoints: int = 10
+
+var num_base_stars1: int = 0
+var num_base_stars2: int = 0
+var num_base_stars3: int = 0
+var num_base_stars4: int = 0
+var num_base_stars5: int = 0
+
+var num_drone_stars1: int = 0
+var num_drone_stars2: int = 0
+var num_drone_stars3: int = 0
+var num_drone_stars4: int = 0
+var num_drone_stars5: int = 0
+
+
+func addXP(num):
+	xpAmount += num * difficulty
+	if xpAmount >= 6.28:
+		xpAmount = xpAmount - 6.28
+		level += 1
+		popup_shouldbe_visible = true
+		difficulty -= difficulty * 0.1
+		if level % evoLevel == 0 && firstEvolveCheck == true:
+			Global.evolutionPoints += 1
+			firstEvolveCheck = false
+		if level % evoLevel == 1:
+			firstEvolveCheck = true
 
 func resetStats():
 	bulletSize = 2
@@ -117,7 +143,6 @@ func resetStats():
 	xpNodesOnScreen = 0
 	enemyNum = 0
 	totalPoints = 0
-	unspentPoints = 0
 	popup_shouldbe_visible = false
 	mutateNumber = 1
 	evolutionPoints = 0

@@ -20,10 +20,10 @@ var first_impact: bool = true
 func _ready():
 	Global.gameTimeScale = 1.0
 	Global.resetStats()
-	
 	Global.curHighscore = Global.gameHighscore
-	
 	Global.curStage = -1
+	
+	Global.startCrasher = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

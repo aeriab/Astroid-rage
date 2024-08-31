@@ -39,9 +39,11 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RetryButton" type="Button" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.0286458
+anchor_top = 0.00462963
+anchor_right = 0.971354
+anchor_bottom = 0.99537
 offset_left = 686.0
 offset_top = 418.0
 offset_right = -686.0
@@ -52,18 +54,20 @@ theme_override_font_sizes/font_size = 70
 text = "RETRY"
 metadata/_edit_use_anchors_ = true
 
-[node name="HomeButton" type="Button" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="StageButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = -0.00625
+anchor_top = -0.00648148
+anchor_right = 1.00625
+anchor_bottom = 1.00648
 offset_left = 686.0
-offset_top = 650.0
+offset_top = 632.0
 offset_right = -686.0
-offset_bottom = -278.0
+offset_bottom = -296.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "HOME"
+text = "STAGE SELECT"
 metadata/_edit_use_anchors_ = true
 
 [node name="StarOutlines" type="Node2D" parent="."]
@@ -479,5 +483,5 @@ script = ExtResource("6_gjq02")
 startingDB = -20.0
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="StageButton" to="." method="_on_stage_button_pressed"]
 [connection signal="timeout" from="EarningPoints/EarningTimer" to="." method="_on_earning_timer_timeout"]
