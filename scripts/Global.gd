@@ -80,7 +80,6 @@ var damage = 4
 var rotationSpeed: float = 3.0
 
 var totalPoints = 30
-var unspentPoints = 30
 
 var xpAmount = 0.0
 
@@ -104,19 +103,7 @@ var camXSet: bool = true
 var camYSet: bool = true
 var canDeployCrasher: bool = true
 
-func addXP(num):
-	xpAmount += num * difficulty
-	if xpAmount >= 6.28:
-		xpAmount = xpAmount - 6.28
-		level += 1
-		unspentPoints += 1
-		popup_shouldbe_visible = true
-		difficulty -= difficulty * 0.1
-		if level % evoLevel == 0 && firstEvolveCheck == true:
-			Global.evolutionPoints += 1
-			firstEvolveCheck = false
-		if level % evoLevel == 1:
-			firstEvolveCheck = true
+var unspentPoints: int = 0
 
 func resetStats():
 	bulletSize = 2

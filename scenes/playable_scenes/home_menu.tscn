@@ -35,7 +35,7 @@ theme_override_font_sizes/font_size = 70
 text = "PLAY GAME"
 metadata/_edit_use_anchors_ = true
 
-[node name="GameHLabel" type="Label" parent="HomeCanvas/PlayButton"]
+[node name="GameLevelLabel" type="Label" parent="HomeCanvas/PlayButton"]
 layout_mode = 0
 offset_left = 156.0
 offset_top = 166.0

@@ -188,7 +188,7 @@ texture = ExtResource("20_rltlv")
 
 [node name="Score" type="Label" parent="CanvasLayer"]
 z_index = 5
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 28.0
@@ -204,7 +204,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Highscore" type="Label" parent="CanvasLayer"]
 z_index = 5
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 26.0

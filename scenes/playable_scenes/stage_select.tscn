@@ -1,3 +1,945 @@
-[gd_scene format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=8 format=3 uid="uid://bakjt0er5opos"]
+
+[ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
+[ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
+[ext_resource type="Texture2D" uid="uid://du2hhb0k4p8hp" path="res://assets/Dark Star Particle.png" id="2_bhtqa"]
+[ext_resource type="Texture2D" uid="uid://bur11uk6ccfqd" path="res://assets/MinusSign.png" id="3_2hqk3"]
+[ext_resource type="Script" path="res://scripts/StageSelect/star_manipulating.gd" id="3_51fws"]
+[ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="4_2hyju"]
+[ext_resource type="Texture2D" uid="uid://clw315vqrx167" path="res://assets/PlusSign.png" id="4_hdwke"]
 
 [node name="stage_select" type="Node2D"]
+
+[node name="MainCanvas" type="CanvasLayer" parent="."]
+script = ExtResource("1_xyryf")
+
+[node name="StageWords" type="Label" parent="MainCanvas"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 42.0
+offset_bottom = -866.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Stage 1: Learner Lagoon"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="Button" parent="MainCanvas"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 756.5
+offset_top = 450.0
+offset_right = -756.5
+offset_bottom = -444.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 130
+text = "PLAY"
+metadata/_edit_use_anchors_ = true
+
+[node name="RightStageArrow" type="Button" parent="MainCanvas"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1700.0
+offset_top = 59.0
+offset_right = 748.0
+offset_bottom = -293.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 70
+icon = ExtResource("1_opoq4")
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LeftStageArrow" type="Button" parent="MainCanvas"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 220.0
+offset_top = 168.0
+offset_right = -732.0
+offset_bottom = -184.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 70
+icon = ExtResource("1_opoq4")
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HomeButton" type="Button" parent="MainCanvas"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 857.1
+offset_top = 975.0
+offset_right = -719.9
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+theme_override_font_sizes/font_size = 70
+text = "HOME"
+metadata/_edit_use_anchors_ = true
+
+[node name="BaseLabel" type="Label" parent="MainCanvas"]
+offset_left = -2.0
+offset_top = 431.0
+offset_right = 728.0
+offset_bottom = 514.0
+theme_override_font_sizes/font_size = 60
+text = "SELECT BASE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaseSelect" type="Label" parent="MainCanvas"]
+offset_left = 10.0
+offset_top = 521.0
+offset_right = 714.0
+offset_bottom = 631.0
+theme_override_font_sizes/font_size = 80
+text = "Tank"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightBaseArrow" type="Button" parent="MainCanvas/BaseSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105114
+anchor_top = 1.12727
+anchor_right = 1.10511
+anchor_bottom = 2.12727
+offset_left = 500.0
+offset_top = -100.0
+offset_right = 764.0
+offset_bottom = 518.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 70
+icon = ExtResource("1_opoq4")
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LeftBaseArrow" type="Button" parent="MainCanvas/BaseSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.122159
+anchor_top = -0.290909
+anchor_right = 0.877841
+anchor_bottom = 0.709091
+offset_left = 206.0
+offset_top = 126.0
+offset_right = 470.0
+offset_bottom = 744.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 70
+icon = ExtResource("1_opoq4")
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BaseUpgrades" type="Label" parent="MainCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 647.0
+offset_right = -1575.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 26
+theme_override_font_sizes/font_size = 40
+text = "auto-fire rate
+barrel amount
+damage
+bullet size
+rotation speed"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="upgrade_1" type="Node" parent="MainCanvas/BaseUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_1"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 361.0
+offset_top = 668.0
+offset_right = 1329.0
+offset_bottom = 1636.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+
+[node name="up1Backing" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_1"]
+offset_left = 414.0
+offset_top = 668.0
+offset_right = 744.0
+offset_bottom = 716.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_1"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 749.0
+offset_top = 668.0
+offset_right = 1717.0
+offset_bottom = 1636.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
+visible = false
+position = Vector2(439, 688)
+rotation = -0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
+visible = false
+position = Vector2(508, 691)
+rotation = -2.48884
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
+visible = false
+position = Vector2(577, 687)
+rotation = 0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
+visible = false
+position = Vector2(647, 687)
+rotation = -0.621337
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
+visible = false
+position = Vector2(715, 688)
+rotation = 0.0704764
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="upgrade_2" type="Node" parent="MainCanvas/BaseUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_2"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 361.0
+offset_top = 747.0
+offset_right = 1329.0
+offset_bottom = 1715.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+
+[node name="up1Backing2" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_2"]
+offset_left = 414.0
+offset_top = 747.0
+offset_right = 744.0
+offset_bottom = 795.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_2"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 749.0
+offset_top = 747.0
+offset_right = 1717.0
+offset_bottom = 1715.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
+visible = false
+position = Vector2(439, 768)
+rotation = 0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
+visible = false
+position = Vector2(508, 771)
+rotation = -3.35976
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
+visible = false
+position = Vector2(577, 767)
+rotation = -4.32318
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
+visible = false
+position = Vector2(647, 767)
+rotation = -0.870919
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
+visible = false
+position = Vector2(715, 768)
+rotation = -0.551524
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="upgrade_3" type="Node" parent="MainCanvas/BaseUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_3"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 361.0
+offset_top = 827.0
+offset_right = 1329.0
+offset_bottom = 1795.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+
+[node name="up1Backing3" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_3"]
+offset_left = 414.0
+offset_top = 827.0
+offset_right = 744.0
+offset_bottom = 875.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_3"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 749.0
+offset_top = 827.0
+offset_right = 1717.0
+offset_bottom = 1795.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
+visible = false
+position = Vector2(439, 848)
+rotation = 5.34943
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
+visible = false
+position = Vector2(508, 848)
+rotation = -0.551524
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
+visible = false
+position = Vector2(577, 848)
+rotation = 0.303687
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
+visible = false
+position = Vector2(647, 848)
+rotation = -0.123918
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
+visible = false
+position = Vector2(715, 848)
+rotation = -3.91128
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="upgrade_4" type="Node" parent="MainCanvas/BaseUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_4"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 361.0
+offset_top = 907.0
+offset_right = 1329.0
+offset_bottom = 1875.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+
+[node name="up1Backing4" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_4"]
+offset_left = 414.0
+offset_top = 907.0
+offset_right = 744.0
+offset_bottom = 955.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_4"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 749.0
+offset_top = 907.0
+offset_right = 1717.0
+offset_bottom = 1875.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
+visible = false
+position = Vector2(439, 928)
+rotation = -0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
+visible = false
+position = Vector2(508, 928)
+rotation = 0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
+visible = false
+position = Vector2(577, 928)
+rotation = -0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
+visible = false
+position = Vector2(647, 928)
+rotation = -0.621337
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
+visible = false
+position = Vector2(715, 928)
+rotation = 0.0715585
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="upgrade_5" type="Node" parent="MainCanvas/BaseUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_5"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 361.0
+offset_top = 983.0
+offset_right = 1329.0
+offset_bottom = 1951.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+
+[node name="up1Backing5" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_5"]
+offset_left = 414.0
+offset_top = 983.0
+offset_right = 744.0
+offset_bottom = 1031.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_5"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 749.0
+offset_top = 983.0
+offset_right = 1717.0
+offset_bottom = 1951.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
+visible = false
+position = Vector2(439, 1004)
+rotation = -1.91986
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
+visible = false
+position = Vector2(508, 1004)
+rotation = -2.73668
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
+visible = false
+position = Vector2(577, 1004)
+rotation = 0.747001
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
+visible = false
+position = Vector2(647, 1004)
+rotation = -5.34943
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
+visible = false
+position = Vector2(715, 1004)
+rotation = 0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="DroneLabel" type="Label" parent="MainCanvas"]
+offset_left = 1209.0
+offset_top = 432.0
+offset_right = 1915.0
+offset_bottom = 515.0
+theme_override_font_sizes/font_size = 60
+text = "SELECT DRONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DroneSelect" type="Label" parent="MainCanvas"]
+offset_left = 1209.0
+offset_top = 522.0
+offset_right = 1913.0
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 80
+text = "Crasher"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightDroneArrow" type="Button" parent="MainCanvas/DroneSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105114
+anchor_top = 1.12727
+anchor_right = 1.10511
+anchor_bottom = 2.12727
+offset_left = 500.0
+offset_top = -100.0
+offset_right = 764.0
+offset_bottom = 518.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 70
+icon = ExtResource("1_opoq4")
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LeftDroneArrow" type="Button" parent="MainCanvas/DroneSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.122159
+anchor_top = -0.290909
+anchor_right = 0.877841
+anchor_bottom = 0.709091
+offset_left = 206.0
+offset_top = 126.0
+offset_right = 470.0
+offset_bottom = 744.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 70
+icon = ExtResource("1_opoq4")
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DroneUpgrades" type="Label" parent="MainCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1080.0
+offset_top = 647.0
+offset_right = -517.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 26
+theme_override_font_sizes/font_size = 40
+text = "size
+speed
+rotation speed
+max boost
+recharge speed"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="upgrade_1" type="Node" parent="MainCanvas/DroneUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_1"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1422.0
+offset_top = 668.0
+offset_right = 2390.0
+offset_bottom = 1636.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+metadata/_edit_use_anchors_ = true
+
+[node name="up1Backing" type="ColorRect" parent="MainCanvas/DroneUpgrades/upgrade_1"]
+offset_left = 1475.0
+offset_top = 668.0
+offset_right = 1805.0
+offset_bottom = 716.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="upPlus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_1"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1810.0
+offset_top = 668.0
+offset_right = 2778.0
+offset_bottom = 1636.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+metadata/_edit_use_anchors_ = true
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_1"]
+visible = false
+position = Vector2(1501, 688)
+rotation = -0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_1"]
+visible = false
+position = Vector2(1570, 691)
+rotation = -2.48884
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_1"]
+visible = false
+position = Vector2(1639, 687)
+rotation = 0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_1"]
+visible = false
+position = Vector2(1709, 687)
+rotation = -0.621337
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_1"]
+visible = false
+position = Vector2(1777, 688)
+rotation = 0.0704764
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="upgrade_2" type="Node" parent="MainCanvas/DroneUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_2"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1422.0
+offset_top = 747.0
+offset_right = 2390.0
+offset_bottom = 1715.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+metadata/_edit_use_anchors_ = true
+
+[node name="up1Backing2" type="ColorRect" parent="MainCanvas/DroneUpgrades/upgrade_2"]
+offset_left = 1475.0
+offset_top = 747.0
+offset_right = 1805.0
+offset_bottom = 795.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="upPlus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_2"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1810.0
+offset_top = 747.0
+offset_right = 2778.0
+offset_bottom = 1715.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+metadata/_edit_use_anchors_ = true
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_2"]
+visible = false
+position = Vector2(1500, 768)
+rotation = 0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_2"]
+visible = false
+position = Vector2(1569, 771)
+rotation = -3.35976
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_2"]
+visible = false
+position = Vector2(1638, 767)
+rotation = -4.32318
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_2"]
+visible = false
+position = Vector2(1708, 767)
+rotation = -0.870919
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_2"]
+visible = false
+position = Vector2(1776, 768)
+rotation = -0.551524
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="upgrade_3" type="Node" parent="MainCanvas/DroneUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_3"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1422.0
+offset_top = 827.0
+offset_right = 2390.0
+offset_bottom = 1795.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+metadata/_edit_use_anchors_ = true
+
+[node name="up1Backing3" type="ColorRect" parent="MainCanvas/DroneUpgrades/upgrade_3"]
+offset_left = 1475.0
+offset_top = 827.0
+offset_right = 1805.0
+offset_bottom = 875.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="upPlus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_3"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1810.0
+offset_top = 827.0
+offset_right = 2778.0
+offset_bottom = 1795.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+metadata/_edit_use_anchors_ = true
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_3"]
+visible = false
+position = Vector2(1500, 848)
+rotation = 5.34943
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_3"]
+visible = false
+position = Vector2(1569, 848)
+rotation = -0.551524
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_3"]
+visible = false
+position = Vector2(1638, 848)
+rotation = 0.303687
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_3"]
+visible = false
+position = Vector2(1708, 848)
+rotation = -0.123918
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_3"]
+visible = false
+position = Vector2(1776, 848)
+rotation = -3.91128
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="upgrade_4" type="Node" parent="MainCanvas/DroneUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_4"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1422.0
+offset_top = 907.0
+offset_right = 2390.0
+offset_bottom = 1875.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+metadata/_edit_use_anchors_ = true
+
+[node name="up1Backing4" type="ColorRect" parent="MainCanvas/DroneUpgrades/upgrade_4"]
+offset_left = 1475.0
+offset_top = 907.0
+offset_right = 1805.0
+offset_bottom = 955.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="upPlus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_4"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1810.0
+offset_top = 907.0
+offset_right = 2778.0
+offset_bottom = 1875.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+metadata/_edit_use_anchors_ = true
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_4"]
+visible = false
+position = Vector2(1500, 928)
+rotation = -0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_4"]
+visible = false
+position = Vector2(1569, 928)
+rotation = 0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_4"]
+visible = false
+position = Vector2(1638, 928)
+rotation = -0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_4"]
+visible = false
+position = Vector2(1708, 928)
+rotation = -0.621337
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_4"]
+visible = false
+position = Vector2(1776, 928)
+rotation = 0.0715585
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="upgrade_5" type="Node" parent="MainCanvas/DroneUpgrades"]
+script = ExtResource("3_51fws")
+
+[node name="upMinus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_5"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1422.0
+offset_top = 983.0
+offset_right = 2390.0
+offset_bottom = 1951.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_2hqk3")
+metadata/_edit_use_anchors_ = true
+
+[node name="up1Backing5" type="ColorRect" parent="MainCanvas/DroneUpgrades/upgrade_5"]
+offset_left = 1475.0
+offset_top = 983.0
+offset_right = 1805.0
+offset_bottom = 1031.0
+color = Color(0.485703, 0.485704, 0.485703, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="upPlus" type="Button" parent="MainCanvas/DroneUpgrades/upgrade_5"]
+modulate = Color(1, 1, 1, 0.658824)
+offset_left = 1810.0
+offset_top = 983.0
+offset_right = 2778.0
+offset_bottom = 1951.0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("4_hdwke")
+metadata/_edit_use_anchors_ = true
+
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_5"]
+visible = false
+position = Vector2(1500, 1004)
+rotation = -1.91986
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_5"]
+visible = false
+position = Vector2(1569, 1004)
+rotation = -2.73668
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_5"]
+visible = false
+position = Vector2(1638, 1004)
+rotation = 0.747001
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_5"]
+visible = false
+position = Vector2(1708, 1004)
+rotation = -5.34943
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/DroneUpgrades/upgrade_5"]
+visible = false
+position = Vector2(1776, 1004)
+rotation = 0.3735
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("4_2hyju")
+
+[node name="UpgradesLeftLabel" type="Label" parent="MainCanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = 158.0
+offset_right = 131.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "UPGRADES 
+LEFT: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DarkStarParticle" type="Sprite2D" parent="."]
+position = Vector2(700, 275)
+scale = Vector2(0.248611, 0.248611)
+texture = ExtResource("2_bhtqa")
+
+[node name="StarParticle1" type="Sprite2D" parent="DarkStarParticle"]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_2hyju")
+
+[node name="DarkStarParticle2" type="Sprite2D" parent="."]
+position = Vector2(960, 275)
+scale = Vector2(0.248611, 0.248611)
+texture = ExtResource("2_bhtqa")
+
+[node name="StarParticle2" type="Sprite2D" parent="DarkStarParticle2"]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_2hyju")
+
+[node name="DarkStarParticle3" type="Sprite2D" parent="."]
+position = Vector2(1220, 275)
+scale = Vector2(0.248611, 0.248611)
+texture = ExtResource("2_bhtqa")
+
+[node name="StarParticle3" type="Sprite2D" parent="DarkStarParticle3"]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_2hyju")
+
+[connection signal="pressed" from="MainCanvas/PlayButton" to="MainCanvas" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainCanvas/RightStageArrow" to="MainCanvas" method="_on_right_stage_arrow_pressed"]
+[connection signal="pressed" from="MainCanvas/LeftStageArrow" to="MainCanvas" method="_on_left_stage_arrow_pressed"]
+[connection signal="pressed" from="MainCanvas/HomeButton" to="MainCanvas" method="_on_home_button_pressed"]
