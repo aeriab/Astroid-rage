@@ -65,6 +65,30 @@ func _ready():
 	
 	if Global.current_stage == "Learner Lagoon":
 		three_star_level()
+		Global.curS3 = 1000
+		Global.curS4 = 2000
+		Global.curS5 = 3000
+	elif Global.current_stage == "Perfect Pond":
+		three_star_level()
+		Global.curS3 = 2000
+		Global.curS4 = 4000
+		Global.curS5 = 6000
+	elif Global.current_stage == "Giga Geyser":
+		five_star_level()
+		Global.curS2 = 1000
+		Global.curS3 = 2000
+		Global.curS4 = 4000
+		Global.curS5 = 6000
+		Global.curS6 = 7000
+	elif Global.current_stage == "Swirly Swamp":
+		seven_star_level()
+		Global.curS1 = 500
+		Global.curS2 = 1000
+		Global.curS3 = 2000
+		Global.curS4 = 4000
+		Global.curS5 = 6000
+		Global.curS6 = 7000
+		Global.curS7 = 8000
 
 func _process(_delta):
 	
@@ -73,14 +97,14 @@ func _process(_delta):
 		curTally += int(Global.points / 300.0) + 10
 		score.text = "SCORE: " + str(curTally) + " PTS"
 		
-		if curTally >= Global.curS1 && firstS1:
+		if curTally >= Global.curS1 && firstS1 && outline_star_particle_1.visible:
 			dark_star_particle_1.visible = true
 			ghost_star_particle_1.visible = true
 			star_sound_1.play()
 			star_cpu_particles_1.emitting = true
 			firstS1 = false
 			
-		if curTally >= Global.curS2 && firstS2:
+		if curTally >= Global.curS2 && firstS2 && outline_star_particle_2.visible:
 			dark_star_particle_2.visible = true
 			ghost_star_particle_2.visible = true
 			star_sound_2.play()
@@ -108,14 +132,14 @@ func _process(_delta):
 			star_cpu_particles_5.emitting = true
 			firstS5 = false
 			
-		if curTally >= Global.curS6 && firstS6:
+		if curTally >= Global.curS6 && firstS6 && outline_star_particle_6.visible:
 			dark_star_particle_6.visible = true
 			ghost_star_particle_6.visible = true
 			star_sound_6.play()
 			star_cpu_particles_6.emitting = true
 			firstS6 = false
 			
-		if curTally >= Global.curS7 && firstS7:
+		if curTally >= Global.curS7 && firstS7 && outline_star_particle_7.visible:
 			dark_star_particle_7.visible = true
 			ghost_star_particle_7.visible = true
 			star_sound_7.play()
@@ -142,9 +166,9 @@ func tallyScores():
 	highscore.text = "HIGHSCORE: " + str(Global.curHighscore) + " PTS"
 	countingScore = true
 	
-	if Global.curHighscore >= Global.curS1:
+	if Global.curHighscore >= Global.curS1 && outline_star_particle_1.visible:
 		ghost_star_particle_1.visible = true
-	if Global.curHighscore >= Global.curS2:
+	if Global.curHighscore >= Global.curS2 && outline_star_particle_2.visible:
 		ghost_star_particle_2.visible = true
 	if Global.curHighscore >= Global.curS3:
 		ghost_star_particle_3.visible = true
@@ -152,9 +176,9 @@ func tallyScores():
 		ghost_star_particle_4.visible = true
 	if Global.curHighscore >= Global.curS5:
 		ghost_star_particle_5.visible = true
-	if Global.curHighscore >= Global.curS6:
+	if Global.curHighscore >= Global.curS6 && outline_star_particle_6.visible:
 		ghost_star_particle_6.visible = true
-	if Global.curHighscore >= Global.curS7:
+	if Global.curHighscore >= Global.curS7 && outline_star_particle_7.visible:
 		ghost_star_particle_7.visible = true
 
 func _on_retry_button_pressed():
