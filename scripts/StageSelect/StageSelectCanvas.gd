@@ -104,13 +104,17 @@ func _process(_delta):
 	upgrades_left_label.text = "UPGRADES\nLEFT: " + str(Global.unspentPoints)
 	
 	if stageSelecting == 1:
+		Global.current_stage = "Learner Lagoon"
 		stage_words.text = "Stage 1: Learner Lagoon"
 		left_stage_arrow.visible = false
 	elif stageSelecting == 2:
+		Global.current_stage = "Perfect Pond"
 		stage_words.text = "Stage 2: Perfect Pond"
 	elif stageSelecting == 3:
+		Global.current_stage = "Giga Geyser"
 		stage_words.text = "Stage 3: Giga Geyser"
 	elif stageSelecting == 4:
+		Global.current_stage = "Swirly Swamp"
 		stage_words.text = "Stage 4: Swirly Swamp"
 		right_stage_arrow.visible = false
 

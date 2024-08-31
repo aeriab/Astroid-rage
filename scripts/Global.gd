@@ -117,6 +117,7 @@ var num_drone_stars3: int = 0
 var num_drone_stars4: int = 0
 var num_drone_stars5: int = 0
 
+var current_stage: String = "Learner Lagoon"
 
 func addXP(num):
 	xpAmount += num * difficulty

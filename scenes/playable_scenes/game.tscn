@@ -186,38 +186,38 @@ metadata/_edit_use_anchors_ = true
 [node name="StarOutlines" type="Node2D" parent="GameOver"]
 position = Vector2(-21, -10)
 
-[node name="DarkStarParticle" type="Sprite2D" parent="GameOver/StarOutlines"]
-position = Vector2(980, 940)
+[node name="DarkStarParticle1" type="Sprite2D" parent="GameOver/StarOutlines"]
+position = Vector2(230, 960)
+rotation = -0.261799
 scale = Vector2(0.2875, 0.2875)
 texture = ExtResource("10_7t3f4")
 
 [node name="DarkStarParticle2" type="Sprite2D" parent="GameOver/StarOutlines"]
-position = Vector2(730, 945)
-rotation = -0.0872665
-scale = Vector2(0.2875, 0.2875)
-texture = ExtResource("10_7t3f4")
-
-[node name="DarkStarParticle3" type="Sprite2D" parent="GameOver/StarOutlines"]
-position = Vector2(1230, 945)
-rotation = 0.0872665
-scale = Vector2(0.2875, 0.2875)
-texture = ExtResource("10_7t3f4")
-
-[node name="DarkStarParticle4" type="Sprite2D" parent="GameOver/StarOutlines"]
 position = Vector2(480, 950)
 rotation = -0.174533
 scale = Vector2(0.2875, 0.2875)
 texture = ExtResource("10_7t3f4")
 
+[node name="DarkStarParticle3" type="Sprite2D" parent="GameOver/StarOutlines"]
+position = Vector2(730, 945)
+rotation = -0.0872665
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("10_7t3f4")
+
+[node name="DarkStarParticle4" type="Sprite2D" parent="GameOver/StarOutlines"]
+position = Vector2(980, 940)
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("10_7t3f4")
+
 [node name="DarkStarParticle5" type="Sprite2D" parent="GameOver/StarOutlines"]
-position = Vector2(1480, 950)
-rotation = 0.174533
+position = Vector2(1230, 945)
+rotation = 0.0872665
 scale = Vector2(0.2875, 0.2875)
 texture = ExtResource("10_7t3f4")
 
 [node name="DarkStarParticle6" type="Sprite2D" parent="GameOver/StarOutlines"]
-position = Vector2(230, 960)
-rotation = -0.261799
+position = Vector2(1480, 950)
+rotation = 0.174533
 scale = Vector2(0.2875, 0.2875)
 texture = ExtResource("10_7t3f4")
 
@@ -594,6 +594,22 @@ volume_db = -20.0
 pitch_scale = 1.4
 script = ExtResource("14_nv7fv")
 startingDB = -20.0
+
+[node name="StageName" type="Label" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1250.0
+offset_top = -135.0
+offset_right = 14.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Learner Lagoon"
+horizontal_alignment = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("13_3wdue")]
 visible = false

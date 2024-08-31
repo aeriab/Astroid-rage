@@ -39,6 +39,17 @@ var curTally: int = 0
 @onready var ghost_star_particle_6 = $StarGhosts/GhostStarParticle6
 @onready var ghost_star_particle_7 = $StarGhosts/GhostStarParticle7
 
+@onready var outline_star_particle_1 = $StarOutlines/DarkStarParticle1
+@onready var outline_star_particle_2 = $StarOutlines/DarkStarParticle2
+@onready var outline_star_particle_3 = $StarOutlines/DarkStarParticle3
+@onready var outline_star_particle_4 = $StarOutlines/DarkStarParticle4
+@onready var outline_star_particle_5 = $StarOutlines/DarkStarParticle5
+@onready var outline_star_particle_6 = $StarOutlines/DarkStarParticle6
+@onready var outline_star_particle_7 = $StarOutlines/DarkStarParticle7
+
+
+@onready var stage_name = $StageName
+
 var firstS1: bool = true
 var firstS2: bool = true
 var firstS3: bool = true
@@ -48,6 +59,12 @@ var firstS6: bool = true
 var firstS7: bool = true
 
 var lastTally: int = 0
+
+func _ready():
+	stage_name.text = Global.current_stage
+	
+	if Global.current_stage == "Learner Lagoon":
+		three_star_level()
 
 func _process(_delta):
 	
@@ -159,28 +176,28 @@ func _on_earning_timer_timeout():
 	earning_timer.stop()
 
 func three_star_level():
-	dark_star_particle_1.visible = false
-	dark_star_particle_2.visible = false
-	dark_star_particle_3.visible = true
-	dark_star_particle_4.visible = true
-	dark_star_particle_5.visible = true
-	dark_star_particle_6.visible = false
-	dark_star_particle_7.visible = false
+	outline_star_particle_1.visible = false
+	outline_star_particle_2.visible = false
+	outline_star_particle_3.visible = true
+	outline_star_particle_4.visible = true
+	outline_star_particle_5.visible = true
+	outline_star_particle_6.visible = false
+	outline_star_particle_7.visible = false
 
 func five_star_level():
-	dark_star_particle_1.visible = false
-	dark_star_particle_2.visible = true
-	dark_star_particle_3.visible = true
-	dark_star_particle_4.visible = true
-	dark_star_particle_5.visible = true
-	dark_star_particle_6.visible = true
-	dark_star_particle_7.visible = false
+	outline_star_particle_1.visible = false
+	outline_star_particle_2.visible = true
+	outline_star_particle_3.visible = true
+	outline_star_particle_4.visible = true
+	outline_star_particle_5.visible = true
+	outline_star_particle_6.visible = true
+	outline_star_particle_7.visible = false
 
 func seven_star_level():
-	dark_star_particle_1.visible = true
-	dark_star_particle_2.visible = true
-	dark_star_particle_3.visible = true
-	dark_star_particle_4.visible = true
-	dark_star_particle_5.visible = true
-	dark_star_particle_6.visible = true
-	dark_star_particle_7.visible = true
+	outline_star_particle_1.visible = true
+	outline_star_particle_2.visible = true
+	outline_star_particle_3.visible = true
+	outline_star_particle_4.visible = true
+	outline_star_particle_5.visible = true
+	outline_star_particle_6.visible = true
+	outline_star_particle_7.visible = true
