@@ -46,7 +46,6 @@ func _ready():
 func _process(_delta):
 	if onWave == 0 || onWave == 1:
 		Global.firstWaveProgress = 100 - ((wave_timer_1.time_left / Global.wave1Wait) * 100)
-		print(Global.firstWaveProgress)
 	elif onWave == 2:
 		Global.secondWaveProgress = 100 - ((wave_timer_2.time_left / Global.wave2Wait) * 100)
 	elif onWave == 3:
