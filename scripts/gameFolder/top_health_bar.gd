@@ -1,8 +1,14 @@
 extends Sprite2D
 @onready var game_over = $"../GameOver"
-@onready var score = $"../CanvasLayer/Score"
-@onready var highscore = $"../CanvasLayer/Highscore"
 @onready var camera_2d = $"../Camera2D"
+@onready var star_1 = $"../CanvasLayer/Star1"
+@onready var star_2 = $"../CanvasLayer/Star2"
+@onready var star_3 = $"../CanvasLayer/Star3"
+@onready var star_4 = $"../CanvasLayer/Star4"
+@onready var star_5 = $"../CanvasLayer/Star5"
+@onready var star_6 = $"../CanvasLayer/Star6"
+@onready var star_7 = $"../CanvasLayer/Star7"
+@onready var crash_boost = $"../CanvasLayer/CrashBoost"
 
 var MAX_X: float = 1200
 var MAX_Y: float = 750
@@ -10,6 +16,17 @@ var MAX_Y: float = 750
 var firstTally: bool = true
 
 var dying: bool = false
+
+func _ready():
+	if Global.current_stage == "Learner Lagoon":
+		three_star_level()
+	elif Global.current_stage == "Perfect Pond":
+		three_star_level()
+	elif Global.current_stage == "Giga Geyser":
+		five_star_level()
+	elif Global.current_stage == "Swirly Swamp":
+		seven_star_level()
+
 
 
 func _process(delta):
@@ -35,16 +52,49 @@ func _process(delta):
 			dying = true
 			game_over.visible = true
 			game_over.tallyScores()
-			score.visible = false
-			highscore.visible = false
+			star_1.visible = false
+			star_2.visible = false
+			star_3.visible = false
+			star_4.visible = false
+			star_5.visible = false
+			star_6.visible = false
+			star_7.visible = false
+			crash_boost.visible = false
 			
 			firstTally = false
 	else:
 		firstTally = true
-		score.visible = true
-		highscore.visible = true
+		crash_boost.visible = true
 	
 	if dying:
 		Global.gameTimeScale -= delta
 		if Global.gameTimeScale <= 0:
 			Global.gameTimeScale = 0.0
+
+
+func three_star_level():
+	star_1.visible = false
+	star_2.visible = false
+	star_3.visible = true
+	star_4.visible = true
+	star_5.visible = true
+	star_6.visible = false
+	star_7.visible = false
+
+func five_star_level():
+	star_1.visible = false
+	star_2.visible = true
+	star_3.visible = true
+	star_4.visible = true
+	star_5.visible = true
+	star_6.visible = true
+	star_7.visible = false
+
+func seven_star_level():
+	star_1.visible = true
+	star_2.visible = true
+	star_3.visible = true
+	star_4.visible = true
+	star_5.visible = true
+	star_6.visible = true
+	star_7.visible = true

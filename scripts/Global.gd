@@ -56,6 +56,11 @@ var ricoHighscore: int = 0
 var autoHighscore: int = 0
 var gameHighscore: int = 0
 
+var learnerHighscore: int = 0
+var perfectHighscore: int = 0
+var gigaHighscore: int = 0
+var swirlySwamp: int = 0
+
 var curHighscore: int = 0
 
 var points: int = 0
@@ -118,6 +123,23 @@ var num_drone_stars4: int = 0
 var num_drone_stars5: int = 0
 
 var current_stage: String = "Learner Lagoon"
+
+var firstWaveProgress: float = 0
+var secondWaveProgress: float = 0
+var thirdWaveProgress: float = 0
+var fourthWaveProgress: float = 0
+var fifthWaveProgress: float = 0
+var sixthWaveProgress: float = 0
+var seventhWaveProgress: float = 0
+
+var wave1Wait: float = 5.0
+var wave2Wait: float = 5.0
+var wave3Wait: float = 5.0
+var wave4Wait: float = 5.0
+var wave5Wait: float = 5.0
+var wave6Wait: float = 5.0
+var wave7Wait: float = 5.0
+
 
 func addXP(num):
 	xpAmount += num * difficulty
