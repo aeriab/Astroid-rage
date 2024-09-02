@@ -2,6 +2,7 @@ extends Sprite2D
 
 var boostGainScale: float = 1.0
 
+
 func _process(delta):
 	if !Global.startCrasher && !Global.crashStarted && !Global.softCam && Global.crashTime < 6.3:
 		Global.crashTime += delta * Global.gameTimeScale * boostGainScale

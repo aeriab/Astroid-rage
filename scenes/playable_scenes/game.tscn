@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=58 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -13,11 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="11_x60jw"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_1ef7u"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="12_m0jp0"]
-[ext_resource type="AudioStream" uid="uid://dohitiswygj2q" path="res://assets/orb.mp3" id="13_8wiul"]
 [ext_resource type="Script" path="res://scripts/SFXVolScript.gd" id="14_nv7fv"]
 [ext_resource type="Texture2D" uid="uid://128dlw2ygthe" path="res://assets/HealthBarRedCenter.png" id="14_rfjs2"]
 [ext_resource type="Script" path="res://scripts/gameFolder/top_health_bar.gd" id="15_1r5es"]
-[ext_resource type="AudioStream" uid="uid://vn2lp82aubml" path="res://assets/new-level-142995.mp3" id="15_gejrj"]
 [ext_resource type="AudioStream" uid="uid://cn63cw3kspful" path="res://assets/ding-1-14705.mp3" id="16_0nk63"]
 [ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="16_j4gmb"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Game_Camera2D.gd" id="18_chv7v"]
@@ -33,6 +31,7 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/CrasherOutline.gd" id="22_i2wgh"]
 [ext_resource type="Shader" path="res://shaders/crashBoostBar.gdshader" id="26_te00n"]
 [ext_resource type="Script" path="res://scripts/gameFolder/CrashBoost.gd" id="27_b45ey"]
+[ext_resource type="Script" path="res://scripts/gameFolder/game_canvas.gd" id="32_mtphb"]
 [ext_resource type="Shader" path="res://shaders/midgameStar.gdshader" id="34_vtmkp"]
 [ext_resource type="Script" path="res://scripts/gameFolder/progressToStar1.gd" id="35_bi7cs"]
 [ext_resource type="Script" path="res://scripts/gameFolder/progressToStar2.gd" id="36_78dv1"]
@@ -166,33 +165,9 @@ scale = Vector2(603.038, 603.038)
 [node name="GameWaves" type="Node" parent="."]
 script = ExtResource("9_cwbsc")
 
-[node name="WaveTimer1" type="Timer" parent="GameWaves"]
-wait_time = 5.0
-one_shot = true
-
-[node name="WaveTimer2" type="Timer" parent="GameWaves"]
-wait_time = 5.0
-one_shot = true
-
-[node name="WaveTimer3" type="Timer" parent="GameWaves"]
-wait_time = 5.0
-one_shot = true
-
-[node name="WaveTimer4" type="Timer" parent="GameWaves"]
-wait_time = 5.0
-one_shot = true
-
-[node name="WaveTimer5" type="Timer" parent="GameWaves"]
-wait_time = 5.0
-one_shot = true
-
-[node name="WaveTimer6" type="Timer" parent="GameWaves"]
-wait_time = 5.0
-one_shot = true
-
-[node name="WaveTimer7" type="Timer" parent="GameWaves"]
-wait_time = 5.0
-one_shot = true
+[node name="RedDudeTimer" type="Timer" parent="GameWaves"]
+wait_time = 16.904
+autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 visible = false
@@ -545,77 +520,6 @@ rotation = 0.261799
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("12_m0jp0")
 
-[node name="Score" type="Label" parent="GameOver"]
-z_index = 5
-offset_left = -2.0
-offset_top = 522.0
-offset_right = 681.0
-offset_bottom = 618.0
-theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
-theme_override_constants/shadow_outline_size = 20
-theme_override_font_sizes/font_size = 70
-text = "SCORE: 0 PTS"
-horizontal_alignment = 1
-
-[node name="ScoreCPUParticles2D" type="CPUParticles2D" parent="GameOver/Score"]
-position = Vector2(404, 47)
-emitting = false
-amount = 30
-emission_shape = 3
-emission_rect_extents = Vector2(50, 20)
-direction = Vector2(0, -1)
-spread = 90.0
-initial_velocity_min = 200.0
-initial_velocity_max = 500.0
-scale_amount_min = 5.0
-scale_amount_max = 10.0
-scale_amount_curve = SubResource("Curve_bc56w")
-
-[node name="Highscore" type="Label" parent="GameOver"]
-z_index = 5
-offset_left = -2.0
-offset_top = 633.0
-offset_right = 681.0
-offset_bottom = 729.0
-theme_override_colors/font_shadow_color = Color(0.466181, 0.466181, 0.466181, 1)
-theme_override_constants/shadow_outline_size = 20
-theme_override_font_sizes/font_size = 40
-text = "HIGHSCORE: 0 PTS"
-horizontal_alignment = 1
-
-[node name="HighscoreCPUParticles2D" type="CPUParticles2D" parent="GameOver/Highscore"]
-position = Vector2(404, 47)
-emitting = false
-amount = 15
-one_shot = true
-explosiveness = 1.0
-texture = ExtResource("11_x60jw")
-emission_shape = 3
-emission_rect_extents = Vector2(50, 20)
-direction = Vector2(0, -1)
-spread = 90.0
-initial_velocity_min = 200.0
-initial_velocity_max = 500.0
-angular_velocity_min = -500.0
-angular_velocity_max = 500.0
-angle_min = -180.0
-angle_max = 180.0
-scale_amount_min = 0.05
-scale_amount_max = 0.1
-scale_amount_curve = SubResource("Curve_bc56w")
-
-[node name="EarningPoints" type="AudioStreamPlayer" parent="GameOver"]
-stream = ExtResource("13_8wiul")
-script = ExtResource("14_nv7fv")
-
-[node name="EarningTimer" type="Timer" parent="GameOver/EarningPoints"]
-wait_time = 0.1
-
-[node name="HighscoreAwarded" type="AudioStreamPlayer" parent="GameOver"]
-stream = ExtResource("15_gejrj")
-pitch_scale = 2.0
-script = ExtResource("14_nv7fv")
-
 [node name="StarSound1" type="AudioStreamPlayer" parent="GameOver"]
 stream = ExtResource("16_0nk63")
 volume_db = -20.0
@@ -670,15 +574,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1250.0
-offset_top = -135.0
-offset_right = 14.0
-offset_bottom = -25.0
+offset_left = -1243.0
+offset_top = 101.0
+offset_right = 21.0
+offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 80
 text = "Learner Lagoon"
 horizontal_alignment = 1
+
+[node name="StarAward" type="Timer" parent="GameOver"]
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 visible = false
@@ -874,6 +780,7 @@ scale = Vector2(3.7, 3.7)
 texture = ExtResource("20_rltlv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("32_mtphb")
 
 [node name="CrashBoost" type="Sprite2D" parent="CanvasLayer"]
 z_index = 7
@@ -1026,16 +933,10 @@ texture = ExtResource("11_x60jw")
 
 [connection signal="timeout" from="GameBulletHandler/AutoTimer" to="GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]
-[connection signal="timeout" from="GameWaves/WaveTimer1" to="GameWaves" method="_on_wave_timer_1_timeout"]
-[connection signal="timeout" from="GameWaves/WaveTimer2" to="GameWaves" method="_on_wave_timer_2_timeout"]
-[connection signal="timeout" from="GameWaves/WaveTimer3" to="GameWaves" method="_on_wave_timer_3_timeout"]
-[connection signal="timeout" from="GameWaves/WaveTimer4" to="GameWaves" method="_on_wave_timer_4_timeout"]
-[connection signal="timeout" from="GameWaves/WaveTimer5" to="GameWaves" method="_on_wave_timer_5_timeout"]
-[connection signal="timeout" from="GameWaves/WaveTimer6" to="GameWaves" method="_on_wave_timer_6_timeout"]
-[connection signal="timeout" from="GameWaves/WaveTimer7" to="GameWaves" method="_on_wave_timer_7_timeout"]
+[connection signal="timeout" from="GameWaves/RedDudeTimer" to="GameWaves" method="_on_red_dude_timer_timeout"]
 [connection signal="pressed" from="GameOver/RetryButton" to="GameOver" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOver/StageButton" to="GameOver" method="_on_stage_button_pressed"]
-[connection signal="timeout" from="GameOver/EarningPoints/EarningTimer" to="GameOver" method="_on_earning_timer_timeout"]
+[connection signal="timeout" from="GameOver/StarAward" to="GameOver" method="_on_star_award_timeout"]
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/RetryButton" to="PauseMenu" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="PauseMenu/HomeButton" to="PauseMenu" method="_on_home_button_pressed"]

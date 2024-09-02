@@ -6,13 +6,7 @@ const SWIRL_ENEMY = preload("res://scenes/enemy_scenes/swirl_enemy.tscn")
 const ZAG_ENEMY = preload("res://scenes/enemy_scenes/zag_enemy.tscn")
 const STAR_ENEMY = preload("res://scenes/enemy_scenes/star_enemy.tscn")
 
-@onready var wave_timer_1 = $WaveTimer1
-@onready var wave_timer_2 = $WaveTimer2
-@onready var wave_timer_3 = $WaveTimer3
-@onready var wave_timer_4 = $WaveTimer4
-@onready var wave_timer_5 = $WaveTimer5
-@onready var wave_timer_6 = $WaveTimer6
-@onready var wave_timer_7 = $WaveTimer7
+@onready var red_dude_timer = $RedDudeTimer
 
 var difficulty: float = 1.0
 
@@ -29,64 +23,170 @@ var starEn7 = STAR_ENEMY.instantiate()
 
 var onWave: int = 0
 
+var wave_time_1: float = 0.0
+var wave_time_2: float = 0.0
+var wave_time_3: float = 0.0
+var wave_time_4: float = 0.0
+var wave_time_5: float = 0.0
+var wave_time_6: float = 0.0
+var wave_time_7: float = 0.0
 
 func _ready():
-	wave_timer_1.wait_time = Global.wave1Wait
-	wave_timer_2.wait_time = Global.wave2Wait
-	wave_timer_3.wait_time = Global.wave3Wait
-	wave_timer_4.wait_time = Global.wave4Wait
-	wave_timer_5.wait_time = Global.wave5Wait
-	wave_timer_6.wait_time = Global.wave6Wait
-	wave_timer_7.wait_time = Global.wave7Wait
-	
-	wave_timer_1.start()
-
-
-
-func _process(_delta):
-	if onWave == 0 || onWave == 1:
-		Global.firstWaveProgress = 100 - ((wave_timer_1.time_left / Global.wave1Wait) * 100)
-	elif onWave == 2:
-		Global.secondWaveProgress = 100 - ((wave_timer_2.time_left / Global.wave2Wait) * 100)
-	elif onWave == 3:
-		Global.thirdWaveProgress = 100 - ((wave_timer_3.time_left / Global.wave3Wait) * 100)
-	elif onWave == 4:
-		Global.fourthWaveProgress = 100 - ((wave_timer_4.time_left / Global.wave4Wait) * 100)
-	elif onWave == 5:
-		Global.fifthWaveProgress = 100 - ((wave_timer_5.time_left / Global.wave5Wait) * 100)
-	elif onWave == 6:
-		Global.sixthWaveProgress = 100 - ((wave_timer_6.time_left / Global.wave6Wait) * 100)
-	elif onWave == 7:
-		Global.seventhWaveProgress = 100 - ((wave_timer_7.time_left / Global.wave7Wait) * 100)
-	
-	if starEn1 == null && onWave == 1:
-		Global.firstWaveProgress = 101
+	if Global.waveNum == 7:
+		onWave = 1
+	elif Global.waveNum == 5:
 		onWave = 2
-		wave_timer_2.start()
-	if starEn2 == null && onWave == 2:
-		Global.secondWaveProgress = 101
+	elif Global.waveNum == 3:
 		onWave = 3
-		wave_timer_3.start()
-	if starEn3 == null && onWave == 3:
-		Global.thirdWaveProgress = 101
-		onWave = 4
-		wave_timer_4.start()
-	if starEn4 == null && onWave == 4:
-		Global.fourthWaveProgress = 101
-		onWave = 5
-		wave_timer_5.start()
-	if starEn5 == null && onWave == 5:
-		Global.fifthWaveProgress = 101
-		onWave = 6
-		wave_timer_6.start()
-	if starEn6 == null && onWave == 6:
-		Global.sixthWaveProgress = 101
-		onWave = 7
-		wave_timer_7.start()
+
+var firstW1: bool = true
+var firstW2: bool = true
+var firstW3: bool = true
+var firstW4: bool = true
+var firstW5: bool = true
+var firstW6: bool = true
+var firstW7: bool = true
+
+func _process(delta):
+	if onWave == 1:
+		wave_time_1 += delta * Global.gameTimeScale
+		if wave_time_1 >= Global.wave1Wait:
+			wave_time_1 = Global.wave1Wait
+			if firstW1:
+				wave_timer_1_timeout()
+				firstW1 = false
+	elif onWave == 2:
+		wave_time_2 += delta * Global.gameTimeScale
+		if wave_time_2 >= Global.wave2Wait:
+			wave_time_2 = Global.wave2Wait
+			if firstW2:
+				wave_timer_2_timeout()
+				firstW2 = false
+	elif onWave == 3:
+		wave_time_3 += delta * Global.gameTimeScale
+		if wave_time_3 >= Global.wave3Wait:
+			wave_time_3 = Global.wave3Wait
+			if firstW3:
+				wave_timer_3_timeout()
+				firstW3 = false
+	elif onWave == 4:
+		wave_time_4 += delta * Global.gameTimeScale
+		if wave_time_4 >= Global.wave4Wait:
+			wave_time_4 = Global.wave4Wait
+			if firstW4:
+				wave_timer_4_timeout()
+				firstW4 = false
+	elif onWave == 5:
+		wave_time_5 += delta * Global.gameTimeScale
+		if wave_time_5 >= Global.wave5Wait:
+			wave_time_5 = Global.wave5Wait
+			if firstW5:
+				wave_timer_5_timeout()
+				firstW5 = false
+	elif onWave == 6:
+		wave_time_6 += delta * Global.gameTimeScale
+		if wave_time_6 >= Global.wave6Wait:
+			wave_time_6 = Global.wave6Wait
+			if firstW6:
+				wave_timer_6_timeout()
+				firstW6 = false
+	elif onWave == 7:
+		wave_time_7 += delta * Global.gameTimeScale
+		if wave_time_7 >= Global.wave7Wait:
+			wave_time_7 = Global.wave7Wait
+			if firstW7:
+				wave_timer_7_timeout()
+				firstW7 = false
 	
-	if starEn7 == null && onWave == 7:
-		Global.seventhWaveProgress = 101
-		onWave = 8
+	
+	
+	if onWave == 0 || onWave == 1:
+		Global.firstWaveProgress = 500 - ((Global.wave1Wait - wave_time_1 / Global.wave1Wait) * 100)
+	elif onWave == 2:
+		Global.secondWaveProgress = 500 - ((Global.wave2Wait - wave_time_2 / Global.wave2Wait) * 100)
+	elif onWave == 3:
+		Global.thirdWaveProgress = 500 - ((Global.wave3Wait - wave_time_3 / Global.wave3Wait) * 100)
+	elif onWave == 4:
+		Global.fourthWaveProgress = 500 - ((Global.wave4Wait - wave_time_4 / Global.wave4Wait) * 100)
+	elif onWave == 5:
+		Global.fifthWaveProgress = 500 - ((Global.wave5Wait - wave_time_5 / Global.wave5Wait) * 100)
+	elif onWave == 6:
+		Global.sixthWaveProgress = 500 - ((Global.wave6Wait - wave_time_6 / Global.wave6Wait) * 100)
+	elif onWave == 7:
+		Global.seventhWaveProgress = 500 - ((Global.wave7Wait - wave_time_7 / Global.wave7Wait) * 100)
+	
+	if starEn1 == null:
+		if onWave == 1:
+			Global.firstWaveProgress = 101
+			onWave = 2
+	elif !starEn1.isAlive:
+		if onWave == 1:
+			Global.firstWaveProgress = 101
+			onWave = 2
+	
+	if starEn2 == null:
+		if onWave == 2:
+			Global.secondWaveProgress = 101
+			onWave = 3
+	elif !starEn2.isAlive:
+		if onWave == 2:
+			Global.secondWaveProgress = 101
+			onWave = 3
+	
+	if starEn3 == null:
+		if onWave == 3:
+			Global.thirdWaveProgress = 101
+			onWave = 4
+	elif !starEn3.isAlive:
+		if onWave == 3:
+			Global.thirdWaveProgress = 101
+			onWave = 4
+	
+	if starEn4 == null:
+		if onWave == 4:
+			Global.fourthWaveProgress = 101
+			onWave = 5
+	elif !starEn4.isAlive:
+		if onWave == 4:
+			Global.fourthWaveProgress = 101
+			onWave = 5
+	
+	if starEn5 == null:
+		if onWave == 5:
+			Global.fifthWaveProgress = 101
+			onWave = 6
+	elif !starEn5.isAlive:
+		if onWave == 5:
+			Global.fifthWaveProgress = 101
+			onWave = 6
+	
+	if starEn6 == null:
+		if onWave == 6:
+			Global.sixthWaveProgress = 101
+			onWave = 7
+	elif !starEn6.isAlive:
+		if onWave == 6:
+			Global.sixthWaveProgress = 101
+			onWave = 7
+	
+	if starEn7 == null:
+		if onWave == 7:
+			Global.seventhWaveProgress = 101
+			onWave = 8
+	elif !starEn7.isAlive:
+		if onWave == 7:
+			Global.seventhWaveProgress = 101
+			onWave = 8
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
@@ -199,7 +299,7 @@ func spawnStarEnemy():
 
 
 
-func _on_wave_timer_1_timeout():
+func wave_timer_1_timeout():
 	x = randf_range(0,outerBoundX)
 	if x < innerBoundX:
 		y = randf_range(innerBoundY,outerBoundY)
@@ -218,7 +318,7 @@ func _on_wave_timer_1_timeout():
 	onWave = 1
 
 
-func _on_wave_timer_2_timeout():
+func wave_timer_2_timeout():
 	x = randf_range(0,outerBoundX)
 	if x < innerBoundX:
 		y = randf_range(innerBoundY,outerBoundY)
@@ -236,7 +336,7 @@ func _on_wave_timer_2_timeout():
 	get_parent().add_child.call_deferred(starEn2)
 
 
-func _on_wave_timer_3_timeout():
+func wave_timer_3_timeout():
 	x = randf_range(0,outerBoundX)
 	if x < innerBoundX:
 		y = randf_range(innerBoundY,outerBoundY)
@@ -254,7 +354,7 @@ func _on_wave_timer_3_timeout():
 	get_parent().add_child.call_deferred(starEn3)
 
 
-func _on_wave_timer_4_timeout():
+func wave_timer_4_timeout():
 	x = randf_range(0,outerBoundX)
 	if x < innerBoundX:
 		y = randf_range(innerBoundY,outerBoundY)
@@ -272,7 +372,7 @@ func _on_wave_timer_4_timeout():
 	get_parent().add_child.call_deferred(starEn4)
 
 
-func _on_wave_timer_5_timeout():
+func wave_timer_5_timeout():
 	x = randf_range(0,outerBoundX)
 	if x < innerBoundX:
 		y = randf_range(innerBoundY,outerBoundY)
@@ -290,7 +390,7 @@ func _on_wave_timer_5_timeout():
 	get_parent().add_child.call_deferred(starEn5)
 
 
-func _on_wave_timer_6_timeout():
+func wave_timer_6_timeout():
 	x = randf_range(0,outerBoundX)
 	if x < innerBoundX:
 		y = randf_range(innerBoundY,outerBoundY)
@@ -308,7 +408,7 @@ func _on_wave_timer_6_timeout():
 	get_parent().add_child.call_deferred(starEn6)
 
 
-func _on_wave_timer_7_timeout():
+func wave_timer_7_timeout():
 	x = randf_range(0,outerBoundX)
 	if x < innerBoundX:
 		y = randf_range(innerBoundY,outerBoundY)
@@ -327,6 +427,5 @@ func _on_wave_timer_7_timeout():
 
 
 
-
-
-
+func _on_red_dude_timer_timeout():
+	spawnRedEnemy()

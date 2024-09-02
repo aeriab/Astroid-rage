@@ -123,6 +123,7 @@ var num_drone_stars4: int = 0
 var num_drone_stars5: int = 0
 
 var current_stage: String = "Learner Lagoon"
+var waveNum: int = 3
 
 var firstWaveProgress: float = 0
 var secondWaveProgress: float = 0
@@ -155,6 +156,15 @@ func addXP(num):
 			firstEvolveCheck = true
 
 func resetStats():
+	
+	firstWaveProgress = 0
+	secondWaveProgress = 0
+	thirdWaveProgress = 0
+	fourthWaveProgress = 0
+	fifthWaveProgress = 0
+	sixthWaveProgress = 0
+	seventhWaveProgress = 0
+	
 	bulletSize = 2
 	bulletSpeed = 2
 	damage = 4

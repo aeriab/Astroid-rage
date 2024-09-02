@@ -17,16 +17,6 @@ var firstTally: bool = true
 
 var dying: bool = false
 
-func _ready():
-	if Global.current_stage == "Learner Lagoon":
-		three_star_level()
-	elif Global.current_stage == "Perfect Pond":
-		three_star_level()
-	elif Global.current_stage == "Giga Geyser":
-		five_star_level()
-	elif Global.current_stage == "Swirly Swamp":
-		seven_star_level()
-
 
 
 func _process(delta):
@@ -71,30 +61,3 @@ func _process(delta):
 		if Global.gameTimeScale <= 0:
 			Global.gameTimeScale = 0.0
 
-
-func three_star_level():
-	star_1.visible = false
-	star_2.visible = false
-	star_3.visible = true
-	star_4.visible = true
-	star_5.visible = true
-	star_6.visible = false
-	star_7.visible = false
-
-func five_star_level():
-	star_1.visible = false
-	star_2.visible = true
-	star_3.visible = true
-	star_4.visible = true
-	star_5.visible = true
-	star_6.visible = true
-	star_7.visible = false
-
-func seven_star_level():
-	star_1.visible = true
-	star_2.visible = true
-	star_3.visible = true
-	star_4.visible = true
-	star_5.visible = true
-	star_6.visible = true
-	star_7.visible = true
