@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var stageSelecting: int = 1
+var stageSelecting: int
 var MAX_STAGE: int = 4
 @onready var stage_words = $StageWords
 @onready var left_stage_arrow = $LeftStageArrow
@@ -117,6 +117,19 @@ func _ready():
 	dupgrade_3.star_count = Global.num_drone_stars3
 	dupgrade_4.star_count = Global.num_drone_stars4
 	dupgrade_5.star_count = Global.num_drone_stars5
+	
+	
+	Global.unspentPoints = Global.Stage1StarsAchieved + Global.Stage2StarsAchieved + Global.Stage3StarsAchieved + Global.Stage4StarsAchieved - (bupgrade_1.star_count+bupgrade_2.star_count+bupgrade_3.star_count+bupgrade_4.star_count+bupgrade_5.star_count + dupgrade_1.star_count+dupgrade_2.star_count+dupgrade_3.star_count+dupgrade_4.star_count+dupgrade_5.star_count)
+	
+	
+	if Global.current_stage == "Learner Lagoon":
+		stageSelecting = 1
+	elif Global.current_stage == "Perfect Pond":
+		stageSelecting = 2
+	elif Global.current_stage == "Giga Geyser":
+		stageSelecting = 3
+	elif Global.current_stage == "Swirly Swamp":
+		stageSelecting = 4
 
 func resetStarParticles():
 	star_particle_1.visible = false

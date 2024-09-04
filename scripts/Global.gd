@@ -108,7 +108,7 @@ var camXSet: bool = true
 var camYSet: bool = true
 var canDeployCrasher: bool = true
 
-var unspentPoints: int = 10
+var unspentPoints: int = 0
 
 var num_base_stars1: int = 0
 var num_base_stars2: int = 0

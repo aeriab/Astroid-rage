@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=9 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/StageSelect/star_manipulating.gd" id="3_51fws"]
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="4_2hyju"]
 [ext_resource type="Texture2D" uid="uid://clw315vqrx167" path="res://assets/PlusSign.png" id="4_hdwke"]
+[ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="8_y6xwi"]
 
 [node name="stage_select" type="Node2D"]
 
@@ -917,8 +918,12 @@ texture = ExtResource("2_bhtqa")
 
 [node name="StarParticle1" type="Sprite2D" parent="DarkStarParticle"]
 visible = false
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
+
+[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle/StarParticle1"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_y6xwi")
 
 [node name="DarkStarParticle2" type="Sprite2D" parent="."]
 visible = false
@@ -928,8 +933,12 @@ texture = ExtResource("2_bhtqa")
 
 [node name="StarParticle2" type="Sprite2D" parent="DarkStarParticle2"]
 visible = false
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
+
+[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle2/StarParticle2"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_y6xwi")
 
 [node name="DarkStarParticle3" type="Sprite2D" parent="."]
 position = Vector2(760, 275)
@@ -938,8 +947,12 @@ texture = ExtResource("2_bhtqa")
 
 [node name="StarParticle3" type="Sprite2D" parent="DarkStarParticle3"]
 visible = false
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
+
+[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle3/StarParticle3"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_y6xwi")
 
 [node name="DarkStarParticle4" type="Sprite2D" parent="."]
 position = Vector2(960, 275)
@@ -948,8 +961,12 @@ texture = ExtResource("2_bhtqa")
 
 [node name="StarParticle4" type="Sprite2D" parent="DarkStarParticle4"]
 visible = false
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
+
+[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle4/StarParticle4"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_y6xwi")
 
 [node name="DarkStarParticle5" type="Sprite2D" parent="."]
 position = Vector2(1160, 275)
@@ -958,8 +975,12 @@ texture = ExtResource("2_bhtqa")
 
 [node name="StarParticle5" type="Sprite2D" parent="DarkStarParticle5"]
 visible = false
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
+
+[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle5/StarParticle5"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_y6xwi")
 
 [node name="DarkStarParticle6" type="Sprite2D" parent="."]
 visible = false
@@ -969,8 +990,12 @@ texture = ExtResource("2_bhtqa")
 
 [node name="StarParticle6" type="Sprite2D" parent="DarkStarParticle6"]
 visible = false
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
+
+[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle6/StarParticle6"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_y6xwi")
 
 [node name="DarkStarParticle7" type="Sprite2D" parent="."]
 visible = false
@@ -980,8 +1005,12 @@ texture = ExtResource("2_bhtqa")
 
 [node name="StarParticle7" type="Sprite2D" parent="DarkStarParticle7"]
 visible = false
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
+
+[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle7/StarParticle7"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_y6xwi")
 
 [connection signal="pressed" from="MainCanvas/PlayButton" to="MainCanvas" method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainCanvas/RightStageArrow" to="MainCanvas" method="_on_right_stage_arrow_pressed"]
