@@ -152,24 +152,37 @@ func _process(delta):
 			dying = false
 	
 	if Global.waveNum == 3 && Global.fifthWaveProgress > 100 && firstComEnd:
-		over_words.text = "Victory"
+		over_words.text = "\nVictory"
 		commenceEnd()
 	elif Global.waveNum == 5 && Global.sixthWaveProgress > 100 && firstComEnd:
-		over_words.text = "Victory"
+		over_words.text = "\nVictory"
 		visible = true
 		commenceEnd()
 	elif Global.waveNum == 7 && Global.seventhWaveProgress > 100 && firstComEnd:
-		over_words.text = "Victory"
+		over_words.text = "\nVictory"
 		visible = true
 		commenceEnd()
 
-
+func starsAwarding():
+	return int(Global.firstWaveProgress > 100) + int(Global.secondWaveProgress > 100) + int(Global.thirdWaveProgress > 100) + int(Global.fourthWaveProgress > 100) + int(Global.fifthWaveProgress > 100) + int(Global.sixthWaveProgress > 100) + int(Global.seventhWaveProgress > 100)
 
 @onready var star_award = $StarAward
 
 func tallyScores():
+	if Global.current_stage == "Learner Lagoon" && starsAwarding() > Global.Stage1StarsAchieved:
+		Global.Stage1StarsAchieved = starsAwarding()
+		print(Global.Stage1StarsAchieved)
+	elif Global.current_stage == "Perfect Pond" && starsAwarding() > Global.Stage2StarsAchieved:
+		Global.Stage2StarsAchieved = starsAwarding()
+		print(Global.Stage2StarsAchieved)
+	elif Global.current_stage == "Giga Geyser" && starsAwarding() > Global.Stage3StarsAchieved:
+		Global.Stage3StarsAchieved = starsAwarding()
+		print(Global.Stage3StarsAchieved)
+	elif Global.current_stage == "Swirly Swamp" && starsAwarding() > Global.Stage4StarsAchieved:
+		Global.Stage4StarsAchieved = starsAwarding()
+		print(Global.Stage4StarsAchieved)
+	
 	star_award.start()
-	print("made here")
 
 func _on_retry_button_pressed():
 	get_tree().reload_current_scene()

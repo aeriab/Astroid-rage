@@ -14,7 +14,7 @@
 script = ExtResource("1_xyryf")
 
 [node name="StageWords" type="Label" parent="MainCanvas"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 42.0
@@ -27,7 +27,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="Button" parent="MainCanvas"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 756.5
@@ -41,7 +41,7 @@ text = "PLAY"
 metadata/_edit_use_anchors_ = true
 
 [node name="RightStageArrow" type="Button" parent="MainCanvas"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1700.0
@@ -57,7 +57,7 @@ icon_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="LeftStageArrow" type="Button" parent="MainCanvas"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 220.0
@@ -74,7 +74,7 @@ icon_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HomeButton" type="Button" parent="MainCanvas"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 857.1
@@ -910,7 +910,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DarkStarParticle" type="Sprite2D" parent="."]
-position = Vector2(700, 275)
+visible = false
+position = Vector2(360, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
@@ -920,7 +921,8 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_2hyju")
 
 [node name="DarkStarParticle2" type="Sprite2D" parent="."]
-position = Vector2(960, 275)
+visible = false
+position = Vector2(560, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
@@ -930,11 +932,53 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_2hyju")
 
 [node name="DarkStarParticle3" type="Sprite2D" parent="."]
-position = Vector2(1220, 275)
+position = Vector2(760, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
 [node name="StarParticle3" type="Sprite2D" parent="DarkStarParticle3"]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_2hyju")
+
+[node name="DarkStarParticle4" type="Sprite2D" parent="."]
+position = Vector2(960, 275)
+scale = Vector2(0.248611, 0.248611)
+texture = ExtResource("2_bhtqa")
+
+[node name="StarParticle4" type="Sprite2D" parent="DarkStarParticle4"]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_2hyju")
+
+[node name="DarkStarParticle5" type="Sprite2D" parent="."]
+position = Vector2(1160, 275)
+scale = Vector2(0.248611, 0.248611)
+texture = ExtResource("2_bhtqa")
+
+[node name="StarParticle5" type="Sprite2D" parent="DarkStarParticle5"]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_2hyju")
+
+[node name="DarkStarParticle6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1360, 275)
+scale = Vector2(0.248611, 0.248611)
+texture = ExtResource("2_bhtqa")
+
+[node name="StarParticle6" type="Sprite2D" parent="DarkStarParticle6"]
+visible = false
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_2hyju")
+
+[node name="DarkStarParticle7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1560, 275)
+scale = Vector2(0.248611, 0.248611)
+texture = ExtResource("2_bhtqa")
+
+[node name="StarParticle7" type="Sprite2D" parent="DarkStarParticle7"]
 visible = false
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_2hyju")

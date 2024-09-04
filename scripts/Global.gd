@@ -141,6 +141,10 @@ var wave5Wait: float = 5.0
 var wave6Wait: float = 5.0
 var wave7Wait: float = 5.0
 
+var Stage1StarsAchieved: int = 0
+var Stage2StarsAchieved: int = 0
+var Stage3StarsAchieved: int = 0
+var Stage4StarsAchieved: int = 0
 
 func addXP(num):
 	xpAmount += num * difficulty

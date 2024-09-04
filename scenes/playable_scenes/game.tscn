@@ -166,7 +166,7 @@ scale = Vector2(603.038, 603.038)
 script = ExtResource("9_cwbsc")
 
 [node name="RedDudeTimer" type="Timer" parent="GameWaves"]
-wait_time = 16.904
+wait_time = 2.0
 autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]

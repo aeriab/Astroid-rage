@@ -85,6 +85,26 @@ var MAX_STAGE: int = 4
 @onready var dupgrade_4 = $DroneUpgrades/upgrade_4
 @onready var dupgrade_5 = $DroneUpgrades/upgrade_5
 
+
+
+@onready var dark_star_particle_1 = $"../DarkStarParticle"
+@onready var star_particle_1 = $"../DarkStarParticle/StarParticle1"
+@onready var dark_star_particle_2 = $"../DarkStarParticle2"
+@onready var star_particle_2 = $"../DarkStarParticle2/StarParticle2"
+@onready var dark_star_particle_3 = $"../DarkStarParticle3"
+@onready var star_particle_3 = $"../DarkStarParticle3/StarParticle3"
+@onready var dark_star_particle_4 = $"../DarkStarParticle4"
+@onready var star_particle_4 = $"../DarkStarParticle4/StarParticle4"
+@onready var dark_star_particle_5 = $"../DarkStarParticle5"
+@onready var star_particle_5 = $"../DarkStarParticle5/StarParticle5"
+@onready var dark_star_particle_6 = $"../DarkStarParticle6"
+@onready var star_particle_6 = $"../DarkStarParticle6/StarParticle6"
+@onready var dark_star_particle_7 = $"../DarkStarParticle7"
+@onready var star_particle_7 = $"../DarkStarParticle7/StarParticle7"
+
+
+
+
 func _ready():
 	bupgrade_1.star_count = Global.num_base_stars1
 	bupgrade_2.star_count = Global.num_base_stars2
@@ -98,6 +118,15 @@ func _ready():
 	dupgrade_4.star_count = Global.num_drone_stars4
 	dupgrade_5.star_count = Global.num_drone_stars5
 
+func resetStarParticles():
+	star_particle_1.visible = false
+	star_particle_2.visible = false
+	star_particle_3.visible = false
+	star_particle_4.visible = false
+	star_particle_5.visible = false
+	star_particle_6.visible = false
+	star_particle_7.visible = false
+
 func _process(_delta):
 	checkBaseStars()
 	checkDroneStars()
@@ -108,19 +137,75 @@ func _process(_delta):
 		Global.current_stage = "Learner Lagoon"
 		stage_words.text = "Stage 1: Learner Lagoon"
 		left_stage_arrow.visible = false
+		resetStarParticles()
+		if Global.Stage1StarsAchieved >= 1:
+			star_particle_3.visible = true
+		if Global.Stage1StarsAchieved >= 2:
+			star_particle_4.visible = true
+		if Global.Stage1StarsAchieved >= 3:
+			star_particle_5.visible = true
 	elif stageSelecting == 2:
 		Global.waveNum = 3
 		Global.current_stage = "Perfect Pond"
 		stage_words.text = "Stage 2: Perfect Pond"
+		resetStarParticles()
+		if Global.Stage2StarsAchieved >= 1:
+			star_particle_3.visible = true
+		if Global.Stage2StarsAchieved >= 2:
+			star_particle_4.visible = true
+		if Global.Stage2StarsAchieved >= 3:
+			star_particle_5.visible = true
 	elif stageSelecting == 3:
 		Global.waveNum = 5
 		Global.current_stage = "Giga Geyser"
 		stage_words.text = "Stage 3: Giga Geyser"
+		resetStarParticles()
+		if Global.Stage3StarsAchieved >= 1:
+			star_particle_2.visible = true
+		if Global.Stage3StarsAchieved >= 2:
+			star_particle_3.visible = true
+		if Global.Stage3StarsAchieved >= 3:
+			star_particle_4.visible = true
+		if Global.Stage3StarsAchieved >= 4:
+			star_particle_5.visible = true
+		if Global.Stage3StarsAchieved >= 5:
+			star_particle_6.visible = true
 	elif stageSelecting == 4:
 		Global.waveNum = 7
 		Global.current_stage = "Swirly Swamp"
 		stage_words.text = "Stage 4: Swirly Swamp"
 		right_stage_arrow.visible = false
+		resetStarParticles()
+		if Global.Stage4StarsAchieved >= 1:
+			star_particle_1.visible = true
+		if Global.Stage4StarsAchieved >= 2:
+			star_particle_2.visible = true
+		if Global.Stage4StarsAchieved >= 3:
+			star_particle_3.visible = true
+		if Global.Stage4StarsAchieved >= 4:
+			star_particle_4.visible = true
+		if Global.Stage4StarsAchieved >= 5:
+			star_particle_5.visible = true
+		if Global.Stage4StarsAchieved >= 6:
+			star_particle_6.visible = true
+		if Global.Stage4StarsAchieved >= 7:
+			star_particle_7.visible = true
+	
+	if Global.waveNum == 3:
+		dark_star_particle_1.visible = false
+		dark_star_particle_2.visible = false
+		dark_star_particle_6.visible = false
+		dark_star_particle_7.visible = false
+	elif Global.waveNum == 5:
+		dark_star_particle_1.visible = false
+		dark_star_particle_2.visible = true
+		dark_star_particle_6.visible = true
+		dark_star_particle_7.visible = false
+	elif Global.waveNum == 7:
+		dark_star_particle_1.visible = true
+		dark_star_particle_2.visible = true
+		dark_star_particle_6.visible = true
+		dark_star_particle_7.visible = true
 
 
 func _on_play_button_pressed():
