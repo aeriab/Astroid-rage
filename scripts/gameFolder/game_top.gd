@@ -18,6 +18,10 @@ var impact_length: float = 0.0
 var first_impact: bool = true
 
 func _ready():
+	Global.bulletSize = (Global.num_base_stars4 + 1.2) * 2.0
+	Global.rotationSpeed = (Global.num_base_stars5 * 0.35) + 1.5
+	Global.damage = (2.5 * Global.num_base_stars3) + 2.0
+	
 	Global.gameTimeScale = 1.0
 	Global.resetStats()
 	Global.curHighscore = Global.gameHighscore

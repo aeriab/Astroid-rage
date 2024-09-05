@@ -171,16 +171,12 @@ func starsAwarding():
 func tallyScores():
 	if Global.current_stage == "Learner Lagoon" && starsAwarding() > Global.Stage1StarsAchieved:
 		Global.Stage1StarsAchieved = starsAwarding()
-		print(Global.Stage1StarsAchieved)
 	elif Global.current_stage == "Perfect Pond" && starsAwarding() > Global.Stage2StarsAchieved:
 		Global.Stage2StarsAchieved = starsAwarding()
-		print(Global.Stage2StarsAchieved)
 	elif Global.current_stage == "Giga Geyser" && starsAwarding() > Global.Stage3StarsAchieved:
 		Global.Stage3StarsAchieved = starsAwarding()
-		print(Global.Stage3StarsAchieved)
 	elif Global.current_stage == "Swirly Swamp" && starsAwarding() > Global.Stage4StarsAchieved:
 		Global.Stage4StarsAchieved = starsAwarding()
-		print(Global.Stage4StarsAchieved)
 	
 	star_award.start()
 

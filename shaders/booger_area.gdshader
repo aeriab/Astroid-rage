@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform float player_damage : hint_range(0.0,15.0);
-//uniform float alpha : hint_range(0.0, 1.0);
+uniform float speedScale;
 
 void fragment() {
 	vec4 current_color = texture(TEXTURE,UV);
@@ -10,11 +10,10 @@ void fragment() {
 		current_color.g = 0.0;
 		current_color.b = 0.0;
 	}
-	current_color.r = current_color.r - (player_damage / 20.0);
-	current_color.g = current_color.g - (player_damage / 20.0);
-	current_color.b = current_color.b + (player_damage / 20.0);
-	//if (current_color.a >= 0.1) {
-		//current_color.a = alpha;
-	//}
+	current_color.r = COLOR.r + ((1.0/17.0) * ((player_damage-4.0)*(player_damage-4.0)) / 7.0);
+	current_color.g = COLOR.r + ((-1.0/10.0) * ((player_damage-8.0)*(player_damage-8.0)) / 6.0) + 0.4;
+	current_color.b = COLOR.r + ((-1.0/10.0) * ((player_damage-4.0)*(player_damage-4.0)) / 6.0) + 0.4;
+	
+	
 	COLOR = current_color;
 }

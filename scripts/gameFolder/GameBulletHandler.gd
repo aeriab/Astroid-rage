@@ -9,13 +9,21 @@ const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
 
 
 var theta: float = 0.0
-var auto: bool = false
+var firstResume: bool = true
+
+func _ready():
+	if Global.num_base_stars1 >= 1:
+		auto_timer.start()
+		auto_timer.wait_time = ((1.0 / (float(Global.num_base_stars1) + 1.0)) - 0.1) / Global.gameTimeScale
 
 func _process(_delta):
-	if auto:
-		auto_timer.start()
-	else:
+	auto_timer.wait_time = ((1.0 / (float(Global.num_base_stars1) + 1.0)) - 0.1) / Global.gameTimeScale
+	if Global.gameTimeScale < 0.1:
 		auto_timer.stop()
+		firstResume = true
+	elif Global.num_base_stars1 >= 1 && firstResume:
+		auto_timer.start()
+		firstResume = false
 	
 	if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1:
 		shootBall()
@@ -42,7 +50,7 @@ func shootBall():
 
 func _on_auto_timer_timeout():
 	shootBall()
-	if Global.gameTimeScale > 0.1:
-		auto_timer.start()
-	else:
-		auto_timer.stop()
+	#if Global.gameTimeScale > 0.1:
+		#auto_timer.start()
+	#else:
+		#auto_timer.stop()

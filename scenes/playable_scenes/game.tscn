@@ -585,6 +585,7 @@ text = "Learner Lagoon"
 horizontal_alignment = 1
 
 [node name="StarAward" type="Timer" parent="GameOver"]
+wait_time = 0.4
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 visible = false

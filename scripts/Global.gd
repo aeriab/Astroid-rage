@@ -81,7 +81,7 @@ var enemyNum = 0
 
 var bulletSize = 4
 var bulletSpeed: float = 2.0
-var damage = 10
+var damage: float = 2.0
 var rotationSpeed: float = 3.0
 
 var totalPoints = 30
@@ -110,11 +110,11 @@ var canDeployCrasher: bool = true
 
 var unspentPoints: int = 0
 
-var num_base_stars1: int = 0
-var num_base_stars2: int = 0
-var num_base_stars3: int = 0
-var num_base_stars4: int = 0
-var num_base_stars5: int = 0
+var num_base_stars1: int = 5
+var num_base_stars2: int = 5
+var num_base_stars3: int = 5
+var num_base_stars4: int = 5
+var num_base_stars5: int = 5
 
 var num_drone_stars1: int = 0
 var num_drone_stars2: int = 0
@@ -146,6 +146,9 @@ var Stage2StarsAchieved: int = 0
 var Stage3StarsAchieved: int = 0
 var Stage4StarsAchieved: int = 0
 
+var nextBoogColor: float = 0.0
+var direction: int = 1
+
 func addXP(num):
 	xpAmount += num * difficulty
 	if xpAmount >= 6.28:
@@ -169,10 +172,6 @@ func resetStats():
 	sixthWaveProgress = 0
 	seventhWaveProgress = 0
 	
-	bulletSize = 2
-	bulletSpeed = 2
-	damage = 4
-	rotationSpeed = 3.0
 	level = 1
 	xpAmount = 0.0
 	player_health = 100.0

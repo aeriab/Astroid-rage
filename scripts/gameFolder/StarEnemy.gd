@@ -57,7 +57,7 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 		sizeOfEnemy = 3.0 * difficulty
 	scale.x = sizeOfEnemy
 	scale.y = sizeOfEnemy
-	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 10) 
+	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 5) 
 	
 	shader_alpha = 0.0
 	
