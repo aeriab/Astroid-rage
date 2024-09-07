@@ -4,10 +4,6 @@ extends Area2D
 
 var clockwise: float = 1
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 var speedScale: float = 4.0
 
 var force: float = 0.0
@@ -30,6 +26,20 @@ var top_rotation: float = 0.0
 var length_out: float = 0.0
 
 var firstCrashTimeout: bool = true
+
+var MAX_THRUST: float = 150.0
+var ROT_UPGRADER: float = 1.0
+
+func _ready():
+	scale.x = 0.65 + Global.num_drone_stars1 * 0.15
+	scale.y = 0.65 + Global.num_drone_stars1 * 0.15
+	
+	MAX_THRUST = (30.0 * Global.num_drone_stars2) + 80.0
+	
+	ROT_UPGRADER = (0.15 * Global.num_drone_stars3) + 1.3
+	
+	crashTimeScale = -(Global.num_drone_stars4 * 0.7) + 5.0
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Global.crashTime <= 0:
@@ -51,14 +61,14 @@ func _process(delta):
 		if Global.crashTime > 0:
 			Global.crashTime -= crashTimeScale * delta * Global.gameTimeScale
 		
-		rotation += (Global.rotationSpeed * delta * Global.gameTimeScale * clockwise) * rotScale * speedScale
+		rotation += (delta * Global.gameTimeScale * clockwise) * rotScale * speedScale * ROT_UPGRADER
 		
 		if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1:
 			clockwise *= -1
 		
 		if Input.is_action_pressed("ui_up") && Global.gameTimeScale > 0.1:
 			cpu_particles_2d.emitting = true
-			thrust = 150
+			thrust = MAX_THRUST
 			
 			rotScale = 0.0
 		else:
@@ -66,10 +76,10 @@ func _process(delta):
 			thrust = 0
 			
 			if force <= 5.0 && force >= -5.0:
-				if rotScale < ROT_SCALE:
-					rotScale += delta * rotAccel * Global.gameTimeScale * speedScale
+				if rotScale < ROT_SCALE * ROT_UPGRADER:
+					rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
 				else:
-					rotScale = ROT_SCALE
+					rotScale = ROT_SCALE * ROT_UPGRADER
 		
 		
 		force += thrust

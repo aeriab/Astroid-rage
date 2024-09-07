@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=56 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="4_2bgl1"]
 [ext_resource type="Script" path="res://scripts/gameFolder/GameBulletHandler.gd" id="5_t80kh"]
 [ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="6_e74tl"]
-[ext_resource type="Shader" path="res://shaders/level_oneback.gdshader" id="7_2j47l"]
 [ext_resource type="Script" path="res://scripts/gameFolder/GameWaves.gd" id="9_cwbsc"]
 [ext_resource type="Texture2D" uid="uid://du2hhb0k4p8hp" path="res://assets/Dark Star Particle.png" id="10_7t3f4"]
 [ext_resource type="Script" path="res://scripts/gameFolder/top_game_over.gd" id="11_qudnx"]
@@ -44,10 +43,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ph3oq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nxat"]
-shader = ExtResource("7_2j47l")
-shader_parameter/speedScale = 2.0
 
 [sub_resource type="Curve" id="Curve_bc56w"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.56279, 0.0, 0, 0]
@@ -156,11 +151,6 @@ shape = SubResource("WorldBoundaryShape2D_ph3oq")
 position = Vector2(0, -3000)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_ph3oq")
-
-[node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_6nxat")
-position = Vector2(0, 1.90735e-06)
-scale = Vector2(603.038, 603.038)
 
 [node name="GameWaves" type="Node" parent="."]
 script = ExtResource("9_cwbsc")

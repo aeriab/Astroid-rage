@@ -5,9 +5,6 @@ extends Node2D
 @onready var snout_position = $SnoutPosition
 @onready var cpu_particles_2d = $SnoutPosition/CPUParticles2D
 
-func _process(_delta):
-	cpu_particles_2d.speed_scale = Global.gameTimeScale
-
 func changeBarrelUpgrade(num):
 	if num == 2:
 		tank_bird_nose.texture = preload("res://assets/tankBird/barrelUpgrade2(first).png")

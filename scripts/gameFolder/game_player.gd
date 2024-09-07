@@ -13,6 +13,7 @@ var eyelidHeight: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rotation = (starting_rot / 360) * 2 * PI
+	mutation_part.scaleNose((0.3 * Global.num_base_stars4) + 0.8)
 
 var lastConsec: int = 0
 

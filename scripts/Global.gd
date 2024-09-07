@@ -110,11 +110,11 @@ var canDeployCrasher: bool = true
 
 var unspentPoints: int = 0
 
-var num_base_stars1: int = 5
-var num_base_stars2: int = 5
-var num_base_stars3: int = 5
-var num_base_stars4: int = 5
-var num_base_stars5: int = 5
+var num_base_stars1: int = 0
+var num_base_stars2: int = 0
+var num_base_stars3: int = 0
+var num_base_stars4: int = 0
+var num_base_stars5: int = 0
 
 var num_drone_stars1: int = 0
 var num_drone_stars2: int = 0
