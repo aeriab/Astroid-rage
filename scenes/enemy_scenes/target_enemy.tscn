@@ -28,6 +28,7 @@ shader_parameter/damage_value = null
 shader_parameter/alpha_value = 1.0
 
 [node name="TargetEnemy" type="Node2D"]
+z_index = -2
 material = SubResource("ShaderMaterial_2xlu5")
 script = ExtResource("2_1iq1k")
 

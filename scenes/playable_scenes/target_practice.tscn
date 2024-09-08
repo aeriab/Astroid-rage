@@ -160,6 +160,7 @@ rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_xs4y7")
 
 [node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
+z_index = -5
 material = SubResource("ShaderMaterial_a6va2")
 position = Vector2(0, 1.90735e-06)
 scale = Vector2(8.20992, 8.20992)

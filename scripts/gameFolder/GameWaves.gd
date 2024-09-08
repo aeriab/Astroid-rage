@@ -5,6 +5,7 @@ const PURPLE_ENEMY = preload("res://scenes/enemy_scenes/purple_worm.tscn")
 const SWIRL_ENEMY = preload("res://scenes/enemy_scenes/swirl_enemy.tscn")
 const ZAG_ENEMY = preload("res://scenes/enemy_scenes/zag_enemy.tscn")
 const STAR_ENEMY = preload("res://scenes/enemy_scenes/star_enemy.tscn")
+const BULK_ENEMY = preload("res://scenes/enemy_scenes/bulk_enemy.tscn")
 
 @onready var red_dude_timer = $RedDudeTimer
 
@@ -177,16 +178,6 @@ func _process(delta):
 		if onWave == 7:
 			Global.seventhWaveProgress = 101
 			onWave = 8
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 
 
@@ -202,97 +193,47 @@ var y: float = 0
 
 var flipSprite: float = 0
 
-func spawnRedEnemy():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
+var theta: float = 0.0
+var radius: float = 5000
+
+
+
+func spawnGeneral(enemy):
+	theta = randf_range(0.0, 6.283)
+	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
-	var enemy = RED_ENEMY.instantiate()
-	enemy.spawn(randf_range(0.8,1.6) * difficulty,x,y,flipSprite)
+	enemy.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 	get_parent().add_child.call_deferred(enemy)
+
+
+
+
+
+func spawnRedEnemy():
+	var enemy = RED_ENEMY.instantiate()
+	spawnGeneral(enemy)
 
 func spawnPurpleEnemy():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
 	var enemy = PURPLE_ENEMY.instantiate()
-	enemy.spawn(randf_range(1.0,2.0) * difficulty,x,y,flipSprite)
-	get_parent().add_child.call_deferred(enemy)
+	spawnGeneral(enemy)
 
 func spawnSwirlEnemy():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
 	var enemy = SWIRL_ENEMY.instantiate()
-	enemy.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
-	get_parent().add_child.call_deferred(enemy)
+	spawnGeneral(enemy)
 
 func spawnZagEnemy():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
 	var enemy = ZAG_ENEMY.instantiate()
-	enemy.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
-	get_parent().add_child.call_deferred(enemy)
+	spawnGeneral(enemy)
 
 func spawnStarEnemy():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
 	var enemy = STAR_ENEMY.instantiate()
-	enemy.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
-	get_parent().add_child.call_deferred(enemy)
+	spawnGeneral(enemy)
 
-
+func spawnBulkEnemy():
+	var enemy = BULK_ENEMY.instantiate()
+	spawnGeneral(enemy)
 
 
 
@@ -300,129 +241,73 @@ func spawnStarEnemy():
 
 
 func wave_timer_1_timeout():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
+	theta = randf_range(0.0, 6.283)
+	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
-	starEn1.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
+	starEn1.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 	get_parent().add_child.call_deferred(starEn1)
 	onWave = 1
 
 
 func wave_timer_2_timeout():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
+	theta = randf_range(0.0, 6.283)
+	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
-	starEn2.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
+	starEn2.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 	get_parent().add_child.call_deferred(starEn2)
 
 
 func wave_timer_3_timeout():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
+	theta = randf_range(0.0, 6.283)
+	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
-	starEn3.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
+	starEn3.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 	get_parent().add_child.call_deferred(starEn3)
 
 
 func wave_timer_4_timeout():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
+	theta = randf_range(0.0, 6.283)
+	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
-	starEn4.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
+	starEn4.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 	get_parent().add_child.call_deferred(starEn4)
 
 
 func wave_timer_5_timeout():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
+	theta = randf_range(0.0, 6.283)
+	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
-	starEn5.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
+	starEn5.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 	get_parent().add_child.call_deferred(starEn5)
 
 
 func wave_timer_6_timeout():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
+	theta = randf_range(0.0, 6.283)
+	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
-	starEn6.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
+	starEn6.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 	get_parent().add_child.call_deferred(starEn6)
 
 
 func wave_timer_7_timeout():
-	x = randf_range(0,outerBoundX)
-	if x < innerBoundX:
-		y = randf_range(innerBoundY,outerBoundY)
-	else:
-		y = randf_range(0,outerBoundY)
-	if randi_range(0,1) == 1:
-		x = -x
+	theta = randf_range(0.0, 6.283)
+	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	if randi_range(0,1) == 1:
-		y = -y
-	
-	starEn7.spawn(randf_range(0.5,1.5) * difficulty,x,y,flipSprite)
+	starEn7.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 	get_parent().add_child.call_deferred(starEn7)
 
 

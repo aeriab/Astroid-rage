@@ -52,7 +52,7 @@ zoom = Vector2(0.2, 0.2)
 script = ExtResource("5_j32wi")
 
 [node name="AutoTimer" type="Timer" parent="AutoBulletHandler"]
-wait_time = 0.05
+wait_time = 0.15
 autostart = true
 
 [node name="AreaBulletCollection" type="Area2D" parent="."]
@@ -78,6 +78,7 @@ rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_ph3oq")
 
 [node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
+z_index = -5
 material = SubResource("ShaderMaterial_6nxat")
 position = Vector2(0, 1.90735e-06)
 scale = Vector2(8.20992, 8.20992)

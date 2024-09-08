@@ -1,12 +1,17 @@
-[gd_scene load_steps=56 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=63 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
 [ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="3_yt7t5"]
-[ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="4_2bgl1"]
+[ext_resource type="Script" path="res://scripts/gameFolder/gameMutationPart.gd" id="4_03sfa"]
+[ext_resource type="Texture2D" uid="uid://bial11bqrxmow" path="res://assets/tankBird/BirdBeak.png" id="5_7fd46"]
 [ext_resource type="Script" path="res://scripts/gameFolder/GameBulletHandler.gd" id="5_t80kh"]
+[ext_resource type="Texture2D" uid="uid://bidbntqd3ladf" path="res://assets/tankBird/TankBirdEyeWhite.png" id="6_0muhi"]
 [ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="6_e74tl"]
+[ext_resource type="Texture2D" uid="uid://dlc25btw33ur7" path="res://assets/tankBird/BirdEyelid.png" id="7_pooob"]
+[ext_resource type="Texture2D" uid="uid://dmaj06en0kk08" path="res://assets/tankBird/TankBirdPupil.png" id="8_11gds"]
 [ext_resource type="Script" path="res://scripts/gameFolder/GameWaves.gd" id="9_cwbsc"]
+[ext_resource type="Script" path="res://scripts/gameFolder/gameOtherMutations.gd" id="9_gndhu"]
 [ext_resource type="Texture2D" uid="uid://du2hhb0k4p8hp" path="res://assets/Dark Star Particle.png" id="10_7t3f4"]
 [ext_resource type="Script" path="res://scripts/gameFolder/top_game_over.gd" id="11_qudnx"]
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="11_x60jw"]
@@ -41,6 +46,13 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/progressToStar7.gd" id="41_111ek"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
+
+[sub_resource type="Curve" id="Curve_4yrby"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kyblx"]
+colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 1, 1, 1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ph3oq"]
 
@@ -122,7 +134,506 @@ z_index = 4
 scale = Vector2(23.58, 23.2821)
 shape = SubResource("CircleShape2D_j54jy")
 
-[node name="mutationPart" parent="Player" instance=ExtResource("4_2bgl1")]
+[node name="mutationPart" type="Node2D" parent="Player"]
+z_index = 2
+z_as_relative = false
+script = ExtResource("4_03sfa")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="TankBirdEyeWhite" type="Sprite2D" parent="Player/mutationPart"]
+z_index = 4
+z_as_relative = false
+position = Vector2(-6.56701, -15.5967)
+texture = ExtResource("6_0muhi")
+
+[node name="BirdEyelid" type="Sprite2D" parent="Player/mutationPart"]
+z_index = 4
+z_as_relative = false
+position = Vector2(77, -16)
+scale = Vector2(0.01, 1.01)
+texture = ExtResource("7_pooob")
+
+[node name="TankBirdPupil" type="Sprite2D" parent="Player/mutationPart"]
+z_index = 4
+z_as_relative = false
+position = Vector2(144.474, -20.5219)
+scale = Vector2(1.20325, 1.20325)
+texture = ExtResource("8_11gds")
+region_enabled = true
+region_rect = Rect2(605.068, 309.284, 58.8481, 52.6057)
+region_filter_clip_enabled = true
+
+[node name="mutationPart2" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = -3.14159
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart2"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart2/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart2/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart3(1)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = -2.0944
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart3(1)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart3(1)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart3(1)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart3(2)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = 2.0944
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart3(2)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart3(2)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart3(2)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart4(1)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = -4.71238
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart4(1)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart4(1)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart4(1)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart4(2)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = -1.57079
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart4(2)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart4(2)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart4(2)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart5(1)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = 1.25664
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart5(1)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart5(1)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(1)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart5(2)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = 2.51327
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart5(2)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart5(2)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(2)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart5(3)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = 3.76991
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart5(3)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart5(3)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(3)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart5(4)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = -1.25664
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart5(4)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart5(4)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(4)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart6(1)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = 1.0472
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart6(1)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart6(1)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart6(1)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPart6(5)" type="Node2D" parent="Player"]
+visible = false
+z_index = 2
+z_as_relative = false
+rotation = -1.0472
+script = ExtResource("9_gndhu")
+
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart6(5)"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, -321.419)
+
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart6(5)/SnoutPosition"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-4.10438, 316.494)
+texture = ExtResource("5_7fd46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart6(5)/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
 
 [node name="GameBulletHandler" type="Node" parent="."]
 script = ExtResource("5_t80kh")
@@ -156,7 +667,7 @@ shape = SubResource("WorldBoundaryShape2D_ph3oq")
 script = ExtResource("9_cwbsc")
 
 [node name="RedDudeTimer" type="Timer" parent="GameWaves"]
-wait_time = 2.0
+wait_time = 0.7
 autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
