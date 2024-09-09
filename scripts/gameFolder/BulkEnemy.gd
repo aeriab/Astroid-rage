@@ -16,7 +16,7 @@ var y = 5000
 var hypotenuse
 var theta
 
-const SPEED = 600
+const SPEED = 200
 const FADE_SPEED = 0.5
 
 var innerBoundX = 5000
@@ -47,11 +47,9 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
 	
-	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
+	sizeOfEnemy = randf_range(1.3 * difficulty,1.7 * difficulty)
 	
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
-	if sizeOfEnemy >= 1.48 * difficulty:
-		sizeOfEnemy = 3.0 * difficulty
 	scale.x = sizeOfEnemy
 	scale.y = sizeOfEnemy
 	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 5) 
@@ -77,13 +75,16 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 	rotation = -theta + PI
 	angleHeading = theta
 
-var angleAccel: float = 0.0
 var angleHeading: float = 0.0
+var dirRot: float = 0.0
+var sinFuncProg: float = 0.0
 
 func _physics_process(delta):
 	
-	angleAccel += randf_range(-0.01 * delta * Global.gameTimeScale,0.01 * delta * Global.gameTimeScale)
-	angleHeading += angleAccel * delta * Global.gameTimeScale * 120
+	sinFuncProg += delta * Global.gameTimeScale * 0.3
+	if sinFuncProg >= (PI * 2):
+		sinFuncProg = 0.0
+	angleHeading = theta + ((1.0/2.0) * sin(sinFuncProg))
 	
 	x -= cos(angleHeading) * SPEED * delta * Global.gameTimeScale
 	y -= -sin(angleHeading) * SPEED * delta * Global.gameTimeScale
@@ -95,6 +96,9 @@ func _physics_process(delta):
 		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
+		cpu_particles_2d_2.emitting = false
+	elif !settingFree:
+		cpu_particles_2d_2.emitting = true
 
 var points: float = 0.0
 
@@ -122,8 +126,13 @@ func _on_area_entered(area):
 		Global.enemyNum -= 1
 		setFreeSequence()
 
+@onready var cpu_particles_2d_2 = $CPUParticles2D2
+var settingFree: bool = false
+
 func setFreeSequence():
+	settingFree = true
 	cpu_particles_2d.emitting = true
+	cpu_particles_2d_2.emitting = false
 	splatcho_enemy.free()
 	collision_polygon_2d.free()
 	timer.start()

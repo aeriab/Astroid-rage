@@ -133,13 +133,13 @@ var fifthWaveProgress: float = 0
 var sixthWaveProgress: float = 0
 var seventhWaveProgress: float = 0
 
-var wave1Wait: float = 5.0
-var wave2Wait: float = 5.0
-var wave3Wait: float = 5.0
-var wave4Wait: float = 5.0
-var wave5Wait: float = 5.0
-var wave6Wait: float = 5.0
-var wave7Wait: float = 5.0
+var wave1Wait: float = 20.0
+var wave2Wait: float = 20.0
+var wave3Wait: float = 20.0
+var wave4Wait: float = 20.0
+var wave5Wait: float = 20.0
+var wave6Wait: float = 20.0
+var wave7Wait: float = 20.0
 
 var Stage1StarsAchieved: int = 0
 var Stage2StarsAchieved: int = 0

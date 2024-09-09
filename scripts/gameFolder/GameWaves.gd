@@ -7,8 +7,6 @@ const ZAG_ENEMY = preload("res://scenes/enemy_scenes/zag_enemy.tscn")
 const STAR_ENEMY = preload("res://scenes/enemy_scenes/star_enemy.tscn")
 const BULK_ENEMY = preload("res://scenes/enemy_scenes/bulk_enemy.tscn")
 
-@onready var red_dude_timer = $RedDudeTimer
-
 var difficulty: float = 1.0
 
 var randomEnNum: int
@@ -32,6 +30,10 @@ var wave_time_5: float = 0.0
 var wave_time_6: float = 0.0
 var wave_time_7: float = 0.0
 
+
+var stage1EnArray = []
+
+
 func _ready():
 	if Global.waveNum == 7:
 		onWave = 1
@@ -48,7 +50,28 @@ var firstW5: bool = true
 var firstW6: bool = true
 var firstW7: bool = true
 
+var firstS1W3: bool = true
+var firstS1W4: bool = true
+var firstS1W5: bool = true
+
 func _process(delta):
+	
+	if Global.current_stage == "Learner Lagoon":
+		if onWave == 3 && firstS1W3:
+			firstS1W3 = false
+			generalMultiSpawn(15,"red",1)
+		if onWave == 4 && firstS1W4:
+			firstS1W4 = false
+			generalMultiSpawn(3,"bulk",5)
+		if onWave == 5 && firstS1W5:
+			firstS1W5 = false
+			generalMultiSpawn(15,"red",1)
+			generalMultiSpawn2(3,"bulk",5)
+	
+	
+	
+	
+	
 	if onWave == 1:
 		wave_time_1 += delta * Global.gameTimeScale
 		if wave_time_1 >= Global.wave1Wait:
@@ -102,19 +125,19 @@ func _process(delta):
 	
 	
 	if onWave == 0 || onWave == 1:
-		Global.firstWaveProgress = 500 - ((Global.wave1Wait - wave_time_1 / Global.wave1Wait) * 100)
+		Global.firstWaveProgress = (wave_time_1 / Global.wave1Wait) * 100
 	elif onWave == 2:
-		Global.secondWaveProgress = 500 - ((Global.wave2Wait - wave_time_2 / Global.wave2Wait) * 100)
+		Global.secondWaveProgress = (wave_time_2 / Global.wave2Wait) * 100
 	elif onWave == 3:
-		Global.thirdWaveProgress = 500 - ((Global.wave3Wait - wave_time_3 / Global.wave3Wait) * 100)
+		Global.thirdWaveProgress = (wave_time_3 / Global.wave3Wait) * 100
 	elif onWave == 4:
-		Global.fourthWaveProgress = 500 - ((Global.wave4Wait - wave_time_4 / Global.wave4Wait) * 100)
+		Global.fourthWaveProgress = (wave_time_4 / Global.wave4Wait) * 100
 	elif onWave == 5:
-		Global.fifthWaveProgress = 500 - ((Global.wave5Wait - wave_time_5 / Global.wave5Wait) * 100)
+		Global.fifthWaveProgress = (wave_time_5 / Global.wave5Wait) * 100
 	elif onWave == 6:
-		Global.sixthWaveProgress = 500 - ((Global.wave6Wait - wave_time_6 / Global.wave6Wait) * 100)
+		Global.sixthWaveProgress = (wave_time_6 / Global.wave6Wait) * 100
 	elif onWave == 7:
-		Global.seventhWaveProgress = 500 - ((Global.wave7Wait - wave_time_7 / Global.wave7Wait) * 100)
+		Global.seventhWaveProgress = (wave_time_7 / Global.wave7Wait) * 100
 	
 	if starEn1 == null:
 		if onWave == 1:
@@ -195,6 +218,61 @@ var flipSprite: float = 0
 
 var theta: float = 0.0
 var radius: float = 5000
+@onready var next_en_timer = $NextEnTimer
+var nextEnAmount = 0
+var genEnemy = "red"
+var nextEnAmount2 = 0
+var genEnemy2 = "red"
+
+
+func _on_next_en_timer_timeout():
+	if genEnemy == "red":
+		spawnRedEnemy()
+	elif genEnemy == "bulk":
+		spawnBulkEnemy()
+	elif genEnemy == "purple":
+		spawnPurpleEnemy()
+	elif genEnemy == "swirl":
+		spawnSwirlEnemy()
+	elif genEnemy == "zag":
+		spawnZagEnemy()
+	
+	if nextEnAmount >= 1:
+		nextEnAmount -= 1
+	else:
+		next_en_timer.stop()
+
+func generalMultiSpawn(amount,enemy,delay):
+	next_en_timer.wait_time = delay
+	nextEnAmount = amount
+	genEnemy = enemy
+	next_en_timer.start()
+
+@onready var next_en_timer_2 = $NextEnTimer2
+
+func _on_next_en_timer_2_timeout():
+	if genEnemy2 == "red":
+		spawnRedEnemy()
+	elif genEnemy2 == "bulk":
+		spawnBulkEnemy()
+	elif genEnemy2 == "purple":
+		spawnPurpleEnemy()
+	elif genEnemy2 == "swirl":
+		spawnSwirlEnemy()
+	elif genEnemy2 == "zag":
+		spawnZagEnemy()
+	
+	if nextEnAmount2 >= 1:
+		nextEnAmount2 -= 1
+	else:
+		next_en_timer_2.stop()
+
+func generalMultiSpawn2(amount,enemy,delay):
+	next_en_timer_2.wait_time = delay
+	nextEnAmount2 = amount
+	genEnemy2 = enemy
+	next_en_timer_2.start()
+
 
 
 
@@ -312,5 +390,5 @@ func wave_timer_7_timeout():
 
 
 
-func _on_red_dude_timer_timeout():
-	spawnRedEnemy()
+
+

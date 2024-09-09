@@ -666,9 +666,11 @@ shape = SubResource("WorldBoundaryShape2D_ph3oq")
 [node name="GameWaves" type="Node" parent="."]
 script = ExtResource("9_cwbsc")
 
-[node name="RedDudeTimer" type="Timer" parent="GameWaves"]
-wait_time = 0.7
-autostart = true
+[node name="NextEnTimer" type="Timer" parent="GameWaves"]
+wait_time = 10.0
+
+[node name="NextEnTimer2" type="Timer" parent="GameWaves"]
+wait_time = 10.0
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 visible = false
@@ -1435,7 +1437,8 @@ texture = ExtResource("11_x60jw")
 
 [connection signal="timeout" from="GameBulletHandler/AutoTimer" to="GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]
-[connection signal="timeout" from="GameWaves/RedDudeTimer" to="GameWaves" method="_on_red_dude_timer_timeout"]
+[connection signal="timeout" from="GameWaves/NextEnTimer" to="GameWaves" method="_on_next_en_timer_timeout"]
+[connection signal="timeout" from="GameWaves/NextEnTimer2" to="GameWaves" method="_on_next_en_timer_2_timeout"]
 [connection signal="pressed" from="GameOver/RetryButton" to="GameOver" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOver/StageButton" to="GameOver" method="_on_stage_button_pressed"]
 [connection signal="timeout" from="GameOver/StarAward" to="GameOver" method="_on_star_award_timeout"]

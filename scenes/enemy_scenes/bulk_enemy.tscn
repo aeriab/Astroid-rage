@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccrfc65cef15f"]
+[gd_scene load_steps=10 format=3 uid="uid://ccrfc65cef15f"]
 
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_0ykx2"]
 [ext_resource type="Script" path="res://scripts/gameFolder/BulkEnemy.gd" id="2_2qrhc"]
@@ -14,6 +14,20 @@ shader_parameter/alpha_value = 1.0
 [sub_resource type="Curve" id="Curve_exf2e"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_v5mem"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_n7pqp"]
+_data = [Vector2(0, 0), 0.0, 4.67277, 0, 0, Vector2(0.101124, 1), 1.63004, 1.63004, 0, 0, Vector2(1, 0), -1.65511, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_e0b24"]
+offsets = PackedFloat32Array(0, 0.48, 1)
+colors = PackedColorArray(0.454902, 0.105882, 0.278431, 1, 0.454902, 0.105882, 0.278431, 1, 0.788235, 0.854902, 0.972549, 1)
 
 [node name="BulkEnemy" type="Area2D" groups=["Enemy"]]
 z_index = 3
@@ -63,6 +77,28 @@ color = Color(0.807843, 0, 1, 1)
 
 [node name="CharHitPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ccvap")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(-404, 6)
+rotation = 1.57079
+emitting = false
+amount = 12
+fract_delta = false
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
+direction = Vector2(0, 1)
+spread = 14.09
+gravity = Vector2(0, 0)
+initial_velocity_min = 141.41
+initial_velocity_max = 868.68
+angle_min = -180.0
+angle_max = 180.0
+angle_curve = SubResource("Curve_v5mem")
+scale_amount_min = 61.61
+scale_amount_max = 102.01
+scale_amount_curve = SubResource("Curve_n7pqp")
+color = Color(0.791999, 0.791999, 0.791999, 1)
+color_ramp = SubResource("Gradient_e0b24")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

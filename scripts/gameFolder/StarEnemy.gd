@@ -45,7 +45,7 @@ func _ready():
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
 
-func spawn(dif,xgiven,ygiven,flipgiven):
+func spawn(_dif,xgiven,ygiven,flipgiven):
 	difficulty = 3.0
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
