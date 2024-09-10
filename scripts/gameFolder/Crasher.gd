@@ -42,6 +42,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if Global.crashTime <= 0:
 		if firstCrashTimeout:
 			Global.startCrasher = false
@@ -130,3 +131,15 @@ func reset_stats():
 	rotAccel = 8.0
 	top_rotation = 0.0
 	length_out = 0.0
+
+func bounceBack(xboss,yboss):
+	var bounceAngle = 0.0
+	var difX = position.x - xboss
+	var difY = position.y - yboss
+	var collide_length = sqrt((difX * difX) + (difY * difY))
+	if difY < 0:
+		bounceAngle = acos(difX / collide_length)
+	else:
+		bounceAngle = 2 * PI -  acos(difX / collide_length)
+	rotation = -(bounceAngle - (PI/2))
+	force = 5000

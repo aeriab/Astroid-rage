@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://doa7cvraf30t0"]
+
+[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_cgl4j"]
+[ext_resource type="Script" path="res://scripts/gameFolder/CounterEnemy.gd" id="2_1hcjh"]
+[ext_resource type="Texture2D" uid="uid://dfau10tjkqlof" path="res://assets/CounterEnemy.png" id="3_b4cv1"]
+[ext_resource type="Texture2D" uid="uid://2frefqog7kq1" path="res://assets/CounterEnemySymbol (1).png" id="4_mbj10"]
+[ext_resource type="AudioStream" uid="uid://bv11k7rmmyyf4" path="res://assets/hitSounds/punch-1-166694.mp3" id="5_x0f0a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6bmg"]
+resource_local_to_scene = true
+shader = ExtResource("1_cgl4j")
+shader_parameter/damage_value = 0.0
+shader_parameter/alpha_value = 1.0
+
+[sub_resource type="Curve" id="Curve_exf2e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
+
+[node name="CounterEnemy" type="Area2D" groups=["Enemy"]]
+z_index = 3
+material = SubResource("ShaderMaterial_g6bmg")
+scale = Vector2(0.612144, 0.612144)
+collision_layer = 2
+script = ExtResource("2_1hcjh")
+
+[node name="SplatchoEnemy" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0.0045166, 5.00452)
+rotation = 1.5708
+texture = ExtResource("3_b4cv1")
+
+[node name="EnemySymbol" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(87, 0)
+texture = ExtResource("4_mbj10")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(-371.995, -392.995)
+rotation = 1.5708
+polygon = PackedVector2Array(-332.006, -372.994, -332.006, -458.994, -325.006, -522.994, -310.007, -593.994, -286.007, -673.994, -244.007, -761.995, -207.008, -823.995, -154.008, -891.995, -89.008, -956.995, -22.0082, -1011, 51.9917, -1056, 122.992, -1090, 185.991, -1112, 244.991, -1127, 319.991, -1138, 392.991, -1143, 525.991, -1134, 654.992, -1098, 760.992, -1047, 848.992, -986.999, 943.992, -898.999, 1003.99, -816.999, 1058.99, -718.999, 1097.99, -614.999, 1119.99, -507, 1126.99, -391, 1115.99, -279, 1078.99, -155.999, 1036, -55.9992, 1009, -10.9991, 1009, 116.001, 1001, 163.001, 960.996, 234.001, 898.997, 283.001, 827.997, 301.001, 575.997, 300.002, 453.997, 420.003, 422.997, 435.003, 392.997, 439.003, 364.997, 436.003, 332.997, 421.003, 209.997, 300.004, -34.0034, 301.005, -98.0035, 284.005, -144.004, 255.005, -183.004, 210.005, -205.004, 163.005, -213.004, 109.005, -217.005, -14.9947, -260.005, -93.9946, -298.005, -187.994, -321.005, -277.994)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 5
+position = Vector2(-9.99548, 95.0045)
+rotation = 1.5708
+scale = Vector2(15, 15)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 600)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 30.0
+scale_amount_max = 45.0
+scale_amount_curve = SubResource("Curve_exf2e")
+color = Color(0.807843, 0, 1, 1)
+
+[node name="CharHitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x0f0a")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -119,8 +119,7 @@ func _ready():
 	dupgrade_5.star_count = Global.num_drone_stars5
 	
 	
-	#Global.unspentPoints = Global.Stage1StarsAchieved + Global.Stage2StarsAchieved + Global.Stage3StarsAchieved + Global.Stage4StarsAchieved - (bupgrade_1.star_count+bupgrade_2.star_count+bupgrade_3.star_count+bupgrade_4.star_count+bupgrade_5.star_count + dupgrade_1.star_count+dupgrade_2.star_count+dupgrade_3.star_count+dupgrade_4.star_count+dupgrade_5.star_count)
-	Global.unspentPoints = 50
+	Global.unspentPoints = Global.Stage1StarsAchieved + Global.Stage2StarsAchieved + Global.Stage3StarsAchieved + Global.Stage4StarsAchieved - (bupgrade_1.star_count+bupgrade_2.star_count+bupgrade_3.star_count+bupgrade_4.star_count+bupgrade_5.star_count + dupgrade_1.star_count+dupgrade_2.star_count+dupgrade_3.star_count+dupgrade_4.star_count+dupgrade_5.star_count)
 	
 	if Global.current_stage == "Learner Lagoon":
 		stageSelecting = 1
@@ -151,6 +150,11 @@ func _process(_delta):
 		stage_words.text = "Stage 1: Learner Lagoon"
 		left_stage_arrow.visible = false
 		resetStarParticles()
+		
+		Global.wave3Wait = 25.0
+		Global.wave4Wait = 25.0
+		Global.wave5Wait = 30.0
+		
 		if Global.Stage1StarsAchieved >= 1:
 			star_particle_3.visible = true
 		if Global.Stage1StarsAchieved >= 2:

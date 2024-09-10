@@ -6,6 +6,8 @@ const SWIRL_ENEMY = preload("res://scenes/enemy_scenes/swirl_enemy.tscn")
 const ZAG_ENEMY = preload("res://scenes/enemy_scenes/zag_enemy.tscn")
 const STAR_ENEMY = preload("res://scenes/enemy_scenes/star_enemy.tscn")
 const BULK_ENEMY = preload("res://scenes/enemy_scenes/bulk_enemy.tscn")
+const BOSS_ENEMY = preload("res://scenes/enemy_scenes/boss_enemy.tscn")
+const COUNTER_ENEMY = preload("res://scenes/enemy_scenes/counter_enemy.tscn")
 
 var difficulty: float = 1.0
 
@@ -50,27 +52,92 @@ var firstW5: bool = true
 var firstW6: bool = true
 var firstW7: bool = true
 
-var firstS1W3: bool = true
-var firstS1W4: bool = true
-var firstS1W5: bool = true
+var firstSp1: bool = true
+var firstSp2: bool = true
+var firstSp3: bool = true
+var firstSp4: bool = true
+var firstSp5: bool = true
+var firstSp6: bool = true
+var firstSp7: bool = true
 
 func _process(delta):
 	
 	if Global.current_stage == "Learner Lagoon":
-		if onWave == 3 && firstS1W3:
-			firstS1W3 = false
-			generalMultiSpawn(15,"red",1)
-		if onWave == 4 && firstS1W4:
-			firstS1W4 = false
-			generalMultiSpawn(3,"bulk",5)
-		if onWave == 5 && firstS1W5:
-			firstS1W5 = false
-			generalMultiSpawn(15,"red",1)
-			generalMultiSpawn2(3,"bulk",5)
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalMultiSpawn(5,"red",3)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalMultiSpawn(1,"bulk",7)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn(20,"red",2)
+			generalMultiSpawn2(1,"bulk",5)
 	
+	if Global.current_stage == "Perfect Pond":
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(15,"purple")
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(10,"swirl")
+			generalMultiSpawn(10,"red",2)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn(10,"purple",1.5)
+			generalPerfSpawn(20,"zag")
+			generalMultiSpawn2(2,"bulk",5)
 	
+	if Global.current_stage == "Giga Geyser":
+		if onWave == 2 && firstSp2:
+			firstSp2 = false
+			generalMultiSpawn(1,"boss",5)
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(35,"purple")
+			generalMultiSpawn(10,"zag",1.5)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(10,"swirl")
+			generalMultiSpawn(10,"red",1.5)
+			generalMultiSpawn2(3,"boss",5)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn(10,"zag",1.5)
+			generalPerfSpawn(8,"bulk")
+		if onWave == 6 && firstSp6:
+			firstSp6 = false
+			generalPerfSpawn(5,"boss")
+			generalMultiSpawn(10,"swirl",1.5)
 	
-	
+	if Global.current_stage == "Swirly Swamp":
+		if onWave == 1 && firstSp1:
+			firstSp1 = false
+			generalMultiSpawn(1,"counter",5)
+		if onWave == 2 && firstSp2:
+			firstSp2 = false
+			generalMultiSpawn(20,"red",1.5)
+			generalMultiSpawn2(3,"boss",5)
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(5,"counter")
+			generalMultiSpawn(10,"zag",1.5)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(3,"bulk")
+			generalMultiSpawn2(3,"boss",5)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn(35,"zag",0.5)
+			generalPerfSpawn(1,"boss")
+		if onWave == 6 && firstSp6:
+			firstSp6 = false
+			generalPerfSpawn(5,"counter")
+			generalMultiSpawn(20,"swirl",0.5)
+		if onWave == 7 && firstSp7:
+			firstSp7 = false
+			generalMultiSpawn(100,"red",0.2)
+			generalPerfSpawn(6,"boss")
 	
 	if onWave == 1:
 		wave_time_1 += delta * Global.gameTimeScale
@@ -236,6 +303,10 @@ func _on_next_en_timer_timeout():
 		spawnSwirlEnemy()
 	elif genEnemy == "zag":
 		spawnZagEnemy()
+	elif genEnemy == "boss":
+		spawnBossEnemy()
+	elif genEnemy == "counter":
+		spawnCounterEnemy()
 	
 	if nextEnAmount >= 1:
 		nextEnAmount -= 1
@@ -261,6 +332,10 @@ func _on_next_en_timer_2_timeout():
 		spawnSwirlEnemy()
 	elif genEnemy2 == "zag":
 		spawnZagEnemy()
+	elif genEnemy2 == "boss":
+		spawnBossEnemy()
+	elif genEnemy2 == "counter":
+		spawnCounterEnemy()
 	
 	if nextEnAmount2 >= 1:
 		nextEnAmount2 -= 1
@@ -273,6 +348,46 @@ func generalMultiSpawn2(amount,enemy,delay):
 	genEnemy2 = enemy
 	next_en_timer_2.start()
 
+
+func generalPerfSpawn(amount,enemy):
+	var i = 0
+	while i < amount:
+		theta = ((2*PI)/amount) * i
+		if theta >= PI/2 && theta <= 3 * PI / 2:
+			flipSprite = 1
+		else:
+			flipSprite = -1
+		
+		if enemy == "red":
+			var red = RED_ENEMY.instantiate()
+			red.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+			get_parent().add_child.call_deferred(red)
+		elif enemy == "bulk":
+			var bulk = BULK_ENEMY.instantiate()
+			bulk.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+			get_parent().add_child.call_deferred(bulk)
+		elif enemy == "purple":
+			var purple = PURPLE_ENEMY.instantiate()
+			purple.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+			get_parent().add_child.call_deferred(purple)
+		elif enemy == "swirl":
+			var swirl = SWIRL_ENEMY.instantiate()
+			swirl.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+			get_parent().add_child.call_deferred(swirl)
+		elif enemy == "zag":
+			var zag = ZAG_ENEMY.instantiate()
+			zag.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+			get_parent().add_child.call_deferred(zag)
+		elif enemy == "boss":
+			var boss = BOSS_ENEMY.instantiate()
+			boss.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+			get_parent().add_child.call_deferred(boss)
+		elif enemy == "counter":
+			var counter = COUNTER_ENEMY.instantiate()
+			counter.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+			get_parent().add_child.call_deferred(counter)
+		
+		i += 1
 
 
 
@@ -313,7 +428,13 @@ func spawnBulkEnemy():
 	var enemy = BULK_ENEMY.instantiate()
 	spawnGeneral(enemy)
 
+func spawnBossEnemy():
+	var enemy = BOSS_ENEMY.instantiate()
+	spawnGeneral(enemy)
 
+func spawnCounterEnemy():
+	var enemy = COUNTER_ENEMY.instantiate()
+	spawnGeneral(enemy)
 
 
 

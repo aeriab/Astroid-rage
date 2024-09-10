@@ -4,8 +4,8 @@ const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
 const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
 
 @onready var cpu_particles_2d = $CPUParticles2D
-@onready var collision_polygon_2d_right = $CollisionPolygon2D_right
-@onready var collision_polygon_2d_left = $CollisionPolygon2D_left
+@onready var collision_polygon_2d = $CollisionPolygon2D
+
 @onready var timer = $Timer
 
 var shader_value = material.get_shader_parameter("value")
@@ -17,7 +17,7 @@ var y = 5000
 var hypotenuse
 var theta
 
-const SPEED = 130
+const SPEED = 70
 const FADE_SPEED = 0.5
 
 var innerBoundX = 5000
@@ -39,26 +39,6 @@ var difficulty: float = 1.0
 var randEnSprite: int
 
 func _ready():
-	randEnSprite = randi_range(0,100)
-	if randEnSprite <= 15:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDefault.png")
-	elif randEnSprite <= 25:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyBored.png")
-	elif randEnSprite <= 35:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
-	elif randEnSprite <= 45:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
-	elif randEnSprite <= 60:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
-	elif randEnSprite <= 75:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyMouth.png")
-	elif randEnSprite <= 85:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyNose.png")
-	elif randEnSprite <= 99:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
-	else:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyEYES.png")
-	
 	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
@@ -68,14 +48,12 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
 	
-	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
+	sizeOfEnemy = randf_range(1.5 * difficulty,2.1 * difficulty)
 	
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
-	if sizeOfEnemy >= 1.48 * difficulty:
-		sizeOfEnemy = 3.0 * difficulty
 	scale.x = sizeOfEnemy
 	scale.y = sizeOfEnemy
-	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 2)
+	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 70)
 	
 	shader_alpha = 0.0
 	
@@ -95,14 +73,17 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 	else:
 		theta = 2 * PI -  acos(x / hypotenuse)
 	
-	rotation = -theta + PI
+	rotation = -theta - (PI/2)
+
+@onready var cpu_particles_2d_2 = $CPUParticles2D2
+@onready var cpu_particles_2d_3 = $CPUParticles2D3
+
+var settingFree: bool = false
 
 func _physics_process(delta):
 	
 	x -= cos(theta) * SPEED * delta * Global.gameTimeScale
 	y -= -sin(theta) * SPEED * delta * Global.gameTimeScale
-	
-	scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
 	
 	position = Vector2(x,y)
 	time_ellapsed += delta * 5 * Global.gameTimeScale
@@ -110,6 +91,11 @@ func _physics_process(delta):
 		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
+		cpu_particles_2d_2.emitting = false
+		cpu_particles_2d_3.emitting = false
+	elif !settingFree:
+		cpu_particles_2d_2.emitting = true
+		cpu_particles_2d_3.emitting = true
 
 var points: float = 0.0
 
@@ -137,15 +123,7 @@ func _on_area_entered(area):
 		addDamage()
 	
 	if area.is_in_group("Crasher"):
-		Global.decreaseEnemyNum()
-		Global.addXP(xpAmount)
-		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
-		pointsNotif.position = Vector2 (x,y)
-		points = sizeOfEnemy * 100
-		Global.points += int(points)
-		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
-		get_parent().add_child.call_deferred(pointsNotif)
-		setFreeSequence()
+		area.bounceBack(position.x,position.y)
 	 
 	if area.is_in_group("Player"):
 		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
@@ -153,10 +131,12 @@ func _on_area_entered(area):
 		setFreeSequence()
 
 func setFreeSequence():
+	settingFree = true
+	cpu_particles_2d_2.emitting = false
+	cpu_particles_2d_3.emitting = false
 	cpu_particles_2d.emitting = true
-	splatcho_enemy.free()
-	collision_polygon_2d_left.free()
-	collision_polygon_2d_right.free()
+	splatcho_enemy.free() 
+	collision_polygon_2d.free()
 	timer.start()
 
 func _on_timer_timeout():

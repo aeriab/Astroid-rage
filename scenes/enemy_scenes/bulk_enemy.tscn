@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccrfc65cef15f"]
+[gd_scene load_steps=10 format=3 uid="uid://dbjhtkard0k55"]
 
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_0ykx2"]
 [ext_resource type="Script" path="res://scripts/gameFolder/BulkEnemy.gd" id="2_2qrhc"]

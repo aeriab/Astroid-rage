@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=3 uid="uid://21hwsvfdvfq"]
+
+[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_lw4lc"]
+[ext_resource type="Script" path="res://scripts/gameFolder/BossEnemy.gd" id="2_qhbv4"]
+[ext_resource type="Texture2D" uid="uid://bo0ft70wgksia" path="res://assets/bossBoy (2).png" id="3_3g60g"]
+[ext_resource type="AudioStream" uid="uid://bv11k7rmmyyf4" path="res://assets/hitSounds/punch-1-166694.mp3" id="4_g10od"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6bmg"]
+resource_local_to_scene = true
+shader = ExtResource("1_lw4lc")
+shader_parameter/damage_value = 0.0
+shader_parameter/alpha_value = 1.0
+
+[sub_resource type="Curve" id="Curve_exf2e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_1opfl"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rkote"]
+_data = [Vector2(0, 0), 0.0, 4.67277, 0, 0, Vector2(0.101124, 1), 1.63004, 1.63004, 0, 0, Vector2(1, 0), -1.65511, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_cu8do"]
+offsets = PackedFloat32Array(0, 0.119718, 1)
+colors = PackedColorArray(0.486275, 0.505882, 0.815686, 1, 0.407843, 0.560784, 0.411765, 1, 0, 0, 0, 1)
+
+[node name="BossEnemy" type="Area2D" groups=["Enemy"]]
+z_index = 3
+material = SubResource("ShaderMaterial_g6bmg")
+position = Vector2(-8, 16)
+collision_layer = 2
+script = ExtResource("2_qhbv4")
+
+[node name="SplatchoEnemy" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(10, -90)
+texture = ExtResource("3_3g60g")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 5
+scale = Vector2(15, 15)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 600)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 30.0
+scale_amount_max = 45.0
+scale_amount_curve = SubResource("Curve_exf2e")
+color = Color(0.807843, 0, 1, 1)
+
+[node name="CharHitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g10od")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(9, 545, 227, 368, 356, 234, 463, 91, 540, -58, 578, -195, 582, -270, 572, -353, 547, -424, 509, -483, 461, -529, 417, -554, 360, -573, 313, -577, 273, -573, 240, -565, 226, -596, 210, -622, 184, -653, 153, -680, 118, -701, 80, -716, 41, -724, 8, -726, -33, -722, -71, -712, -104, -697, -135, -678, -159, -658, -176, -640, -190, -621, -205, -598, -220, -564, -255, -573, -288, -577, -332, -574, -378, -562, -419, -543, -457, -516, -483, -490, -507, -460, -528, -422, -547, -372, -559, -304, -562, -262, -560, -221, -552, -171, -540, -118, -513, -43, -487, 12, -446, 85, -330, 240, -186, 385)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(141, -504)
+emitting = false
+amount = 12
+lifetime = 2.0
+speed_scale = 0.7
+fract_delta = false
+emission_shape = 1
+emission_sphere_radius = 30.74
+direction = Vector2(0, 1)
+spread = 14.09
+gravity = Vector2(0, 0)
+initial_velocity_min = 372.98
+initial_velocity_max = 631.58
+angle_min = -180.0
+angle_max = 180.0
+angle_curve = SubResource("Curve_1opfl")
+scale_amount_min = 61.61
+scale_amount_max = 102.01
+scale_amount_curve = SubResource("Curve_rkote")
+color = Color(0.791999, 0.791999, 0.791999, 1)
+color_ramp = SubResource("Gradient_cu8do")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2(-126, -504)
+emitting = false
+amount = 12
+lifetime = 2.0
+speed_scale = 0.7
+fract_delta = false
+emission_shape = 1
+emission_sphere_radius = 30.74
+direction = Vector2(0, 1)
+spread = 14.09
+gravity = Vector2(0, 0)
+initial_velocity_min = 372.98
+initial_velocity_max = 631.58
+angle_min = -180.0
+angle_max = 180.0
+angle_curve = SubResource("Curve_1opfl")
+scale_amount_min = 61.61
+scale_amount_max = 102.01
+scale_amount_curve = SubResource("Curve_rkote")
+color = Color(0.791999, 0.791999, 0.791999, 1)
+color_ramp = SubResource("Gradient_cu8do")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
