@@ -1144,7 +1144,7 @@ theme_override_font_sizes/font_size = 70
 text = "RETRY"
 metadata/_edit_use_anchors_ = true
 
-[node name="HomeButton" type="Button" parent="PauseMenu"]
+[node name="StageButton" type="Button" parent="PauseMenu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1155,7 +1155,7 @@ offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "HOME"
+text = "STAGE SELECT"
 metadata/_edit_use_anchors_ = true
 
 [node name="MusicVolume" type="Control" parent="PauseMenu"]
@@ -1444,7 +1444,7 @@ texture = ExtResource("11_x60jw")
 [connection signal="timeout" from="GameOver/StarAward" to="GameOver" method="_on_star_award_timeout"]
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/RetryButton" to="PauseMenu" method="_on_retry_button_pressed"]
-[connection signal="pressed" from="PauseMenu/HomeButton" to="PauseMenu" method="_on_home_button_pressed"]
+[connection signal="pressed" from="PauseMenu/StageButton" to="PauseMenu" method="_on_stage_button_pressed"]
 [connection signal="value_changed" from="PauseMenu/MusicVolume/HSlider" to="PauseMenu/MusicVolume" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="PauseMenu/SFXVolume/HSlider" to="PauseMenu/SFXVolume" method="_on_h_slider_value_changed"]
 [connection signal="area_entered" from="CrasherArea2D" to="CrasherArea2D" method="_on_area_entered"]

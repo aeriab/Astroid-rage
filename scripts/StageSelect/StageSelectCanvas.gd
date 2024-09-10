@@ -86,23 +86,20 @@ var MAX_STAGE: int = 4
 @onready var dupgrade_5 = $DroneUpgrades/upgrade_5
 
 
-
-@onready var dark_star_particle_1 = $"../DarkStarParticle"
-@onready var star_particle_1 = $"../DarkStarParticle/StarParticle1"
-@onready var dark_star_particle_2 = $"../DarkStarParticle2"
-@onready var star_particle_2 = $"../DarkStarParticle2/StarParticle2"
-@onready var dark_star_particle_3 = $"../DarkStarParticle3"
-@onready var star_particle_3 = $"../DarkStarParticle3/StarParticle3"
-@onready var dark_star_particle_4 = $"../DarkStarParticle4"
-@onready var star_particle_4 = $"../DarkStarParticle4/StarParticle4"
-@onready var dark_star_particle_5 = $"../DarkStarParticle5"
-@onready var star_particle_5 = $"../DarkStarParticle5/StarParticle5"
-@onready var dark_star_particle_6 = $"../DarkStarParticle6"
-@onready var star_particle_6 = $"../DarkStarParticle6/StarParticle6"
-@onready var dark_star_particle_7 = $"../DarkStarParticle7"
-@onready var star_particle_7 = $"../DarkStarParticle7/StarParticle7"
-
-
+@onready var dark_star_particle_1 = $DarkStarParticle
+@onready var star_particle_1 = $DarkStarParticle/StarParticle1
+@onready var dark_star_particle_2 = $DarkStarParticle2
+@onready var star_particle_2 = $DarkStarParticle2/StarParticle2
+@onready var dark_star_particle_3 = $DarkStarParticle3
+@onready var star_particle_3 = $DarkStarParticle3/StarParticle3
+@onready var dark_star_particle_4 = $DarkStarParticle4
+@onready var star_particle_4 = $DarkStarParticle4/StarParticle4
+@onready var dark_star_particle_5 = $DarkStarParticle5
+@onready var star_particle_5 = $DarkStarParticle5/StarParticle5
+@onready var dark_star_particle_6 = $DarkStarParticle6
+@onready var star_particle_6 = $DarkStarParticle6/StarParticle6
+@onready var dark_star_particle_7 = $DarkStarParticle7
+@onready var star_particle_7 = $DarkStarParticle7/StarParticle7
 
 
 func _ready():
@@ -139,12 +136,29 @@ func resetStarParticles():
 	star_particle_6.visible = false
 	star_particle_7.visible = false
 
+@onready var stage_1_sprites = $Stage1Sprites
+@onready var stage_2_sprites = $Stage2Sprites
+@onready var stage_3_sprites = $Stage3Sprites
+@onready var stage_4_sprites = $Stage4Sprites
+@onready var stage_select_back = $"../StageSelectBack"
+const STAGE_SELECT_BACK_S_1 = preload("res://assets/StageSelectBack/StageSelectBackS1.png")
+const STAGE_SELECT_BACK_S_2 = preload("res://assets/StageSelectBack/StageSelectBackS2.png")
+const STAGE_SELECT_BACK_S_3 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
+const STAGE_SELECT_BACK_S_4 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
+
 func _process(_delta):
 	checkBaseStars()
 	checkDroneStars()
 	upgrades_left_label.text = "UPGRADES\nLEFT: " + str(Global.unspentPoints)
 	
 	if stageSelecting == 1:
+		
+		stage_1_sprites.visible = true
+		stage_2_sprites.visible = false
+		stage_3_sprites.visible = false
+		stage_4_sprites.visible = false
+		stage_select_back.texture = STAGE_SELECT_BACK_S_1
+		
 		Global.waveNum = 3
 		Global.current_stage = "Learner Lagoon"
 		stage_words.text = "Stage 1: Learner Lagoon"
@@ -162,6 +176,13 @@ func _process(_delta):
 		if Global.Stage1StarsAchieved >= 3:
 			star_particle_5.visible = true
 	elif stageSelecting == 2:
+		
+		stage_1_sprites.visible = false
+		stage_2_sprites.visible = true
+		stage_3_sprites.visible = false
+		stage_4_sprites.visible = false
+		stage_select_back.texture = STAGE_SELECT_BACK_S_2
+		
 		Global.waveNum = 3
 		Global.current_stage = "Perfect Pond"
 		stage_words.text = "Stage 2: Perfect Pond"
@@ -173,6 +194,13 @@ func _process(_delta):
 		if Global.Stage2StarsAchieved >= 3:
 			star_particle_5.visible = true
 	elif stageSelecting == 3:
+		
+		stage_1_sprites.visible = false
+		stage_2_sprites.visible = false
+		stage_3_sprites.visible = true
+		stage_4_sprites.visible = false
+		stage_select_back.texture = STAGE_SELECT_BACK_S_3
+		
 		Global.waveNum = 5
 		Global.current_stage = "Giga Geyser"
 		stage_words.text = "Stage 3: Giga Geyser"
@@ -188,6 +216,13 @@ func _process(_delta):
 		if Global.Stage3StarsAchieved >= 5:
 			star_particle_6.visible = true
 	elif stageSelecting == 4:
+		
+		stage_1_sprites.visible = false
+		stage_2_sprites.visible = false
+		stage_3_sprites.visible = false
+		stage_4_sprites.visible = true
+		stage_select_back.texture = STAGE_SELECT_BACK_S_4
+		
 		Global.waveNum = 7
 		Global.current_stage = "Swirly Swamp"
 		stage_words.text = "Stage 4: Swirly Swamp"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=25 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
@@ -10,6 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://clw315vqrx167" path="res://assets/PlusSign.png" id="4_hdwke"]
 [ext_resource type="Script" path="res://scripts/DroneSelect.gd" id="8_a4bh5"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="8_y6xwi"]
+[ext_resource type="Texture2D" uid="uid://b7hh6i7vkrv5f" path="res://assets/redEnemySprites/SplatchoEnemyBored.png" id="9_2f42f"]
+[ext_resource type="Texture2D" uid="uid://dbwaqmo4q61r5" path="res://assets/BulkEnemy (1).png" id="10_v3quy"]
+[ext_resource type="Texture2D" uid="uid://l2c6spthnqll" path="res://assets/redEnemySprites/SplatchoEnemyUni.png" id="11_duxm2"]
+[ext_resource type="Texture2D" uid="uid://bmjwbxs52ydgf" path="res://assets/redEnemySprites/SplatchoEnemyMouth.png" id="13_6t4po"]
+[ext_resource type="Texture2D" uid="uid://dev7inbjgxpf0" path="res://assets/swirlEnemySprites/SwirlEnemySquare.png" id="14_nhpey"]
+[ext_resource type="Texture2D" uid="uid://ckxw44usr40d4" path="res://assets/spiralEnemySprites/SpiralEnemyStar.png" id="15_j5dc3"]
+[ext_resource type="Texture2D" uid="uid://bdjja3eqrcd0e" path="res://assets/spiralEnemySprites/SpiralEnemyBrow.png" id="16_ljf16"]
+[ext_resource type="Texture2D" uid="uid://db60xmnoowxth" path="res://assets/swirlEnemySprites/SwirlEnemyBoth.png" id="17_77lvj"]
+[ext_resource type="Texture2D" uid="uid://bfxadmwvl5dhy" path="res://assets/swirlEnemySprites/SwirlEnemyTrifront.png" id="18_wnxyd"]
+[ext_resource type="Texture2D" uid="uid://bei126wmd177t" path="res://assets/ZagEnemy/ZigZagEnemy (1).png" id="19_3gc6u"]
+[ext_resource type="Texture2D" uid="uid://bo0ft70wgksia" path="res://assets/bossBoy (2).png" id="21_24qxl"]
+[ext_resource type="Texture2D" uid="uid://dfau10tjkqlof" path="res://assets/CounterEnemy.png" id="22_mfa0j"]
+[ext_resource type="Texture2D" uid="uid://2frefqog7kq1" path="res://assets/CounterEnemySymbol (1).png" id="23_x2cgo"]
+[ext_resource type="Texture2D" uid="uid://dwtvp8gcx42a5" path="res://assets/StageSelectBack/StageSelectBackS1.png" id="24_hq3ol"]
 
 [node name="stage_select" type="Node2D"]
 
@@ -96,6 +110,7 @@ offset_left = -2.0
 offset_top = 431.0
 offset_right = 728.0
 offset_bottom = 514.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "SELECT BASE"
 horizontal_alignment = 1
@@ -106,6 +121,7 @@ offset_left = 10.0
 offset_top = 521.0
 offset_right = 714.0
 offset_bottom = 631.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 text = "Tank"
 horizontal_alignment = 1
@@ -161,6 +177,7 @@ offset_right = -1575.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 26
 theme_override_font_sizes/font_size = 40
 text = "auto-fire rate
@@ -491,6 +508,7 @@ offset_left = 1209.0
 offset_top = 432.0
 offset_right = 1915.0
 offset_bottom = 515.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "SELECT DRONE"
 horizontal_alignment = 1
@@ -501,6 +519,7 @@ offset_left = 1209.0
 offset_top = 522.0
 offset_right = 1913.0
 offset_bottom = 632.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 text = "Crasher"
 horizontal_alignment = 1
@@ -556,6 +575,7 @@ offset_right = -517.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 26
 theme_override_font_sizes/font_size = 40
 text = "size
@@ -908,113 +928,266 @@ offset_right = 131.0
 offset_bottom = 271.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "UPGRADES 
 LEFT: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DarkStarParticle" type="Sprite2D" parent="."]
+[node name="DarkStarParticle" type="Sprite2D" parent="MainCanvas"]
 visible = false
+z_index = 1
 position = Vector2(360, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
-[node name="StarParticle1" type="Sprite2D" parent="DarkStarParticle"]
+[node name="StarParticle1" type="Sprite2D" parent="MainCanvas/DarkStarParticle"]
 visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
 
-[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle/StarParticle1"]
+[node name="GhostParticle" type="Sprite2D" parent="MainCanvas/DarkStarParticle/StarParticle1"]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_y6xwi")
 
-[node name="DarkStarParticle2" type="Sprite2D" parent="."]
+[node name="DarkStarParticle2" type="Sprite2D" parent="MainCanvas"]
 visible = false
+z_index = 1
 position = Vector2(560, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
-[node name="StarParticle2" type="Sprite2D" parent="DarkStarParticle2"]
+[node name="StarParticle2" type="Sprite2D" parent="MainCanvas/DarkStarParticle2"]
 visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
 
-[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle2/StarParticle2"]
+[node name="GhostParticle" type="Sprite2D" parent="MainCanvas/DarkStarParticle2/StarParticle2"]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_y6xwi")
 
-[node name="DarkStarParticle3" type="Sprite2D" parent="."]
+[node name="DarkStarParticle3" type="Sprite2D" parent="MainCanvas"]
+z_index = 1
 position = Vector2(760, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
-[node name="StarParticle3" type="Sprite2D" parent="DarkStarParticle3"]
+[node name="StarParticle3" type="Sprite2D" parent="MainCanvas/DarkStarParticle3"]
 visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
 
-[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle3/StarParticle3"]
+[node name="GhostParticle" type="Sprite2D" parent="MainCanvas/DarkStarParticle3/StarParticle3"]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_y6xwi")
 
-[node name="DarkStarParticle4" type="Sprite2D" parent="."]
+[node name="DarkStarParticle4" type="Sprite2D" parent="MainCanvas"]
+z_index = 1
 position = Vector2(960, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
-[node name="StarParticle4" type="Sprite2D" parent="DarkStarParticle4"]
+[node name="StarParticle4" type="Sprite2D" parent="MainCanvas/DarkStarParticle4"]
 visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
 
-[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle4/StarParticle4"]
+[node name="GhostParticle" type="Sprite2D" parent="MainCanvas/DarkStarParticle4/StarParticle4"]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_y6xwi")
 
-[node name="DarkStarParticle5" type="Sprite2D" parent="."]
+[node name="DarkStarParticle5" type="Sprite2D" parent="MainCanvas"]
+z_index = 1
 position = Vector2(1160, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
-[node name="StarParticle5" type="Sprite2D" parent="DarkStarParticle5"]
+[node name="StarParticle5" type="Sprite2D" parent="MainCanvas/DarkStarParticle5"]
 visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
 
-[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle5/StarParticle5"]
+[node name="GhostParticle" type="Sprite2D" parent="MainCanvas/DarkStarParticle5/StarParticle5"]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_y6xwi")
 
-[node name="DarkStarParticle6" type="Sprite2D" parent="."]
+[node name="DarkStarParticle6" type="Sprite2D" parent="MainCanvas"]
 visible = false
+z_index = 1
 position = Vector2(1360, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
-[node name="StarParticle6" type="Sprite2D" parent="DarkStarParticle6"]
+[node name="StarParticle6" type="Sprite2D" parent="MainCanvas/DarkStarParticle6"]
 visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
 
-[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle6/StarParticle6"]
+[node name="GhostParticle" type="Sprite2D" parent="MainCanvas/DarkStarParticle6/StarParticle6"]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_y6xwi")
 
-[node name="DarkStarParticle7" type="Sprite2D" parent="."]
+[node name="DarkStarParticle7" type="Sprite2D" parent="MainCanvas"]
 visible = false
+z_index = 1
 position = Vector2(1560, 275)
 scale = Vector2(0.248611, 0.248611)
 texture = ExtResource("2_bhtqa")
 
-[node name="StarParticle7" type="Sprite2D" parent="DarkStarParticle7"]
+[node name="StarParticle7" type="Sprite2D" parent="MainCanvas/DarkStarParticle7"]
 visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_2hyju")
 
-[node name="GhostParticle" type="Sprite2D" parent="DarkStarParticle7/StarParticle7"]
+[node name="GhostParticle" type="Sprite2D" parent="MainCanvas/DarkStarParticle7/StarParticle7"]
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_y6xwi")
+
+[node name="Stage1Sprites" type="Node2D" parent="MainCanvas"]
+z_index = -1
+
+[node name="SplatchoEnemyUni" type="Sprite2D" parent="MainCanvas/Stage1Sprites"]
+position = Vector2(115, 325)
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("11_duxm2")
+
+[node name="RedEnemy" type="Sprite2D" parent="MainCanvas/Stage1Sprites"]
+position = Vector2(487, 289)
+scale = Vector2(0.351389, 0.351389)
+texture = ExtResource("9_2f42f")
+
+[node name="RedEnemy2" type="Sprite2D" parent="MainCanvas/Stage1Sprites"]
+position = Vector2(295, 235)
+scale = Vector2(0.343964, 0.343964)
+texture = ExtResource("13_6t4po")
+
+[node name="SwirlEnemySquare" type="Sprite2D" parent="MainCanvas/Stage1Sprites"]
+position = Vector2(1492, 264)
+rotation = -2.71767
+scale = Vector2(0.397984, 0.397984)
+texture = ExtResource("14_nhpey")
+
+[node name="Stage2Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="SpiralEnemyStar" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(450, 267)
+scale = Vector2(0.449712, 0.449712)
+texture = ExtResource("15_j5dc3")
+
+[node name="SpiralEnemyStar2" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(1470, 318)
+scale = Vector2(-0.369723, 0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(306, 302)
+rotation = 0.563871
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("17_77lvj")
+
+[node name="SwirlEnemyBoth2" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(1591, 310)
+rotation = 3.64632
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("18_wnxyd")
+
+[node name="SplatchoEnemyUni" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(115, 325)
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("11_duxm2")
+
+[node name="ZigZagEnemy(1)" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(450, 312)
+rotation = -1.24457
+scale = Vector2(0.230841, 0.230841)
+texture = ExtResource("19_3gc6u")
+
+[node name="ZigZagEnemy(1)2" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(1665, 274)
+rotation = -0.555043
+scale = Vector2(0.230841, 0.230841)
+texture = ExtResource("19_3gc6u")
+
+[node name="BulkEnemy" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(1768, 338)
+scale = Vector2(0.140292, 0.140292)
+texture = ExtResource("10_v3quy")
+
+[node name="Stage3Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="BossBoy(2)" type="Sprite2D" parent="MainCanvas/Stage3Sprites"]
+position = Vector2(292, 298)
+scale = Vector2(0.213028, 0.213028)
+texture = ExtResource("21_24qxl")
+
+[node name="BossBoy(2)2" type="Sprite2D" parent="MainCanvas/Stage3Sprites"]
+position = Vector2(1631, 302)
+scale = Vector2(0.213028, 0.213028)
+texture = ExtResource("21_24qxl")
+
+[node name="Stage4Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage4Sprites"]
+position = Vector2(179, 296)
+rotation = 0.563871
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("17_77lvj")
+
+[node name="SplatchoEnemyUni" type="Sprite2D" parent="MainCanvas/Stage4Sprites"]
+position = Vector2(804, 350)
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("11_duxm2")
+
+[node name="BulkEnemy" type="Sprite2D" parent="MainCanvas/Stage4Sprites"]
+position = Vector2(1785, 274)
+scale = Vector2(0.140292, 0.140292)
+texture = ExtResource("10_v3quy")
+
+[node name="CounterEnemy" type="Sprite2D" parent="MainCanvas/Stage4Sprites"]
+position = Vector2(470, 293)
+rotation = 0.270341
+scale = Vector2(0.144956, 0.144956)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage4Sprites/CounterEnemy"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="CounterEnemy2" type="Sprite2D" parent="MainCanvas/Stage4Sprites"]
+position = Vector2(1138, 284)
+rotation = -0.977783
+scale = Vector2(0.144956, 0.144956)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage4Sprites/CounterEnemy2"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="SpiralEnemyStar2" type="Sprite2D" parent="MainCanvas/Stage4Sprites"]
+position = Vector2(1447, 356)
+rotation = 3.14159
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="ZigZagEnemy(1)2" type="Sprite2D" parent="MainCanvas/Stage4Sprites"]
+position = Vector2(1566, 253)
+rotation = -0.555043
+scale = Vector2(0.230841, 0.230841)
+texture = ExtResource("19_3gc6u")
+
+[node name="StageSelectBack" type="Sprite2D" parent="."]
+position = Vector2(951, 604)
+scale = Vector2(0.819349, 0.819349)
+texture = ExtResource("24_hq3ol")
 
 [connection signal="pressed" from="MainCanvas/PlayButton" to="MainCanvas" method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainCanvas/RightStageArrow" to="MainCanvas" method="_on_right_stage_arrow_pressed"]

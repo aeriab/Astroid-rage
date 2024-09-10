@@ -188,6 +188,13 @@ func _on_retry_button_pressed():
 	Global.gameTimeScale = 1.0
 
 func _on_stage_button_pressed():
+	if Global.current_stage == "Learner Lagoon":
+		Global.current_stage = "Perfect Pond"
+	elif Global.current_stage == "Perfect Pond":
+		Global.current_stage = "Giga Geyser"
+	elif Global.current_stage == "Giga Geyser":
+		Global.current_stage = "Swirly Swamp"
+	Global.current_stage
 	Global.gameOver = false
 	Global.gameTimeScale = 1.0
 	Global.resetStats()
