@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=11 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
 [ext_resource type="Texture2D" uid="uid://du2hhb0k4p8hp" path="res://assets/Dark Star Particle.png" id="2_bhtqa"]
 [ext_resource type="Texture2D" uid="uid://bur11uk6ccfqd" path="res://assets/MinusSign.png" id="3_2hqk3"]
 [ext_resource type="Script" path="res://scripts/StageSelect/star_manipulating.gd" id="3_51fws"]
+[ext_resource type="Script" path="res://scripts/BaseSelect.gd" id="3_g3ckq"]
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="4_2hyju"]
 [ext_resource type="Texture2D" uid="uid://clw315vqrx167" path="res://assets/PlusSign.png" id="4_hdwke"]
+[ext_resource type="Script" path="res://scripts/DroneSelect.gd" id="8_a4bh5"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="8_y6xwi"]
 
 [node name="stage_select" type="Node2D"]
@@ -108,6 +110,7 @@ theme_override_font_sizes/font_size = 80
 text = "Tank"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_g3ckq")
 
 [node name="RightBaseArrow" type="Button" parent="MainCanvas/BaseSelect"]
 layout_mode = 1
@@ -502,6 +505,7 @@ theme_override_font_sizes/font_size = 80
 text = "Crasher"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("8_a4bh5")
 
 [node name="RightDroneArrow" type="Button" parent="MainCanvas/DroneSelect"]
 layout_mode = 1
@@ -1016,3 +1020,7 @@ texture = ExtResource("8_y6xwi")
 [connection signal="pressed" from="MainCanvas/RightStageArrow" to="MainCanvas" method="_on_right_stage_arrow_pressed"]
 [connection signal="pressed" from="MainCanvas/LeftStageArrow" to="MainCanvas" method="_on_left_stage_arrow_pressed"]
 [connection signal="pressed" from="MainCanvas/HomeButton" to="MainCanvas" method="_on_home_button_pressed"]
+[connection signal="pressed" from="MainCanvas/BaseSelect/RightBaseArrow" to="MainCanvas/BaseSelect" method="_on_right_base_arrow_pressed"]
+[connection signal="pressed" from="MainCanvas/BaseSelect/LeftBaseArrow" to="MainCanvas/BaseSelect" method="_on_left_base_arrow_pressed"]
+[connection signal="pressed" from="MainCanvas/DroneSelect/RightDroneArrow" to="MainCanvas/DroneSelect" method="_on_right_drone_arrow_pressed"]
+[connection signal="pressed" from="MainCanvas/DroneSelect/LeftDroneArrow" to="MainCanvas/DroneSelect" method="_on_left_drone_arrow_pressed"]

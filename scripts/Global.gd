@@ -149,6 +149,13 @@ var Stage4StarsAchieved: int = 0
 var nextBoogColor: float = 0.0
 var direction: int = 1
 
+var currentBase: String = "Tank"
+var currentDrone: String = "Crasher"
+
+var curBaseNumber: int = 1
+var curDroneNumber: int = 1
+
+
 func addXP(num):
 	xpAmount += num * difficulty
 	if xpAmount >= 6.28:
