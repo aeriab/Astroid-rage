@@ -68,11 +68,11 @@ func _process(delta):
 			generalMultiSpawn(5,"red",3)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
-			generalMultiSpawn(1,"bulk",7)
+			generalMultiSpawn(5,"swirl",3)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
 			generalMultiSpawn(20,"red",2)
-			generalMultiSpawn2(1,"bulk",5)
+			generalMultiSpawn2(7,"swirld",3)
 	
 	if Global.current_stage == "Perfect Pond":
 		if onWave == 3 && firstSp3:
