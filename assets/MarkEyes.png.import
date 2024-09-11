@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr574m6x1iwmx"
-path="res://.godot/imported/Mark.png-98b3916dc09a9ea7a3260f3fd5f1cbd6.ctex"
+uid="uid://d3hscr4gxtn1i"
+path="res://.godot/imported/MarkEyes.png-ef05c18c238e4f55d7225e4f21a4c8a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Mark.png"
-dest_files=["res://.godot/imported/Mark.png-98b3916dc09a9ea7a3260f3fd5f1cbd6.ctex"]
+source_file="res://assets/MarkEyes.png"
+dest_files=["res://.godot/imported/MarkEyes.png-ef05c18c238e4f55d7225e4f21a4c8a2.ctex"]
 
 [params]
 

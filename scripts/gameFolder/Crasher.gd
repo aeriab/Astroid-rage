@@ -34,11 +34,11 @@ func _ready():
 	scale.x = 0.65 + Global.num_drone_stars1 * 0.15
 	scale.y = 0.65 + Global.num_drone_stars1 * 0.15
 	
-	MAX_THRUST = (30.0 * Global.num_drone_stars2) + 110.0
+	MAX_THRUST = (30.0 * Global.num_drone_stars2) + 100.0
 	
-	ROT_UPGRADER = (0.15 * Global.num_drone_stars3) + 1.6
+	ROT_UPGRADER = (0.15 * Global.num_drone_stars3) + 1.5
 	
-	crashTimeScale = -(Global.num_drone_stars4 * 0.7) + 10.0
+	crashTimeScale = -(Global.num_drone_stars4 * 0.7) + 2.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="4_2hyju"]
 [ext_resource type="Texture2D" uid="uid://clw315vqrx167" path="res://assets/PlusSign.png" id="4_hdwke"]
 [ext_resource type="Texture2D" uid="uid://ddkin1gjj35jf" path="res://assets/Ball.png" id="4_mh0tc"]
-[ext_resource type="Texture2D" uid="uid://cr574m6x1iwmx" path="res://assets/Mark.png" id="5_rp2da"]
+[ext_resource type="Texture2D" uid="uid://bf5ild0at1l6m" path="res://assets/Mark (2).png" id="5_wydgw"]
 [ext_resource type="Texture2D" uid="uid://4fswqwje2k0" path="res://assets/Lazy.png" id="6_1lqep"]
 [ext_resource type="Texture2D" uid="uid://dy7qrl58soocx" path="res://assets/Crasher3.png" id="7_js571"]
 [ext_resource type="Script" path="res://scripts/DroneSelect.gd" id="8_a4bh5"]
@@ -130,10 +130,10 @@ texture = ExtResource("4_mh0tc")
 
 [node name="Mark" type="Sprite2D" parent="MainCanvas/BaseIcons"]
 visible = false
-position = Vector2(456, 582)
-rotation = 0.570164
+position = Vector2(467, 573)
+rotation = 0.480166
 scale = Vector2(0.14076, 0.14076)
-texture = ExtResource("5_rp2da")
+texture = ExtResource("5_wydgw")
 
 [node name="Lazy" type="Sprite2D" parent="MainCanvas/BaseIcons"]
 visible = false

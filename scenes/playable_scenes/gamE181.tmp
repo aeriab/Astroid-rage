@@ -1,8 +1,8 @@
-[gd_scene load_steps=75 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=65 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
-[ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="3_yt7t5"]
+[ext_resource type="Texture2D" uid="uid://ddkin1gjj35jf" path="res://assets/Ball.png" id="3_djgbu"]
 [ext_resource type="Script" path="res://scripts/gameFolder/gameMutationPart.gd" id="4_03sfa"]
 [ext_resource type="Texture2D" uid="uid://bial11bqrxmow" path="res://assets/tankBird/BirdBeak.png" id="5_7fd46"]
 [ext_resource type="Script" path="res://scripts/gameFolder/GameBulletHandler.gd" id="5_t80kh"]
@@ -18,19 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="11_x60jw"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_1ef7u"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="12_m0jp0"]
-[ext_resource type="Script" path="res://scripts/gameFolder/MarkPlayerGame.gd" id="12_u42q4"]
-[ext_resource type="Texture2D" uid="uid://csc6es3ftxahc" path="res://assets/Mark (4).png" id="13_yi7u4"]
 [ext_resource type="Script" path="res://scripts/SFXVolScript.gd" id="14_nv7fv"]
-[ext_resource type="Script" path="res://scripts/gameFolder/MarkMutationPart.gd" id="14_q6qyl"]
 [ext_resource type="Texture2D" uid="uid://128dlw2ygthe" path="res://assets/HealthBarRedCenter.png" id="14_rfjs2"]
 [ext_resource type="Script" path="res://scripts/gameFolder/top_health_bar.gd" id="15_1r5es"]
-[ext_resource type="Texture2D" uid="uid://163mjw5qyyod" path="res://assets/MarkNose.png" id="15_akxu3"]
-[ext_resource type="Script" path="res://scripts/gameFolder/MarkBulletHandler.gd" id="15_mxfnp"]
 [ext_resource type="AudioStream" uid="uid://cn63cw3kspful" path="res://assets/ding-1-14705.mp3" id="16_0nk63"]
 [ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="16_j4gmb"]
-[ext_resource type="Shader" path="res://shaders/MarkEyes.gdshader" id="16_l24x1"]
-[ext_resource type="Texture2D" uid="uid://bq7gwdcrn51bc" path="res://assets/MarkEyes (1).png" id="16_mdaf5"]
-[ext_resource type="Script" path="res://scripts/gameFolder/MarkEyes.gd" id="18_ca8qa"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Game_Camera2D.gd" id="18_chv7v"]
 [ext_resource type="Script" path="res://scripts/MusicVolume.gd" id="18_ewn7p"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Crasher.gd" id="19_6jffq"]
@@ -63,16 +55,6 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_kyblx"]
 colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 1, 1, 1, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcfqp"]
-shader = ExtResource("16_l24x1")
-shader_parameter/explosiveValue = 0.0
-shader_parameter/blandness = 0.6
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmox5"]
-shader = ExtResource("16_l24x1")
-shader_parameter/explosiveValue = null
-shader_parameter/blandness = 0.6
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ph3oq"]
 
@@ -141,38 +123,36 @@ shader_parameter/wave_progress = null
 scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
-[node name="Tank" type="Node2D" parent="."]
-
-[node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
+[node name="Player" type="Area2D" parent="." groups=["Player"]]
 script = ExtResource("2_8ueva")
 
-[node name="BaseBodSprite" type="Sprite2D" parent="Tank/Player"]
+[node name="BaseBodSprite" type="Sprite2D" parent="Player"]
 z_index = 3
-texture = ExtResource("3_yt7t5")
+texture = ExtResource("3_djgbu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank/Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 visible = false
 z_index = 4
 scale = Vector2(23.58, 23.2821)
 shape = SubResource("CircleShape2D_j54jy")
 
-[node name="mutationPart" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart" type="Node2D" parent="Player"]
 z_index = 2
 z_as_relative = false
 script = ExtResource("4_03sfa")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("5_7fd46")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -194,20 +174,20 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="TankBirdEyeWhite" type="Sprite2D" parent="Tank/Player/mutationPart"]
+[node name="TankBirdEyeWhite" type="Sprite2D" parent="Player/mutationPart"]
 z_index = 4
 z_as_relative = false
 position = Vector2(-6.56701, -15.5967)
 texture = ExtResource("6_0muhi")
 
-[node name="BirdEyelid" type="Sprite2D" parent="Tank/Player/mutationPart"]
+[node name="BirdEyelid" type="Sprite2D" parent="Player/mutationPart"]
 z_index = 4
 z_as_relative = false
 position = Vector2(77, -16)
 scale = Vector2(0.01, 1.01)
 texture = ExtResource("7_pooob")
 
-[node name="TankBirdPupil" type="Sprite2D" parent="Tank/Player/mutationPart"]
+[node name="TankBirdPupil" type="Sprite2D" parent="Player/mutationPart"]
 z_index = 4
 z_as_relative = false
 position = Vector2(144.474, -20.5219)
@@ -217,25 +197,25 @@ region_enabled = true
 region_rect = Rect2(605.068, 309.284, 58.8481, 52.6057)
 region_filter_clip_enabled = true
 
-[node name="mutationPart2" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart2" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = -3.14159
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart2"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart2"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart2/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart2/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart2/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart2/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -257,25 +237,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart3(1)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart3(1)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = -2.0944
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart3(1)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart3(1)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart3(1)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart3(1)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart3(1)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart3(1)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -297,25 +277,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart3(2)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart3(2)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = 2.0944
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart3(2)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart3(2)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart3(2)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart3(2)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart3(2)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart3(2)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -337,25 +317,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart4(1)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart4(1)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = -4.71238
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart4(1)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart4(1)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart4(1)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart4(1)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart4(1)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart4(1)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -377,25 +357,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart4(2)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart4(2)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = -1.57079
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart4(2)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart4(2)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart4(2)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart4(2)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart4(2)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart4(2)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -417,25 +397,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart5(1)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart5(1)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = 1.25664
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart5(1)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart5(1)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart5(1)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart5(1)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart5(1)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(1)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -457,25 +437,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart5(2)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart5(2)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = 2.51327
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart5(2)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart5(2)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart5(2)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart5(2)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart5(2)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(2)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -497,25 +477,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart5(3)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart5(3)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = 3.76991
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart5(3)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart5(3)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart5(3)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart5(3)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart5(3)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(3)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -537,25 +517,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart5(4)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart5(4)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = -1.25664
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart5(4)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart5(4)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart5(4)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart5(4)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart5(4)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(4)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -577,25 +557,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart6(1)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart6(1)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = 1.0472
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart6(1)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart6(1)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart6(1)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart6(1)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart6(1)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart6(1)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -617,25 +597,25 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="mutationPart6(5)" type="Node2D" parent="Tank/Player"]
+[node name="mutationPart6(5)" type="Node2D" parent="Player"]
 visible = false
 z_index = 2
 z_as_relative = false
 rotation = -1.0472
 script = ExtResource("9_gndhu")
 
-[node name="SnoutPosition" type="Node2D" parent="Tank/Player/mutationPart6(5)"]
+[node name="SnoutPosition" type="Node2D" parent="Player/mutationPart6(5)"]
 z_index = 2
 z_as_relative = false
 position = Vector2(0, -321.419)
 
-[node name="TankBirdNose" type="Sprite2D" parent="Tank/Player/mutationPart6(5)/SnoutPosition"]
+[node name="TankBirdNose" type="Sprite2D" parent="Player/mutationPart6(5)/SnoutPosition"]
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
 texture = ExtResource("10_m0ava")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tank/Player/mutationPart6(5)/SnoutPosition"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart6(5)/SnoutPosition"]
 z_index = 5
 position = Vector2(0, -41)
 rotation = -0.785397
@@ -657,83 +637,31 @@ scale_amount_curve = SubResource("Curve_4yrby")
 color = Color(0.367318, 0.348251, 0.32971, 1)
 color_ramp = SubResource("Gradient_kyblx")
 
-[node name="GameBulletHandler" type="Node" parent="Tank"]
+[node name="GameBulletHandler" type="Node" parent="."]
 script = ExtResource("5_t80kh")
 
-[node name="AutoTimer" type="Timer" parent="Tank/GameBulletHandler"]
+[node name="AutoTimer" type="Timer" parent="GameBulletHandler"]
 wait_time = 0.2
-
-[node name="Mark" type="Node2D" parent="."]
-
-[node name="Player" type="Area2D" parent="Mark" groups=["Player"]]
-script = ExtResource("12_u42q4")
-
-[node name="MarkPlaySprite" type="Sprite2D" parent="Mark/Player"]
-z_index = 3
-position = Vector2(0, 16.4851)
-scale = Vector2(0.503802, 0.503802)
-texture = ExtResource("13_yi7u4")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mark/Player"]
-visible = false
-position = Vector2(-5.74713, 0.656803)
-polygon = PackedVector2Array(-87.0279, -211.002, -66.5025, -218.391, -114.122, -302.956, 125.616, -302.135, 78.8177, -218.391, 114.943, -201.97, 148.604, -214.286, 180.624, -220.033, 208.539, -220.033, 235.632, -216.749, 254.516, -211.823, 275.041, -203.612, 298.851, -190.476, 321.018, -172.414, 340.722, -148.604, 351.396, -128.9, 359.606, -105.911, 364.532, -76.3547, 363.711, -47.619, 354.68, -4.92611, 335.796, 41.8719, 307.882, 86.2069, 270.936, 131.363, 217.57, 183.908, 145.32, 243.021, 68.1445, 295.566, 6.56814, 334.154, -79.6387, 280.788, -131.363, 243.842, -176.519, 208.539, -224.959, 165.846, -259.442, 130.542, -298.851, 82.1018, -331.691, 25.4516, -348.933, -25.4516, -353.038, -72.2496, -347.291, -107.553, -334.975, -137.11, -319.376, -160.92, -294.745, -184.729, -266.831, -201.149, -243.021, -211.823, -211.002, -219.212, -178.161, -220.854, -147.783, -216.749, -126.437, -211.002, -104.269, -202.791)
-
-[node name="mutationPart" type="Node2D" parent="Mark/Player"]
-z_index = 2
-z_as_relative = false
-position = Vector2(0, 60.9843)
-script = ExtResource("14_q6qyl")
-
-[node name="SnoutPosition" type="Node2D" parent="Mark/Player/mutationPart"]
-z_index = 2
-z_as_relative = false
-position = Vector2(1.64204, -269.523)
-
-[node name="MarkNose" type="Sprite2D" parent="Mark/Player/mutationPart"]
-z_index = 1
-position = Vector2(0, -44)
-scale = Vector2(0.504, 0.504)
-texture = ExtResource("15_akxu3")
-
-[node name="MarkEye1" type="Sprite2D" parent="Mark/Player/mutationPart"]
-z_index = 1
-material = SubResource("ShaderMaterial_pcfqp")
-position = Vector2(-199.507, -139.802)
-scale = Vector2(0.504, 0.504)
-texture = ExtResource("16_mdaf5")
-script = ExtResource("18_ca8qa")
-
-[node name="MarkEye2" type="Sprite2D" parent="Mark/Player/mutationPart"]
-z_index = 1
-material = SubResource("ShaderMaterial_qmox5")
-position = Vector2(206.897, -140.623)
-scale = Vector2(0.504, 0.504)
-texture = ExtResource("16_mdaf5")
-script = ExtResource("18_ca8qa")
-
-[node name="BulletHandlerSt2" type="Node" parent="Mark"]
-script = ExtResource("15_mxfnp")
 
 [node name="AreaBulletCollection" type="Area2D" parent="."]
 script = ExtResource("6_e74tl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(0, 5358.78)
+position = Vector2(0, 3000)
 shape = SubResource("WorldBoundaryShape2D_ph3oq")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(-5408.87, 0)
+position = Vector2(-5000, 0)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_ph3oq")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(5631.36, 18.8834)
+position = Vector2(5000, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_ph3oq")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="AreaBulletCollection"]
-position = Vector2(-6.32781e-10, -5284.89)
+position = Vector2(0, -3000)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_ph3oq")
 
@@ -1510,7 +1438,7 @@ visible = false
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("11_x60jw")
 
-[connection signal="timeout" from="Tank/GameBulletHandler/AutoTimer" to="Tank/GameBulletHandler" method="_on_auto_timer_timeout"]
+[connection signal="timeout" from="GameBulletHandler/AutoTimer" to="GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]
 [connection signal="timeout" from="GameWaves/NextEnTimer" to="GameWaves" method="_on_next_en_timer_timeout"]
 [connection signal="timeout" from="GameWaves/NextEnTimer2" to="GameWaves" method="_on_next_en_timer_2_timeout"]

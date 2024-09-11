@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c63a02umybrtv"
-path="res://.godot/imported/radial background.png-1c9d85081b14e31e285f465de659315e.ctex"
+uid="uid://btqhb6a3bxpew"
+path="res://.godot/imported/radialBackgroundS4.png-142381732cebee4b939a2ad33ae2f362.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/radial background.png"
-dest_files=["res://.godot/imported/radial background.png-1c9d85081b14e31e285f465de659315e.ctex"]
+source_file="res://assets/StageBackground/radialBackgroundS4.png"
+dest_files=["res://.godot/imported/radialBackgroundS4.png-142381732cebee4b939a2ad33ae2f362.ctex"]
 
 [params]
 

@@ -5,8 +5,9 @@ var clockwise = 1
 @export var starting_rot: float
 
 @onready var mutation_part = $mutationPart
-@onready var pop_sfx_player = $"../PopSfxPlayer"
-@onready var crasher = $"../CrasherArea2D"
+@onready var pop_sfx_player = $"../../PopSfxPlayer"
+@onready var crasher = $"../../CrasherArea2D"
+
 
 
 @onready var mutation_part_2 = $mutationPart2
@@ -24,8 +25,10 @@ var clockwise = 1
 
 var eyelidHeight: float = 0.0
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	rotation = (starting_rot / 360) * 2 * PI
 	#mutation_part.scaleNose((0.3 * Global.num_base_stars4) + 0.8)
 	

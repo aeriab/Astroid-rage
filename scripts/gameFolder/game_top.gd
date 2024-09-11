@@ -4,7 +4,9 @@ extends Node2D
 
 @onready var crasher = $CrasherArea2D
 
-@onready var mutation_part = $Player/mutationPart
+@onready var mutation_part
+@onready var tank = $Tank
+@onready var mark = $Mark
 
 const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
 
@@ -18,6 +20,18 @@ var impact_length: float = 0.0
 var first_impact: bool = true
 
 func _ready():
+	
+	if Global.curBaseNumber != 1:
+		tank.queue_free()
+	if Global.curBaseNumber != 3:
+		mark.queue_free()
+	
+	if Global.curBaseNumber == 1:
+		mutation_part = $Tank/Player/mutationPart
+	elif Global.curBaseNumber == 3:
+		mutation_part = $Mark/Player/mutationPart
+	
+	
 	Global.bulletSize = (Global.num_base_stars4 + 1.2) * 2.0
 	Global.rotationSpeed = (Global.num_base_stars5 * 0.35) + 1.5
 	Global.damage = (2.5 * Global.num_base_stars3) + 2.0

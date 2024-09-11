@@ -10,7 +10,6 @@ point_count = 2
 script = ExtResource("1_hawqu")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-z_index = 5
 scale = Vector2(5, 5)
 emitting = false
 lifetime = 0.1

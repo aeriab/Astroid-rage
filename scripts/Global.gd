@@ -2,7 +2,7 @@ extends Node
 
 var explodeShotAmount: int = 8
 
-var explodeBoogers: bool = false
+var explodeBoogers: bool = true
 
 const tarPracS1: int = 1000
 const tarPracS2: int = 2000
@@ -211,7 +211,7 @@ func resetStats():
 	
 	points = 0
 	consecBulls = 0
-	explodeBoogers = false
+	explodeBoogers = true
 
 func decreaseHealth(num):
 	player_health -= num * 31.0
