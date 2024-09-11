@@ -194,7 +194,7 @@ func _on_stage_button_pressed():
 		Global.current_stage = "Giga Geyser"
 	elif Global.current_stage == "Giga Geyser":
 		Global.current_stage = "Swirly Swamp"
-	Global.current_stage
+	
 	Global.gameOver = false
 	Global.gameTimeScale = 1.0
 	Global.resetStats()

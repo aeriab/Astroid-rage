@@ -1,16 +1,24 @@
-[gd_scene load_steps=25 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=33 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
 [ext_resource type="Texture2D" uid="uid://du2hhb0k4p8hp" path="res://assets/Dark Star Particle.png" id="2_bhtqa"]
+[ext_resource type="Texture2D" uid="uid://bpu838e1u0kbo" path="res://assets/TankBirdBod (2).png" id="3_0wowd"]
 [ext_resource type="Texture2D" uid="uid://bur11uk6ccfqd" path="res://assets/MinusSign.png" id="3_2hqk3"]
 [ext_resource type="Script" path="res://scripts/StageSelect/star_manipulating.gd" id="3_51fws"]
 [ext_resource type="Script" path="res://scripts/BaseSelect.gd" id="3_g3ckq"]
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="4_2hyju"]
 [ext_resource type="Texture2D" uid="uid://clw315vqrx167" path="res://assets/PlusSign.png" id="4_hdwke"]
+[ext_resource type="Texture2D" uid="uid://ddkin1gjj35jf" path="res://assets/Ball.png" id="4_mh0tc"]
+[ext_resource type="Texture2D" uid="uid://cr574m6x1iwmx" path="res://assets/Mark.png" id="5_rp2da"]
+[ext_resource type="Texture2D" uid="uid://4fswqwje2k0" path="res://assets/Lazy.png" id="6_1lqep"]
+[ext_resource type="Texture2D" uid="uid://dy7qrl58soocx" path="res://assets/Crasher3.png" id="7_js571"]
 [ext_resource type="Script" path="res://scripts/DroneSelect.gd" id="8_a4bh5"]
+[ext_resource type="Texture2D" uid="uid://d1du5dlg0h476" path="res://assets/Spray (3).png" id="8_huob8"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="8_y6xwi"]
 [ext_resource type="Texture2D" uid="uid://b7hh6i7vkrv5f" path="res://assets/redEnemySprites/SplatchoEnemyBored.png" id="9_2f42f"]
+[ext_resource type="Texture2D" uid="uid://xtnytxfl8564" path="res://assets/Fling (2).png" id="9_gf4e8"]
+[ext_resource type="Texture2D" uid="uid://ctegyd5kf3a5g" path="res://assets/Gob (2).png" id="10_42m27"]
 [ext_resource type="Texture2D" uid="uid://dbwaqmo4q61r5" path="res://assets/BulkEnemy (1).png" id="10_v3quy"]
 [ext_resource type="Texture2D" uid="uid://l2c6spthnqll" path="res://assets/redEnemySprites/SplatchoEnemyUni.png" id="11_duxm2"]
 [ext_resource type="Texture2D" uid="uid://bmjwbxs52ydgf" path="res://assets/redEnemySprites/SplatchoEnemyMouth.png" id="13_6t4po"]
@@ -105,6 +113,63 @@ theme_override_font_sizes/font_size = 70
 text = "HOME"
 metadata/_edit_use_anchors_ = true
 
+[node name="BaseIcons" type="Node2D" parent="MainCanvas"]
+
+[node name="Tank" type="Sprite2D" parent="MainCanvas/BaseIcons"]
+position = Vector2(460, 575)
+rotation = 0.799361
+scale = Vector2(-0.35, 0.35)
+texture = ExtResource("3_0wowd")
+
+[node name="Ball" type="Sprite2D" parent="MainCanvas/BaseIcons"]
+visible = false
+position = Vector2(476, 569)
+rotation = 0.891203
+scale = Vector2(-0.156, 0.156)
+texture = ExtResource("4_mh0tc")
+
+[node name="Mark" type="Sprite2D" parent="MainCanvas/BaseIcons"]
+visible = false
+position = Vector2(456, 582)
+rotation = 0.570164
+scale = Vector2(0.14076, 0.14076)
+texture = ExtResource("5_rp2da")
+
+[node name="Lazy" type="Sprite2D" parent="MainCanvas/BaseIcons"]
+visible = false
+position = Vector2(466, 577)
+rotation = -0.261799
+scale = Vector2(0.1199, 0.1199)
+texture = ExtResource("6_1lqep")
+
+[node name="DroneIcons" type="Node2D" parent="MainCanvas"]
+
+[node name="Crash" type="Sprite2D" parent="MainCanvas/DroneIcons"]
+position = Vector2(1671, 561)
+rotation = -0.942091
+scale = Vector2(0.686594, 0.686594)
+texture = ExtResource("7_js571")
+
+[node name="Spray" type="Sprite2D" parent="MainCanvas/DroneIcons"]
+visible = false
+position = Vector2(1666, 566)
+rotation = -0.637278
+scale = Vector2(0.178215, 0.178215)
+texture = ExtResource("8_huob8")
+
+[node name="Fling" type="Sprite2D" parent="MainCanvas/DroneIcons"]
+visible = false
+position = Vector2(1677, 582)
+scale = Vector2(0.14076, 0.14076)
+texture = ExtResource("9_gf4e8")
+
+[node name="Gob" type="Sprite2D" parent="MainCanvas/DroneIcons"]
+visible = false
+position = Vector2(1676, 581)
+rotation = -0.325452
+scale = Vector2(0.161799, 0.161799)
+texture = ExtResource("10_42m27")
+
 [node name="BaseLabel" type="Label" parent="MainCanvas"]
 offset_left = -2.0
 offset_top = 431.0
@@ -123,7 +188,7 @@ offset_right = 714.0
 offset_bottom = 631.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
-text = "Tank"
+text = "Tank         "
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_g3ckq")
@@ -521,7 +586,7 @@ offset_right = 1913.0
 offset_bottom = 632.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
-text = "Crasher"
+text = "Crash         "
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_a4bh5")

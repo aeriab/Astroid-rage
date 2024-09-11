@@ -150,7 +150,7 @@ var nextBoogColor: float = 0.0
 var direction: int = 1
 
 var currentBase: String = "Tank"
-var currentDrone: String = "Crasher"
+var currentDrone: String = "Crash"
 
 var curBaseNumber: int = 1
 var curDroneNumber: int = 1

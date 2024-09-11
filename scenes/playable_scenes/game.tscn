@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=64 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/GameWaves.gd" id="9_cwbsc"]
 [ext_resource type="Script" path="res://scripts/gameFolder/gameOtherMutations.gd" id="9_gndhu"]
 [ext_resource type="Texture2D" uid="uid://du2hhb0k4p8hp" path="res://assets/Dark Star Particle.png" id="10_7t3f4"]
+[ext_resource type="Texture2D" uid="uid://cnpkgexyddgaj" path="res://assets/BirdBeakPurp.png" id="10_m0ava"]
 [ext_resource type="Script" path="res://scripts/gameFolder/top_game_over.gd" id="11_qudnx"]
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="11_x60jw"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_1ef7u"]
@@ -211,7 +212,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart2/SnoutPosition"]
 z_index = 5
@@ -251,7 +252,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart3(1)/SnoutPosition"]
 z_index = 5
@@ -291,7 +292,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart3(2)/SnoutPosition"]
 z_index = 5
@@ -331,7 +332,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart4(1)/SnoutPosition"]
 z_index = 5
@@ -371,7 +372,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart4(2)/SnoutPosition"]
 z_index = 5
@@ -411,7 +412,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(1)/SnoutPosition"]
 z_index = 5
@@ -451,7 +452,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(2)/SnoutPosition"]
 z_index = 5
@@ -491,7 +492,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(3)/SnoutPosition"]
 z_index = 5
@@ -531,7 +532,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart5(4)/SnoutPosition"]
 z_index = 5
@@ -571,7 +572,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart6(1)/SnoutPosition"]
 z_index = 5
@@ -611,7 +612,7 @@ position = Vector2(0, -321.419)
 z_index = 2
 z_as_relative = false
 position = Vector2(-4.10438, 316.494)
-texture = ExtResource("5_7fd46")
+texture = ExtResource("10_m0ava")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/mutationPart6(5)/SnoutPosition"]
 z_index = 5
