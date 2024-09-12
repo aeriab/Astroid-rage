@@ -2,7 +2,7 @@ extends Node2D
 @onready var pause_menu = $PauseMenu
 @onready var camera_2d = $Camera2D
 
-@onready var crasher = $CrasherArea2D
+@onready var drone
 
 @onready var mutation_part
 @onready var tank = $Tank
@@ -21,8 +21,23 @@ var y: float = 0
 var theta: float
 var impact_length: float = 0.0
 var first_impact: bool = true
+@onready var crasher_area_2d = $CrasherArea2D
+@onready var spray = $Spray
 
 func _ready():
+	
+	if Global.curDroneNumber != 1:
+		crasher_area_2d.queue_free()
+	if Global.curDroneNumber != 2:
+		spray.queue_free()
+	
+	if Global.curDroneNumber == 1:
+		drone = $CrasherArea2D
+	elif Global.curDroneNumber == 2:
+		drone = $Spray
+	
+	
+	
 	
 	if Global.curBaseNumber != 1:
 		tank.queue_free()
@@ -65,8 +80,8 @@ func _process(delta):
 			
 			if first_impact:
 				Global.softCam = true
-				crasher.position.x = 0
-				crasher.position.y = 0
+				drone.position.x = 0
+				drone.position.y = 0
 				first_impact = false
 			
 		else:
@@ -77,8 +92,8 @@ func _process(delta):
 			crashTransPlace = 0.0
 			camera_2d.zoom.x = 0.2
 			camera_2d.zoom.y = 0.2
-			crasher.position.x = 0
-			crasher.position.y = 0
+			drone.position.x = 0
+			drone.position.y = 0
 	
 	if Global.startCrasher:
 		Global.softCam = true
@@ -113,11 +128,11 @@ func _process(delta):
 				x = 0
 				y = 0
 			
-			crasher.rotation = PI/2 - theta
+			drone.rotation = PI/2 - theta
 			x += cos(theta) * delta * 1000
 			y -= sin(theta) * delta * 1000
-			crasher.position.x = x
-			crasher.position.y = y
+			drone.position.x = x
+			drone.position.y = y
 			
 		else:
 			if !Global.gameOver && !pause_menu.visible && Global.camXSet && Global.camYSet:

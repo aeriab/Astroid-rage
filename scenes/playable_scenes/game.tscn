@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=106 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -71,6 +71,12 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/progressToStar7.gd" id="41_111ek"]
 [ext_resource type="Shader" path="res://shaders/customOpacity.gdshader" id="50_50fig"]
 [ext_resource type="Texture2D" uid="uid://dpt5yjm2aol3o" path="res://assets/Health Lazer (2).png" id="50_f82w8"]
+[ext_resource type="Script" path="res://scripts/gameFolder/Spray.gd" id="59_qes72"]
+[ext_resource type="Texture2D" uid="uid://d1du5dlg0h476" path="res://assets/Spray (3).png" id="60_38e42"]
+[ext_resource type="Texture2D" uid="uid://5qjyye8wvvgg" path="res://assets/SprayOutline (3).png" id="61_ww42s"]
+[ext_resource type="Script" path="res://scripts/gameFolder/mutationPartRight.gd" id="62_l2nhg"]
+[ext_resource type="Script" path="res://scripts/gameFolder/mutationPartLeft.gd" id="63_tjsqm"]
+[ext_resource type="Script" path="res://scripts/gameFolder/SprayBulletHandler.gd" id="64_ab4lx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -1556,6 +1562,121 @@ scale = Vector2(1.1, 1.1)
 texture = ExtResource("21_wb7rs")
 script = ExtResource("22_i2wgh")
 
+[node name="Spray" type="Area2D" parent="." groups=["Spray"]]
+script = ExtResource("59_qes72")
+
+[node name="SpraySprite" type="Sprite2D" parent="Spray"]
+z_index = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("60_38e42")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Spray/SpraySprite"]
+position = Vector2(-10.9469, 284.62)
+emitting = false
+amount = 12
+fract_delta = false
+emission_shape = 1
+emission_sphere_radius = 30.74
+direction = Vector2(0, 1)
+spread = 14.09
+gravity = Vector2(0, 0)
+initial_velocity_min = 141.41
+initial_velocity_max = 868.68
+angle_min = -180.0
+angle_max = 180.0
+angle_curve = SubResource("Curve_p1bkv")
+scale_amount_min = 61.61
+scale_amount_max = 102.01
+scale_amount_curve = SubResource("Curve_qkfoy")
+color = Color(0.791999, 0.791999, 0.791999, 1)
+color_ramp = SubResource("Gradient_y4ple")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spray"]
+visible = false
+position = Vector2(-2.46305, 31.1987)
+build_mode = 1
+polygon = PackedVector2Array(-52.5452, 114.943, -71.4286, 114.122, -89.491, 106.732, -103.448, 94.4171, -112.479, 79.6387, -114.122, 67.3235, -110.837, 56.6502, -105.911, 50.0821, -94.4171, 43.514, -79.6388, 41.8719, -65.6814, 45.156, -34.4828, 27.0936, -46.798, -9.0312, -67.3235, -18.0624, -74.7126, -17.2414, -79.6388, -9.0312, -73.8916, 5.74713, -59.9343, 19.7044, -66.5025, 21.3465, -78.8177, 20.5255, -87.8489, 17.2414, -97.7011, 9.0312, -103.448, 0, -105.911, -13.1363, -103.448, -27.9146, -96.8801, -42.6929, -87.0279, -55.0082, -79.6388, -59.1133, -53.3662, -61.5764, -51.7241, -101.806, -43.514, -139.573, -32.0197, -165.846, -23.8095, -178.161, -16.4204, -185.55, -5.74713, -191.297, 2.46305, -192.939, 13.1363, -190.476, 20.5255, -185.55, 27.9146, -178.982, 35.3038, -169.13, 40.2299, -160.099, 48.4401, -140.394, 55.8292, -106.732, 58.2923, -61.5764, 84.5649, -59.1133, 91.954, -55.0082, 96.0591, -50.9031, 102.627, -41.8719, 107.553, -30.3777, 110.837, -18.0624, 110.016, -5.74713, 105.09, 5.74713, 98.5222, 13.1363, 86.2069, 19.7044, 73.8916, 21.3465, 64.8604, 19.7044, 76.3547, 9.0312, 82.9228, -2.46305, 84.5649, -9.85221, 81.2808, -15.5993, 73.0706, -18.0624, 51.7241, -9.0312, 39.4089, 27.0936, 70.6076, 44.335, 84.5649, 41.8719, 94.4171, 42.6929, 105.09, 45.977, 112.479, 51.7241, 116.585, 58.2923, 119.048, 69.7865, 117.406, 79.6387, 111.658, 91.954, 101.806, 100.985, 87.0279, 110.837, 70.6076, 114.943, 61.5764, 114.943, 52.5452, 113.3, 45.977, 110.016, 39.4089, 105.09, 35.3038, 98.5222, 33.6617, 90.312, 35.3038, 77.1757, 41.8719, 65.6814, 46.798, 59.9343, 25.4516, 47.619, 19.7044, 52.5452, 9.85222, 57.4713, 2.46305, 58.2923, -4.92611, 57.4713, -14.7783, 52.5452, -20.5254, 47.619, -41.8719, 59.9343, -33.6617, 70.6076, -29.5566, 81.2808, -29.5566, 95.2381, -36.9458, 107.553)
+
+[node name="SprayOutline" type="Sprite2D" parent="Spray"]
+material = SubResource("ShaderMaterial_ih00v")
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("61_ww42s")
+script = ExtResource("22_i2wgh")
+
+[node name="mutationPartRight" type="Node2D" parent="Spray"]
+z_index = 2
+z_as_relative = false
+script = ExtResource("62_l2nhg")
+
+[node name="SnoutPosition" type="Node2D" parent="Spray/mutationPartRight"]
+z_index = 2
+z_as_relative = false
+position = Vector2(73.8916, 109.195)
+rotation = 2.61799
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Spray/mutationPartRight/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="mutationPartLeft" type="Node2D" parent="Spray"]
+z_index = 2
+z_as_relative = false
+script = ExtResource("63_tjsqm")
+
+[node name="SnoutPosition" type="Node2D" parent="Spray/mutationPartLeft"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-73.8916, 109.195)
+rotation = -2.61799
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Spray/mutationPartLeft/SnoutPosition"]
+z_index = 5
+position = Vector2(0, -41)
+rotation = -0.785397
+scale = Vector2(5, 5)
+emitting = false
+amount = 25
+lifetime = 2.0
+direction = Vector2(1, -1)
+spread = 80.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 60.0
+scale_amount_max = 75.0
+scale_amount_curve = SubResource("Curve_4yrby")
+color = Color(0.367318, 0.348251, 0.32971, 1)
+color_ramp = SubResource("Gradient_kyblx")
+
+[node name="SprayBulletHandler" type="Node" parent="Spray"]
+script = ExtResource("64_ab4lx")
+
+[node name="AutoTimer" type="Timer" parent="Spray/SprayBulletHandler"]
+wait_time = 0.2
+autostart = true
+
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10
 scale = Vector2(3.7, 3.7)
@@ -1727,3 +1848,5 @@ texture = ExtResource("11_x60jw")
 [connection signal="value_changed" from="PauseMenu/MusicVolume/HSlider" to="PauseMenu/MusicVolume" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="PauseMenu/SFXVolume/HSlider" to="PauseMenu/SFXVolume" method="_on_h_slider_value_changed"]
 [connection signal="area_entered" from="CrasherArea2D" to="CrasherArea2D" method="_on_area_entered"]
+[connection signal="area_entered" from="Spray" to="Spray" method="_on_area_entered"]
+[connection signal="timeout" from="Spray/SprayBulletHandler/AutoTimer" to="Spray/SprayBulletHandler" method="_on_auto_timer_timeout"]
