@@ -15,6 +15,15 @@ func _ready():
 	rotation = (starting_rot / 360) * 2 * PI
 
 var lastConsec: int = 0
+@onready var lazy_lazer_top = $LazyLazerTop
+@onready var lazy_lazer_mid = $LazyLazerMid
+@onready var lazy_lazer_bot = $LazyLazerBot
+@onready var lazer = $Lazer
+@onready var lazy_on_eye = $LazyOnEye
+@onready var cpu_particles_2d = $Lazer/CPUParticles2D
+@onready var health_bar_red = $"../../HealthBarRed"
+
+var lazer_width: float = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,26 +37,53 @@ func _process(delta):
 		lastConsec = Global.consecBulls
 	
 	Global.prior_dir = clockwise
-	if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1:
-		pop_sfx_player.volume_db = AudioPreload.effectsVolDB
-		pop_sfx_player.pitch_scale = randf_range(0.40,1.1)
-		var k = randi_range(0,2)
-		if k == 0:
-			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-1-185286.mp3")
-		if k == 1:
-			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-2-185287.mp3")
-		else:
-			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-3-185288.mp3")
-		pop_sfx_player.play()
+	if Input.is_action_pressed("switch") && Global.gameTimeScale > 0.1:
+		cpu_particles_2d.emitting = true
+		Global.rotationSpeed = 0.3
+		lazer.position.x = 0
+		lazy_on_eye.visible = true
+		lazy_lazer_top.visible = true
+		lazy_lazer_mid.visible = true
+		lazy_lazer_bot.visible = true
 		
-		clockwise *= -1
-		
-		if eyelidHeight <= 0.5:
-			eyelidHeight += 0.3
+		if lazer_width < 2.5:
+			lazer_width += Global.gameTimeScale * delta * 10.0
 		else:
-			eyelidHeight = 0.5
+			lazer_width = 2.5
+		
+		lazy_lazer_top.position.x += delta * Global.gameTimeScale * 6000
+		lazy_lazer_mid.position.x += delta * Global.gameTimeScale * 6000
+		lazy_lazer_bot.position.x += delta * Global.gameTimeScale * 6000
+		
+		if lazy_lazer_top.position.x > 9000:
+			lazy_lazer_top.position.x -= 12220
+		if lazy_lazer_mid.position.x > 9000:
+			lazy_lazer_mid.position.x -= 12220
+		if lazy_lazer_bot.position.x > 9000:
+			lazy_lazer_bot.position.x -= 12220
+		
+		health_bar_red.firingLazer = true
+		Global.player_health -= Global.gameTimeScale * delta * 2.0
+		
 	else:
-		if eyelidHeight > 0:
-			eyelidHeight -= delta * 0.5 * Global.gameTimeScale
+		health_bar_red.firingLazer = false
+		cpu_particles_2d.emitting = false
+		Global.rotationSpeed = 2
+		
+		if lazer_width > 0.0:
+			lazer_width -= Global.gameTimeScale * delta * 20.0
+		else:
+			lazer_width = 0.0
+			lazer.position.x = 99000
+			lazy_on_eye.visible = false
+			lazy_lazer_top.visible = false
+			lazy_lazer_mid.visible = false
+			lazy_lazer_bot.visible = false
+	
+	lazy_lazer_top.scale.y = lazer_width
+	lazy_lazer_mid.scale.y = lazer_width
+	lazy_lazer_bot.scale.y = lazer_width
+	lazer.scale.x = lazer_width / 2.5
+	
 	if !pause_rot:
 		rotation += (Global.rotationSpeed * clockwise * delta * Global.gameTimeScale)

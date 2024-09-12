@@ -13,7 +13,7 @@ func snoutPositionY():
 #func noseScale():
 	#return mark_nose.scale.x
 #
-func scaleNose(num):
+func scaleNose(_num):
 	pass
 	#mark_nose.scale.x = 0.504 + ((num - 1.0) * 0.25)
 #

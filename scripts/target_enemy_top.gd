@@ -111,6 +111,7 @@ func _physics_process(delta):
 		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
+	
 
 var tsize: float = 100.0
 var points: float = 0.0

@@ -102,6 +102,18 @@ func _physics_process(delta):
 		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
 		shader_alpha = clamp(shader_alpha,0.0,1.0)
 		material.set_shader_parameter("alpha_value",shader_alpha)
+	
+	for area in get_overlapping_areas():
+		if area.is_in_group("Lazer"):
+			Global.decreaseEnemyNum()
+			Global.addXP(xpAmount)
+			var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+			pointsNotif.position = Vector2 (x,y)
+			points = sizeOfEnemy * 100
+			Global.points += int(points)
+			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+			get_parent().add_child.call_deferred(pointsNotif)
+			setFreeSequence()
 
 var points: float = 0.0
 

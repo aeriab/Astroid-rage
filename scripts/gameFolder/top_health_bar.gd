@@ -17,9 +17,14 @@ var firstTally: bool = true
 
 var dying: bool = false
 
+var firingLazer: bool = false
 
+@onready var health_lazer = $HealthLazer
 
 func _process(delta):
+	
+	health_lazer.visible = firingLazer
+	health_lazer.position.x = (Global.player_health * 9.10) - 430
 	
 	if camera_2d.position.x > MAX_X:
 		position.x = camera_2d.position.x - MAX_X
