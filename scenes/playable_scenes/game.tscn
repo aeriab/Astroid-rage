@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=88 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -17,19 +17,25 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/top_game_over.gd" id="11_qudnx"]
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="11_x60jw"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_1ef7u"]
+[ext_resource type="Script" path="res://scripts/gameFolder/BallPlayerGame.gd" id="12_epxfo"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="12_m0jp0"]
 [ext_resource type="Script" path="res://scripts/gameFolder/MarkPlayerGame.gd" id="12_u42q4"]
+[ext_resource type="Texture2D" uid="uid://c4777x0tgekrx" path="res://assets/BallMouth.png" id="13_jfgtd"]
 [ext_resource type="Texture2D" uid="uid://csc6es3ftxahc" path="res://assets/Mark (4).png" id="13_yi7u4"]
+[ext_resource type="Texture2D" uid="uid://621hmyv3f0va" path="res://assets/BallMouthCover.png" id="14_isajk"]
 [ext_resource type="Script" path="res://scripts/SFXVolScript.gd" id="14_nv7fv"]
 [ext_resource type="Script" path="res://scripts/gameFolder/MarkMutationPart.gd" id="14_q6qyl"]
 [ext_resource type="Texture2D" uid="uid://128dlw2ygthe" path="res://assets/HealthBarRedCenter.png" id="14_rfjs2"]
 [ext_resource type="Script" path="res://scripts/gameFolder/top_health_bar.gd" id="15_1r5es"]
+[ext_resource type="Texture2D" uid="uid://by0lkx7tned6d" path="res://assets/BallNoMouthSmall.png" id="15_68t0i"]
 [ext_resource type="Texture2D" uid="uid://163mjw5qyyod" path="res://assets/MarkNose.png" id="15_akxu3"]
 [ext_resource type="Script" path="res://scripts/gameFolder/MarkBulletHandler.gd" id="15_mxfnp"]
+[ext_resource type="Script" path="res://scripts/gameFolder/BallBulletHandler.gd" id="15_sxemg"]
 [ext_resource type="AudioStream" uid="uid://cn63cw3kspful" path="res://assets/ding-1-14705.mp3" id="16_0nk63"]
 [ext_resource type="AudioStream" uid="uid://bju8qwut2ca08" path="res://assets/popSFX/happy-pop-3-185288.mp3" id="16_j4gmb"]
 [ext_resource type="Shader" path="res://shaders/MarkEyes.gdshader" id="16_l24x1"]
 [ext_resource type="Texture2D" uid="uid://bq7gwdcrn51bc" path="res://assets/MarkEyes (1).png" id="16_mdaf5"]
+[ext_resource type="Script" path="res://scripts/gameFolder/BallMutationPart.gd" id="16_qdpan"]
 [ext_resource type="Script" path="res://scripts/gameFolder/MarkEyes.gd" id="18_ca8qa"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Game_Camera2D.gd" id="18_chv7v"]
 [ext_resource type="Script" path="res://scripts/MusicVolume.gd" id="18_ewn7p"]
@@ -42,8 +48,14 @@
 [ext_resource type="Shader" path="res://shaders/healthBar.gdshader" id="21_prfrx"]
 [ext_resource type="Texture2D" uid="uid://bmr3mfd1wge0a" path="res://assets/CrasherOutline3.png" id="21_wb7rs"]
 [ext_resource type="Script" path="res://scripts/gameFolder/CrasherOutline.gd" id="22_i2wgh"]
+[ext_resource type="Script" path="res://scripts/gameFolder/LazyPlayerGame.gd" id="26_od08m"]
 [ext_resource type="Shader" path="res://shaders/crashBoostBar.gdshader" id="26_te00n"]
 [ext_resource type="Script" path="res://scripts/gameFolder/CrashBoost.gd" id="27_b45ey"]
+[ext_resource type="Texture2D" uid="uid://ckua5ldteu5fa" path="res://assets/LazyLazer (4).png" id="27_f6mhv"]
+[ext_resource type="Texture2D" uid="uid://crqwd6hq8u3p1" path="res://assets/LazyNoMouth.png" id="28_n54dl"]
+[ext_resource type="Script" path="res://scripts/gameFolder/lazyMutationPart.gd" id="28_o4l71"]
+[ext_resource type="Texture2D" uid="uid://ws10so3wmktp" path="res://assets/LazyJustMouth.png" id="29_0gqgq"]
+[ext_resource type="Script" path="res://scripts/gameFolder/LazyBulletHandler.gd" id="29_eugts"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_canvas.gd" id="32_mtphb"]
 [ext_resource type="Shader" path="res://shaders/midgameStar.gdshader" id="34_vtmkp"]
 [ext_resource type="Script" path="res://scripts/gameFolder/RadialBackground.gd" id="35_6ygm5"]
@@ -63,6 +75,9 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_kyblx"]
 colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uk2fk"]
+radius = 283.208
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pcfqp"]
 shader = ExtResource("16_l24x1")
@@ -142,6 +157,7 @@ scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
 [node name="Tank" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
 script = ExtResource("2_8ueva")
@@ -663,7 +679,61 @@ script = ExtResource("5_t80kh")
 [node name="AutoTimer" type="Timer" parent="Tank/GameBulletHandler"]
 wait_time = 0.2
 
+[node name="Ball" type="Node2D" parent="."]
+visible = false
+
+[node name="Player" type="Area2D" parent="Ball" groups=["Player"]]
+script = ExtResource("12_epxfo")
+
+[node name="BallMouth" type="Sprite2D" parent="Ball/Player"]
+scale = Vector2(0.504, 0.504)
+texture = ExtResource("13_jfgtd")
+
+[node name="BallMouthCover" type="Sprite2D" parent="Ball/Player"]
+z_index = 5
+z_as_relative = false
+scale = Vector2(0.504, 0.504)
+texture = ExtResource("14_isajk")
+
+[node name="BallPlaySprite" type="Sprite2D" parent="Ball/Player"]
+z_index = 3
+scale = Vector2(0.503802, 0.503802)
+texture = ExtResource("15_68t0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Player"]
+visible = false
+shape = SubResource("CircleShape2D_uk2fk")
+
+[node name="mutationPart" type="Node2D" parent="Ball/Player"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, 60.9843)
+script = ExtResource("16_qdpan")
+
+[node name="SnoutPosition" type="Node2D" parent="Ball/Player/mutationPart"]
+z_index = 2
+z_as_relative = false
+position = Vector2(1.64204, -272.807)
+
+[node name="butParts" type="Node2D" parent="Ball/Player/mutationPart"]
+scale = Vector2(1.2, 1)
+
+[node name="ButMouth" type="Sprite2D" parent="Ball/Player/mutationPart/butParts"]
+z_index = -1
+position = Vector2(0, -367.205)
+rotation = -3.14159
+texture = ExtResource("13_jfgtd")
+
+[node name="ButMouthCover" type="Sprite2D" parent="Ball/Player/mutationPart/butParts"]
+position = Vector2(0, -367.205)
+rotation = -3.14159
+texture = ExtResource("14_isajk")
+
+[node name="BulletHandlerSt2" type="Node" parent="Ball"]
+script = ExtResource("15_sxemg")
+
 [node name="Mark" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Mark" groups=["Player"]]
 script = ExtResource("12_u42q4")
@@ -714,6 +784,54 @@ script = ExtResource("18_ca8qa")
 
 [node name="BulletHandlerSt2" type="Node" parent="Mark"]
 script = ExtResource("15_mxfnp")
+
+[node name="Lazy" type="Node2D" parent="."]
+
+[node name="Player" type="Area2D" parent="Lazy" groups=["Player"]]
+rotation = -1.57079
+script = ExtResource("26_od08m")
+
+[node name="LazyLazerTop" type="Sprite2D" parent="Lazy/Player"]
+z_index = 1
+position = Vector2(3200, 0)
+rotation = 3.14159
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("27_f6mhv")
+
+[node name="LazyLazerBot" type="Sprite2D" parent="Lazy/Player"]
+z_index = 1
+position = Vector2(-2949.7, 0)
+rotation = 3.14159
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("27_f6mhv")
+
+[node name="LazyPlaySprite" type="Sprite2D" parent="Lazy/Player"]
+z_index = 3
+scale = Vector2(0.503802, 0.503802)
+texture = ExtResource("28_n54dl")
+
+[node name="LazyMouthSprite" type="Sprite2D" parent="Lazy/Player"]
+scale = Vector2(0.503802, 0.503802)
+texture = ExtResource("29_0gqgq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lazy/Player"]
+visible = false
+position = Vector2(0, -16)
+polygon = PackedVector2Array(314.45, -373.563, 322.66, -370.279, 334.154, -361.248, 345.649, -344.007, 358.785, -315.271, 371.921, -273.399, 382.594, -222.496, 390.805, -169.13, 396.552, -112.479, 400.657, -39.4089, 401.478, 36.1248, 399.836, 94.4171, 394.089, 169.13, 385.057, 240.558, 376.026, 286.535, 366.174, 323.481, 358.785, 344.828, 350.575, 363.711, 343.186, 377.668, 335.796, 388.342, 325.944, 397.373, 313.629, 403.12, 215.107, 399.015, 145.32, 392.447, 58.2923, 376.847, -30.3777, 353.038, -105.911, 325.123, -180.624, 288.998, -242.2, 248.768, -275.862, 221.675, -308.703, 189.655, -341.544, 145.32, -360.427, 110.837, -372.742, 77.9967, -380.952, 41.8719, -381.773, 1.64204, -376.026, -39.4089, -353.038, -99.3432, -319.376, -146.141, -284.893, -183.908, -247.947, -214.286, -192.118, -252.874, -131.363, -284.893, -57.4713, -314.45, 33.6617, -341.544, 98.5222, -355.501, 177.34, -366.995, 249.589, -371.921)
+
+[node name="mutationPart" type="Node2D" parent="Lazy/Player"]
+z_index = 2
+z_as_relative = false
+position = Vector2(278.325, 0)
+script = ExtResource("28_o4l71")
+
+[node name="SnoutPosition" type="Node2D" parent="Lazy/Player/mutationPart"]
+z_index = 2
+z_as_relative = false
+position = Vector2(-86.2069, 0.000183105)
+
+[node name="BulletHandlerSt2" type="Node" parent="Lazy"]
+script = ExtResource("29_eugts")
 
 [node name="AreaBulletCollection" type="Area2D" parent="."]
 script = ExtResource("6_e74tl")

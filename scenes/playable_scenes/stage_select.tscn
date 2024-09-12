@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=34 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
@@ -10,8 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dxrc2v8dcxrx5" path="res://assets/Star Particle (1).png" id="4_2hyju"]
 [ext_resource type="Texture2D" uid="uid://clw315vqrx167" path="res://assets/PlusSign.png" id="4_hdwke"]
 [ext_resource type="Texture2D" uid="uid://ddkin1gjj35jf" path="res://assets/Ball.png" id="4_mh0tc"]
-[ext_resource type="Texture2D" uid="uid://bf5ild0at1l6m" path="res://assets/Mark (2).png" id="5_wydgw"]
+[ext_resource type="Texture2D" uid="uid://csc6es3ftxahc" path="res://assets/Mark (4).png" id="5_sbtvx"]
 [ext_resource type="Texture2D" uid="uid://4fswqwje2k0" path="res://assets/Lazy.png" id="6_1lqep"]
+[ext_resource type="Texture2D" uid="uid://bq7gwdcrn51bc" path="res://assets/MarkEyes (1).png" id="6_tc88f"]
 [ext_resource type="Texture2D" uid="uid://dy7qrl58soocx" path="res://assets/Crasher3.png" id="7_js571"]
 [ext_resource type="Script" path="res://scripts/DroneSelect.gd" id="8_a4bh5"]
 [ext_resource type="Texture2D" uid="uid://d1du5dlg0h476" path="res://assets/Spray (3).png" id="8_huob8"]
@@ -133,7 +134,19 @@ visible = false
 position = Vector2(467, 573)
 rotation = 0.480166
 scale = Vector2(0.14076, 0.14076)
-texture = ExtResource("5_wydgw")
+texture = ExtResource("5_sbtvx")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainCanvas/BaseIcons/Mark"]
+position = Vector2(-397.217, -193.625)
+rotation = -2.73056
+scale = Vector2(1.64597, -1.64597)
+texture = ExtResource("6_tc88f")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MainCanvas/BaseIcons/Mark"]
+position = Vector2(410.085, -181.541)
+rotation = -2.73056
+scale = Vector2(1.64597, -1.64597)
+texture = ExtResource("6_tc88f")
 
 [node name="Lazy" type="Sprite2D" parent="MainCanvas/BaseIcons"]
 visible = false
@@ -169,17 +182,6 @@ position = Vector2(1676, 581)
 rotation = -0.325452
 scale = Vector2(0.161799, 0.161799)
 texture = ExtResource("10_42m27")
-
-[node name="BaseLabel" type="Label" parent="MainCanvas"]
-offset_left = -2.0
-offset_top = 431.0
-offset_right = 728.0
-offset_bottom = 514.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-text = "SELECT BASE"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="BaseSelect" type="Label" parent="MainCanvas"]
 offset_left = 10.0
@@ -567,17 +569,6 @@ position = Vector2(715, 1004)
 rotation = 0.3735
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
-
-[node name="DroneLabel" type="Label" parent="MainCanvas"]
-offset_left = 1209.0
-offset_top = 432.0
-offset_right = 1915.0
-offset_bottom = 515.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-text = "SELECT DRONE"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="DroneSelect" type="Label" parent="MainCanvas"]
 offset_left = 1209.0

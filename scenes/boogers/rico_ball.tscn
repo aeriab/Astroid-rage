@@ -11,12 +11,15 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
 point_count = 2
 
 [node name="RicoBall" type="Area2D" groups=["BoogerArea", "RicoBall"]]
-z_index = 1
+z_index = 4
+z_as_relative = false
 scale = Vector2(0.189351, 0.189351)
 collision_mask = 2
 script = ExtResource("1_jl7l4")
 
 [node name="GameProjectile" type="Sprite2D" parent="."]
+z_index = 4
+z_as_relative = false
 position = Vector2(-1, -2)
 scale = Vector2(1, 0.993421)
 texture = ExtResource("2_u8yx4")

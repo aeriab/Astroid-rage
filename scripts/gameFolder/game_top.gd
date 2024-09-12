@@ -7,6 +7,9 @@ extends Node2D
 @onready var mutation_part
 @onready var tank = $Tank
 @onready var mark = $Mark
+@onready var ball = $Ball
+@onready var lazy = $Lazy
+
 
 const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
 
@@ -23,13 +26,21 @@ func _ready():
 	
 	if Global.curBaseNumber != 1:
 		tank.queue_free()
+	if Global.curBaseNumber != 2:
+		ball.queue_free()
 	if Global.curBaseNumber != 3:
 		mark.queue_free()
+	if Global.curBaseNumber != 4:
+		lazy.queue_free()
 	
 	if Global.curBaseNumber == 1:
 		mutation_part = $Tank/Player/mutationPart
+	elif Global.curBaseNumber == 2:
+		mutation_part = $Ball/Player/mutationPart
 	elif Global.curBaseNumber == 3:
 		mutation_part = $Mark/Player/mutationPart
+	elif Global.curBaseNumber == 4:
+		mutation_part = $Lazy/Player/mutationPart
 	
 	
 	Global.bulletSize = (Global.num_base_stars4 + 1.2) * 2.0
@@ -92,6 +103,9 @@ func _process(delta):
 					theta = acos(x / snout_length)
 				else:
 					theta = 2 * PI -  acos(x / snout_length)
+				
+				if Global.curBaseNumber == 2:
+					theta = theta - PI
 				
 				shotparticles.start_emit(x,y,theta)
 				firstCrash = false
