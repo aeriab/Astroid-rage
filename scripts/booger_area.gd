@@ -5,8 +5,7 @@ var y
 var theta
 var SPEED = 500 * Global.bulletSpeed - 300
 
-var _scale = Vector2(Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3),Global.bulletSize / 20.0 + 0.1 + (upgradeLevel / 3))
-
+var _scale = Vector2(Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10,Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10)
 var rot_motion: float = 1.0
 
 var orig_speed: float = Global.bulletSpeed
@@ -33,10 +32,12 @@ func _ready():
 	monitoring = true
 	
 	upgradeLevel = Global.barrelUpNumArray[mutationPart - 1]
-	_scale = Vector2(Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10,Global.bulletSize / 20.0 + 0.1 + upgradeLevel / 10)
 	set_scale(_scale)
-	position.x = x
-	position.y = y
+	global_position.x = x
+	global_position.y = y
+	
+	print("booger:" + str(global_position.x))
+	
 	if Global.barrelUpNumArray[mutationPart - 1] == 1:
 		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile1.png")
 	elif Global.barrelUpNumArray[mutationPart - 1] == 2:
@@ -60,13 +61,18 @@ func set_motion(x1,y1,theta1,mutPart):
 	rot_motion = Global.prior_dir
 	mutationPart = mutPart
 
+func mod_scale(scale_num):
+	set_scale(scale_num)
+	_scale = scale_num
+
+
 func _physics_process(delta):
 	
 	x += cos(theta) * SPEED * delta * Global.gameTimeScale
 	y -= sin(theta) * SPEED * delta * Global.gameTimeScale
 	
-	position.x = x
-	position.y = y
+	global_position.x = x
+	global_position.y = y
 	
 	rotate(delta * (orig_speed - 1) * rot_motion * 2 * orig_rotate_speed * Global.gameTimeScale)
 

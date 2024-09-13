@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/BallPlayerGame.gd" id="12_epxfo"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="12_m0jp0"]
 [ext_resource type="Script" path="res://scripts/gameFolder/MarkPlayerGame.gd" id="12_u42q4"]
+[ext_resource type="Texture2D" uid="uid://ddkin1gjj35jf" path="res://assets/Ball.png" id="13_feq2k"]
 [ext_resource type="Texture2D" uid="uid://c4777x0tgekrx" path="res://assets/BallMouth.png" id="13_jfgtd"]
 [ext_resource type="Texture2D" uid="uid://csc6es3ftxahc" path="res://assets/Mark (4).png" id="13_yi7u4"]
 [ext_resource type="Texture2D" uid="uid://621hmyv3f0va" path="res://assets/BallMouthCover.png" id="14_isajk"]
@@ -74,8 +75,7 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/Spray.gd" id="59_qes72"]
 [ext_resource type="Texture2D" uid="uid://d1du5dlg0h476" path="res://assets/Spray (3).png" id="60_38e42"]
 [ext_resource type="Texture2D" uid="uid://5qjyye8wvvgg" path="res://assets/SprayOutline (3).png" id="61_ww42s"]
-[ext_resource type="Script" path="res://scripts/gameFolder/mutationPartRight.gd" id="62_l2nhg"]
-[ext_resource type="Script" path="res://scripts/gameFolder/mutationPartLeft.gd" id="63_tjsqm"]
+[ext_resource type="Script" path="res://scenes/playable_scenes/Wacky.gd" id="63_ym0t7"]
 [ext_resource type="Script" path="res://scripts/gameFolder/SprayBulletHandler.gd" id="64_ab4lx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
@@ -1604,78 +1604,17 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("61_ww42s")
 script = ExtResource("22_i2wgh")
 
-[node name="mutationPartRight" type="Node2D" parent="Spray"]
-z_index = 2
-z_as_relative = false
-script = ExtResource("62_l2nhg")
+[node name="Wacky" type="Sprite2D" parent="Spray"]
+position = Vector2(-474.548, -521.346)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_feq2k")
+script = ExtResource("63_ym0t7")
 
-[node name="SnoutPosition" type="Node2D" parent="Spray/mutationPartRight"]
-z_index = 2
-z_as_relative = false
-position = Vector2(73.8916, 109.195)
-rotation = 2.61799
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Spray/mutationPartRight/SnoutPosition"]
-z_index = 5
-position = Vector2(0, -41)
-rotation = -0.785397
-scale = Vector2(5, 5)
-emitting = false
-amount = 25
-lifetime = 2.0
-direction = Vector2(1, -1)
-spread = 80.0
-gravity = Vector2(0, -100)
-initial_velocity_max = 100.0
-angular_velocity_min = -90.0
-angular_velocity_max = 90.0
-angle_min = -90.0
-angle_max = 90.0
-scale_amount_min = 60.0
-scale_amount_max = 75.0
-scale_amount_curve = SubResource("Curve_4yrby")
-color = Color(0.367318, 0.348251, 0.32971, 1)
-color_ramp = SubResource("Gradient_kyblx")
-
-[node name="mutationPartLeft" type="Node2D" parent="Spray"]
-z_index = 2
-z_as_relative = false
-script = ExtResource("63_tjsqm")
-
-[node name="SnoutPosition" type="Node2D" parent="Spray/mutationPartLeft"]
-z_index = 2
-z_as_relative = false
-position = Vector2(-73.8916, 109.195)
-rotation = -2.61799
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Spray/mutationPartLeft/SnoutPosition"]
-z_index = 5
-position = Vector2(0, -41)
-rotation = -0.785397
-scale = Vector2(5, 5)
-emitting = false
-amount = 25
-lifetime = 2.0
-direction = Vector2(1, -1)
-spread = 80.0
-gravity = Vector2(0, -100)
-initial_velocity_max = 100.0
-angular_velocity_min = -90.0
-angular_velocity_max = 90.0
-angle_min = -90.0
-angle_max = 90.0
-scale_amount_min = 60.0
-scale_amount_max = 75.0
-scale_amount_curve = SubResource("Curve_4yrby")
-color = Color(0.367318, 0.348251, 0.32971, 1)
-color_ramp = SubResource("Gradient_kyblx")
-
-[node name="SprayBulletHandler" type="Node" parent="Spray"]
+[node name="SprayBulletHandler" type="Node" parent="."]
 script = ExtResource("64_ab4lx")
 
-[node name="AutoTimer" type="Timer" parent="Spray/SprayBulletHandler"]
-wait_time = 0.2
-autostart = true
+[node name="AutoTimer" type="Timer" parent="SprayBulletHandler"]
+wait_time = 0.1
 
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10
@@ -1849,4 +1788,4 @@ texture = ExtResource("11_x60jw")
 [connection signal="value_changed" from="PauseMenu/SFXVolume/HSlider" to="PauseMenu/SFXVolume" method="_on_h_slider_value_changed"]
 [connection signal="area_entered" from="CrasherArea2D" to="CrasherArea2D" method="_on_area_entered"]
 [connection signal="area_entered" from="Spray" to="Spray" method="_on_area_entered"]
-[connection signal="timeout" from="Spray/SprayBulletHandler/AutoTimer" to="Spray/SprayBulletHandler" method="_on_auto_timer_timeout"]
+[connection signal="timeout" from="SprayBulletHandler/AutoTimer" to="SprayBulletHandler" method="_on_auto_timer_timeout"]

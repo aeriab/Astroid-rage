@@ -40,6 +40,8 @@ func _ready():
 	
 	crashTimeScale = -(Global.num_drone_stars4 * 0.7) + 2.0
 
+@onready var spray_bullet_handler = $"../SprayBulletHandler"
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
@@ -56,7 +58,6 @@ func _process(delta):
 		Global.softCam = true
 		position.x = 0
 		position.y = 0
-	
 	if !Global.startCrasher && Global.crashStarted && !Global.gameOver:
 		firstCrashTimeout = true
 		if Global.crashTime > 0:
@@ -68,11 +69,13 @@ func _process(delta):
 			clockwise *= -1
 		
 		if Input.is_action_pressed("ui_up") && Global.gameTimeScale > 0.1:
+			spray_bullet_handler.thrusting = true
 			cpu_particles_2d.emitting = true
 			thrust = MAX_THRUST
 			
 			rotScale = 0.0
 		else:
+			spray_bullet_handler.thrusting = false
 			cpu_particles_2d.emitting = false
 			thrust = 0
 			
