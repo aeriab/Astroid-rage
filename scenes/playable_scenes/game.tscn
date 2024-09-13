@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=104 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/BallPlayerGame.gd" id="12_epxfo"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="12_m0jp0"]
 [ext_resource type="Script" path="res://scripts/gameFolder/MarkPlayerGame.gd" id="12_u42q4"]
-[ext_resource type="Texture2D" uid="uid://ddkin1gjj35jf" path="res://assets/Ball.png" id="13_feq2k"]
 [ext_resource type="Texture2D" uid="uid://c4777x0tgekrx" path="res://assets/BallMouth.png" id="13_jfgtd"]
 [ext_resource type="Texture2D" uid="uid://csc6es3ftxahc" path="res://assets/Mark (4).png" id="13_yi7u4"]
 [ext_resource type="Texture2D" uid="uid://621hmyv3f0va" path="res://assets/BallMouthCover.png" id="14_isajk"]
@@ -75,7 +74,6 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/Spray.gd" id="59_qes72"]
 [ext_resource type="Texture2D" uid="uid://d1du5dlg0h476" path="res://assets/Spray (3).png" id="60_38e42"]
 [ext_resource type="Texture2D" uid="uid://5qjyye8wvvgg" path="res://assets/SprayOutline (3).png" id="61_ww42s"]
-[ext_resource type="Script" path="res://scenes/playable_scenes/Wacky.gd" id="63_ym0t7"]
 [ext_resource type="Script" path="res://scripts/gameFolder/SprayBulletHandler.gd" id="64_ab4lx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
@@ -198,6 +196,7 @@ scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
 [node name="Tank" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
 script = ExtResource("2_8ueva")
@@ -720,6 +719,7 @@ script = ExtResource("5_t80kh")
 wait_time = 0.2
 
 [node name="Ball" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Ball" groups=["Player"]]
 script = ExtResource("12_epxfo")
@@ -772,6 +772,7 @@ texture = ExtResource("14_isajk")
 script = ExtResource("15_sxemg")
 
 [node name="Mark" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Mark" groups=["Player"]]
 script = ExtResource("12_u42q4")
@@ -824,6 +825,7 @@ script = ExtResource("18_ca8qa")
 script = ExtResource("15_mxfnp")
 
 [node name="Lazy" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Lazy" groups=["Player"]]
 rotation = -1.57079
@@ -1604,17 +1606,19 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("61_ww42s")
 script = ExtResource("22_i2wgh")
 
-[node name="Wacky" type="Sprite2D" parent="Spray"]
-position = Vector2(-474.548, -521.346)
+[node name="WackyL" type="Sprite2D" parent="Spray"]
+position = Vector2(-73.0706, 110.016)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("13_feq2k")
-script = ExtResource("63_ym0t7")
+
+[node name="WackyR" type="Sprite2D" parent="Spray"]
+position = Vector2(73.071, 110.016)
+scale = Vector2(0.1, 0.1)
 
 [node name="SprayBulletHandler" type="Node" parent="."]
 script = ExtResource("64_ab4lx")
 
 [node name="AutoTimer" type="Timer" parent="SprayBulletHandler"]
-wait_time = 0.1
+wait_time = 0.01
 
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10

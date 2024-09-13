@@ -14,16 +14,22 @@ var firstResume: bool = true
 
 var thrusting: bool = false
 
+var leftNow: bool = true
+
 func _process(_delta):
 	if Global.startCrasher == false && Global.crashStarted == true:
+		auto_timer.start()
 		if Global.gameTimeScale < 0.1:
-			auto_timer.stop()
+			#auto_timer.stop()
 			firstResume = true
 		elif firstResume:
-			auto_timer.start()
+			#auto_timer.start()
 			firstResume = false
+	else:
+		auto_timer.stop()
 
-@onready var wacky = $"../Spray/Wacky"
+@onready var wacky_l = $"../Spray/WackyL"
+@onready var wacky_r = $"../Spray/WackyR"
 
 func shootBall():
 	var booger_area = BOOGER_AREA.instantiate()
@@ -42,7 +48,14 @@ func shootBall():
 	
 	booger_area.mod_scale(Vector2(0.1,0.1))
 	
-	booger_area.set_motion(wacky.global_position.x,wacky.global_position.y,theta - PI,1)
+	booger_area.SPEED = 5000.0
+	
+	if leftNow:
+		booger_area.set_motion(wacky_l.global_position.x,wacky_l.global_position.y,theta - PI - 0.6 + randf_range(-0.2,0.2),1)
+		leftNow = false
+	else:
+		booger_area.set_motion(wacky_r.global_position.x,wacky_r.global_position.y,theta - PI + 0.6 + randf_range(-0.2,0.2),1)
+		leftNow = true
 
 func _on_auto_timer_timeout():
 	if thrusting:
