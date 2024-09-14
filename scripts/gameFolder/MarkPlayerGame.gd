@@ -19,7 +19,7 @@ var lastConsec: int = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1 && !Global.startCrasher && !Global.impactSequence && Global.canDeployCrasher:
+	if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1 && !Global.startCrasher && !Global.impactSequence && Global.canDeployCrasher && !Global.crashStarted:
 		Global.startCrasher = true
 	
 	

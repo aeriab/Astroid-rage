@@ -72,8 +72,8 @@
 [ext_resource type="Shader" path="res://shaders/customOpacity.gdshader" id="50_50fig"]
 [ext_resource type="Texture2D" uid="uid://dpt5yjm2aol3o" path="res://assets/Health Lazer (2).png" id="50_f82w8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Spray.gd" id="59_qes72"]
-[ext_resource type="Texture2D" uid="uid://d1du5dlg0h476" path="res://assets/Spray (3).png" id="60_38e42"]
-[ext_resource type="Texture2D" uid="uid://5qjyye8wvvgg" path="res://assets/SprayOutline (3).png" id="61_ww42s"]
+[ext_resource type="Texture2D" uid="uid://c6swdgdjjlstd" path="res://assets/SpraySideBoost (1).png" id="60_nvmmr"]
+[ext_resource type="Texture2D" uid="uid://dl0ldlfnm1ars" path="res://assets/SpraySBOutline (1).png" id="61_2povb"]
 [ext_resource type="Script" path="res://scripts/gameFolder/SprayBulletHandler.gd" id="64_ab4lx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
@@ -196,7 +196,6 @@ scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
 [node name="Tank" type="Node2D" parent="."]
-visible = false
 
 [node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
 script = ExtResource("2_8ueva")
@@ -719,7 +718,6 @@ script = ExtResource("5_t80kh")
 wait_time = 0.2
 
 [node name="Ball" type="Node2D" parent="."]
-visible = false
 
 [node name="Player" type="Area2D" parent="Ball" groups=["Player"]]
 script = ExtResource("12_epxfo")
@@ -772,7 +770,6 @@ texture = ExtResource("14_isajk")
 script = ExtResource("15_sxemg")
 
 [node name="Mark" type="Node2D" parent="."]
-visible = false
 
 [node name="Player" type="Area2D" parent="Mark" groups=["Player"]]
 script = ExtResource("12_u42q4")
@@ -825,7 +822,6 @@ script = ExtResource("18_ca8qa")
 script = ExtResource("15_mxfnp")
 
 [node name="Lazy" type="Node2D" parent="."]
-visible = false
 
 [node name="Player" type="Area2D" parent="Lazy" groups=["Player"]]
 rotation = -1.57079
@@ -1564,61 +1560,53 @@ scale = Vector2(1.1, 1.1)
 texture = ExtResource("21_wb7rs")
 script = ExtResource("22_i2wgh")
 
-[node name="Spray" type="Area2D" parent="." groups=["Spray"]]
+[node name="SprayNode2D" type="Node2D" parent="."]
+
+[node name="Spray" type="Area2D" parent="SprayNode2D" groups=["Spray"]]
 script = ExtResource("59_qes72")
 
-[node name="SpraySprite" type="Sprite2D" parent="Spray"]
+[node name="SpraySprite" type="Sprite2D" parent="SprayNode2D/Spray"]
 z_index = 1
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("60_38e42")
+texture = ExtResource("60_nvmmr")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Spray/SpraySprite"]
-position = Vector2(-10.9469, 284.62)
-emitting = false
-amount = 12
-fract_delta = false
-emission_shape = 1
-emission_sphere_radius = 30.74
-direction = Vector2(0, 1)
-spread = 14.09
-gravity = Vector2(0, 0)
-initial_velocity_min = 141.41
-initial_velocity_max = 868.68
-angle_min = -180.0
-angle_max = 180.0
-angle_curve = SubResource("Curve_p1bkv")
-scale_amount_min = 61.61
-scale_amount_max = 102.01
-scale_amount_curve = SubResource("Curve_qkfoy")
-color = Color(0.791999, 0.791999, 0.791999, 1)
-color_ramp = SubResource("Gradient_y4ple")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spray"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SprayNode2D/Spray"]
 visible = false
 position = Vector2(-2.46305, 31.1987)
 build_mode = 1
 polygon = PackedVector2Array(-52.5452, 114.943, -71.4286, 114.122, -89.491, 106.732, -103.448, 94.4171, -112.479, 79.6387, -114.122, 67.3235, -110.837, 56.6502, -105.911, 50.0821, -94.4171, 43.514, -79.6388, 41.8719, -65.6814, 45.156, -34.4828, 27.0936, -46.798, -9.0312, -67.3235, -18.0624, -74.7126, -17.2414, -79.6388, -9.0312, -73.8916, 5.74713, -59.9343, 19.7044, -66.5025, 21.3465, -78.8177, 20.5255, -87.8489, 17.2414, -97.7011, 9.0312, -103.448, 0, -105.911, -13.1363, -103.448, -27.9146, -96.8801, -42.6929, -87.0279, -55.0082, -79.6388, -59.1133, -53.3662, -61.5764, -51.7241, -101.806, -43.514, -139.573, -32.0197, -165.846, -23.8095, -178.161, -16.4204, -185.55, -5.74713, -191.297, 2.46305, -192.939, 13.1363, -190.476, 20.5255, -185.55, 27.9146, -178.982, 35.3038, -169.13, 40.2299, -160.099, 48.4401, -140.394, 55.8292, -106.732, 58.2923, -61.5764, 84.5649, -59.1133, 91.954, -55.0082, 96.0591, -50.9031, 102.627, -41.8719, 107.553, -30.3777, 110.837, -18.0624, 110.016, -5.74713, 105.09, 5.74713, 98.5222, 13.1363, 86.2069, 19.7044, 73.8916, 21.3465, 64.8604, 19.7044, 76.3547, 9.0312, 82.9228, -2.46305, 84.5649, -9.85221, 81.2808, -15.5993, 73.0706, -18.0624, 51.7241, -9.0312, 39.4089, 27.0936, 70.6076, 44.335, 84.5649, 41.8719, 94.4171, 42.6929, 105.09, 45.977, 112.479, 51.7241, 116.585, 58.2923, 119.048, 69.7865, 117.406, 79.6387, 111.658, 91.954, 101.806, 100.985, 87.0279, 110.837, 70.6076, 114.943, 61.5764, 114.943, 52.5452, 113.3, 45.977, 110.016, 39.4089, 105.09, 35.3038, 98.5222, 33.6617, 90.312, 35.3038, 77.1757, 41.8719, 65.6814, 46.798, 59.9343, 25.4516, 47.619, 19.7044, 52.5452, 9.85222, 57.4713, 2.46305, 58.2923, -4.92611, 57.4713, -14.7783, 52.5452, -20.5254, 47.619, -41.8719, 59.9343, -33.6617, 70.6076, -29.5566, 81.2808, -29.5566, 95.2381, -36.9458, 107.553)
 
-[node name="SprayOutline" type="Sprite2D" parent="Spray"]
+[node name="SprayOutline" type="Sprite2D" parent="SprayNode2D/Spray"]
 material = SubResource("ShaderMaterial_ih00v")
 rotation = -1.5708
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("61_ww42s")
+texture = ExtResource("61_2povb")
 script = ExtResource("22_i2wgh")
 
-[node name="WackyL" type="Sprite2D" parent="Spray"]
+[node name="WackyL" type="Sprite2D" parent="SprayNode2D/Spray"]
 position = Vector2(-73.0706, 110.016)
 scale = Vector2(0.1, 0.1)
 
-[node name="WackyR" type="Sprite2D" parent="Spray"]
+[node name="WackyR" type="Sprite2D" parent="SprayNode2D/Spray"]
 position = Vector2(73.071, 110.016)
 scale = Vector2(0.1, 0.1)
 
-[node name="SprayBulletHandler" type="Node" parent="."]
+[node name="TurnL" type="Sprite2D" parent="SprayNode2D/Spray"]
+position = Vector2(-105, -10.5)
+scale = Vector2(0.1, 0.1)
+
+[node name="TurnR" type="Sprite2D" parent="SprayNode2D/Spray"]
+position = Vector2(105, -10.5)
+scale = Vector2(0.1, 0.1)
+
+[node name="SprayBulletHandler" type="Node" parent="SprayNode2D"]
 script = ExtResource("64_ab4lx")
 
-[node name="AutoTimer" type="Timer" parent="SprayBulletHandler"]
-wait_time = 0.01
+[node name="AutoTimer1" type="Timer" parent="SprayNode2D/SprayBulletHandler"]
+wait_time = 0.1
+
+[node name="AutoTimer2" type="Timer" parent="SprayNode2D/SprayBulletHandler"]
+wait_time = 0.2
 
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10
@@ -1791,5 +1779,6 @@ texture = ExtResource("11_x60jw")
 [connection signal="value_changed" from="PauseMenu/MusicVolume/HSlider" to="PauseMenu/MusicVolume" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="PauseMenu/SFXVolume/HSlider" to="PauseMenu/SFXVolume" method="_on_h_slider_value_changed"]
 [connection signal="area_entered" from="CrasherArea2D" to="CrasherArea2D" method="_on_area_entered"]
-[connection signal="area_entered" from="Spray" to="Spray" method="_on_area_entered"]
-[connection signal="timeout" from="SprayBulletHandler/AutoTimer" to="SprayBulletHandler" method="_on_auto_timer_timeout"]
+[connection signal="area_entered" from="SprayNode2D/Spray" to="SprayNode2D/Spray" method="_on_area_entered"]
+[connection signal="timeout" from="SprayNode2D/SprayBulletHandler/AutoTimer1" to="SprayNode2D/SprayBulletHandler" method="_on_auto_timer_timeout"]
+[connection signal="timeout" from="SprayNode2D/SprayBulletHandler/AutoTimer2" to="SprayNode2D/SprayBulletHandler" method="_on_auto_timer_2_timeout"]

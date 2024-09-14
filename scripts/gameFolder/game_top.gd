@@ -22,7 +22,7 @@ var theta: float
 var impact_length: float = 0.0
 var first_impact: bool = true
 @onready var crasher_area_2d = $CrasherArea2D
-@onready var spray = $Spray
+@onready var spray = $SprayNode2D
 
 func _ready():
 	
@@ -34,7 +34,8 @@ func _ready():
 	if Global.curDroneNumber == 1:
 		drone = $CrasherArea2D
 	elif Global.curDroneNumber == 2:
-		drone = $Spray
+		drone = $SprayNode2D/Spray
+
 	
 	
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1du5dlg0h476"
-path="res://.godot/imported/Spray (3).png-5fede7aa91857a8d648909cc0766bbd3.ctex"
+uid="uid://c6swdgdjjlstd"
+path="res://.godot/imported/SpraySideBoost (1).png-72dc0ea0c424dfc55adf114f79b378c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Spray (3).png"
-dest_files=["res://.godot/imported/Spray (3).png-5fede7aa91857a8d648909cc0766bbd3.ctex"]
+source_file="res://assets/SpraySideBoost (1).png"
+dest_files=["res://.godot/imported/SpraySideBoost (1).png-72dc0ea0c424dfc55adf114f79b378c4.ctex"]
 
 [params]
 

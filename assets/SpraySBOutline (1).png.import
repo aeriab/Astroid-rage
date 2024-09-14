@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yxmc3r810wy7"
-path="res://.godot/imported/SprayOutline (2).png-cb458820ffe19140d9c24c0b8049cffd.ctex"
+uid="uid://dl0ldlfnm1ars"
+path="res://.godot/imported/SpraySBOutline (1).png-7200442f6eb3e449cabfabb56d9d6c21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SprayOutline (2).png"
-dest_files=["res://.godot/imported/SprayOutline (2).png-cb458820ffe19140d9c24c0b8049cffd.ctex"]
+source_file="res://assets/SpraySBOutline (1).png"
+dest_files=["res://.godot/imported/SpraySBOutline (1).png-7200442f6eb3e449cabfabb56d9d6c21.ctex"]
 
 [params]
 

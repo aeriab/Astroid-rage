@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://doa7cvraf30t0"]
 
-[ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_cgl4j"]
+[ext_resource type="Shader" path="res://shaders/counter_enemy.gdshader" id="1_h1h8f"]
 [ext_resource type="Script" path="res://scripts/gameFolder/CounterEnemy.gd" id="2_1hcjh"]
 [ext_resource type="Texture2D" uid="uid://dfau10tjkqlof" path="res://assets/CounterEnemy.png" id="3_b4cv1"]
 [ext_resource type="Texture2D" uid="uid://2frefqog7kq1" path="res://assets/CounterEnemySymbol (1).png" id="4_mbj10"]
@@ -8,7 +8,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g6bmg"]
 resource_local_to_scene = true
-shader = ExtResource("1_cgl4j")
+shader = ExtResource("1_h1h8f")
+shader_parameter/anger_value = 0.0
 shader_parameter/damage_value = 0.0
 shader_parameter/alpha_value = 1.0
 

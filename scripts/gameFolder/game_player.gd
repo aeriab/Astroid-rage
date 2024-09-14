@@ -59,7 +59,7 @@ var lastConsec: int = 0
 func _process(delta):
 	mutation_part.scaleEyelid(eyelidHeight)
 	
-	if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1 && !Global.startCrasher && !Global.impactSequence && Global.canDeployCrasher:
+	if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1 && !Global.startCrasher && !Global.impactSequence && Global.canDeployCrasher && !Global.crashStarted:
 		Global.startCrasher = true
 	
 	Global.prior_dir = clockwise

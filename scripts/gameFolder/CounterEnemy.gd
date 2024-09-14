@@ -7,6 +7,7 @@ const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
 @onready var timer = $Timer
 @onready var collision_polygon_2d = $CollisionPolygon2D
 
+var anger_value = material.get_shader_parameter("value")
 var shader_value = material.get_shader_parameter("value")
 var shader_alpha = material.get_shader_parameter("alpha")
 var damage_chunk = Global.damage * 0.05
@@ -59,6 +60,7 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 	material.set_shader_parameter("alpha_value",shader_alpha)
 	
 	randomize()
+	anger_value = 0.0
 	shader_value = 0.0
 	
 	x = xgiven
@@ -83,8 +85,8 @@ var enemyIsDead: bool = false
 
 func _physics_process(delta):
 	if !enemyIsDead:
-		enemy_symbol.rotate(delta * Global.gameTimeScale * (shader_value + 0.1) * 4.0)
-	SPEED = 100.0 + (shader_value * 200.0)
+		enemy_symbol.rotate(delta * Global.gameTimeScale * (anger_value + 0.1) * 4.0)
+	SPEED = 100.0 + (anger_value * 200.0)
 	
 	sinFuncProg += delta * Global.gameTimeScale * 0.3
 	if sinFuncProg >= (PI * 2):
@@ -104,17 +106,32 @@ func _physics_process(delta):
 
 var points: float = 0.0
 
+func addAnger():
+	anger_value = anger_value + damage_chunk
+	anger_value = clamp(anger_value,0.0,1.0)
+	material.set_shader_parameter("anger_value",anger_value)
+
 func addDamage():
 	shader_value = shader_value + damage_chunk
-	
 	shader_value = clamp(shader_value,0.0,1.0)
-	
 	material.set_shader_parameter("damage_value",shader_value)
+	if shader_value >= 0.9:
+		Global.decreaseEnemyNum()
+		Global.addXP(xpAmount)
+		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+		pointsNotif.position = Vector2 (x,y)
+		points = sizeOfEnemy * 100
+		Global.points += int(points)
+		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		get_parent().add_child.call_deferred(pointsNotif)
+		setFreeSequence()
 
 func _on_area_entered(area):
 	if area.is_in_group("BoogerArea"):
 		area.setFreeSequence()
-		addDamage()
+		addAnger()
+		if area.is_in_group("SprayArea"):
+			addDamage()
 	
 	if area.is_in_group("Crasher"):
 		Global.decreaseEnemyNum()

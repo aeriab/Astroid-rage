@@ -1,6 +1,4 @@
 extends Area2D
-@onready var cpu_particles_2d = $SpraySprite/CPUParticles2D
-
 
 var clockwise: float = 1
 
@@ -36,7 +34,7 @@ func _ready():
 	
 	MAX_THRUST = (30.0 * Global.num_drone_stars2) + 100.0
 	
-	ROT_UPGRADER = (0.15 * Global.num_drone_stars3) + 1.5
+	ROT_UPGRADER = (0.10 * Global.num_drone_stars3) + 1.0
 	
 	crashTimeScale = -(Global.num_drone_stars4 * 0.7) + 2.0
 
@@ -49,7 +47,6 @@ func _process(delta):
 		if firstCrashTimeout:
 			Global.startCrasher = false
 			Global.crashStarted = false
-			cpu_particles_2d.emitting = false
 			reset_stats()
 			firstCrashTimeout = false
 			Global.gameTimeScale = 0.0
@@ -58,35 +55,33 @@ func _process(delta):
 		Global.softCam = true
 		position.x = 0
 		position.y = 0
+	
 	if !Global.startCrasher && Global.crashStarted && !Global.gameOver:
 		firstCrashTimeout = true
+		thrust = MAX_THRUST
+		spray_bullet_handler.thrusting = true
 		if Global.crashTime > 0:
 			Global.crashTime -= crashTimeScale * delta * Global.gameTimeScale
 		
 		rotation += (delta * Global.gameTimeScale * clockwise) * rotScale * speedScale * ROT_UPGRADER
 		
-		if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1:
-			clockwise *= -1
-		
 		if Input.is_action_pressed("ui_up") && Global.gameTimeScale > 0.1:
-			spray_bullet_handler.thrusting = true
-			cpu_particles_2d.emitting = true
-			thrust = MAX_THRUST
-			
-			rotScale = 0.0
+			spray_bullet_handler.turningLeft = true
+			if rotScale < ROT_SCALE * ROT_UPGRADER:
+				rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
+			else:
+				rotScale = ROT_SCALE * ROT_UPGRADER
 		else:
-			spray_bullet_handler.thrusting = false
-			cpu_particles_2d.emitting = false
-			thrust = 0
-			
-			if force <= 5.0 && force >= -5.0:
-				if rotScale < ROT_SCALE * ROT_UPGRADER:
-					rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
-				else:
-					rotScale = ROT_SCALE * ROT_UPGRADER
+			spray_bullet_handler.turningLeft = false
+			if rotScale > -(ROT_SCALE * ROT_UPGRADER):
+				rotScale -= delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
+			else:
+				rotScale = -(ROT_SCALE * ROT_UPGRADER)
 		
 		
 		force += thrust
+		
+		
 		
 		if force > 0:
 			force -= force * resistance + fric
@@ -110,13 +105,15 @@ func _process(delta):
 		if length_out > 4400:
 			position.x -= delta * Global.gameTimeScale * inPull * sin(top_rotation + PI/2) * (length_out - 4400)
 			position.y -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4400)
+	else:
+		spray_bullet_handler.thrusting = false
+
 
 func _on_area_entered(area):
 	if area.is_in_group("Player") && Global.crashStarted && !Global.startCrasher && Global.crashTime > 0:
 		Global.startCrasher = false
 		Global.crashStarted = false
 		Global.impactSequence = true
-		cpu_particles_2d.emitting = false
 		reset_stats()
 
 func reset_stats():

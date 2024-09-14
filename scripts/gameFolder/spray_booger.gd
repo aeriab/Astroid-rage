@@ -18,10 +18,15 @@ var upgradeLevel: float = Global.barrelUpNumArray[mutationPart]
 @onready var cpu_particles_2d_2 = $CPUParticles2D2
 @onready var timer = $Timer
 
+var thrustBooger: bool = true
+
 func areaName():
 	return "Booger"
 
 func _ready():
+	if thrustBooger:
+		game_projectile.texture = preload("res://assets/thrustSpray (4).png")
+	
 	cpu_particles_2d_2.amount = int(Global.bulletSize * 4)
 	cpu_particles_2d_2.speed_scale = Global.bulletSpeed * 0.03 + 0.1
 	cpu_particles_2d_2.scale_amount_min = int(Global.damage * 6 + 10)
@@ -32,21 +37,9 @@ func _ready():
 	monitoring = true
 	
 	upgradeLevel = Global.barrelUpNumArray[mutationPart - 1]
-	set_scale(_scale)
+	set_scale(_scale * 0.0)
 	global_position.x = x
 	global_position.y = y
-	
-	if Global.barrelUpNumArray[mutationPart - 1] == 1:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile1.png")
-	elif Global.barrelUpNumArray[mutationPart - 1] == 2:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile2.png")
-	elif Global.barrelUpNumArray[mutationPart - 1] == 3:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile3.png")
-	elif Global.barrelUpNumArray[mutationPart - 1] == 4:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile4.png")
-	else:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile5.png")
-	
 	rotation = randf_range(0.0,6.3)
 
 func setFreeLater():
@@ -63,8 +56,15 @@ func mod_scale(scale_num):
 	set_scale(scale_num)
 	_scale = scale_num
 
+var scale_prog: float = 0.0
 
 func _physics_process(delta):
+	
+	if scale_prog < 0.8:
+		scale_prog += Global.gameTimeScale * delta * 35
+		set_scale(_scale * scale_prog)
+	else:
+		set_scale(_scale * 0.8)
 	
 	x += cos(theta) * SPEED * delta * Global.gameTimeScale
 	y -= sin(theta) * SPEED * delta * Global.gameTimeScale
@@ -72,7 +72,7 @@ func _physics_process(delta):
 	global_position.x = x
 	global_position.y = y
 	
-	rotate(delta * (orig_speed - 1) * rot_motion * 2 * orig_rotate_speed * Global.gameTimeScale)
+	rotate(delta * (orig_speed - 1) * rot_motion * 10 * orig_rotate_speed * Global.gameTimeScale)
 
 @onready var collision_shape_2d = $CollisionShape2D
 

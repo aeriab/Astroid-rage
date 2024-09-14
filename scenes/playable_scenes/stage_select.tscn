@@ -15,9 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bq7gwdcrn51bc" path="res://assets/MarkEyes (1).png" id="6_tc88f"]
 [ext_resource type="Texture2D" uid="uid://dy7qrl58soocx" path="res://assets/Crasher3.png" id="7_js571"]
 [ext_resource type="Script" path="res://scripts/DroneSelect.gd" id="8_a4bh5"]
-[ext_resource type="Texture2D" uid="uid://d1du5dlg0h476" path="res://assets/Spray (3).png" id="8_huob8"]
 [ext_resource type="Texture2D" uid="uid://chgi1ni3h7lpy" path="res://assets/Star Particle.png" id="8_y6xwi"]
 [ext_resource type="Texture2D" uid="uid://b7hh6i7vkrv5f" path="res://assets/redEnemySprites/SplatchoEnemyBored.png" id="9_2f42f"]
+[ext_resource type="Texture2D" uid="uid://c6swdgdjjlstd" path="res://assets/SpraySideBoost (1).png" id="9_7sduj"]
 [ext_resource type="Texture2D" uid="uid://xtnytxfl8564" path="res://assets/Fling (2).png" id="9_gf4e8"]
 [ext_resource type="Texture2D" uid="uid://ctegyd5kf3a5g" path="res://assets/Gob (2).png" id="10_42m27"]
 [ext_resource type="Texture2D" uid="uid://dbwaqmo4q61r5" path="res://assets/BulkEnemy (1).png" id="10_v3quy"]
@@ -168,7 +168,7 @@ visible = false
 position = Vector2(1666, 566)
 rotation = -0.637278
 scale = Vector2(0.178215, 0.178215)
-texture = ExtResource("8_huob8")
+texture = ExtResource("9_7sduj")
 
 [node name="Fling" type="Sprite2D" parent="MainCanvas/DroneIcons"]
 visible = false
