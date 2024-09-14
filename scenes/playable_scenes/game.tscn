@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=109 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -74,7 +74,11 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/Spray.gd" id="59_qes72"]
 [ext_resource type="Texture2D" uid="uid://c6swdgdjjlstd" path="res://assets/SpraySideBoost (1).png" id="60_nvmmr"]
 [ext_resource type="Texture2D" uid="uid://dl0ldlfnm1ars" path="res://assets/SpraySBOutline (1).png" id="61_2povb"]
+[ext_resource type="Script" path="res://scripts/gameFolder/Fling.gd" id="63_d3n1w"]
+[ext_resource type="Texture2D" uid="uid://co1l3ybahi1vu" path="res://assets/FlingBack (1).png" id="64_5bjyf"]
 [ext_resource type="Script" path="res://scripts/gameFolder/SprayBulletHandler.gd" id="64_ab4lx"]
+[ext_resource type="Texture2D" uid="uid://b00jf3d0u6oai" path="res://assets/FlingFront.png" id="65_rvxsy"]
+[ext_resource type="Texture2D" uid="uid://d1nr4hw5l7n2i" path="res://assets/FlingOutline (2).png" id="66_xjgm5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -157,6 +161,9 @@ shader = ExtResource("20_16gop")
 shader_parameter/crash_progress = 6.3
 shader_parameter/radius = 0.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_chnob"]
+radius = 225.314
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4yd7u"]
 shader = ExtResource("26_te00n")
 shader_parameter/boost_value = 6.3
@@ -196,6 +203,7 @@ scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
 [node name="Tank" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
 script = ExtResource("2_8ueva")
@@ -718,6 +726,7 @@ script = ExtResource("5_t80kh")
 wait_time = 0.2
 
 [node name="Ball" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Ball" groups=["Player"]]
 script = ExtResource("12_epxfo")
@@ -770,6 +779,7 @@ texture = ExtResource("14_isajk")
 script = ExtResource("15_sxemg")
 
 [node name="Mark" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Mark" groups=["Player"]]
 script = ExtResource("12_u42q4")
@@ -822,6 +832,7 @@ script = ExtResource("18_ca8qa")
 script = ExtResource("15_mxfnp")
 
 [node name="Lazy" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Lazy" groups=["Player"]]
 rotation = -1.57079
@@ -1521,6 +1532,7 @@ zoom = Vector2(0.2, 0.2)
 script = ExtResource("18_chv7v")
 
 [node name="CrasherArea2D" type="Area2D" parent="." groups=["Crasher"]]
+visible = false
 script = ExtResource("19_6jffq")
 
 [node name="Crasher" type="Sprite2D" parent="CrasherArea2D"]
@@ -1561,6 +1573,7 @@ texture = ExtResource("21_wb7rs")
 script = ExtResource("22_i2wgh")
 
 [node name="SprayNode2D" type="Node2D" parent="."]
+visible = false
 
 [node name="Spray" type="Area2D" parent="SprayNode2D" groups=["Spray"]]
 script = ExtResource("59_qes72")
@@ -1607,6 +1620,31 @@ wait_time = 0.05
 
 [node name="AutoTimer2" type="Timer" parent="SprayNode2D/SprayBulletHandler"]
 wait_time = 0.1
+
+[node name="FlingNode2D" type="Node2D" parent="."]
+
+[node name="FlingOutline" type="Sprite2D" parent="FlingNode2D"]
+material = SubResource("ShaderMaterial_ih00v")
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("66_xjgm5")
+script = ExtResource("22_i2wgh")
+
+[node name="FlingBackSprite" type="Sprite2D" parent="FlingNode2D"]
+z_index = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("64_5bjyf")
+
+[node name="Fling" type="Area2D" parent="FlingNode2D" groups=["Crasher"]]
+script = ExtResource("63_d3n1w")
+
+[node name="FlingFrontSprite" type="Sprite2D" parent="FlingNode2D/Fling"]
+z_index = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("65_rvxsy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlingNode2D/Fling"]
+shape = SubResource("CircleShape2D_chnob")
 
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10
@@ -1782,3 +1820,4 @@ texture = ExtResource("11_x60jw")
 [connection signal="area_entered" from="SprayNode2D/Spray" to="SprayNode2D/Spray" method="_on_area_entered"]
 [connection signal="timeout" from="SprayNode2D/SprayBulletHandler/AutoTimer1" to="SprayNode2D/SprayBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="timeout" from="SprayNode2D/SprayBulletHandler/AutoTimer2" to="SprayNode2D/SprayBulletHandler" method="_on_auto_timer_2_timeout"]
+[connection signal="area_entered" from="FlingNode2D/Fling" to="FlingNode2D/Fling" method="_on_area_entered"]

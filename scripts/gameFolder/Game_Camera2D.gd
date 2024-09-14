@@ -11,6 +11,8 @@ func _ready():
 		drone = $"../CrasherArea2D"
 	elif Global.curDroneNumber == 2:
 		drone = $"../SprayNode2D/Spray"
+	elif Global.curDroneNumber == 3:
+		drone = $"../FlingNode2D/Fling"
 
 
 func _process(delta):
