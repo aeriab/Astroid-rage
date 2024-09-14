@@ -1603,10 +1603,10 @@ scale = Vector2(0.1, 0.1)
 script = ExtResource("64_ab4lx")
 
 [node name="AutoTimer1" type="Timer" parent="SprayNode2D/SprayBulletHandler"]
-wait_time = 0.1
+wait_time = 0.05
 
 [node name="AutoTimer2" type="Timer" parent="SprayNode2D/SprayBulletHandler"]
-wait_time = 0.2
+wait_time = 0.1
 
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10
