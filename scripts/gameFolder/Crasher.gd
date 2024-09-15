@@ -146,14 +146,17 @@ func boundBounceBack():
 	
 	rotation = -(realMathAngle - PI/2)
 
-func bounceBack(xboss,yboss):
+func bounceBack(xenemy,yenemy):
 	var bounceAngle = 0.0
-	var difX = position.x - xboss
-	var difY = position.y - yboss
+	var difX = position.x - xenemy
+	var difY = position.y - yenemy
 	var collide_length = sqrt((difX * difX) + (difY * difY))
 	if difY < 0:
 		bounceAngle = acos(difX / collide_length)
 	else:
 		bounceAngle = 2 * PI -  acos(difX / collide_length)
-	rotation = -(bounceAngle - (PI/2))
-	force = 5000
+	var realMathAngle: float
+	realMathAngle = -rotation + PI/2
+	realMathAngle = realMathAngle - ((realMathAngle - PI) - (2 * ((bounceAngle - PI) + PI/2) - (realMathAngle - PI)))
+	
+	rotation = -(realMathAngle - PI/2)

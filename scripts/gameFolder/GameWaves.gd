@@ -65,7 +65,7 @@ func _process(delta):
 	if Global.current_stage == "Learner Lagoon":
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalMultiSpawn(5,"red",3)
+			generalMultiSpawn(50,"red",0.3)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
 			generalMultiSpawn(5,"swirl",3)
@@ -284,7 +284,7 @@ var y: float = 0
 var flipSprite: float = 0
 
 var theta: float = 0.0
-var radius: float = 5000
+var radius: float = 4000
 @onready var next_en_timer = $NextEnTimer
 var nextEnAmount = 0
 var genEnemy = "red"

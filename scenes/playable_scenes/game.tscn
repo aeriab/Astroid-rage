@@ -207,6 +207,7 @@ scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
 [node name="Tank" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
 script = ExtResource("2_8ueva")
@@ -1576,7 +1577,7 @@ script = ExtResource("22_i2wgh")
 
 [node name="SprayNode2D" type="Node2D" parent="."]
 
-[node name="Spray" type="Area2D" parent="SprayNode2D" groups=["Spray"]]
+[node name="Spray" type="Area2D" parent="SprayNode2D" groups=["Crasher", "Spray"]]
 script = ExtResource("59_qes72")
 
 [node name="SpraySprite" type="Sprite2D" parent="SprayNode2D/Spray"]
@@ -1806,6 +1807,7 @@ scale = Vector2(0.9, 0.9)
 texture = ExtResource("11_x60jw")
 
 [node name="gameCircle" type="Area2D" parent="."]
+visible = false
 script = ExtResource("80_45w2x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gameCircle"]

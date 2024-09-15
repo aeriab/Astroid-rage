@@ -134,6 +134,8 @@ func _on_area_entered(area):
 			addDamage()
 	
 	if area.is_in_group("Crasher"):
+		if area.is_in_group("Fling"):
+			area.bounceBack(position.x,position.y)
 		Global.decreaseEnemyNum()
 		Global.addXP(xpAmount)
 		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()

@@ -132,14 +132,31 @@ func reset_stats():
 	top_rotation = 0.0
 	length_out = 0.0
 
-func bounceBack(xboss,yboss):
+func boundBounceBack():
+	var realMathAngle: float
+	var boundTheta: float
+	if position.y < 0:
+		boundTheta = acos(position.x / sqrt(pow(position.x,2) + pow(position.y,2)))
+	else:
+		boundTheta = -acos(position.x / sqrt(pow(position.x,2) + pow(position.y,2)))
+	
+	realMathAngle = -rotation + PI/2
+	
+	realMathAngle = realMathAngle - ((realMathAngle - PI) - (2 * ((boundTheta - PI) + PI/2) - (realMathAngle - PI)))
+	
+	rotation = -(realMathAngle - PI/2)
+
+func bounceBack(xenemy,yenemy):
 	var bounceAngle = 0.0
-	var difX = position.x - xboss
-	var difY = position.y - yboss
+	var difX = position.x - xenemy
+	var difY = position.y - yenemy
 	var collide_length = sqrt((difX * difX) + (difY * difY))
 	if difY < 0:
 		bounceAngle = acos(difX / collide_length)
 	else:
 		bounceAngle = 2 * PI -  acos(difX / collide_length)
-	rotation = -(bounceAngle - (PI/2))
-	force = 5000
+	var realMathAngle: float
+	realMathAngle = -rotation + PI/2
+	realMathAngle = realMathAngle - ((realMathAngle - PI) - (2 * ((bounceAngle - PI) + PI/2) - (realMathAngle - PI)))
+	
+	rotation = -(realMathAngle - PI/2)
