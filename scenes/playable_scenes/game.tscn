@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=111 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -79,6 +79,7 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/SprayBulletHandler.gd" id="64_ab4lx"]
 [ext_resource type="Texture2D" uid="uid://b00jf3d0u6oai" path="res://assets/FlingFront.png" id="65_rvxsy"]
 [ext_resource type="Texture2D" uid="uid://d1nr4hw5l7n2i" path="res://assets/FlingOutline (2).png" id="66_xjgm5"]
+[ext_resource type="Script" path="res://scripts/gameFolder/gameCircle.gd" id="80_45w2x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -198,12 +199,14 @@ shader_parameter/wave_progress = null
 shader = ExtResource("34_vtmkp")
 shader_parameter/wave_progress = null
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6vuc"]
+radius = 4110.84
+
 [node name="game" type="Node2D"]
 scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
 [node name="Tank" type="Node2D" parent="."]
-visible = false
 
 [node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
 script = ExtResource("2_8ueva")
@@ -1532,7 +1535,6 @@ zoom = Vector2(0.2, 0.2)
 script = ExtResource("18_chv7v")
 
 [node name="CrasherArea2D" type="Area2D" parent="." groups=["Crasher"]]
-visible = false
 script = ExtResource("19_6jffq")
 
 [node name="Crasher" type="Sprite2D" parent="CrasherArea2D"]
@@ -1573,7 +1575,6 @@ texture = ExtResource("21_wb7rs")
 script = ExtResource("22_i2wgh")
 
 [node name="SprayNode2D" type="Node2D" parent="."]
-visible = false
 
 [node name="Spray" type="Area2D" parent="SprayNode2D" groups=["Spray"]]
 script = ExtResource("59_qes72")
@@ -1635,7 +1636,7 @@ z_index = 1
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("64_5bjyf")
 
-[node name="Fling" type="Area2D" parent="FlingNode2D" groups=["Crasher"]]
+[node name="Fling" type="Area2D" parent="FlingNode2D" groups=["Crasher", "Fling"]]
 script = ExtResource("63_d3n1w")
 
 [node name="FlingFrontSprite" type="Sprite2D" parent="FlingNode2D/Fling"]
@@ -1804,6 +1805,12 @@ visible = false
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("11_x60jw")
 
+[node name="gameCircle" type="Area2D" parent="."]
+script = ExtResource("80_45w2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gameCircle"]
+shape = SubResource("CircleShape2D_b6vuc")
+
 [connection signal="timeout" from="Tank/GameBulletHandler/AutoTimer" to="Tank/GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]
 [connection signal="timeout" from="GameWaves/NextEnTimer" to="GameWaves" method="_on_next_en_timer_timeout"]
@@ -1821,3 +1828,4 @@ texture = ExtResource("11_x60jw")
 [connection signal="timeout" from="SprayNode2D/SprayBulletHandler/AutoTimer1" to="SprayNode2D/SprayBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="timeout" from="SprayNode2D/SprayBulletHandler/AutoTimer2" to="SprayNode2D/SprayBulletHandler" method="_on_auto_timer_2_timeout"]
 [connection signal="area_entered" from="FlingNode2D/Fling" to="FlingNode2D/Fling" method="_on_area_entered"]
+[connection signal="area_exited" from="gameCircle" to="gameCircle" method="_on_area_exited"]

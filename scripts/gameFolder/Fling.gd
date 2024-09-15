@@ -153,6 +153,20 @@ func reset_stats():
 	top_rotation = 0.0
 	length_out = 0.0
 
+func boundBounceBack():
+	var realMathAngle: float
+	var boundTheta: float
+	if position.y < 0:
+		boundTheta = acos(position.x / sqrt(pow(position.x,2) + pow(position.y,2)))
+	else:
+		boundTheta = -acos(position.x / sqrt(pow(position.x,2) + pow(position.y,2)))
+	
+	realMathAngle = -rotation + PI/2
+	
+	realMathAngle = realMathAngle - ((realMathAngle - PI) - (2 * ((boundTheta - PI) + PI/2) - (realMathAngle - PI)))
+	
+	rotation = -(realMathAngle - PI/2)
+
 func bounceBack(xboss,yboss):
 	var bounceAngle = 0.0
 	var difX = position.x - xboss
