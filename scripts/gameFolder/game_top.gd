@@ -24,6 +24,7 @@ var first_impact: bool = true
 @onready var crasher_area_2d = $CrasherArea2D
 @onready var spray = $SprayNode2D
 @onready var fling = $FlingNode2D
+@onready var gob = $GobNode2D
 
 
 func _ready():
@@ -34,6 +35,8 @@ func _ready():
 		spray.queue_free()
 	if Global.curDroneNumber != 3:
 		fling.queue_free()
+	if Global.curDroneNumber != 4:
+		gob.queue_free()
 	
 	if Global.curDroneNumber == 1:
 		drone = $CrasherArea2D
@@ -41,6 +44,8 @@ func _ready():
 		drone = $SprayNode2D/Spray
 	elif Global.curDroneNumber == 3:
 		drone = $FlingNode2D/Fling
+	elif Global.curDroneNumber == 4:
+		drone = $GobNode2D/Gob
 
 	
 	
