@@ -1,5 +1,7 @@
 extends Node
 
+var enemiesOnGob: float = 0
+
 var explodeShotAmount: int = 8
 
 var explodeBoogers: bool = true
@@ -155,6 +157,8 @@ var currentDrone: String = "Crash"
 var curBaseNumber: int = 1
 var curDroneNumber: int = 1
 
+var gobXMovement: float = 0.0
+var gobYMovement: float = 0.0
 
 func addXP(num):
 	xpAmount += num * difficulty

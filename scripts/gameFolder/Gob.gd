@@ -1,6 +1,6 @@
 extends Area2D
 @onready var cpu_particles_2d = $GobSprite/CPUParticles2D
-
+const DECAYING_GREEN_SPOT = preload("res://scenes/boogers/decaying_booger_area.tscn")
 
 var clockwise: float = 1
 
@@ -47,6 +47,7 @@ var firstTimeMoving: bool = true
 func _process(delta):
 	
 	if !Global.startCrasher && Global.crashStarted && firstTimeMoving:
+		cpu_particles_2d.emitting = true
 		sinFunctionProg = rotation
 		firstTimeMoving = false
 	
@@ -67,6 +68,26 @@ func _process(delta):
 			reset_stats()
 			firstCrashTimeout = false
 			Global.gameTimeScale = 0.0
+			
+			var i: int = 0
+			var theta: float = 0.0
+			while i < int(Global.enemiesOnGob * 2) + 2:
+				var greenspot = DECAYING_GREEN_SPOT.instantiate()
+				
+				get_parent().add_child.call_deferred(greenspot)
+				var x1: float = position.x
+				var y1: float = position.y
+				
+				var snout_length = sqrt((x1 * x1) + (y1 * y1))
+				
+				if y1 < 0:
+					theta = acos(x1 / snout_length) + randf_range(-PI,PI)
+				else:
+					theta = 2 * PI -  acos(x1 / snout_length)  + randf_range(-PI,PI)
+				
+				greenspot.set_motion(x1,y1,theta,1,10.0 / Global.enemiesOnGob)
+				i += 1
+			Global.enemiesOnGob = 0
 	
 	if Global.gameOver:
 		Global.softCam = true
@@ -107,6 +128,8 @@ func _process(delta):
 		
 		position.x += delta * Global.gameTimeScale * force * sin(rotation) * speedScale
 		position.y -= delta * Global.gameTimeScale * force * cos(rotation) * speedScale
+		Global.gobXMovement = delta * Global.gameTimeScale * force * sin(rotation) * speedScale
+		Global.gobYMovement = -(delta * Global.gameTimeScale * force * cos(rotation) * speedScale)
 		
 		length_out = sqrt((position.x * position.x) + (position.y * position.y))
 		
@@ -118,6 +141,8 @@ func _process(delta):
 		if length_out > 4400:
 			position.x -= delta * Global.gameTimeScale * inPull * sin(top_rotation + PI/2) * (length_out - 4400)
 			position.y -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4400)
+			Global.gobXMovement -= delta * Global.gameTimeScale * inPull * sin(top_rotation + PI/2) * (length_out - 4400)
+			Global.gobYMovement -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4400)
 
 func _on_area_entered(area):
 	if area.is_in_group("Player") && Global.crashStarted && !Global.startCrasher && Global.crashTime > 0:

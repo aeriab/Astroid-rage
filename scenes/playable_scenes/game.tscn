@@ -1655,7 +1655,7 @@ shape = SubResource("CircleShape2D_chnob")
 
 [node name="GobNode2D" type="Node2D" parent="."]
 
-[node name="Gob" type="Area2D" parent="GobNode2D" groups=["Crasher", "Gob"]]
+[node name="Gob" type="Area2D" parent="GobNode2D" groups=["Gob"]]
 script = ExtResource("67_2s431")
 
 [node name="GobSprite" type="Sprite2D" parent="GobNode2D/Gob"]
@@ -1666,6 +1666,7 @@ texture = ExtResource("68_jf2pk")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="GobNode2D/Gob/GobSprite"]
 z_index = -1
 position = Vector2(0, 153.257)
+emitting = false
 amount = 16
 lifetime = 2.0
 speed_scale = 2.0
