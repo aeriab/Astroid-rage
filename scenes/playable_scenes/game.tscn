@@ -1655,6 +1655,13 @@ shape = SubResource("CircleShape2D_chnob")
 z_index = 2
 script = ExtResource("67_2s431")
 
+[node name="GobOutline" type="Sprite2D" parent="GobNode2D/Gob"]
+material = SubResource("ShaderMaterial_ih00v")
+rotation = -1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("66_xjgm5")
+script = ExtResource("22_i2wgh")
+
 [node name="GobSprite" type="Sprite2D" parent="GobNode2D/Gob"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("68_jf2pk")
@@ -1684,13 +1691,6 @@ color_ramp = SubResource("Gradient_7iu7d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GobNode2D/Gob"]
 shape = SubResource("CircleShape2D_chnob")
-
-[node name="GobOutline" type="Sprite2D" parent="GobNode2D/Gob"]
-material = SubResource("ShaderMaterial_ih00v")
-rotation = -1.5708
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("66_xjgm5")
-script = ExtResource("22_i2wgh")
 
 [node name="RadialBackground" type="Sprite2D" parent="."]
 z_index = -10

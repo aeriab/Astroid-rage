@@ -134,7 +134,7 @@ func _on_area_entered(area):
 		area.setFreeSequence()
 		addDamage()
 	
-	if area.is_in_group("Crasher"):
+	if area.is_in_group("Crasher") || area.is_in_group("Gob"):
 		area.bounceBack(position.x,position.y)
 	 
 	if area.is_in_group("Player"):
