@@ -17,7 +17,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
 point_count = 2
 
 [node name="SpiralEnemy" type="Area2D" groups=["Enemy"]]
-z_index = 3
+z_index = 1
 material = SubResource("ShaderMaterial_820yo")
 script = ExtResource("2_q2d51")
 

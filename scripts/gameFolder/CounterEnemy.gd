@@ -38,6 +38,9 @@ var difficulty: float = 1.0
 @onready var splatcho_enemy = $SplatchoEnemy
 var randEnSprite: int
 
+var stopMoving: bool = false
+var alreadyFree: bool = false
+
 func _ready():
 	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
@@ -97,7 +100,23 @@ func _physics_process(delta):
 	y -= -sin(angleHeading) * SPEED * delta * Global.gameTimeScale
 	rotation = -angleHeading + PI
 	
-	position = Vector2(x,y)
+	if !stopMoving:
+		position = Vector2(x,y)
+	else:
+		moveWithGob()
+	
+	if !Global.crashStarted && stopMoving && !alreadyFree:
+		Global.decreaseEnemyNum()
+		Global.addXP(xpAmount)
+		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+		pointsNotif.position = Vector2 (x,y)
+		points = sizeOfEnemy * 100
+		Global.points += int(points)
+		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		get_parent().add_child.call_deferred(pointsNotif)
+		setFreeSequence()
+		alreadyFree = true
+	
 	time_ellapsed += delta * 5 * Global.gameTimeScale
 	if shader_alpha != 1.0:
 		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
@@ -116,15 +135,22 @@ func addDamage():
 	shader_value = clamp(shader_value,0.0,1.0)
 	material.set_shader_parameter("damage_value",shader_value)
 	if shader_value >= 0.9:
-		Global.decreaseEnemyNum()
-		Global.addXP(xpAmount)
-		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
-		pointsNotif.position = Vector2 (x,y)
-		points = sizeOfEnemy * 100
-		Global.points += int(points)
-		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
-		get_parent().add_child.call_deferred(pointsNotif)
-		setFreeSequence()
+		if !alreadyFree:
+			Global.decreaseEnemyNum()
+			Global.addXP(xpAmount)
+			var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+			pointsNotif.position = Vector2 (x,y)
+			points = sizeOfEnemy * 100
+			Global.points += int(points)
+			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+			get_parent().add_child.call_deferred(pointsNotif)
+			setFreeSequence()
+			alreadyFree = true
+
+func moveWithGob():
+	x += Global.gobXMovement
+	y += Global.gobYMovement
+	position = Vector2(x,y)
 
 func _on_area_entered(area):
 	if area.is_in_group("BoogerArea"):
@@ -133,23 +159,31 @@ func _on_area_entered(area):
 		if area.is_in_group("SprayArea"):
 			addDamage()
 	
+	if area.is_in_group("Gob"):
+		Global.enemiesOnGob += 1.0
+		stopMoving = true
+	
 	if area.is_in_group("Crasher"):
 		if area.is_in_group("Fling"):
 			area.bounceBack(position.x,position.y)
-		Global.decreaseEnemyNum()
-		Global.addXP(xpAmount)
-		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
-		pointsNotif.position = Vector2 (x,y)
-		points = sizeOfEnemy * 100
-		Global.points += int(points)
-		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
-		get_parent().add_child.call_deferred(pointsNotif)
-		setFreeSequence()
+		if !alreadyFree:
+			Global.decreaseEnemyNum()
+			Global.addXP(xpAmount)
+			var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+			pointsNotif.position = Vector2 (x,y)
+			points = sizeOfEnemy * 100
+			Global.points += int(points)
+			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+			get_parent().add_child.call_deferred(pointsNotif)
+			setFreeSequence()
+			alreadyFree = true
 	 
 	if area.is_in_group("Player"):
-		Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
-		Global.enemyNum -= 1
-		setFreeSequence()
+		if !alreadyFree:
+			Global.decreaseHealth(sizeOfEnemy - (sizeOfEnemy * shader_value))
+			Global.enemyNum -= 1
+			setFreeSequence()
+			alreadyFree = true
 
 func setFreeSequence():
 	enemyIsDead = true
