@@ -209,6 +209,7 @@ scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
 [node name="Tank" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
 script = ExtResource("2_8ueva")
@@ -731,6 +732,7 @@ script = ExtResource("5_t80kh")
 wait_time = 0.2
 
 [node name="Ball" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Ball" groups=["Player"]]
 script = ExtResource("12_epxfo")
@@ -783,6 +785,7 @@ texture = ExtResource("14_isajk")
 script = ExtResource("15_sxemg")
 
 [node name="Mark" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Mark" groups=["Player"]]
 script = ExtResource("12_u42q4")
@@ -835,6 +838,7 @@ script = ExtResource("18_ca8qa")
 script = ExtResource("15_mxfnp")
 
 [node name="Lazy" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Lazy" groups=["Player"]]
 rotation = -1.57079
@@ -1520,6 +1524,7 @@ texture = ExtResource("14_rfjs2")
 script = ExtResource("15_1r5es")
 
 [node name="HealthLazer" type="Sprite2D" parent="HealthBarRed"]
+visible = false
 material = SubResource("ShaderMaterial_6ofoq")
 position = Vector2(-480, 0)
 scale = Vector2(0.229, 0.229)
@@ -1650,6 +1655,7 @@ texture = ExtResource("65_rvxsy")
 shape = SubResource("CircleShape2D_chnob")
 
 [node name="GobNode2D" type="Node2D" parent="."]
+visible = false
 
 [node name="Gob" type="Area2D" parent="GobNode2D" groups=["Gob"]]
 z_index = 2

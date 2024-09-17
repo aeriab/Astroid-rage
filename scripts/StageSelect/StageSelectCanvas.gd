@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var stageSelecting: int
-var MAX_STAGE: int = 4
+var MAX_STAGE: int = 10
 @onready var stage_words = $StageWords
 @onready var left_stage_arrow = $LeftStageArrow
 @onready var right_stage_arrow = $RightStageArrow
@@ -101,6 +101,10 @@ var MAX_STAGE: int = 4
 @onready var dark_star_particle_7 = $DarkStarParticle7
 @onready var star_particle_7 = $DarkStarParticle7/StarParticle7
 
+@onready var base_select = $BaseSelect
+
+@onready var drone_select = $DroneSelect
+
 
 func _ready():
 	bupgrade_1.star_count = Global.num_base_stars1
@@ -115,6 +119,8 @@ func _ready():
 	dupgrade_4.star_count = Global.num_drone_stars4
 	dupgrade_5.star_count = Global.num_drone_stars5
 	
+	base_select.updateBaseName()
+	drone_select.updateDroneName()
 	
 	Global.unspentPoints = Global.Stage1StarsAchieved + Global.Stage2StarsAchieved + Global.Stage3StarsAchieved + Global.Stage4StarsAchieved - (bupgrade_1.star_count+bupgrade_2.star_count+bupgrade_3.star_count+bupgrade_4.star_count+bupgrade_5.star_count + dupgrade_1.star_count+dupgrade_2.star_count+dupgrade_3.star_count+dupgrade_4.star_count+dupgrade_5.star_count)
 	
@@ -126,6 +132,18 @@ func _ready():
 		stageSelecting = 3
 	elif Global.current_stage == "Swirly Swamp":
 		stageSelecting = 4
+	elif Global.current_stage == "Offset Ocean":
+		stageSelecting = 5
+	elif Global.current_stage == "Serpent Sea":
+		stageSelecting = 6
+	elif Global.current_stage == "Baffle Bay":
+		stageSelecting = 7
+	elif Global.current_stage == "Conic Cove":
+		stageSelecting = 8
+	elif Global.current_stage == "Steamy Stream":
+		stageSelecting = 9
+	elif Global.current_stage == "Massive Marsh":
+		stageSelecting = 10
 
 func resetStarParticles():
 	star_particle_1.visible = false
@@ -140,11 +158,23 @@ func resetStarParticles():
 @onready var stage_2_sprites = $Stage2Sprites
 @onready var stage_3_sprites = $Stage3Sprites
 @onready var stage_4_sprites = $Stage4Sprites
+@onready var stage_5_sprites = $Stage3Sprites
+@onready var stage_6_sprites = $Stage4Sprites
+@onready var stage_7_sprites = $Stage3Sprites
+@onready var stage_8_sprites = $Stage4Sprites
+@onready var stage_9_sprites = $Stage3Sprites
+@onready var stage_10_sprites = $Stage4Sprites
 @onready var stage_select_back = $"../StageSelectBack"
 const STAGE_SELECT_BACK_S_1 = preload("res://assets/StageSelectBack/StageSelectBackS1.png")
 const STAGE_SELECT_BACK_S_2 = preload("res://assets/StageSelectBack/StageSelectBackS2.png")
 const STAGE_SELECT_BACK_S_3 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
 const STAGE_SELECT_BACK_S_4 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
+const STAGE_SELECT_BACK_S_5 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
+const STAGE_SELECT_BACK_S_6 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
+const STAGE_SELECT_BACK_S_7 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
+const STAGE_SELECT_BACK_S_8 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
+const STAGE_SELECT_BACK_S_9 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
+const STAGE_SELECT_BACK_S_10 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
 
 func _process(_delta):
 	checkBaseStars()
@@ -216,17 +246,13 @@ func _process(_delta):
 		if Global.Stage3StarsAchieved >= 5:
 			star_particle_6.visible = true
 	elif stageSelecting == 4:
-		
-		stage_1_sprites.visible = false
-		stage_2_sprites.visible = false
-		stage_3_sprites.visible = false
+		hideStageSprites()
 		stage_4_sprites.visible = true
 		stage_select_back.texture = STAGE_SELECT_BACK_S_4
-		
 		Global.waveNum = 7
 		Global.current_stage = "Swirly Swamp"
-		stage_words.text = "Stage 4: Swirly Swamp"
-		right_stage_arrow.visible = false
+		Global.stage_index = 4
+		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
 		resetStarParticles()
 		if Global.Stage4StarsAchieved >= 1:
 			star_particle_1.visible = true
@@ -241,6 +267,117 @@ func _process(_delta):
 		if Global.Stage4StarsAchieved >= 6:
 			star_particle_6.visible = true
 		if Global.Stage4StarsAchieved >= 7:
+			star_particle_7.visible = true
+	elif stageSelecting == 5:
+		hideStageSprites()
+		stage_5_sprites.visible = true
+		stage_select_back.texture = STAGE_SELECT_BACK_S_5
+		Global.waveNum = 5
+		Global.current_stage = "Offset Ocean"
+		Global.stage_index = 5
+		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		resetStarParticles()
+		if Global.Stage5StarsAchieved >= 1:
+			star_particle_2.visible = true
+		if Global.Stage5StarsAchieved >= 2:
+			star_particle_3.visible = true
+		if Global.Stage5StarsAchieved >= 3:
+			star_particle_4.visible = true
+		if Global.Stage5StarsAchieved >= 4:
+			star_particle_5.visible = true
+		if Global.Stage5StarsAchieved >= 5:
+			star_particle_6.visible = true
+	elif stageSelecting == 6:
+		hideStageSprites()
+		stage_6_sprites.visible = true
+		stage_select_back.texture = STAGE_SELECT_BACK_S_6
+		Global.waveNum = 3
+		Global.current_stage = "Serpent Sea"
+		Global.stage_index = 6
+		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		resetStarParticles()
+		if Global.Stage6StarsAchieved >= 1:
+			star_particle_3.visible = true
+		if Global.Stage6StarsAchieved >= 2:
+			star_particle_4.visible = true
+		if Global.Stage6StarsAchieved >= 3:
+			star_particle_5.visible = true
+	elif stageSelecting == 7:
+		hideStageSprites()
+		stage_7_sprites.visible = true
+		stage_select_back.texture = STAGE_SELECT_BACK_S_7
+		Global.waveNum = 3
+		Global.current_stage = "Baffle Bay"
+		Global.stage_index = 7
+		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		resetStarParticles()
+		if Global.Stage7StarsAchieved >= 1:
+			star_particle_3.visible = true
+		if Global.Stage7StarsAchieved >= 2:
+			star_particle_4.visible = true
+		if Global.Stage7StarsAchieved >= 3:
+			star_particle_5.visible = true
+	elif stageSelecting == 8:
+		hideStageSprites()
+		stage_8_sprites.visible = true
+		stage_select_back.texture = STAGE_SELECT_BACK_S_8
+		Global.waveNum = 5
+		Global.current_stage = "Conic Cove"
+		Global.stage_index = 8
+		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		resetStarParticles()
+		if Global.Stage8StarsAchieved >= 1:
+			star_particle_2.visible = true
+		if Global.Stage8StarsAchieved >= 2:
+			star_particle_3.visible = true
+		if Global.Stage8StarsAchieved >= 3:
+			star_particle_4.visible = true
+		if Global.Stage8StarsAchieved >= 4:
+			star_particle_5.visible = true
+		if Global.Stage8StarsAchieved >= 5:
+			star_particle_6.visible = true
+	elif stageSelecting == 9:
+		hideStageSprites()
+		stage_9_sprites.visible = true
+		stage_select_back.texture = STAGE_SELECT_BACK_S_9
+		Global.waveNum = 5
+		Global.current_stage = "Steamy Stream"
+		Global.stage_index = 9
+		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		resetStarParticles()
+		if Global.Stage9StarsAchieved >= 1:
+			star_particle_2.visible = true
+		if Global.Stage9StarsAchieved >= 2:
+			star_particle_3.visible = true
+		if Global.Stage9StarsAchieved >= 3:
+			star_particle_4.visible = true
+		if Global.Stage9StarsAchieved >= 4:
+			star_particle_5.visible = true
+		if Global.Stage9StarsAchieved >= 5:
+			star_particle_6.visible = true
+	elif stageSelecting == 10:
+		hideStageSprites()
+		stage_10_sprites.visible = true
+		stage_select_back.texture = STAGE_SELECT_BACK_S_10
+		Global.waveNum = 7
+		Global.current_stage = "Massive Marsh"
+		Global.stage_index = 10
+		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		right_stage_arrow.visible = false
+		resetStarParticles()
+		if Global.Stage10StarsAchieved >= 1:
+			star_particle_1.visible = true
+		if Global.Stage10StarsAchieved >= 2:
+			star_particle_2.visible = true
+		if Global.Stage10StarsAchieved >= 3:
+			star_particle_3.visible = true
+		if Global.Stage10StarsAchieved >= 4:
+			star_particle_4.visible = true
+		if Global.Stage10StarsAchieved >= 5:
+			star_particle_5.visible = true
+		if Global.Stage10StarsAchieved >= 6:
+			star_particle_6.visible = true
+		if Global.Stage10StarsAchieved >= 7:
 			star_particle_7.visible = true
 	
 	if Global.waveNum == 3:
@@ -259,6 +396,18 @@ func _process(_delta):
 		dark_star_particle_6.visible = true
 		dark_star_particle_7.visible = true
 
+
+func hideStageSprites():
+	stage_1_sprites.visible = false
+	stage_2_sprites.visible = false
+	stage_3_sprites.visible = false
+	stage_4_sprites.visible = false
+	stage_5_sprites.visible = false
+	stage_6_sprites.visible = false
+	stage_7_sprites.visible = false
+	stage_8_sprites.visible = false
+	stage_9_sprites.visible = false
+	stage_10_sprites.visible = false
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/playable_scenes/game.tscn")

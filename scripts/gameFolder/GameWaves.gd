@@ -60,214 +60,167 @@ var firstSp5: bool = true
 var firstSp6: bool = true
 var firstSp7: bool = true
 
+var waveFinishedCreating: bool = false
+
 func _process(delta):
 	
 	if Global.current_stage == "Learner Lagoon":
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalMultiSpawn(50,"red",0.3)
+			generalMultiSpawn(20,"red",0.5,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
-			generalMultiSpawn(5,"swirl",3)
+			generalMultiSpawn(10,"swirl",3,true,10)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
-			generalMultiSpawn(20,"red",2)
-			generalMultiSpawn2(7,"swirld",3)
+			generalMultiSpawn(30,"red",0.8,false,10)
+			generalMultiSpawn2(10,"swirl",3,true)
 	
 	if Global.current_stage == "Perfect Pond":
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
 			generalPerfSpawn(15,"purple")
+			generalMultiSpawn(5,"zag",0.5,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
 			generalPerfSpawn(10,"swirl")
-			generalMultiSpawn(10,"red",2)
+			generalMultiSpawn(10,"red",2,true,10)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
-			generalMultiSpawn(10,"purple",1.5)
+			generalMultiSpawn(10,"purple",1.5,false,10)
 			generalPerfSpawn(20,"zag")
-			generalMultiSpawn2(2,"bulk",5)
+			generalMultiSpawn2(2,"bulk",5,true)
 	
 	if Global.current_stage == "Giga Geyser":
 		if onWave == 2 && firstSp2:
 			firstSp2 = false
-			generalMultiSpawn(1,"boss",5)
+			generalMultiSpawn(1,"boss",5,true,10)
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
 			generalPerfSpawn(35,"purple")
-			generalMultiSpawn(10,"zag",1.5)
+			generalMultiSpawn(10,"zag",1.5,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
 			generalPerfSpawn(10,"swirl")
-			generalMultiSpawn(10,"red",1.5)
-			generalMultiSpawn2(3,"boss",5)
+			generalMultiSpawn(10,"red",1.5,false,10)
+			generalMultiSpawn2(3,"boss",5,true)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
-			generalMultiSpawn(10,"zag",1.5)
+			generalMultiSpawn(10,"zag",1.5,true,10)
 			generalPerfSpawn(8,"bulk")
 		if onWave == 6 && firstSp6:
 			firstSp6 = false
 			generalPerfSpawn(5,"boss")
-			generalMultiSpawn(10,"swirl",1.5)
-	
+			generalMultiSpawn(10,"swirl",1.5,true,10)
+	#
 	if Global.current_stage == "Swirly Swamp":
 		if onWave == 1 && firstSp1:
 			firstSp1 = false
-			generalMultiSpawn(1,"counter",5)
+			generalMultiSpawn(1,"counter",5,true,10)
 		if onWave == 2 && firstSp2:
 			firstSp2 = false
-			generalMultiSpawn(20,"red",1.5)
-			generalMultiSpawn2(3,"boss",5)
+			generalMultiSpawn(20,"red",1.5,false,10)
+			generalMultiSpawn2(3,"boss",5,true)
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
 			generalPerfSpawn(5,"counter")
-			generalMultiSpawn(10,"zag",1.5)
+			generalMultiSpawn(10,"zag",1.5,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
 			generalPerfSpawn(3,"bulk")
-			generalMultiSpawn2(3,"boss",5)
+			generalMultiSpawn(3,"boss",5,true,10)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
-			generalMultiSpawn(35,"zag",0.5)
+			generalMultiSpawn(35,"zag",0.5,true,10)
 			generalPerfSpawn(1,"boss")
 		if onWave == 6 && firstSp6:
 			firstSp6 = false
 			generalPerfSpawn(5,"counter")
-			generalMultiSpawn(20,"swirl",0.5)
+			generalMultiSpawn(20,"swirl",0.5,true,10)
 		if onWave == 7 && firstSp7:
 			firstSp7 = false
-			generalMultiSpawn(100,"red",0.2)
+			generalMultiSpawn(100,"red",0.2,true,10)
 			generalPerfSpawn(6,"boss")
 	
-	if onWave == 1:
-		wave_time_1 += delta * Global.gameTimeScale
-		if wave_time_1 >= Global.wave1Wait:
-			wave_time_1 = Global.wave1Wait
-			if firstW1:
-				wave_timer_1_timeout()
-				firstW1 = false
-	elif onWave == 2:
-		wave_time_2 += delta * Global.gameTimeScale
-		if wave_time_2 >= Global.wave2Wait:
-			wave_time_2 = Global.wave2Wait
-			if firstW2:
-				wave_timer_2_timeout()
-				firstW2 = false
-	elif onWave == 3:
-		wave_time_3 += delta * Global.gameTimeScale
-		if wave_time_3 >= Global.wave3Wait:
-			wave_time_3 = Global.wave3Wait
-			if firstW3:
-				wave_timer_3_timeout()
-				firstW3 = false
-	elif onWave == 4:
-		wave_time_4 += delta * Global.gameTimeScale
-		if wave_time_4 >= Global.wave4Wait:
-			wave_time_4 = Global.wave4Wait
-			if firstW4:
-				wave_timer_4_timeout()
-				firstW4 = false
-	elif onWave == 5:
-		wave_time_5 += delta * Global.gameTimeScale
-		if wave_time_5 >= Global.wave5Wait:
-			wave_time_5 = Global.wave5Wait
-			if firstW5:
-				wave_timer_5_timeout()
-				firstW5 = false
-	elif onWave == 6:
-		wave_time_6 += delta * Global.gameTimeScale
-		if wave_time_6 >= Global.wave6Wait:
-			wave_time_6 = Global.wave6Wait
-			if firstW6:
-				wave_timer_6_timeout()
-				firstW6 = false
-	elif onWave == 7:
-		wave_time_7 += delta * Global.gameTimeScale
-		if wave_time_7 >= Global.wave7Wait:
-			wave_time_7 = Global.wave7Wait
-			if firstW7:
-				wave_timer_7_timeout()
-				firstW7 = false
-	
-	
-	
-	if onWave == 0 || onWave == 1:
-		Global.firstWaveProgress = (wave_time_1 / Global.wave1Wait) * 100
-	elif onWave == 2:
-		Global.secondWaveProgress = (wave_time_2 / Global.wave2Wait) * 100
-	elif onWave == 3:
-		Global.thirdWaveProgress = (wave_time_3 / Global.wave3Wait) * 100
-	elif onWave == 4:
-		Global.fourthWaveProgress = (wave_time_4 / Global.wave4Wait) * 100
-	elif onWave == 5:
-		Global.fifthWaveProgress = (wave_time_5 / Global.wave5Wait) * 100
-	elif onWave == 6:
-		Global.sixthWaveProgress = (wave_time_6 / Global.wave6Wait) * 100
-	elif onWave == 7:
-		Global.seventhWaveProgress = (wave_time_7 / Global.wave7Wait) * 100
+	if waveFinishedCreating:
+		endWaveWait -= delta * Global.gameTimeScale
 	
 	if starEn1 == null:
 		if onWave == 1:
 			Global.firstWaveProgress = 101
-			onWave = 2
+			if endWaveWait <= 0:
+				onWave = 2
 	elif !starEn1.isAlive:
 		if onWave == 1:
 			Global.firstWaveProgress = 101
-			onWave = 2
+			if endWaveWait <= 0:
+				onWave = 2
 	
 	if starEn2 == null:
 		if onWave == 2:
 			Global.secondWaveProgress = 101
-			onWave = 3
+			if endWaveWait <= 0:
+				onWave = 3
 	elif !starEn2.isAlive:
 		if onWave == 2:
 			Global.secondWaveProgress = 101
-			onWave = 3
+			if endWaveWait <= 0:
+				onWave = 3
 	
 	if starEn3 == null:
 		if onWave == 3:
 			Global.thirdWaveProgress = 101
-			onWave = 4
+			if endWaveWait <= 0:
+				onWave = 4
 	elif !starEn3.isAlive:
 		if onWave == 3:
 			Global.thirdWaveProgress = 101
-			onWave = 4
+			if endWaveWait <= 0:
+				onWave = 4
 	
 	if starEn4 == null:
 		if onWave == 4:
 			Global.fourthWaveProgress = 101
-			onWave = 5
+			if endWaveWait <= 0:
+				onWave = 5
 	elif !starEn4.isAlive:
 		if onWave == 4:
 			Global.fourthWaveProgress = 101
-			onWave = 5
+			if endWaveWait <= 0:
+				onWave = 5
 	
 	if starEn5 == null:
 		if onWave == 5:
 			Global.fifthWaveProgress = 101
-			onWave = 6
+			if endWaveWait <= 0:
+				onWave = 6
 	elif !starEn5.isAlive:
 		if onWave == 5:
 			Global.fifthWaveProgress = 101
-			onWave = 6
+			if endWaveWait <= 0:
+				onWave = 6
 	
 	if starEn6 == null:
 		if onWave == 6:
 			Global.sixthWaveProgress = 101
-			onWave = 7
+			if endWaveWait <= 0:
+				onWave = 7
 	elif !starEn6.isAlive:
 		if onWave == 6:
 			Global.sixthWaveProgress = 101
-			onWave = 7
+			if endWaveWait <= 0:
+				onWave = 7
 	
 	if starEn7 == null:
 		if onWave == 7:
 			Global.seventhWaveProgress = 101
-			onWave = 8
+			if endWaveWait <= 0:
+				onWave = 8
 	elif !starEn7.isAlive:
 		if onWave == 7:
 			Global.seventhWaveProgress = 101
-			onWave = 8
+			if endWaveWait <= 0:
+				onWave = 8
 
 
 
@@ -291,6 +244,9 @@ var genEnemy = "red"
 var nextEnAmount2 = 0
 var genEnemy2 = "red"
 
+var waveEndHere: bool = false
+var endWaveWait: float = 5.0
+var waveEndHere2: bool = false
 
 func _on_next_en_timer_timeout():
 	if genEnemy == "red":
@@ -309,15 +265,21 @@ func _on_next_en_timer_timeout():
 		spawnCounterEnemy()
 	
 	if nextEnAmount >= 1:
+		if nextEnAmount == 1 && waveEndHere:
+			waveFinishedCreating = true
+			spawnStarEnemy()
 		nextEnAmount -= 1
 	else:
 		next_en_timer.stop()
 
-func generalMultiSpawn(amount,enemy,delay):
+func generalMultiSpawn(amount,enemy,delay,isWaveEnd,timeNextWave):
+	waveFinishedCreating = false
 	next_en_timer.wait_time = delay
 	nextEnAmount = amount
 	genEnemy = enemy
 	next_en_timer.start()
+	waveEndHere = isWaveEnd
+	endWaveWait = timeNextWave
 
 @onready var next_en_timer_2 = $NextEnTimer2
 
@@ -338,15 +300,19 @@ func _on_next_en_timer_2_timeout():
 		spawnCounterEnemy()
 	
 	if nextEnAmount2 >= 1:
+		if nextEnAmount2 == 1 && waveEndHere2:
+			waveFinishedCreating = true
+			spawnStarEnemy()
 		nextEnAmount2 -= 1
 	else:
 		next_en_timer_2.stop()
 
-func generalMultiSpawn2(amount,enemy,delay):
+func generalMultiSpawn2(amount,enemy,delay,isWaveEnd):
 	next_en_timer_2.wait_time = delay
 	nextEnAmount2 = amount
 	genEnemy2 = enemy
 	next_en_timer_2.start()
+	waveEndHere2 = isWaveEnd
 
 
 func generalPerfSpawn(amount,enemy):
@@ -420,10 +386,6 @@ func spawnZagEnemy():
 	var enemy = ZAG_ENEMY.instantiate()
 	spawnGeneral(enemy)
 
-func spawnStarEnemy():
-	var enemy = STAR_ENEMY.instantiate()
-	spawnGeneral(enemy)
-
 func spawnBulkEnemy():
 	var enemy = BULK_ENEMY.instantiate()
 	spawnGeneral(enemy)
@@ -436,80 +398,30 @@ func spawnCounterEnemy():
 	var enemy = COUNTER_ENEMY.instantiate()
 	spawnGeneral(enemy)
 
-
-
-
-func wave_timer_1_timeout():
+func spawnStarEnemy():
 	theta = randf_range(0.0, 6.283)
 	if theta >= PI/2 && theta <= 3 * PI / 2:
 		flipSprite = 1
 	else:
 		flipSprite = -1
-	starEn1.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
-	get_parent().add_child.call_deferred(starEn1)
-	onWave = 1
-
-
-func wave_timer_2_timeout():
-	theta = randf_range(0.0, 6.283)
-	if theta >= PI/2 && theta <= 3 * PI / 2:
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	starEn2.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
-	get_parent().add_child.call_deferred(starEn2)
-
-
-func wave_timer_3_timeout():
-	theta = randf_range(0.0, 6.283)
-	if theta >= PI/2 && theta <= 3 * PI / 2:
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	starEn3.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
-	get_parent().add_child.call_deferred(starEn3)
-
-
-func wave_timer_4_timeout():
-	theta = randf_range(0.0, 6.283)
-	if theta >= PI/2 && theta <= 3 * PI / 2:
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	starEn4.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
-	get_parent().add_child.call_deferred(starEn4)
-
-
-func wave_timer_5_timeout():
-	theta = randf_range(0.0, 6.283)
-	if theta >= PI/2 && theta <= 3 * PI / 2:
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	starEn5.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
-	get_parent().add_child.call_deferred(starEn5)
-
-
-func wave_timer_6_timeout():
-	theta = randf_range(0.0, 6.283)
-	if theta >= PI/2 && theta <= 3 * PI / 2:
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	starEn6.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
-	get_parent().add_child.call_deferred(starEn6)
-
-
-func wave_timer_7_timeout():
-	theta = randf_range(0.0, 6.283)
-	if theta >= PI/2 && theta <= 3 * PI / 2:
-		flipSprite = 1
-	else:
-		flipSprite = -1
-	starEn7.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
-	get_parent().add_child.call_deferred(starEn7)
-
-
-
-
-
+	if onWave == 1:
+		starEn1.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+		get_parent().add_child.call_deferred(starEn1)
+	if onWave == 2:
+		starEn2.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+		get_parent().add_child.call_deferred(starEn2)
+	if onWave == 3:
+		starEn3.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+		get_parent().add_child.call_deferred(starEn3)
+	if onWave == 4:
+		starEn4.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+		get_parent().add_child.call_deferred(starEn4)
+	if onWave == 5:
+		starEn5.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+		get_parent().add_child.call_deferred(starEn5)
+	if onWave == 6:
+		starEn6.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+		get_parent().add_child.call_deferred(starEn6)
+	if onWave == 7:
+		starEn7.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+		get_parent().add_child.call_deferred(starEn7)

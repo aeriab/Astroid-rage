@@ -27,6 +27,7 @@ var first_impact: bool = true
 @onready var gob = $GobNode2D
 
 
+
 func _ready():
 	
 	if Global.curDroneNumber != 1:
@@ -40,12 +41,16 @@ func _ready():
 	
 	if Global.curDroneNumber == 1:
 		drone = $CrasherArea2D
+		crasher_area_2d.visible = true
 	elif Global.curDroneNumber == 2:
 		drone = $SprayNode2D/Spray
+		spray.visible = true
 	elif Global.curDroneNumber == 3:
 		drone = $FlingNode2D/Fling
+		fling.visible = true
 	elif Global.curDroneNumber == 4:
 		drone = $GobNode2D/Gob
+		gob.visible = true
 
 	
 	
@@ -59,6 +64,16 @@ func _ready():
 		mark.queue_free()
 	if Global.curBaseNumber != 4:
 		lazy.queue_free()
+	
+	if Global.curBaseNumber == 1:
+		tank.visible = true
+	if Global.curBaseNumber == 2:
+		ball.visible = true
+	if Global.curBaseNumber == 3:
+		mark.visible = true
+	if Global.curBaseNumber == 4:
+		lazy.visible = true
+	
 	
 	if Global.curBaseNumber == 1:
 		mutation_part = $Tank/Player/mutationPart

@@ -125,6 +125,7 @@ var num_drone_stars4: int = 0
 var num_drone_stars5: int = 0
 
 var current_stage: String = "Learner Lagoon"
+var stage_index: int = 1
 var waveNum: int = 3
 
 var firstWaveProgress: float = 0
@@ -147,6 +148,12 @@ var Stage1StarsAchieved: int = 0
 var Stage2StarsAchieved: int = 0
 var Stage3StarsAchieved: int = 0
 var Stage4StarsAchieved: int = 0
+var Stage5StarsAchieved: int = 0
+var Stage6StarsAchieved: int = 0
+var Stage7StarsAchieved: int = 0
+var Stage8StarsAchieved: int = 0
+var Stage9StarsAchieved: int = 0
+var Stage10StarsAchieved: int = 0
 
 var nextBoogColor: float = 0.0
 var direction: int = 1
