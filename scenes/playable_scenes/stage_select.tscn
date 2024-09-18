@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=42 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
@@ -34,6 +34,13 @@
 [ext_resource type="Texture2D" uid="uid://dfau10tjkqlof" path="res://assets/CounterEnemy.png" id="22_mfa0j"]
 [ext_resource type="Texture2D" uid="uid://2frefqog7kq1" path="res://assets/CounterEnemySymbol (1).png" id="23_x2cgo"]
 [ext_resource type="Texture2D" uid="uid://dwtvp8gcx42a5" path="res://assets/StageSelectBack/StageSelectBackS1.png" id="24_hq3ol"]
+[ext_resource type="Texture2D" uid="uid://bgms8u43fio8r" path="res://assets/swirlEnemySprites/SwirlEnemyTriangle.png" id="34_v5dn6"]
+[ext_resource type="Texture2D" uid="uid://dmmnwgwhopfe2" path="res://assets/redEnemySprites/SplatchoEnemyDefault.png" id="35_41h27"]
+[ext_resource type="Texture2D" uid="uid://d287ouradyjyd" path="res://assets/redEnemySprites/SplatchoEnemyDumb.png" id="36_yxahn"]
+[ext_resource type="Texture2D" uid="uid://dd452ygqrpm6f" path="res://assets/redEnemySprites/SplatchoEnemyEYES.png" id="37_bqhp8"]
+[ext_resource type="Texture2D" uid="uid://col0upwvugoqr" path="res://assets/redEnemySprites/SplatchoEnemySad.png" id="38_sro3a"]
+[ext_resource type="Texture2D" uid="uid://uersu7jc2vks" path="res://assets/redEnemySprites/SplatchoEnemyNose.png" id="39_tu1fw"]
+[ext_resource type="Texture2D" uid="uid://b6v3o4pytvhde" path="res://assets/redEnemySprites/SplatchoEnemySus.png" id="40_6dbs1"]
 
 [node name="stage_select" type="Node2D"]
 
@@ -1246,6 +1253,542 @@ position = Vector2(1566, 253)
 rotation = -0.555043
 scale = Vector2(0.230841, 0.230841)
 texture = ExtResource("19_3gc6u")
+
+[node name="Stage5Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="SpiralEnemyStar2" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(56, 81)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar3" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(59, 311)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar4" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(227, 118)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar5" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(210, 392)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar6" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(375, 202)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar7" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(543, 8.99998)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar8" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(420, 406)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar9" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(598, 226)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar10" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(758, 51)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar11" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(650, 387)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar12" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(880, 128)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar13" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(907, 343)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar14" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1095, 128)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar15" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1120, 345)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar16" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1367, 360)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar17" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1557, 133)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar18" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1547, 402)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar19" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1727, 199)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar20" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1893, 17.0001)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar21" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1754, 426)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar22" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1929, 234)
+rotation = 2.35619
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="ZigZagEnemy(1)2" type="Sprite2D" parent="MainCanvas/Stage5Sprites"]
+position = Vector2(1312, 136)
+rotation = -5.49778
+scale = Vector2(0.420431, 0.420431)
+texture = ExtResource("19_3gc6u")
+
+[node name="Stage6Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(145, 255)
+rotation = -0.759299
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("17_77lvj")
+
+[node name="SwirlEnemyBoth2" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(1321, 126)
+rotation = 0.764902
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("14_nhpey")
+
+[node name="SwirlEnemyBoth3" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(936, 296)
+rotation = -2.30765
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("34_v5dn6")
+
+[node name="SwirlEnemyBoth4" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(568, 118)
+rotation = 2.25562
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("18_wnxyd")
+
+[node name="SwirlEnemyBoth5" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(1623, 309)
+rotation = 1.41038
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("17_77lvj")
+
+[node name="ZigZagEnemy(1)2" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(1593, 105)
+rotation = -1.81912
+scale = Vector2(0.322543, 0.322543)
+texture = ExtResource("19_3gc6u")
+
+[node name="ZigZagEnemy(1)3" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(916, 88)
+rotation = 0.196688
+scale = Vector2(0.202936, 0.202936)
+texture = ExtResource("19_3gc6u")
+
+[node name="ZigZagEnemy(1)8" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(636, 291)
+rotation = 2.77989
+scale = Vector2(0.202936, 0.202936)
+texture = ExtResource("19_3gc6u")
+
+[node name="ZigZagEnemy(1)4" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(1257, 295)
+rotation = -0.555043
+scale = Vector2(0.230841, 0.230841)
+texture = ExtResource("19_3gc6u")
+
+[node name="ZigZagEnemy(1)5" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(383, 317)
+rotation = -2.06952
+scale = Vector2(0.251847, 0.251847)
+texture = ExtResource("19_3gc6u")
+
+[node name="ZigZagEnemy(1)6" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(1815, 267)
+rotation = 2.49735
+scale = Vector2(0.230841, 0.230841)
+texture = ExtResource("19_3gc6u")
+
+[node name="ZigZagEnemy(1)7" type="Sprite2D" parent="MainCanvas/Stage6Sprites"]
+position = Vector2(306, 106)
+rotation = -0.960913
+scale = Vector2(0.230841, 0.230841)
+texture = ExtResource("19_3gc6u")
+
+[node name="Stage7Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="BossBoy(2)" type="Sprite2D" parent="MainCanvas/Stage7Sprites"]
+position = Vector2(1479, 305)
+scale = Vector2(0.252359, 0.252359)
+texture = ExtResource("21_24qxl")
+
+[node name="BulkEnemy" type="Sprite2D" parent="MainCanvas/Stage7Sprites"]
+position = Vector2(194, 297)
+scale = Vector2(0.20354, 0.20354)
+texture = ExtResource("10_v3quy")
+
+[node name="CounterEnemy" type="Sprite2D" parent="MainCanvas/Stage7Sprites"]
+position = Vector2(497, 295)
+scale = Vector2(0.144956, 0.144956)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage7Sprites/CounterEnemy"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="RedEnemy" type="Sprite2D" parent="MainCanvas/Stage7Sprites"]
+position = Vector2(1697, 363)
+rotation = -0.0780527
+scale = Vector2(0.161939, 0.161939)
+texture = ExtResource("9_2f42f")
+
+[node name="RedEnemy2" type="Sprite2D" parent="MainCanvas/Stage7Sprites"]
+position = Vector2(1740, 241)
+rotation = -0.0709275
+scale = Vector2(-0.162, 0.162)
+texture = ExtResource("35_41h27")
+
+[node name="RedEnemy3" type="Sprite2D" parent="MainCanvas/Stage7Sprites"]
+position = Vector2(1861, 234)
+rotation = 0.0533039
+scale = Vector2(0.161939, 0.161939)
+texture = ExtResource("36_yxahn")
+
+[node name="RedEnemy4" type="Sprite2D" parent="MainCanvas/Stage7Sprites"]
+position = Vector2(1865, 419)
+rotation = 0.130225
+scale = Vector2(0.161939, 0.161939)
+texture = ExtResource("37_bqhp8")
+
+[node name="RedEnemy5" type="Sprite2D" parent="MainCanvas/Stage7Sprites"]
+position = Vector2(1804, 332)
+rotation = 0.0857395
+scale = Vector2(-0.162, 0.162)
+texture = ExtResource("13_6t4po")
+
+[node name="Stage8Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="CounterEnemy" type="Sprite2D" parent="MainCanvas/Stage8Sprites"]
+position = Vector2(1481, 197)
+rotation = -0.154885
+scale = Vector2(0.156207, 0.156207)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage8Sprites/CounterEnemy"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage8Sprites/CounterEnemy"]
+z_index = -1
+position = Vector2(6.40039, 1011.48)
+rotation = 1.57079
+scale = Vector2(1.50734, 1.50734)
+texture = ExtResource("17_77lvj")
+
+[node name="CounterEnemy3" type="Sprite2D" parent="MainCanvas/Stage8Sprites"]
+position = Vector2(181, 171)
+rotation = 0.220467
+scale = Vector2(0.156207, 0.156207)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage8Sprites/CounterEnemy3"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage8Sprites/CounterEnemy3"]
+z_index = -1
+position = Vector2(6.40039, 1011.48)
+rotation = 1.57079
+scale = Vector2(1.50734, 1.50734)
+texture = ExtResource("17_77lvj")
+
+[node name="CounterEnemy2" type="Sprite2D" parent="MainCanvas/Stage8Sprites"]
+position = Vector2(463, 270)
+rotation = -0.0358079
+scale = Vector2(0.144956, 0.144956)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage8Sprites/CounterEnemy2"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="BulkEnemy" type="Sprite2D" parent="MainCanvas/Stage8Sprites/CounterEnemy2"]
+position = Vector2(14.6707, 939.343)
+rotation = -3.15147
+scale = Vector2(1.29909, 1.29909)
+texture = ExtResource("10_v3quy")
+
+[node name="CounterEnemy4" type="Sprite2D" parent="MainCanvas/Stage8Sprites"]
+position = Vector2(1761, 233)
+rotation = 0.0410165
+scale = Vector2(0.144956, 0.144956)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage8Sprites/CounterEnemy4"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="BulkEnemy" type="Sprite2D" parent="MainCanvas/Stage8Sprites/CounterEnemy4"]
+position = Vector2(14.6707, 939.343)
+rotation = -3.15147
+scale = Vector2(1.29909, 1.29909)
+texture = ExtResource("10_v3quy")
+
+[node name="Stage9Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="BossBoy(2)" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(306, 310)
+scale = Vector2(0.197607, 0.197607)
+texture = ExtResource("21_24qxl")
+
+[node name="BossBoy(2)2" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(957, 106)
+rotation = -3.14159
+scale = Vector2(0.197607, 0.197607)
+texture = ExtResource("21_24qxl")
+
+[node name="BossBoy(2)3" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(1629, 365)
+rotation = -6.28318
+scale = Vector2(0.197607, 0.197607)
+texture = ExtResource("21_24qxl")
+
+[node name="SplatchoEnemyUni" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(39, 236)
+rotation = -0.20367
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("37_bqhp8")
+
+[node name="SplatchoEnemyUni2" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(232, 120)
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("38_sro3a")
+
+[node name="SplatchoEnemyUni3" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(430, 123)
+rotation = 0.322836
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("11_duxm2")
+
+[node name="SplatchoEnemyUni4" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(576, 194)
+rotation = 0.53923
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("39_tu1fw")
+
+[node name="SplatchoEnemyUni5" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(714, 285)
+rotation = 0.665723
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("38_sro3a")
+
+[node name="SplatchoEnemyUni6" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(880, 337)
+rotation = 0.179508
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("11_duxm2")
+
+[node name="SplatchoEnemyUni7" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(1057, 337)
+rotation = 0.135369
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("40_6dbs1")
+
+[node name="SplatchoEnemyUni8" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(1271, 276)
+rotation = -0.202074
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("9_2f42f")
+
+[node name="SplatchoEnemyUni9" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(1436, 180)
+rotation = -0.112121
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("9_2f42f")
+
+[node name="SplatchoEnemyUni10" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(1613, 162)
+rotation = 0.165839
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("11_duxm2")
+
+[node name="SplatchoEnemyUni11" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(1771, 180)
+rotation = 0.372792
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("39_tu1fw")
+
+[node name="SplatchoEnemyUni12" type="Sprite2D" parent="MainCanvas/Stage9Sprites"]
+position = Vector2(1907, 249)
+rotation = 0.43312
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("40_6dbs1")
+
+[node name="Stage10Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
+z_index = -1
+
+[node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(170, 156)
+rotation = -0.532836
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("17_77lvj")
+
+[node name="SwirlEnemyBoth2" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(1578, 108)
+rotation = 0.35487
+scale = Vector2(0.235457, 0.235457)
+texture = ExtResource("17_77lvj")
+
+[node name="SplatchoEnemyUni" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(223, 331)
+rotation = 0.0748837
+scale = Vector2(0.262987, 0.262987)
+texture = ExtResource("13_6t4po")
+
+[node name="SplatchoEnemyUni2" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(538, 91)
+rotation = 0.0748837
+scale = Vector2(-0.263, 0.263)
+texture = ExtResource("39_tu1fw")
+
+[node name="BulkEnemy" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(1785, 274)
+rotation = 0.0748837
+scale = Vector2(0.140292, 0.140292)
+texture = ExtResource("10_v3quy")
+
+[node name="BulkEnemy2" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(354, 193)
+rotation = 0.0748837
+scale = Vector2(0.140292, 0.140292)
+texture = ExtResource("10_v3quy")
+
+[node name="CounterEnemy" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(549, 310)
+rotation = 0.345225
+scale = Vector2(0.114957, 0.114957)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage10Sprites/CounterEnemy"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="CounterEnemy2" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(1895, 56.9999)
+rotation = -0.902899
+scale = Vector2(0.144956, 0.144956)
+texture = ExtResource("22_mfa0j")
+
+[node name="CounterEnemySymbol(1)" type="Sprite2D" parent="MainCanvas/Stage10Sprites/CounterEnemy2"]
+position = Vector2(-6.89865, -68.9863)
+scale = Vector2(1.04008, 1.04008)
+texture = ExtResource("23_x2cgo")
+
+[node name="SpiralEnemyStar2" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(896, 52)
+rotation = 3.21647
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="SpiralEnemyStar3" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(1164, 135)
+rotation = 3.21647
+scale = Vector2(0.369723, -0.369723)
+texture = ExtResource("16_ljf16")
+
+[node name="ZigZagEnemy(1)2" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(700, 125)
+rotation = 0.866543
+scale = Vector2(0.230841, 0.230841)
+texture = ExtResource("19_3gc6u")
+
+[node name="ZigZagEnemy(1)3" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(1362, 262)
+rotation = -0.480159
+scale = Vector2(0.230841, 0.230841)
+texture = ExtResource("19_3gc6u")
+
+[node name="BossBoy(2)" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(61, 327)
+rotation = 0.0748837
+scale = Vector2(0.123134, 0.123134)
+texture = ExtResource("21_24qxl")
+
+[node name="BossBoy(2)2" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(1567, 289)
+rotation = 0.0748837
+scale = Vector2(0.171043, 0.171043)
+texture = ExtResource("21_24qxl")
+
+[node name="SwirlEnemySquare" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(891, 253)
+rotation = 3.44356
+scale = Vector2(0.298869, 0.298869)
+texture = ExtResource("14_nhpey")
 
 [node name="StageSelectBack" type="Sprite2D" parent="."]
 position = Vector2(951, 604)

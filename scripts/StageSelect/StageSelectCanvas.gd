@@ -158,23 +158,23 @@ func resetStarParticles():
 @onready var stage_2_sprites = $Stage2Sprites
 @onready var stage_3_sprites = $Stage3Sprites
 @onready var stage_4_sprites = $Stage4Sprites
-@onready var stage_5_sprites = $Stage3Sprites
-@onready var stage_6_sprites = $Stage4Sprites
-@onready var stage_7_sprites = $Stage3Sprites
-@onready var stage_8_sprites = $Stage4Sprites
-@onready var stage_9_sprites = $Stage3Sprites
-@onready var stage_10_sprites = $Stage4Sprites
+@onready var stage_5_sprites = $Stage5Sprites
+@onready var stage_6_sprites = $Stage6Sprites
+@onready var stage_7_sprites = $Stage7Sprites
+@onready var stage_8_sprites = $Stage8Sprites
+@onready var stage_9_sprites = $Stage9Sprites
+@onready var stage_10_sprites = $Stage10Sprites
 @onready var stage_select_back = $"../StageSelectBack"
 const STAGE_SELECT_BACK_S_1 = preload("res://assets/StageSelectBack/StageSelectBackS1.png")
 const STAGE_SELECT_BACK_S_2 = preload("res://assets/StageSelectBack/StageSelectBackS2.png")
 const STAGE_SELECT_BACK_S_3 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
 const STAGE_SELECT_BACK_S_4 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
-const STAGE_SELECT_BACK_S_5 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
-const STAGE_SELECT_BACK_S_6 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
-const STAGE_SELECT_BACK_S_7 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
-const STAGE_SELECT_BACK_S_8 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
-const STAGE_SELECT_BACK_S_9 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
-const STAGE_SELECT_BACK_S_10 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
+const STAGE_SELECT_BACK_S_5 = preload("res://assets/StageSelectBack/StageSelectBackS5.png")
+const STAGE_SELECT_BACK_S_6 = preload("res://assets/StageSelectBack/StageSelectBackS1.png")
+const STAGE_SELECT_BACK_S_7 = preload("res://assets/StageSelectBack/StageSelectBackS4.png")
+const STAGE_SELECT_BACK_S_8 = preload("res://assets/StageSelectBack/StageSelectBackS2.png")
+const STAGE_SELECT_BACK_S_9 = preload("res://assets/StageSelectBack/StageSelectBackS5.png")
+const STAGE_SELECT_BACK_S_10 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
 
 func _process(_delta):
 	checkBaseStars()
