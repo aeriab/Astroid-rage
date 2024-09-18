@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform float player_damage : hint_range(0.0,15.0);
+uniform float opacity_value : hint_range(0.0,100.0);
 uniform float speedScale;
 
 void fragment() {
@@ -13,7 +14,7 @@ void fragment() {
 	current_color.r = COLOR.r + ((1.0/17.0) * ((player_damage-4.0)*(player_damage-4.0)) / 7.0);
 	current_color.g = COLOR.r + ((-1.0/10.0) * ((player_damage-8.0)*(player_damage-8.0)) / 6.0) + 0.4;
 	current_color.b = COLOR.r + ((-1.0/10.0) * ((player_damage-4.0)*(player_damage-4.0)) / 6.0) + 0.4;
-	
+	current_color.a = current_color.a * (opacity_value / 100.0);
 	
 	COLOR = current_color;
 }

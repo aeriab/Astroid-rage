@@ -177,6 +177,18 @@ func tallyScores():
 		Global.Stage3StarsAchieved = starsAwarding()
 	elif Global.current_stage == "Swirly Swamp" && starsAwarding() > Global.Stage4StarsAchieved:
 		Global.Stage4StarsAchieved = starsAwarding()
+	elif Global.stage_index == 5 && starsAwarding() > Global.Stage5StarsAchieved:
+		Global.Stage5StarsAchieved = starsAwarding()
+	elif Global.stage_index == 6 && starsAwarding() > Global.Stage6StarsAchieved:
+		Global.Stage6StarsAchieved = starsAwarding()
+	elif Global.stage_index == 7 && starsAwarding() > Global.Stage7StarsAchieved:
+		Global.Stage7StarsAchieved = starsAwarding()
+	elif Global.stage_index == 8 && starsAwarding() > Global.Stage8StarsAchieved:
+		Global.Stage8StarsAchieved = starsAwarding()
+	elif Global.stage_index == 9 && starsAwarding() > Global.Stage9StarsAchieved:
+		Global.Stage9StarsAchieved = starsAwarding()
+	elif Global.stage_index == 10 && starsAwarding() > Global.Stage10StarsAchieved:
+		Global.Stage10StarsAchieved = starsAwarding()
 	
 	star_award.start()
 
@@ -190,10 +202,32 @@ func _on_retry_button_pressed():
 func _on_stage_button_pressed():
 	if Global.current_stage == "Learner Lagoon":
 		Global.current_stage = "Perfect Pond"
+		Global.stage_index += 1
 	elif Global.current_stage == "Perfect Pond":
 		Global.current_stage = "Giga Geyser"
+		Global.stage_index += 1
 	elif Global.current_stage == "Giga Geyser":
 		Global.current_stage = "Swirly Swamp"
+		Global.stage_index += 1
+	elif Global.stage_index == 4:
+		Global.current_stage = "Offset Ocean"
+		Global.stage_index += 1
+	elif Global.stage_index == 5:
+		Global.current_stage = "Serpent Sea"
+		Global.stage_index += 1
+	elif Global.stage_index == 6:
+		Global.current_stage = "Baffle Bay"
+		Global.stage_index += 1
+	elif Global.stage_index == 7:
+		Global.current_stage = "Conic Cove"
+		Global.stage_index += 1
+	elif Global.stage_index == 8:
+		Global.current_stage = "Steamy Stream"
+		Global.stage_index += 1
+	elif Global.stage_index == 9:
+		Global.current_stage = "Massive Marsh"
+		Global.stage_index += 1
+	
 	
 	Global.gameOver = false
 	Global.gameTimeScale = 1.0

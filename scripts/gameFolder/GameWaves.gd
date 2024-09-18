@@ -67,10 +67,10 @@ func _process(delta):
 	if Global.current_stage == "Learner Lagoon":
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalMultiSpawn(20,"red",0.5,true,10)
+			generalMultiSpawn(10,"red",0.5,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
-			generalMultiSpawn(10,"swirl",3,true,10)
+			generalMultiSpawn(5,"swirl",3,true,10)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
 			generalMultiSpawn(30,"red",0.8,false,10)
@@ -112,7 +112,7 @@ func _process(delta):
 			firstSp6 = false
 			generalPerfSpawn(5,"boss")
 			generalMultiSpawn(10,"swirl",1.5,true,10)
-	#
+	
 	if Global.current_stage == "Swirly Swamp":
 		if onWave == 1 && firstSp1:
 			firstSp1 = false
@@ -141,6 +141,144 @@ func _process(delta):
 			firstSp7 = false
 			generalMultiSpawn(100,"red",0.2,true,10)
 			generalPerfSpawn(6,"boss")
+	
+	if Global.current_stage == "Offset Ocean":
+		if onWave == 2 && firstSp2:
+			firstSp2 = false
+			generalMultiSpawn(1,"zag",5,true,5)
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(40,"purple")
+			generalMultiSpawn(50,"purple",0.6,false,10)
+			generalMultiSpawn2(75,"purple",0.4,true)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(10,"zag")
+			generalMultiSpawn(100,"red",0.2,false,10)
+			generalMultiSpawn2(3,"boss",5,true)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn(80,"zag",0.6,true,10)
+		if onWave == 6 && firstSp6:
+			firstSp6 = false
+			generalPerfSpawn(80,"purple")
+			generalMultiSpawn(50,"zag",0.4,false,10)
+			generalMultiSpawn2(100,"purple",0.25,true)
+	
+	if Global.current_stage == "Serpent Sea":
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(30,"swirl")
+			generalMultiSpawn(30,"zag",0.6,true,10)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(5,"swirl")
+			generalMultiSpawn(5,"boss",0.2,false,10)
+			generalMultiSpawn2(20,"swirl",0.1,true)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalPerfSpawn(60,"zag")
+			generalMultiSpawn(60,"swirl",0.3,true,10)
+	
+	if Global.current_stage == "Baffle Bay":
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(20,"counter")
+			generalMultiSpawn(20,"bulk",0.6,true,10)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(5,"boss")
+			generalMultiSpawn(100,"red",0.2,false,10)
+			generalMultiSpawn2(20,"boss",0.5,true)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalPerfSpawn(20,"counter")
+			generalMultiSpawn(150,"red",0.2,false,10)
+			generalMultiSpawn2(10,"boss",0.5,true)
+	
+	if Global.current_stage == "Conic Cove":
+		if onWave == 2 && firstSp2:
+			firstSp2 = false
+			generalMultiSpawn(5,"swirl",2,true,5)
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(40,"counter")
+			generalMultiSpawn(5,"swirl",2,false,10)
+			generalMultiSpawn2(20,"bulk",0.4,true)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(10,"red")
+			generalMultiSpawn(100,"zag",0.2,false,10)
+			generalMultiSpawn2(3,"boss",5,true)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn(80,"swirl",0.6,true,10)
+		if onWave == 6 && firstSp6:
+			firstSp6 = false
+			generalPerfSpawn(60,"counter")
+			generalMultiSpawn(50,"swirl",0.5,false,10)
+			generalMultiSpawn2(60,"bulk",0.2,true)
+	
+	if Global.current_stage == "Steamy Stream":
+		if onWave == 2 && firstSp2:
+			firstSp2 = false
+			generalMultiSpawn(40,"boss",0.3,true,10)
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(400,"red")
+			generalMultiSpawn(10,"boss",0.6,true,10)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(100,"purple")
+			generalMultiSpawn(100,"zag",0.2,false,10)
+			generalMultiSpawn2(100,"swirl",0.2,true)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn(50,"counter",0.6,true,10)
+		if onWave == 6 && firstSp6:
+			firstSp6 = false
+			generalPerfSpawn(50,"boss")
+			generalMultiSpawn(300,"red",0.3,true,10)
+	
+	if Global.current_stage == "Massive Marsh":
+		if onWave == 1 && firstSp1:
+			firstSp1 = false
+			generalPerfSpawn(100,"red")
+			generalMultiSpawn(100,"zag",0.2,false,10)
+			generalMultiSpawn2(100,"swirl",0.2,true)
+		if onWave == 2 && firstSp2:
+			firstSp2 = false
+			generalPerfSpawn(20,"bulk")
+			generalMultiSpawn(100,"zag",0.2,false,10)
+			generalMultiSpawn2(100,"swirl",0.2,true)
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalPerfSpawn(15,"boss")
+			generalMultiSpawn(100,"purple",0.1,false,10)
+			generalMultiSpawn2(100,"red",0.1,true)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalPerfSpawn(1000,"zag")
+			generalMultiSpawn(200,"red",0.2,false,10)
+			generalMultiSpawn2(100,"swirl",0.2,true)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn2(20,"red",0.05,true)
+		if onWave == 6 && firstSp6:
+			firstSp6 = false
+			generalPerfSpawn(100,"purple")
+			generalMultiSpawn(30,"counter",0.3,false,10)
+			generalMultiSpawn2(80,"counter",0.05,true)
+		if onWave == 7 && firstSp7:
+			firstSp7 = false
+			generalPerfSpawn(100,"boss")
+			generalMultiSpawn(500,"zag",0.1,false,10)
+			generalMultiSpawn2(500,"swirl",0.1,true)
+	
+	
+	
+	
+	
 	
 	if waveFinishedCreating:
 		endWaveWait -= delta * Global.gameTimeScale

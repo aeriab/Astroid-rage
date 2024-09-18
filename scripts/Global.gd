@@ -1,5 +1,7 @@
 extends Node
 
+const TICKLE_MULT: float = 0.15
+
 var enemiesOnGob: float = 0
 
 var explodeShotAmount: int = 8
@@ -109,14 +111,14 @@ var crashTime: float = 6.3
 var camXSet: bool = true
 var camYSet: bool = true
 var canDeployCrasher: bool = true
-
 var unspentPoints: int = 0
 
-var num_base_stars1: int = 0
-var num_base_stars2: int = 0
-var num_base_stars3: int = 0
-var num_base_stars4: int = 0
-var num_base_stars5: int = 0
+##############################################################################
+var num_base_stars1: int = 3
+var num_base_stars2: int = 3
+var num_base_stars3: int = 3
+var num_base_stars4: int = 3
+var num_base_stars5: int = 3
 
 var num_drone_stars1: int = 0
 var num_drone_stars2: int = 0

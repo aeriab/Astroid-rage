@@ -18,6 +18,8 @@ var upgradeLevel: float = Global.barrelUpNumArray[mutationPart]
 @onready var cpu_particles_2d_2 = $CPUParticles2D2
 @onready var timer = $Timer
 
+var softShot: bool = false
+
 func areaName():
 	return "Booger"
 
@@ -36,28 +38,17 @@ func _ready():
 	global_position.x = x
 	global_position.y = y
 	
-	if Global.barrelUpNumArray[mutationPart - 1] == 1:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile1.png")
-	elif Global.barrelUpNumArray[mutationPart - 1] == 2:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile2.png")
-	elif Global.barrelUpNumArray[mutationPart - 1] == 3:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile3.png")
-	elif Global.barrelUpNumArray[mutationPart - 1] == 4:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile4.png")
-	else:
-		game_projectile.texture = preload("res://assets/damageProjectiles/DamGameProjectile5.png")
-	
 	rotation = randf_range(0.0,6.3)
 
 func setFreeLater():
 	queue_free()
 
-func set_motion(x1,y1,theta1,mutPart):
+func set_motion(x1,y1,theta1,is_soft):
 	x = x1
 	y = y1
 	theta = theta1
 	rot_motion = Global.prior_dir
-	mutationPart = mutPart
+	softShot = is_soft
 
 func mod_scale(scale_num):
 	set_scale(scale_num)

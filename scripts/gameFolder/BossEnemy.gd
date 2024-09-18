@@ -111,6 +111,21 @@ func _physics_process(delta):
 
 var points: float = 0.0
 
+func tickleDamage():
+	shader_value = shader_value + (damage_chunk * Global.TICKLE_MULT)
+	shader_value = clamp(shader_value,0.0,1.0)
+	material.set_shader_parameter("damage_value",shader_value)
+	if shader_value >= 0.9:
+		Global.decreaseEnemyNum()
+		Global.addXP(xpAmount)
+		var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+		pointsNotif.position = Vector2 (x,y)
+		points = sizeOfEnemy * 100
+		Global.points += int(points)
+		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		get_parent().add_child.call_deferred(pointsNotif)
+		setFreeSequence()
+
 func addDamage():
 	shader_value = shader_value + damage_chunk
 	
@@ -131,8 +146,11 @@ func addDamage():
 
 func _on_area_entered(area):
 	if area.is_in_group("BoogerArea"):
+		if area.softShot:
+			tickleDamage()
+		else:
+			addDamage()
 		area.setFreeSequence()
-		addDamage()
 	
 	if area.is_in_group("Crasher") || area.is_in_group("Gob"):
 		area.bounceBack(position.x,position.y)

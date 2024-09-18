@@ -1,9 +1,12 @@
 extends Sprite2D
 
-
-
+@onready var booger_area = $".."
 
 func _ready():
+	
+	if booger_area.softShot:
+		material.set_shader_parameter("opacity_value",25)
+	
 	if Global.damage >= 14:
 		material.set_shader_parameter("player_damage",Global.nextBoogColor)
 		Global.nextBoogColor += (0.3) * Global.direction
