@@ -125,6 +125,9 @@ func _physics_process(delta):
 
 var points: float = 0.0
 
+func tickleDamage():
+	pass
+
 func addDamage():
 	shader_value = shader_value + damage_chunk
 	shader_value = clamp(shader_value,0.0,1.0)

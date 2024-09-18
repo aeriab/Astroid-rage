@@ -26,10 +26,10 @@ var firstResume: bool = true
 func _ready():
 	if Global.num_base_stars1 >= 1:
 		auto_timer.start()
-		auto_timer.wait_time = (6.0 / (float(Global.num_base_stars1) + 2.0)) / Global.gameTimeScale
+		auto_timer.wait_time = (0.5 / (float(Global.num_base_stars1) + 1.0)) / Global.gameTimeScale
 
 func _process(_delta):
-	auto_timer.wait_time = (6.0 / (float(Global.num_base_stars1) + 2.0)) / Global.gameTimeScale
+	auto_timer.wait_time = (0.5 / (float(Global.num_base_stars1) + 1.0)) / Global.gameTimeScale
 	if Global.gameTimeScale < 0.1:
 		auto_timer.stop()
 		firstResume = true

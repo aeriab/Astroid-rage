@@ -1,5 +1,7 @@
 extends Label
 
+@onready var base_upgrades = $"../BaseUpgrades"
+
 @onready var right_base_arrow = $RightBaseArrow
 @onready var left_base_arrow = $LeftBaseArrow
 @onready var tank = $"../BaseIcons/Tank"
@@ -33,24 +35,28 @@ func _on_left_base_arrow_pressed():
 	updateBaseName()
 
 func tankVisible():
+	base_upgrades.text = "auto-fire rate\nbarrel amount\ndamage\nbullet size\nrotation speed"
 	tank.visible = true
 	ball.visible = false
 	mark.visible = false
 	lazy.visible = false
 
 func ballVisible():
+	base_upgrades.text = "auto-fire rate\ntotal bounces\ndamage\nbullet speed\nrotation speed"
 	tank.visible = false
 	ball.visible = true
 	mark.visible = false
 	lazy.visible = false
 
 func markVisible():
+	base_upgrades.text = "charge speed\nmax charge\ndamage\nbullet size\nrotation speed"
 	tank.visible = false
 	ball.visible = false
 	mark.visible = true
 	lazy.visible = false
 
 func lazyVisible():
+	base_upgrades.text = "vampirism\nhealth\ndamage\nnormal rotation\nlazer rotation"
 	tank.visible = false
 	ball.visible = false
 	mark.visible = false

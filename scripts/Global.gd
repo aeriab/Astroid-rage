@@ -86,7 +86,7 @@ var enemyNum = 0
 var bulletSize = 4
 var bulletSpeed: float = 2.0
 var damage: float = 2.0
-var rotationSpeed: float = 3.0
+var rotationSpeed: float = 2.0
 
 var totalPoints = 30
 
@@ -114,11 +114,11 @@ var canDeployCrasher: bool = true
 var unspentPoints: int = 0
 
 ##############################################################################
-var num_base_stars1: int = 3
-var num_base_stars2: int = 3
-var num_base_stars3: int = 3
-var num_base_stars4: int = 3
-var num_base_stars5: int = 3
+var num_base_stars1: int = 0
+var num_base_stars2: int = 0
+var num_base_stars3: int = 0
+var num_base_stars4: int = 0
+var num_base_stars5: int = 0
 
 var num_drone_stars1: int = 0
 var num_drone_stars2: int = 0
@@ -146,7 +146,7 @@ var wave5Wait: float = 25.0
 var wave6Wait: float = 25.0
 var wave7Wait: float = 25.0
 
-var Stage1StarsAchieved: int = 0
+var Stage1StarsAchieved: int = 100
 var Stage2StarsAchieved: int = 0
 var Stage3StarsAchieved: int = 0
 var Stage4StarsAchieved: int = 0

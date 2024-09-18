@@ -193,8 +193,21 @@ func _on_area_entered(area):
 		area.setFreeSequence()
 	
 	if area.is_in_group("Gob"):
-		Global.enemiesOnGob += 1.0
-		stopMoving = true
+		if Global.enemiesOnGob <= 50:
+			Global.enemiesOnGob += 1.0
+			stopMoving = true
+		else:
+			if !alreadyFree:
+				Global.decreaseEnemyNum()
+				Global.addXP(xpAmount)
+				var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+				pointsNotif.position = Vector2 (x,y)
+				points = sizeOfEnemy * 100
+				Global.points += int(points)
+				pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+				get_parent().add_child.call_deferred(pointsNotif)
+				setFreeSequence()
+				alreadyFree = true
 	
 	if area.is_in_group("Crasher"):
 		if area.is_in_group("Fling"):

@@ -17,13 +17,21 @@ var upgradeLevel: float = Global.barrelUpNumArray[mutationPart]
 @onready var cpu_particles_2d_2 = $CPUParticles2D2
 @onready var timer = $Timer
 
+var softShot: bool = false
+
 var canBounce: bool = true
+
+var expectedBounces: float = 2.0
+var bouncesLeft: float = 2.0
 
 func areaName():
 	return "Booger"
 
 func _ready():
-	cpu_particles_2d_2.amount = int(Global.bulletSize * 4)
+	expectedBounces = (Global.num_base_stars2 * 2.0) + 2.0
+	bouncesLeft = expectedBounces
+	
+	cpu_particles_2d_2.amount = int(Global.bulletSize * 1)
 	cpu_particles_2d_2.speed_scale = Global.bulletSpeed * 0.03 + 0.1
 	cpu_particles_2d_2.scale_amount_min = int(Global.damage * 6 + 10)
 	cpu_particles_2d_2.scale_amount_max = int(Global.damage * 7 + 20)
@@ -42,12 +50,12 @@ func _ready():
 func setFreeLater():
 	queue_free()
 
-func set_motion(x1,y1,theta1,mutPart):
+func set_motion(x1,y1,theta1,is_soft):
 	x = x1
 	y = y1
 	theta = theta1
 	rot_motion = Global.prior_dir
-	mutationPart = mutPart
+	softShot = is_soft
 
 func _physics_process(delta):
 	
@@ -64,13 +72,21 @@ const SHOT_PARTICLES = preload("res://scenes/shoot_particles.tscn")
 const RICO_BALL = preload("res://scenes/boogers/rico_ball.tscn")
 
 func setFreeSequence():
-	if canBounce:
-		canBounce = false
-		cpu_particles_2d_2.emitting = true
-		timer.start()
-		
-		theta = theta - randf_range(2 * PI/3,4 * PI/3)
+	if canBounce && bouncesLeft >= 1.0:
+		putOnZTop()
+		bouncesLeft -= 1
+		if bouncesLeft < 1:
+			queue_free()
+		else:
+			canBounce = false
+			cpu_particles_2d_2.emitting = true
+			timer.start()
+			theta = theta - randf_range(2 * PI/3,4 * PI/3)
 
+func putOnZTop():
+	print("made here")
+	z_index = 6
+	game_projectile.z_index = 6
 
 func _on_area_entered(area):
 	if area.name == "AreaBulletCollection":

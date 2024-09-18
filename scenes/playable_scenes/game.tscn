@@ -156,8 +156,8 @@ _data = [Vector2(0, 0), 0.0, 4.67277, 0, 0, Vector2(0.101124, 1), 1.63004, 1.630
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_y4ple"]
-offsets = PackedFloat32Array(0, 0.48, 1)
-colors = PackedColorArray(0.345098, 0.890196, 0.498039, 1, 0.301961, 0.784314, 0.435294, 1, 0.219608, 0.596078, 0.32549, 1)
+offsets = PackedFloat32Array(0.208333, 0.541667, 1)
+colors = PackedColorArray(0.345098, 0.431373, 0.886275, 1, 0.529412, 0.556863, 0.619608, 1, 0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ih00v"]
 shader = ExtResource("20_16gop")
@@ -732,7 +732,6 @@ script = ExtResource("5_t80kh")
 wait_time = 0.2
 
 [node name="Ball" type="Node2D" parent="."]
-visible = false
 
 [node name="Player" type="Area2D" parent="Ball" groups=["Player"]]
 script = ExtResource("12_epxfo")
@@ -783,6 +782,9 @@ texture = ExtResource("14_isajk")
 
 [node name="BulletHandlerSt2" type="Node" parent="Ball"]
 script = ExtResource("15_sxemg")
+
+[node name="AutoTimer" type="Timer" parent="Ball/BulletHandlerSt2"]
+wait_time = 0.2
 
 [node name="Mark" type="Node2D" parent="."]
 visible = false
@@ -1866,6 +1868,7 @@ polygon = PackedVector2Array(-441.16, 2993.43, -660.099, 2952.93, -902.572, 2888
 one_way_collision_margin = 0.0
 
 [connection signal="timeout" from="Tank/GameBulletHandler/AutoTimer" to="Tank/GameBulletHandler" method="_on_auto_timer_timeout"]
+[connection signal="timeout" from="Ball/BulletHandlerSt2/AutoTimer" to="Ball/BulletHandlerSt2" method="_on_auto_timer_timeout"]
 [connection signal="area_entered" from="AreaBulletCollection" to="AreaBulletCollection" method="_on_area_entered"]
 [connection signal="timeout" from="GameWaves/NextEnTimer" to="GameWaves" method="_on_next_en_timer_timeout"]
 [connection signal="timeout" from="GameWaves/NextEnTimer2" to="GameWaves" method="_on_next_en_timer_2_timeout"]

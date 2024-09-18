@@ -258,7 +258,7 @@ func _process(delta):
 			generalMultiSpawn2(100,"red",0.1,true)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
-			generalPerfSpawn(1000,"zag")
+			generalPerfSpawn(100,"zag")
 			generalMultiSpawn(200,"red",0.2,false,10)
 			generalMultiSpawn2(100,"swirl",0.2,true)
 		if onWave == 5 && firstSp5:
@@ -272,8 +272,8 @@ func _process(delta):
 		if onWave == 7 && firstSp7:
 			firstSp7 = false
 			generalPerfSpawn(100,"boss")
-			generalMultiSpawn(500,"zag",0.1,false,10)
-			generalMultiSpawn2(500,"swirl",0.1,true)
+			generalMultiSpawn(200,"zag",0.1,false,10)
+			generalMultiSpawn2(200,"swirl",0.1,true)
 	
 	
 	

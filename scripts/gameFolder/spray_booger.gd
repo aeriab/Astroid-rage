@@ -20,6 +20,8 @@ var upgradeLevel: float = Global.barrelUpNumArray[mutationPart]
 
 var thrustBooger: bool = true
 
+var softShot: bool = false
+
 func areaName():
 	return "Booger"
 

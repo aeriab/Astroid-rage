@@ -24,11 +24,14 @@ func areaName():
 	return "Booger"
 
 func _ready():
-	cpu_particles_2d_2.amount = int(Global.bulletSize * 4)
+	cpu_particles_2d_2.amount = int(Global.bulletSize * 1)
 	cpu_particles_2d_2.speed_scale = Global.bulletSpeed * 0.03 + 0.1
 	cpu_particles_2d_2.scale_amount_min = int(Global.damage * 6 + 10)
 	cpu_particles_2d_2.scale_amount_max = int(Global.damage * 7 + 20)
 	cpu_particles_2d_2.color = Color (1.0 - Global.damage / 20.0,1.0 - Global.damage / 20.0,1.0 + Global.damage / 20.0)
+	
+	if softShot:
+		cpu_particles_2d_2.visible = false
 	
 	orig_rotate_speed = randf_range(0.8,1.2)
 	monitoring = true
@@ -49,6 +52,7 @@ func set_motion(x1,y1,theta1,is_soft):
 	theta = theta1
 	rot_motion = Global.prior_dir
 	softShot = is_soft
+	
 
 func mod_scale(scale_num):
 	set_scale(scale_num)

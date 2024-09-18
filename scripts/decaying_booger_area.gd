@@ -15,6 +15,8 @@ var upgradeLevel: float = Global.barrelUpNumArray[mutationPart]
 
 @onready var game_projectile = $GameProjectile
 
+var softShot: bool = false
+
 func areaName():
 	return "Booger"
 

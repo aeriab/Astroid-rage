@@ -20,6 +20,7 @@ var upgradeLevel: float = Global.barrelUpNumArray[mutationPart]
 var firstTimeExploding: bool = true
 
 var explosiveLifetime: float = 0.0
+var softShot: bool = false
 
 @onready var game_projectile = $GameProjectile
 @onready var cpu_particles_2d_2 = $CPUParticles2D2

@@ -127,8 +127,11 @@ var points: float = 0.0
 
 func addAnger():
 	anger_value = anger_value + damage_chunk
-	anger_value = clamp(anger_value,0.0,1.0)
+	anger_value = clamp(anger_value,0.0,10.0)
 	material.set_shader_parameter("anger_value",anger_value)
+
+func tickleDamage():
+	pass
 
 func addDamage():
 	shader_value = shader_value + damage_chunk

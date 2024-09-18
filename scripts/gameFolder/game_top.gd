@@ -69,6 +69,7 @@ func _ready():
 		tank.visible = true
 	if Global.curBaseNumber == 2:
 		ball.visible = true
+		Global.bulletSpeed = (Global.num_base_stars4 * 0.7) + 2.0
 	if Global.curBaseNumber == 3:
 		mark.visible = true
 	if Global.curBaseNumber == 4:
@@ -86,7 +87,7 @@ func _ready():
 	
 	
 	Global.bulletSize = (Global.num_base_stars4 + 1.2) * 2.0
-	Global.rotationSpeed = (Global.num_base_stars5 * 0.35) + 1.5
+	Global.rotationSpeed = (Global.num_base_stars5 * 0.35) + 1.2
 	Global.damage = (2.5 * Global.num_base_stars3) + 2.0
 	
 	Global.gameTimeScale = 1.0

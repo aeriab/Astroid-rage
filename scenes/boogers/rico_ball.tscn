@@ -1,7 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnpaqa1rqa208"]
+[gd_scene load_steps=8 format=3 uid="uid://dnpaqa1rqa208"]
 
 [ext_resource type="Script" path="res://scripts/rico_ball.gd" id="1_jl7l4"]
+[ext_resource type="Shader" path="res://shaders/rico_ball.gdshader" id="2_iwylu"]
 [ext_resource type="Texture2D" uid="uid://cde5sab6d26r5" path="res://assets/ricoBall.png" id="2_u8yx4"]
+[ext_resource type="Script" path="res://scripts/gameFolder/RicoProjectile.gd" id="4_x783y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfvh8"]
+resource_local_to_scene = true
+shader = ExtResource("2_iwylu")
+shader_parameter/expected_bounces = 12.0
+shader_parameter/rico_bounces = 12.0
+shader_parameter/player_damage = 15.0
+shader_parameter/opacity_value = 100.0
+shader_parameter/speedScale = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_12sr8"]
 radius = 249.25
@@ -20,9 +31,11 @@ script = ExtResource("1_jl7l4")
 [node name="GameProjectile" type="Sprite2D" parent="."]
 z_index = 4
 z_as_relative = false
+material = SubResource("ShaderMaterial_vfvh8")
 position = Vector2(-1, -2)
 scale = Vector2(1, 0.993421)
 texture = ExtResource("2_u8yx4")
+script = ExtResource("4_x783y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -36,7 +49,7 @@ one_shot = true
 z_index = 5
 scale = Vector2(15, 15)
 emitting = false
-amount = 20
+amount = 5
 lifetime = 0.1
 one_shot = true
 speed_scale = 0.2
