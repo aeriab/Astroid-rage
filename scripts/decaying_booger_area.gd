@@ -15,7 +15,7 @@ var upgradeLevel: float = Global.barrelUpNumArray[mutationPart]
 
 @onready var game_projectile = $GameProjectile
 
-var softShot: bool = false
+var softShot: bool = true
 
 func areaName():
 	return "Booger"
@@ -69,8 +69,8 @@ func _physics_process(delta):
 	
 	speed -= ((speed / 3) + 200) * delta * Global.gameTimeScale
 	
-	x += cos(theta) * speed * delta * Global.gameTimeScale
-	y -= sin(theta) * speed * delta * Global.gameTimeScale
+	x += cos(theta) * speed * delta * Global.gameTimeScale * ((Global.num_base_stars4 + 1.0) * 0.5)
+	y -= sin(theta) * speed * delta * Global.gameTimeScale * ((Global.num_base_stars4 + 1.0) * 0.5)
 	
 	position.x = x
 	position.y = y

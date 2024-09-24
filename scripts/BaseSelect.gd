@@ -49,14 +49,14 @@ func ballVisible():
 	lazy.visible = false
 
 func markVisible():
-	base_upgrades.text = "charge speed\nmax charge\ndamage\nbullet size\nrotation speed"
+	base_upgrades.text = "charge speed\nmax charge\ndamage\nexplosive speed\nrotation speed"
 	tank.visible = false
 	ball.visible = false
 	mark.visible = true
 	lazy.visible = false
 
 func lazyVisible():
-	base_upgrades.text = "vampirism\nhealth\ndamage\nnormal rotation\nlazer rotation"
+	base_upgrades.text = "vampirism\nhealth\ndamage\nlazer rotation\nrotation speed"
 	tank.visible = false
 	ball.visible = false
 	mark.visible = false

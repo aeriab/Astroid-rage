@@ -732,6 +732,7 @@ script = ExtResource("5_t80kh")
 wait_time = 0.2
 
 [node name="Ball" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Ball" groups=["Player"]]
 script = ExtResource("12_epxfo")
@@ -840,7 +841,6 @@ script = ExtResource("18_ca8qa")
 script = ExtResource("15_mxfnp")
 
 [node name="Lazy" type="Node2D" parent="."]
-visible = false
 
 [node name="Player" type="Area2D" parent="Lazy" groups=["Player"]]
 rotation = -1.57079

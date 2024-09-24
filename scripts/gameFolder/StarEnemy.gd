@@ -113,17 +113,23 @@ func _physics_process(delta):
 	
 	for area in get_overlapping_areas():
 		if area.is_in_group("Lazer"):
-			if !alreadyFree:
-				Global.decreaseEnemyNum()
-				Global.addXP(xpAmount)
-				var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
-				pointsNotif.position = Vector2 (x,y)
-				points = sizeOfEnemy * 100
-				Global.points += int(points)
-				pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
-				get_parent().add_child.call_deferred(pointsNotif)
-				setFreeSequence()
-				alreadyFree = true
+			if Global.player_health < 100.0:
+				Global.player_health += ((Global.gameTimeScale * delta * 2.0) * ((Global.num_base_stars1 * 0.3) + 1.0)) * Global.lazerDamage
+			shader_value = shader_value + (damage_chunk * delta * Global.gameTimeScale * Global.lazerDamage)
+			shader_value = clamp(shader_value,0.0,1.0)
+			material.set_shader_parameter("damage_value",shader_value)
+			if shader_value >= 0.9:
+				if !alreadyFree:
+					Global.decreaseEnemyNum()
+					Global.addXP(xpAmount)
+					var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
+					pointsNotif.position = Vector2 (x,y)
+					points = sizeOfEnemy * 100
+					Global.points += int(points)
+					pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+					get_parent().add_child.call_deferred(pointsNotif)
+					setFreeSequence()
+					alreadyFree = true
 
 var points: float = 0.0
 

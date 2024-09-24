@@ -77,11 +77,16 @@ func _physics_process(delta):
 	x += cos(theta) * speed * delta * Global.gameTimeScale
 	y -= sin(theta) * speed * delta * Global.gameTimeScale
 	
-	explosiveLifetime += delta * Global.gameTimeScale
+	var explosiveMax: float = ((Global.num_base_stars1 * 0.8) + 1.5)
+	if explosiveLifetime < explosiveMax:
+		explosiveLifetime += delta * Global.gameTimeScale * ((Global.num_base_stars1 * 0.4) + 1.0)
+	else:
+		explosiveLifetime = explosiveMax
+	
 	material.set_shader_parameter("explosiveValue",explosiveLifetime / 5.0)
 	
-	scale.x = log(explosiveLifetime + 3) - 1
-	scale.y = log(explosiveLifetime + 3) - 1
+	scale.x = (log(explosiveLifetime + 3) - 1)
+	scale.y = (log(explosiveLifetime + 3) - 1)
 	
 	position.x = x
 	position.y = y

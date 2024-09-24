@@ -39,7 +39,7 @@ func _process(delta):
 	Global.prior_dir = clockwise
 	if Input.is_action_pressed("switch") && Global.gameTimeScale > 0.1:
 		cpu_particles_2d.emitting = true
-		Global.rotationSpeed = 0.3
+		Global.rotationSpeed = 0.3 + (Global.num_base_stars4 * 0.3)
 		lazer.position.x = 0
 		lazy_on_eye.visible = true
 		lazy_lazer_top.visible = true
@@ -63,12 +63,12 @@ func _process(delta):
 			lazy_lazer_bot.position.x -= 12220
 		
 		health_bar_red.firingLazer = true
-		Global.player_health -= Global.gameTimeScale * delta * 2.0
+		Global.player_health -= (Global.gameTimeScale * delta * 2.0) / ((Global.num_base_stars2 * 0.1) + 0.2)
 		
 	else:
 		health_bar_red.firingLazer = false
 		cpu_particles_2d.emitting = false
-		Global.rotationSpeed = 2
+		Global.rotationSpeed = 2.0 + (Global.num_base_stars5 * 0.5)
 		
 		if lazer_width > 0.0:
 			lazer_width -= Global.gameTimeScale * delta * 20.0

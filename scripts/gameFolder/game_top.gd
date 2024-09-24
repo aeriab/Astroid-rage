@@ -65,6 +65,7 @@ func _ready():
 	if Global.curBaseNumber != 4:
 		lazy.queue_free()
 	
+	Global.TICKLE_MULT = 0.15
 	if Global.curBaseNumber == 1:
 		tank.visible = true
 	if Global.curBaseNumber == 2:
@@ -72,8 +73,10 @@ func _ready():
 		Global.bulletSpeed = (Global.num_base_stars4 * 0.7) + 2.0
 	if Global.curBaseNumber == 3:
 		mark.visible = true
+		Global.TICKLE_MULT = 0.50
 	if Global.curBaseNumber == 4:
 		lazy.visible = true
+		Global.lazerDamage = (Global.num_base_stars3 * 5.0) + 30.0
 	
 	
 	if Global.curBaseNumber == 1:

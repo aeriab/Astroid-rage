@@ -1,6 +1,8 @@
 extends Node
 
-const TICKLE_MULT: float = 0.15
+var lazerDamage: float = 30.0
+
+var TICKLE_MULT: float = 0.15
 
 var enemiesOnGob: float = 0
 
