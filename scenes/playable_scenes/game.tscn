@@ -841,6 +841,7 @@ script = ExtResource("18_ca8qa")
 script = ExtResource("15_mxfnp")
 
 [node name="Lazy" type="Node2D" parent="."]
+visible = false
 
 [node name="Player" type="Area2D" parent="Lazy" groups=["Player"]]
 rotation = -1.57079
@@ -1541,7 +1542,6 @@ zoom = Vector2(0.2, 0.2)
 script = ExtResource("18_chv7v")
 
 [node name="CrasherArea2D" type="Area2D" parent="." groups=["Crasher"]]
-visible = false
 script = ExtResource("19_6jffq")
 
 [node name="Crasher" type="Sprite2D" parent="CrasherArea2D"]

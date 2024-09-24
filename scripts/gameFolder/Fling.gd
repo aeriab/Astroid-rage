@@ -124,9 +124,9 @@ func _process(delta):
 		else:
 			top_rotation = 2 * PI -  acos(position.x / length_out)
 		
-		if length_out > 4400:
-			position.x -= delta * Global.gameTimeScale * inPull * sin(top_rotation + PI/2) * (length_out - 4400)
-			position.y -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4400)
+		if length_out > 4800:
+			position.x -= delta * Global.gameTimeScale * inPull * sin(top_rotation + PI/2) * (length_out - 4800)
+			position.y -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4800)
 
 func _on_area_entered(area):
 	if area.is_in_group("Player") && Global.crashStarted && !Global.startCrasher && Global.crashTime > 0:
