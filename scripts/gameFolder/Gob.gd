@@ -38,7 +38,7 @@ func _ready():
 	
 	ROT_UPGRADER = (0.15 * Global.num_drone_stars3) + 1.5
 	
-	crashTimeScale = -(Global.num_drone_stars4 * 0.7) + 2.0
+	crashTimeScale = -(Global.num_drone_stars4 * 0.5) + 3.0
 
 var sinFunctionProg: float = 0.0
 var firstTimeMoving: bool = true
@@ -197,3 +197,35 @@ func bounceBack(xenemy,yenemy):
 	realMathAngle = realMathAngle - ((realMathAngle - PI) - (2 * ((bounceAngle - PI) + PI/2) - (realMathAngle - PI)))
 	
 	rotation = -(realMathAngle - PI/2)
+
+func explodeGob():
+	if firstCrashTimeout:
+		Global.startCrasher = false
+		Global.crashStarted = false
+		cpu_particles_2d.emitting = false
+		reset_stats()
+		firstCrashTimeout = false
+		Global.gameTimeScale = 0.0
+		
+		var i: int = 0
+		var theta: float = 0.0
+		while i < int(Global.enemiesOnGob * 2) + 2:
+			var greenspot = DECAYING_GREEN_SPOT.instantiate()
+			
+			get_parent().add_child.call_deferred(greenspot)
+			var x1: float = position.x
+			var y1: float = position.y
+			
+			var snout_length = sqrt((x1 * x1) + (y1 * y1))
+			
+			if y1 < 0:
+				theta = acos(x1 / snout_length) + randf_range(-PI,PI)
+			else:
+				theta = 2 * PI -  acos(x1 / snout_length)  + randf_range(-PI,PI)
+			
+			greenspot.set_motion(x1,y1,theta,1,10.0 / Global.enemiesOnGob)
+			i += 1
+		Global.enemiesOnGob = 0
+	
+
+

@@ -1,5 +1,9 @@
 extends Area2D
 
 func _on_area_entered(area):
-	if area.is_in_group("Crasher") || area.is_in_group("Gob"):
+	
+	if area.is_in_group("Gob"):
+		area.explodeGob()
+	
+	if area.is_in_group("Crasher"):
 		area.boundBounceBack()

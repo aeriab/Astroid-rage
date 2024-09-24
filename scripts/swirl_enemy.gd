@@ -95,33 +95,30 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 	scale.y = sizeOfEnemy * flipSprite * 0.6
 
 func _physics_process(delta):
-
-	if direction == 1:
-		x -= sin(theta) * SPEED * delta * Global.gameTimeScale
-		y -= cos(theta) * SPEED * delta * Global.gameTimeScale
-	else:
-		x += sin(theta) * SPEED * delta * Global.gameTimeScale
-		y += cos(theta) * SPEED * delta * Global.gameTimeScale
-	
-	hypotenuse = sqrt((x * x) + (y * y))
-	if direction == 1:
-		if y < 0:
-			theta = acos(x / hypotenuse) + 0.3
-		else:
-			theta = 2 * PI -  acos(x / hypotenuse) + 0.3
-	else:
-		if y < 0:
-			theta = acos(x / hypotenuse) - 0.3
-		else:
-			theta = 2 * PI -  acos(x / hypotenuse) - 0.3
-	
-	if direction == 1:
-		rotation = -theta - PI / 2
-	else:
-		rotation = -theta + PI / 2
-	#scale.x = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy)
-	
 	if !stopMoving:
+		if direction == 1:
+			x -= sin(theta) * SPEED * delta * Global.gameTimeScale
+			y -= cos(theta) * SPEED * delta * Global.gameTimeScale
+		else:
+			x += sin(theta) * SPEED * delta * Global.gameTimeScale
+			y += cos(theta) * SPEED * delta * Global.gameTimeScale
+		
+		hypotenuse = sqrt((x * x) + (y * y))
+		if direction == 1:
+			if y < 0:
+				theta = acos(x / hypotenuse) + 0.3
+			else:
+				theta = 2 * PI -  acos(x / hypotenuse) + 0.3
+		else:
+			if y < 0:
+				theta = acos(x / hypotenuse) - 0.3
+			else:
+				theta = 2 * PI -  acos(x / hypotenuse) - 0.3
+		
+		if direction == 1:
+			rotation = -theta - PI / 2
+		else:
+			rotation = -theta + PI / 2
 		position = Vector2(x,y)
 	else:
 		moveWithGob()

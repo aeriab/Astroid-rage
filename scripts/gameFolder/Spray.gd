@@ -36,7 +36,7 @@ func _ready():
 	
 	ROT_UPGRADER = (0.10 * Global.num_drone_stars3) + 1.0
 	
-	crashTimeScale = -(Global.num_drone_stars4 * 0.7) + 2.0
+	crashTimeScale = -(Global.num_drone_stars4 * 0.5) + 3.0
 
 @onready var spray_bullet_handler = $"../SprayBulletHandler"
 

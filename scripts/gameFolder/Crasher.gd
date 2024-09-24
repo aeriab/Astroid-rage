@@ -38,7 +38,7 @@ func _ready():
 	
 	ROT_UPGRADER = (0.15 * Global.num_drone_stars3) + 1.5
 	
-	crashTimeScale = -(Global.num_drone_stars4 * 0.7) + 2.0
+	crashTimeScale = -(Global.num_drone_stars4 * 0.5) + 3.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
