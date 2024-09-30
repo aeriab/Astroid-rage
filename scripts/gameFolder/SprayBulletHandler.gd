@@ -21,6 +21,12 @@ var turningLeft: bool = true
 
 var firstTimerTurn: bool = true
 
+
+func _ready():
+	auto_timer.wait_time = 0.075 - (Global.num_drone_stars1 * 0.01)
+	auto_timer_2.wait_time = 0.15 - (Global.num_drone_stars1 * 0.02)
+
+
 func _process(_delta):
 	
 	if Global.startCrasher == false && Global.crashStarted == true && firstTimerTurn:

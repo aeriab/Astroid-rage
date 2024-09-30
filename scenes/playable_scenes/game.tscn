@@ -165,7 +165,7 @@ shader_parameter/crash_progress = 6.3
 shader_parameter/radius = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_chnob"]
-radius = 150.249
+radius = 152.252
 
 [sub_resource type="Gradient" id="Gradient_7iu7d"]
 colors = PackedColorArray(0.345098, 0.890196, 0.498039, 1, 0.345098, 0.890196, 0.498039, 0.211765)
@@ -1636,13 +1636,13 @@ visible = false
 [node name="FlingOutline" type="Sprite2D" parent="FlingNode2D"]
 material = SubResource("ShaderMaterial_ih00v")
 rotation = -1.5708
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.13, 0.13)
 texture = ExtResource("66_xjgm5")
 script = ExtResource("22_i2wgh")
 
 [node name="FlingBackSprite" type="Sprite2D" parent="FlingNode2D"]
 z_index = 1
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.13, 0.13)
 texture = ExtResource("64_5bjyf")
 
 [node name="Fling" type="Area2D" parent="FlingNode2D" groups=["Crasher", "Fling"]]
@@ -1650,17 +1650,16 @@ script = ExtResource("63_d3n1w")
 
 [node name="FlingFrontSprite" type="Sprite2D" parent="FlingNode2D/Fling"]
 z_index = 1
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.13, 0.13)
 texture = ExtResource("65_rvxsy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlingNode2D/Fling"]
 shape = SubResource("CircleShape2D_chnob")
 
 [node name="GobNode2D" type="Node2D" parent="."]
-visible = false
 
 [node name="Gob" type="Area2D" parent="GobNode2D" groups=["Gob"]]
-z_index = 2
+scale = Vector2(0.55, 0.55)
 script = ExtResource("67_2s431")
 
 [node name="GobOutline" type="Sprite2D" parent="GobNode2D/Gob"]

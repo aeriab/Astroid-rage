@@ -6,6 +6,7 @@ extends Label
 @onready var spray = $"../DroneIcons/Spray"
 @onready var fling = $"../DroneIcons/Fling"
 @onready var gob = $"../DroneIcons/Gob"
+@onready var drone_upgrades = $"../DroneUpgrades"
 
 func _ready():
 	text = Global.currentDrone + "         "
@@ -26,30 +27,35 @@ func _on_right_drone_arrow_pressed():
 	updateDroneName()
 
 
+
 func _on_left_drone_arrow_pressed():
 	if Global.currentDrone != "Crash":
 		Global.curDroneNumber -= 1
 	updateDroneName()
 
 func crashVisible():
+	drone_upgrades.text = "size\nspeed\nmax fuel\nrecharge speed\nrotation speed"
 	crash.visible = true
 	spray.visible = false
 	fling.visible = false
 	gob.visible = false
 
 func sprayVisible():
+	drone_upgrades.text = "fire rate\nspeed\nmax fuel\nrecharge speed\nrotation speed"
 	crash.visible = false
 	spray.visible = true
 	fling.visible = false
 	gob.visible = false
 
 func flingVisible():
+	drone_upgrades.text = "charge speed\nmax speed\nmax fuel\nrecharge speed\nrotation speed"
 	crash.visible = false
 	spray.visible = false
 	fling.visible = true
 	gob.visible = false
 
 func gobVisible():
+	drone_upgrades.text = "explosion\nspeed\nmax fuel\nrecharge speed\nrotation speed"
 	crash.visible = false
 	spray.visible = false
 	fling.visible = false

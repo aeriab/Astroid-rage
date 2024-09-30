@@ -89,7 +89,7 @@ var enemyIsDead: bool = false
 func _physics_process(delta):
 	if !enemyIsDead:
 		enemy_symbol.rotate(delta * Global.gameTimeScale * (anger_value + 0.1) * 4.0)
-	SPEED = 100.0 + (anger_value * 200.0)
+	SPEED = 100.0 + (anger_value * 50.0)
 	
 	sinFuncProg += delta * Global.gameTimeScale * 0.3
 	if sinFuncProg >= (PI * 2):

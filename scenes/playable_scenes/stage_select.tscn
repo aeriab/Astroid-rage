@@ -650,9 +650,9 @@ theme_override_constants/line_spacing = 26
 theme_override_font_sizes/font_size = 40
 text = "size
 speed
-rotation speed
 max boost
-recharge speed"
+recharge speed
+rotation speed"
 horizontal_alignment = 2
 vertical_alignment = 1
 

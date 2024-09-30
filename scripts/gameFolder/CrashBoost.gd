@@ -3,7 +3,7 @@ extends Sprite2D
 var boostGainScale: float = 1.0
 
 func _ready():
-	boostGainScale = (Global.num_drone_stars5 * 0.3) + 0.6
+	boostGainScale = (Global.num_drone_stars4 * 0.3) + 0.6
 	Global.crashTime = 6.3
 
 func _process(delta):

@@ -1,10 +1,10 @@
 extends Node
 
+var enemiesOnGob: int = 0
+
 var lazerDamage: float = 30.0
 
 var TICKLE_MULT: float = 0.15
-
-var enemiesOnGob: float = 0
 
 var explodeShotAmount: int = 8
 
@@ -227,6 +227,7 @@ func resetStats():
 	points = 0
 	consecBulls = 0
 	explodeBoogers = true
+	enemiesOnGob = 0
 
 func decreaseHealth(num):
 	player_health -= num * 31.0

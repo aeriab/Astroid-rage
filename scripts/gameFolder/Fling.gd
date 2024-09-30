@@ -7,9 +7,9 @@ var speedScale: float = 4.0
 var force: float = 0.0
 var thrust: float = 0.0
 var resistance: float = 0.05
-var fric: float = 30.0
+var fric: float = 50.0
 
-var inPull: float = 50.0
+var inPull: float = 200.0
 
 var moveScale: float = 0.0
 var moveAccel: float = 1000
@@ -28,15 +28,22 @@ var firstCrashTimeout: bool = true
 var MAX_THRUST: float = 150.0
 var ROT_UPGRADER: float = 1.0
 
+var charge_speed: float = 1.0
+var max_fling: float = 1.0
+
 func _ready():
-	scale.x = 0.65 + Global.num_drone_stars1 * 0.15
-	scale.y = 0.65 + Global.num_drone_stars1 * 0.15
+	#scale.x = 0.65 + Global.num_drone_stars1 * 0.15
+	#scale.y = 0.65 + Global.num_drone_stars1 * 0.15
 	
-	MAX_THRUST = (30.0 * Global.num_drone_stars2) + 100.0
+	MAX_THRUST = 150.0
 	
-	ROT_UPGRADER = (0.15 * Global.num_drone_stars3) + 1.5
+	max_fling = (Global.num_drone_stars2 * 0.15) + 1.0
 	
-	crashTimeScale = -(Global.num_drone_stars4 * 0.5) + 3.0
+	ROT_UPGRADER = (0.15 * Global.num_drone_stars5) + 1.5
+	
+	crashTimeScale = -(Global.num_drone_stars3 * 0.3) + 4.0
+	
+	charge_speed = (Global.num_drone_stars1 * 0.3) + 1.0
 
 @onready var fling_outline = $"../FlingOutline"
 @onready var fling_back_sprite = $"../FlingBackSprite"
@@ -46,9 +53,9 @@ var curRotBuildup: float = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	fling_outline.position = position
-	fling_outline.scale = scale * 0.3
+	#fling_outline.scale = scale * 0.3
 	fling_back_sprite.position = position
-	fling_back_sprite.scale = scale * 0.3
+	#fling_back_sprite.scale = scale * 0.3
 	
 	
 	
@@ -77,20 +84,20 @@ func _process(delta):
 		
 		thrust = MAX_THRUST * curRotBuildup * 3
 		if rotBuildup > 0.0:
-			rotBuildup -= 0.04
+			rotBuildup -= 10.0 * Global.gameTimeScale * delta
 		else:
 			rotBuildup = 0.0
 		fling_back_sprite.rotate(Global.gameTimeScale * delta * rotBuildup * 30)
 		if curRotBuildup > 0.0:
-			curRotBuildup -= 0.04
+			curRotBuildup -= 10.0 * Global.gameTimeScale * delta
 		else:
 			curRotBuildup = 0.0
 		if Input.is_action_pressed("ui_up") && Global.gameTimeScale > 0.1:
-			if curRotBuildup < 0.5:
-				if rotBuildup < 10.0:
-					rotBuildup += 0.07
+			if curRotBuildup < 0.3:
+				if rotBuildup < max_fling * 3.0:
+					rotBuildup += 22.0 * Global.gameTimeScale * delta * charge_speed
 				else:
-					rotBuildup = 10.0
+					rotBuildup = max_fling * 3.0
 			
 			rotScale = 0.0
 		else:
@@ -123,8 +130,7 @@ func _process(delta):
 			top_rotation = 2 * PI -  acos(position.x / length_out)
 		
 		if length_out > 4800:
-			position.x -= delta * Global.gameTimeScale * inPull * sin(top_rotation + PI/2) * (length_out - 4800)
-			position.y -= delta * Global.gameTimeScale * inPull * cos(top_rotation + PI/2) * (length_out - 4800)
+			rotation = - top_rotation - (PI/2) + 0.05
 
 func _on_area_entered(area):
 	if area.is_in_group("Player") && Global.crashStarted && !Global.startCrasher && Global.crashTime > 0:

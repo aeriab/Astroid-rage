@@ -123,7 +123,7 @@ func _process(delta):
 			generalMultiSpawn2(3,"boss",5,true)
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalPerfSpawn(5,"counter")
+			generalPerfSpawn(1,"counter")
 			generalMultiSpawn(10,"zag",1.5,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
@@ -135,7 +135,7 @@ func _process(delta):
 			generalPerfSpawn(1,"boss")
 		if onWave == 6 && firstSp6:
 			firstSp6 = false
-			generalPerfSpawn(5,"counter")
+			generalPerfSpawn(2,"counter")
 			generalMultiSpawn(20,"swirl",0.5,true,10)
 		if onWave == 7 && firstSp7:
 			firstSp7 = false
@@ -183,7 +183,7 @@ func _process(delta):
 	if Global.current_stage == "Baffle Bay":
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalPerfSpawn(20,"counter")
+			generalPerfSpawn(2,"counter")
 			generalMultiSpawn(20,"bulk",0.6,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
@@ -192,7 +192,7 @@ func _process(delta):
 			generalMultiSpawn2(20,"boss",0.5,true)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
-			generalPerfSpawn(20,"counter")
+			generalPerfSpawn(3,"counter")
 			generalMultiSpawn(150,"red",0.2,false,10)
 			generalMultiSpawn2(10,"boss",0.5,true)
 	
@@ -202,7 +202,7 @@ func _process(delta):
 			generalMultiSpawn(5,"swirl",2,true,5)
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalPerfSpawn(40,"counter")
+			generalPerfSpawn(5,"counter")
 			generalMultiSpawn(5,"swirl",2,false,10)
 			generalMultiSpawn2(20,"bulk",0.4,true)
 		if onWave == 4 && firstSp4:
@@ -215,7 +215,7 @@ func _process(delta):
 			generalMultiSpawn(80,"swirl",0.6,true,10)
 		if onWave == 6 && firstSp6:
 			firstSp6 = false
-			generalPerfSpawn(60,"counter")
+			generalPerfSpawn(10,"counter")
 			generalMultiSpawn(50,"swirl",0.5,false,10)
 			generalMultiSpawn2(60,"bulk",0.2,true)
 	
@@ -234,7 +234,7 @@ func _process(delta):
 			generalMultiSpawn2(100,"swirl",0.2,true)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
-			generalMultiSpawn(50,"counter",0.6,true,10)
+			generalMultiSpawn(15,"counter",0.6,true,10)
 		if onWave == 6 && firstSp6:
 			firstSp6 = false
 			generalPerfSpawn(50,"boss")
@@ -267,8 +267,8 @@ func _process(delta):
 		if onWave == 6 && firstSp6:
 			firstSp6 = false
 			generalPerfSpawn(100,"purple")
-			generalMultiSpawn(30,"counter",0.3,false,10)
-			generalMultiSpawn2(80,"counter",0.05,true)
+			generalMultiSpawn(5,"counter",0.3,false,10)
+			generalMultiSpawn2(20,"counter",0.05,true)
 		if onWave == 7 && firstSp7:
 			firstSp7 = false
 			generalPerfSpawn(100,"boss")

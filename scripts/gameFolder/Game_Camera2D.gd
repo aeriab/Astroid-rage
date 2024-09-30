@@ -66,3 +66,9 @@ func _process(delta):
 			position.y -= follow_speed * delta * Global.gameTimeScale * (position.y - drone.position.y)
 		elif position.y > drone.position.y + 5.0:
 			position.y -= follow_speed * delta * Global.gameTimeScale * (position.y - drone.position.y)
+		
+		
+
+
+
+

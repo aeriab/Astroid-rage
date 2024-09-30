@@ -107,6 +107,9 @@ var MAX_STAGE: int = 10
 
 
 func _ready():
+	Global.startCrasher = false
+	Global.crashStarted = false
+	
 	bupgrade_1.star_count = Global.num_base_stars1
 	bupgrade_2.star_count = Global.num_base_stars2
 	bupgrade_3.star_count = Global.num_base_stars3

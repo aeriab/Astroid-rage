@@ -29,14 +29,14 @@ var MAX_THRUST: float = 150.0
 var ROT_UPGRADER: float = 1.0
 
 func _ready():
-	scale.x = 0.65 + Global.num_drone_stars1 * 0.15
-	scale.y = 0.65 + Global.num_drone_stars1 * 0.15
+	#scale.x = 0.65 + Global.num_drone_stars1 * 0.15
+	#scale.y = 0.65 + Global.num_drone_stars1 * 0.15
 	
 	MAX_THRUST = (30.0 * Global.num_drone_stars2) + 100.0
 	
-	ROT_UPGRADER = (0.10 * Global.num_drone_stars3) + 1.0
+	ROT_UPGRADER = (0.10 * Global.num_drone_stars5) + 1.0
 	
-	crashTimeScale = -(Global.num_drone_stars4 * 0.5) + 3.0
+	crashTimeScale = -(Global.num_drone_stars3 * 0.3) + 4.0
 
 @onready var spray_bullet_handler = $"../SprayBulletHandler"
 

@@ -31,14 +31,14 @@ var MAX_THRUST: float = 150.0
 var ROT_UPGRADER: float = 1.0
 
 func _ready():
-	scale.x = 0.65 + Global.num_drone_stars1 * 0.15
-	scale.y = 0.65 + Global.num_drone_stars1 * 0.15
+	#scale.x = 0.65 + Global.num_drone_stars1 * 0.15
+	#scale.y = 0.65 + Global.num_drone_stars1 * 0.15
 	
 	MAX_THRUST = (30.0 * Global.num_drone_stars2) + 100.0
 	
-	ROT_UPGRADER = (0.15 * Global.num_drone_stars3) + 1.5
+	ROT_UPGRADER = (0.15 * Global.num_drone_stars5) + 1.5
 	
-	crashTimeScale = -(Global.num_drone_stars4 * 0.5) + 3.0
+	crashTimeScale = -(Global.num_drone_stars3 * 0.3) + 4.0
 
 var sinFunctionProg: float = 0.0
 var firstTimeMoving: bool = true
@@ -71,9 +71,8 @@ func _process(delta):
 			
 			var i: int = 0
 			var theta: float = 0.0
-			while i < int(Global.enemiesOnGob * 2) + 2:
+			while i < int(Global.num_drone_stars1 * 40) + 80:
 				var greenspot = DECAYING_GREEN_SPOT.instantiate()
-				
 				get_parent().add_child.call_deferred(greenspot)
 				var x1: float = position.x
 				var y1: float = position.y
@@ -85,7 +84,7 @@ func _process(delta):
 				else:
 					theta = 2 * PI -  acos(x1 / snout_length)  + randf_range(-PI,PI)
 				
-				greenspot.set_motion(x1,y1,theta,1,10.0 / Global.enemiesOnGob)
+				greenspot.set_motion(x1,y1,theta,1,1.0/((Global.num_drone_stars1 * 0.8) + 1.5))
 				i += 1
 			Global.enemiesOnGob = 0
 	
@@ -153,6 +152,7 @@ func _on_area_entered(area):
 		reset_stats()
 
 func reset_stats():
+	Global.enemiesOnGob = 0
 	speedScale = 4.0
 	force = 0.0
 	thrust = 0.0
@@ -209,9 +209,8 @@ func explodeGob():
 		
 		var i: int = 0
 		var theta: float = 0.0
-		while i < int(Global.enemiesOnGob * 2) + 2:
+		while i < int(Global.num_drone_stars1 * 40) + 80:
 			var greenspot = DECAYING_GREEN_SPOT.instantiate()
-			
 			get_parent().add_child.call_deferred(greenspot)
 			var x1: float = position.x
 			var y1: float = position.y
@@ -223,7 +222,7 @@ func explodeGob():
 			else:
 				theta = 2 * PI -  acos(x1 / snout_length)  + randf_range(-PI,PI)
 			
-			greenspot.set_motion(x1,y1,theta,1,10.0 / Global.enemiesOnGob)
+			greenspot.set_motion(x1,y1,theta,1,1.0/((Global.num_drone_stars1 * 0.8) + 1.5))
 			i += 1
 		Global.enemiesOnGob = 0
 	
