@@ -209,7 +209,6 @@ scale = Vector2(1.218, 1.218)
 script = ExtResource("1_hchh8")
 
 [node name="Tank" type="Node2D" parent="."]
-visible = false
 
 [node name="Player" type="Area2D" parent="Tank" groups=["Player"]]
 script = ExtResource("2_8ueva")
@@ -1657,6 +1656,7 @@ texture = ExtResource("65_rvxsy")
 shape = SubResource("CircleShape2D_chnob")
 
 [node name="GobNode2D" type="Node2D" parent="."]
+visible = false
 
 [node name="Gob" type="Area2D" parent="GobNode2D" groups=["Gob"]]
 scale = Vector2(0.55, 0.55)

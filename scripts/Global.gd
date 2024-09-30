@@ -1,5 +1,7 @@
 extends Node
 
+var levelProgress: int = 1
+
 var enemiesOnGob: int = 0
 
 var lazerDamage: float = 30.0
@@ -148,7 +150,7 @@ var wave5Wait: float = 25.0
 var wave6Wait: float = 25.0
 var wave7Wait: float = 25.0
 
-var Stage1StarsAchieved: int = 100
+var Stage1StarsAchieved: int = 2
 var Stage2StarsAchieved: int = 0
 var Stage3StarsAchieved: int = 0
 var Stage4StarsAchieved: int = 0

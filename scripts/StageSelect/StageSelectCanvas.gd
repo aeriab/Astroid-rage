@@ -107,6 +107,29 @@ var MAX_STAGE: int = 10
 
 
 func _ready():
+	if Global.Stage1StarsAchieved <= 0:
+		Global.levelProgress = 1
+	elif Global.Stage2StarsAchieved <= 0:
+		Global.levelProgress = 2
+	elif Global.Stage3StarsAchieved <= 0:
+		Global.levelProgress = 3
+	elif Global.Stage4StarsAchieved <= 0:
+		Global.levelProgress = 4
+	elif Global.Stage5StarsAchieved <= 0:
+		Global.levelProgress = 5
+	elif Global.Stage6StarsAchieved <= 0:
+		Global.levelProgress = 6
+	elif Global.Stage7StarsAchieved <= 0:
+		Global.levelProgress = 7
+	elif Global.Stage8StarsAchieved <= 0:
+		Global.levelProgress = 8
+	elif Global.Stage9StarsAchieved <= 0:
+		Global.levelProgress = 9
+	elif Global.Stage10StarsAchieved <= 0:
+		Global.levelProgress = 10
+	
+	
+	
 	Global.startCrasher = false
 	Global.crashStarted = false
 	
@@ -125,7 +148,7 @@ func _ready():
 	base_select.updateBaseName()
 	drone_select.updateDroneName()
 	
-	Global.unspentPoints = Global.Stage1StarsAchieved + Global.Stage2StarsAchieved + Global.Stage3StarsAchieved + Global.Stage4StarsAchieved - (bupgrade_1.star_count+bupgrade_2.star_count+bupgrade_3.star_count+bupgrade_4.star_count+bupgrade_5.star_count + dupgrade_1.star_count+dupgrade_2.star_count+dupgrade_3.star_count+dupgrade_4.star_count+dupgrade_5.star_count)
+	Global.unspentPoints = (Global.Stage1StarsAchieved + Global.Stage2StarsAchieved + Global.Stage3StarsAchieved + Global.Stage4StarsAchieved + Global.Stage5StarsAchieved + Global.Stage6StarsAchieved + Global.Stage7StarsAchieved + Global.Stage8StarsAchieved + Global.Stage9StarsAchieved + Global.Stage10StarsAchieved) - (bupgrade_1.star_count+bupgrade_2.star_count+bupgrade_3.star_count+bupgrade_4.star_count+bupgrade_5.star_count + dupgrade_1.star_count+dupgrade_2.star_count+dupgrade_3.star_count+dupgrade_4.star_count+dupgrade_5.star_count)
 	
 	if Global.current_stage == "Learner Lagoon":
 		stageSelecting = 1
@@ -179,7 +202,42 @@ const STAGE_SELECT_BACK_S_8 = preload("res://assets/StageSelectBack/StageSelectB
 const STAGE_SELECT_BACK_S_9 = preload("res://assets/StageSelectBack/StageSelectBackS5.png")
 const STAGE_SELECT_BACK_S_10 = preload("res://assets/StageSelectBack/StageSelectBackS3.png")
 
-func _process(_delta):
+
+func establish_arrows():
+	if Global.levelProgress == stageSelecting:
+		right_stage_arrow.visible = false
+	else:
+		right_stage_arrow.visible = true
+	
+	if stageSelecting == 1:
+		left_stage_arrow.visible = false
+	else:
+		left_stage_arrow.visible = true
+	
+
+@onready var play_button = $PlayButton
+
+var playAnimTheta: float = 0.0
+
+func _process(delta):
+	if Global.unspentPoints == 0:
+		upgrades_left_label.visible = false
+		
+		playAnimTheta += 0.05
+		if playAnimTheta >= 6.28318:
+			playAnimTheta = 0
+		
+		play_button.scale.x = 1.0 + (sin(playAnimTheta) * 0.05)
+		play_button.scale.y = 1.0 + (sin(playAnimTheta) * 0.05)
+		
+	else:
+		
+		play_button.scale.x = 1.0
+		play_button.scale.y = 1.0
+		
+		upgrades_left_label.visible = true
+	
+	
 	checkBaseStars()
 	checkDroneStars()
 	upgrades_left_label.text = "UPGRADES\nLEFT: " + str(Global.unspentPoints)
@@ -195,7 +253,7 @@ func _process(_delta):
 		Global.waveNum = 3
 		Global.current_stage = "Learner Lagoon"
 		stage_words.text = "Stage 1: Learner Lagoon"
-		left_stage_arrow.visible = false
+		establish_arrows()
 		resetStarParticles()
 		
 		Global.wave3Wait = 25.0
@@ -219,6 +277,7 @@ func _process(_delta):
 		Global.waveNum = 3
 		Global.current_stage = "Perfect Pond"
 		stage_words.text = "Stage 2: Perfect Pond"
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage2StarsAchieved >= 1:
 			star_particle_3.visible = true
@@ -237,6 +296,7 @@ func _process(_delta):
 		Global.waveNum = 5
 		Global.current_stage = "Giga Geyser"
 		stage_words.text = "Stage 3: Giga Geyser"
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage3StarsAchieved >= 1:
 			star_particle_2.visible = true
@@ -256,6 +316,7 @@ func _process(_delta):
 		Global.current_stage = "Swirly Swamp"
 		Global.stage_index = 4
 		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage4StarsAchieved >= 1:
 			star_particle_1.visible = true
@@ -279,6 +340,7 @@ func _process(_delta):
 		Global.current_stage = "Offset Ocean"
 		Global.stage_index = 5
 		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage5StarsAchieved >= 1:
 			star_particle_2.visible = true
@@ -298,6 +360,7 @@ func _process(_delta):
 		Global.current_stage = "Serpent Sea"
 		Global.stage_index = 6
 		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage6StarsAchieved >= 1:
 			star_particle_3.visible = true
@@ -313,6 +376,7 @@ func _process(_delta):
 		Global.current_stage = "Baffle Bay"
 		Global.stage_index = 7
 		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage7StarsAchieved >= 1:
 			star_particle_3.visible = true
@@ -328,6 +392,7 @@ func _process(_delta):
 		Global.current_stage = "Conic Cove"
 		Global.stage_index = 8
 		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage8StarsAchieved >= 1:
 			star_particle_2.visible = true
@@ -347,6 +412,7 @@ func _process(_delta):
 		Global.current_stage = "Steamy Stream"
 		Global.stage_index = 9
 		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage9StarsAchieved >= 1:
 			star_particle_2.visible = true
@@ -366,7 +432,7 @@ func _process(_delta):
 		Global.current_stage = "Massive Marsh"
 		Global.stage_index = 10
 		stage_words.text = "Stage " + str(Global.stage_index) + ": " + Global.current_stage
-		right_stage_arrow.visible = false
+		establish_arrows()
 		resetStarParticles()
 		if Global.Stage10StarsAchieved >= 1:
 			star_particle_1.visible = true
