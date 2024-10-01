@@ -222,19 +222,26 @@ var playAnimTheta: float = 0.0
 func _process(delta):
 	if Global.unspentPoints == 0:
 		upgrades_left_label.visible = false
-		
-		playAnimTheta += 0.05
+		playAnimTheta += 7.0 * delta
 		if playAnimTheta >= 6.28318:
 			playAnimTheta = 0
 		
-		play_button.scale.x = 1.0 + (sin(playAnimTheta) * 0.05)
-		play_button.scale.y = 1.0 + (sin(playAnimTheta) * 0.05)
+		play_button.scale.x = 1.0 + (sin(playAnimTheta) * 0.03)
+		play_button.scale.y = 1.0 + (sin(playAnimTheta) * 0.03)
 		
+		upgrades_left_label.scale.x = 1.0
+		upgrades_left_label.scale.y = 1.0
 	else:
+		
+		playAnimTheta += 7.0 * delta
+		if playAnimTheta >= 6.28318:
+			playAnimTheta = 0
+		
+		upgrades_left_label.scale.x = 1.0 + (sin(playAnimTheta) * 0.06)
+		upgrades_left_label.scale.y = 1.0 + (sin(playAnimTheta) * 0.06)
 		
 		play_button.scale.x = 1.0
 		play_button.scale.y = 1.0
-		
 		upgrades_left_label.visible = true
 	
 	
