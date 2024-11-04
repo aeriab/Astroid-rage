@@ -1792,15 +1792,6 @@ rotation = 3.44356
 scale = Vector2(0.298869, 0.298869)
 texture = ExtResource("14_nhpey")
 
-[node name="Dev Instructions" type="Label" parent="MainCanvas"]
-offset_left = -997.0
-offset_top = -1006.0
-offset_right = 9392.0
-offset_bottom = -223.0
-theme_override_font_sizes/font_size = 286
-text = "REWORK LEVELING SYSTEM! MAKE IT 
-MORE LIKE A ROGUELIKE NOT DIABLO!"
-
 [node name="StageSelectBack" type="Sprite2D" parent="."]
 position = Vector2(951, 604)
 scale = Vector2(0.819349, 0.819349)
