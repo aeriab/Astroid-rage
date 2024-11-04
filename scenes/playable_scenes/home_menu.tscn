@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://n3pfbthhjb2o"]
+[gd_scene load_steps=9 format=3 uid="uid://n3pfbthhjb2o"]
 
 [ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_mbgcs"]
+[ext_resource type="Texture2D" uid="uid://bpu838e1u0kbo" path="res://assets/TankBirdBod (2).png" id="2_dvl5i"]
 [ext_resource type="Script" path="res://scripts/MusicVolume.gd" id="2_v7yv8"]
 [ext_resource type="Texture2D" uid="uid://cva3wsbyec1c2" path="res://assets/VolumeSprites/Splatcho Volume Slider (1).png" id="3_aovcj"]
+[ext_resource type="Texture2D" uid="uid://dbaqv6l82cm7m" path="res://assets/Target Enemy (1).png" id="3_m0f0e"]
 [ext_resource type="Script" path="res://scripts/SFXVolume.gd" id="4_bd81k"]
+[ext_resource type="Texture2D" uid="uid://c6swdgdjjlstd" path="res://assets/SpraySideBoost (1).png" id="4_mslvh"]
+[ext_resource type="Texture2D" uid="uid://fyqgbky4lcrw" path="res://assets/Splatcho Cover.png" id="8_ll4s6"]
 
 [node name="HomeMenu" type="Node2D"]
 
@@ -16,6 +20,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.705882, 0.862745, 0.980392, 1)
+theme_override_colors/font_shadow_color = Color(0.858824, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -10
+theme_override_constants/shadow_offset_y = -5
 theme_override_font_sizes/font_size = 126
 text = "SPLATCHO"
 horizontal_alignment = 1
@@ -46,6 +55,11 @@ text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TankBirdBod(2)" type="Sprite2D" parent="HomeCanvas/PlayButton"]
+position = Vector2(271, 113)
+scale = Vector2(0.223442, 0.223442)
+texture = ExtResource("2_dvl5i")
+
 [node name="MinigameSelect" type="Button" parent="HomeCanvas"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,19 +74,10 @@ theme_override_font_sizes/font_size = 70
 text = "TRAINING"
 metadata/_edit_use_anchors_ = true
 
-[node name="StorePageButton" type="Button" parent="HomeCanvas"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 53.0
-offset_top = 236.0
-offset_right = -1319.0
-offset_bottom = -674.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-text = "STORE"
-metadata/_edit_use_anchors_ = true
+[node name="TargetEnemy(1)" type="Sprite2D" parent="HomeCanvas/MinigameSelect"]
+position = Vector2(263, 86)
+scale = Vector2(0.221419, 0.221419)
+texture = ExtResource("3_m0f0e")
 
 [node name="QuitButton" type="Button" parent="HomeCanvas"]
 anchors_preset = 15
@@ -88,13 +93,18 @@ theme_override_font_sizes/font_size = 70
 text = "QUIT"
 metadata/_edit_use_anchors_ = true
 
+[node name="SpraySideBoost(1)" type="Sprite2D" parent="HomeCanvas/QuitButton"]
+position = Vector2(275, 86)
+scale = Vector2(0.144016, 0.144016)
+texture = ExtResource("4_mslvh")
+
 [node name="MusicVolume" type="Control" parent="HomeCanvas"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 50.0
-offset_top = 480.0
+offset_top = 400.0
 offset_right = 90.0
-offset_bottom = 520.0
+offset_bottom = 440.0
 script = ExtResource("2_v7yv8")
 
 [node name="SplatchoVolumeSlider" type="Sprite2D" parent="HomeCanvas/MusicVolume"]
@@ -124,9 +134,9 @@ text = "MUSIC"
 layout_mode = 3
 anchors_preset = 0
 offset_left = 50.0
-offset_top = 702.0
+offset_top = 600.0
 offset_right = 90.0
-offset_bottom = 742.0
+offset_bottom = 640.0
 script = ExtResource("4_bd81k")
 
 [node name="SplatchoVolumeSlider" type="Sprite2D" parent="HomeCanvas/SFXVolume"]
@@ -152,9 +162,12 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "EFFECTS"
 
+[node name="SplatchoCover" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("8_ll4s6")
+
 [connection signal="pressed" from="HomeCanvas/PlayButton" to="HomeCanvas" method="_on_play_button_pressed"]
 [connection signal="pressed" from="HomeCanvas/MinigameSelect" to="HomeCanvas" method="_on_minigame_select_pressed"]
-[connection signal="pressed" from="HomeCanvas/StorePageButton" to="HomeCanvas" method="_on_store_page_button_pressed"]
 [connection signal="pressed" from="HomeCanvas/QuitButton" to="HomeCanvas" method="_on_quit_button_pressed"]
 [connection signal="value_changed" from="HomeCanvas/MusicVolume/HSlider" to="HomeCanvas/MusicVolume" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="HomeCanvas/SFXVolume/HSlider" to="HomeCanvas/SFXVolume" method="_on_h_slider_value_changed"]
