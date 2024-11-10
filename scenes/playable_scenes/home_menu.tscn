@@ -42,6 +42,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "PLAY GAME"
+icon = ExtResource("2_dvl5i")
+icon_alignment = 1
+expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="GameLevelLabel" type="Label" parent="HomeCanvas/PlayButton"]
@@ -55,11 +58,6 @@ text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TankBirdBod(2)" type="Sprite2D" parent="HomeCanvas/PlayButton"]
-position = Vector2(271, 113)
-scale = Vector2(0.223442, 0.223442)
-texture = ExtResource("2_dvl5i")
-
 [node name="MinigameSelect" type="Button" parent="HomeCanvas"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,12 +70,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "TRAINING"
+icon = ExtResource("3_m0f0e")
+icon_alignment = 1
+expand_icon = true
 metadata/_edit_use_anchors_ = true
-
-[node name="TargetEnemy(1)" type="Sprite2D" parent="HomeCanvas/MinigameSelect"]
-position = Vector2(263, 86)
-scale = Vector2(0.221419, 0.221419)
-texture = ExtResource("3_m0f0e")
 
 [node name="QuitButton" type="Button" parent="HomeCanvas"]
 anchors_preset = 15
@@ -91,12 +87,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "QUIT"
+icon = ExtResource("4_mslvh")
+icon_alignment = 1
+expand_icon = true
 metadata/_edit_use_anchors_ = true
-
-[node name="SpraySideBoost(1)" type="Sprite2D" parent="HomeCanvas/QuitButton"]
-position = Vector2(275, 86)
-scale = Vector2(0.144016, 0.144016)
-texture = ExtResource("4_mslvh")
 
 [node name="MusicVolume" type="Control" parent="HomeCanvas"]
 layout_mode = 3
