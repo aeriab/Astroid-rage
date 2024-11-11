@@ -118,6 +118,12 @@ var canDeployCrasher: bool = true
 var unspentPoints: int = 0
 
 ##############################################################################
+var temp_base_stars1: int = 0
+var temp_base_stars2: int = 0
+var temp_base_stars3: int = 0
+var temp_base_stars4: int = 0
+var temp_base_stars5: int = 0
+
 var num_base_stars1: int = 0
 var num_base_stars2: int = 0
 var num_base_stars3: int = 0
@@ -188,6 +194,18 @@ func addXP(num):
 
 func resetStats():
 	
+	num_base_stars1 = temp_base_stars1
+	num_base_stars2 = temp_base_stars2
+	num_base_stars3 = temp_base_stars3
+	num_base_stars4 = temp_base_stars4
+	num_base_stars5 = temp_base_stars5
+	
+	temp_base_stars1 = 0
+	temp_base_stars2 = 0
+	temp_base_stars3 = 0
+	temp_base_stars4 = 0
+	temp_base_stars5 = 0
+	
 	firstWaveProgress = 0
 	secondWaveProgress = 0
 	thirdWaveProgress = 0
@@ -230,6 +248,11 @@ func resetStats():
 	consecBulls = 0
 	explodeBoogers = true
 	enemiesOnGob = 0
+	
+	bulletSize = 4
+	bulletSpeed = 2.0
+	damage = 2.0
+	rotationSpeed = 2.0
 
 func decreaseHealth(num):
 	player_health -= num * 31.0

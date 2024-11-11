@@ -1,14 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://di6c7ve8350jp"]
+[gd_scene load_steps=31 format=3 uid="uid://di6c7ve8350jp"]
 
 [ext_resource type="Script" path="res://scripts/level_two.gd" id="1_10eie"]
-[ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="2_3eu3e"]
-[ext_resource type="Script" path="res://scripts/StTwoPlayer.gd" id="2_vtjqc"]
-[ext_resource type="PackedScene" uid="uid://dukd2mn150ti1" path="res://scenes/mutation_part.tscn" id="3_ri2y8"]
+[ext_resource type="Script" path="res://scripts/MarkPlayerPrac.gd" id="3_bwvbf"]
+[ext_resource type="Texture2D" uid="uid://csc6es3ftxahc" path="res://assets/Mark (4).png" id="3_rcaco"]
+[ext_resource type="Script" path="res://scripts/gameFolder/MarkMutationPart.gd" id="4_ai5m8"]
 [ext_resource type="Script" path="res://scripts/AreaBulletCollection.gd" id="5_kb3rd"]
-[ext_resource type="Script" path="res://scripts/BulletHandlerSt2.gd" id="5_m7hk0"]
+[ext_resource type="Texture2D" uid="uid://163mjw5qyyod" path="res://assets/MarkNose.png" id="5_xctc1"]
 [ext_resource type="Shader" path="res://shaders/level_oneback.gdshader" id="6_0k8lj"]
+[ext_resource type="Shader" path="res://shaders/MarkEyes.gdshader" id="6_gp7d0"]
+[ext_resource type="Texture2D" uid="uid://bq7gwdcrn51bc" path="res://assets/MarkEyes (1).png" id="7_lw5uw"]
+[ext_resource type="Script" path="res://scripts/gameFolder/MarkEyes.gd" id="8_1rvwq"]
 [ext_resource type="Texture2D" uid="uid://dc3hwl8kqvpc" path="res://assets/S2Background.png" id="8_xfa7c"]
 [ext_resource type="Script" path="res://scripts/EndlessWavesSt2.gd" id="9_8cern"]
+[ext_resource type="Script" path="res://scripts/gameFolder/MarkBulletHandler.gd" id="9_fw1pu"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="9_tvsoy"]
 [ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="10_c4mor"]
 [ext_resource type="Script" path="res://scripts/game_over_practice.gd" id="11_j34cl"]
@@ -20,7 +24,15 @@
 [ext_resource type="Texture2D" uid="uid://d3mppwhwsnoru" path="res://assets/S2 Instructions.png" id="17_86h3r"]
 [ext_resource type="Texture2D" uid="uid://djk6wt2num5i7" path="res://assets/PopStarLetters.png" id="18_gbjqq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jkb15"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vwwd"]
+shader = ExtResource("6_gp7d0")
+shader_parameter/explosiveValue = 0.0
+shader_parameter/blandness = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhj65"]
+shader = ExtResource("6_gp7d0")
+shader_parameter/explosiveValue = null
+shader_parameter/blandness = 0.6
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o6nwr"]
 
@@ -117,26 +129,61 @@ _data = {
 scale = Vector2(1.218, 1.218)
 script = ExtResource("1_10eie")
 
-[node name="Player" type="Area2D" parent="." groups=["Player"]]
-script = ExtResource("2_vtjqc")
-
-[node name="TankBirdBod(1)" type="Sprite2D" parent="Player"]
-z_index = 3
-texture = ExtResource("2_3eu3e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-visible = false
-z_index = 4
-scale = Vector2(23.58, 23.2821)
-shape = SubResource("CircleShape2D_jkb15")
-
-[node name="mutationPart" parent="Player" instance=ExtResource("3_ri2y8")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.3, 0.3)
 zoom = Vector2(0.12, 0.12)
 
-[node name="BulletHandlerSt2" type="Node" parent="."]
-script = ExtResource("5_m7hk0")
+[node name="Mark" type="Node2D" parent="."]
+
+[node name="Player" type="Area2D" parent="Mark" groups=["Player"]]
+script = ExtResource("3_bwvbf")
+
+[node name="MarkPlaySprite" type="Sprite2D" parent="Mark/Player"]
+z_index = 3
+position = Vector2(0, 16.4851)
+scale = Vector2(0.503802, 0.503802)
+texture = ExtResource("3_rcaco")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mark/Player"]
+visible = false
+position = Vector2(-5.74713, 0.656803)
+polygon = PackedVector2Array(-87.0279, -211.002, -66.5025, -218.391, -114.122, -302.956, 125.616, -302.135, 78.8177, -218.391, 114.943, -201.97, 148.604, -214.286, 180.624, -220.033, 208.539, -220.033, 235.632, -216.749, 254.516, -211.823, 275.041, -203.612, 298.851, -190.476, 321.018, -172.414, 340.722, -148.604, 351.396, -128.9, 359.606, -105.911, 364.532, -76.3547, 363.711, -47.619, 354.68, -4.92611, 335.796, 41.8719, 307.882, 86.2069, 270.936, 131.363, 217.57, 183.908, 145.32, 243.021, 68.1445, 295.566, 6.56814, 334.154, -79.6387, 280.788, -131.363, 243.842, -176.519, 208.539, -224.959, 165.846, -259.442, 130.542, -298.851, 82.1018, -331.691, 25.4516, -348.933, -25.4516, -353.038, -72.2496, -347.291, -107.553, -334.975, -137.11, -319.376, -160.92, -294.745, -184.729, -266.831, -201.149, -243.021, -211.823, -211.002, -219.212, -178.161, -220.854, -147.783, -216.749, -126.437, -211.002, -104.269, -202.791)
+
+[node name="mutationPart" type="Node2D" parent="Mark/Player"]
+z_index = 2
+z_as_relative = false
+position = Vector2(0, 60.9843)
+script = ExtResource("4_ai5m8")
+
+[node name="SnoutPosition" type="Node2D" parent="Mark/Player/mutationPart"]
+z_index = 2
+z_as_relative = false
+position = Vector2(1.64204, -269.523)
+
+[node name="MarkNose" type="Sprite2D" parent="Mark/Player/mutationPart"]
+z_index = 1
+position = Vector2(0, -44)
+scale = Vector2(0.504, 0.504)
+texture = ExtResource("5_xctc1")
+
+[node name="MarkEye1" type="Sprite2D" parent="Mark/Player/mutationPart"]
+z_index = 1
+material = SubResource("ShaderMaterial_7vwwd")
+position = Vector2(-199.507, -139.802)
+scale = Vector2(0.504, 0.504)
+texture = ExtResource("7_lw5uw")
+script = ExtResource("8_1rvwq")
+
+[node name="MarkEye2" type="Sprite2D" parent="Mark/Player/mutationPart"]
+z_index = 1
+material = SubResource("ShaderMaterial_bhj65")
+position = Vector2(206.897, -140.623)
+scale = Vector2(0.504, 0.504)
+texture = ExtResource("7_lw5uw")
+script = ExtResource("8_1rvwq")
+
+[node name="BulletHandlerSt2" type="Node" parent="Mark"]
+script = ExtResource("9_fw1pu")
 
 [node name="AreaBulletCollection" type="Area2D" parent="."]
 script = ExtResource("5_kb3rd")
@@ -159,12 +206,6 @@ shape = SubResource("WorldBoundaryShape2D_o6nwr")
 position = Vector2(0, -6000)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_o6nwr")
-
-[node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ibogi")
-position = Vector2(0, 1.90735e-06)
-scale = Vector2(15.2025, 15.2025)
-texture = ExtResource("8_xfa7c")
 
 [node name="EndlessWavesSt2" type="Node" parent="."]
 script = ExtResource("9_8cern")
@@ -210,6 +251,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PopSfxPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_nnk7x")
+
+[node name="SplatchoStage1Background(3)" type="Sprite2D" parent="."]
+z_index = -10
+material = SubResource("ShaderMaterial_ibogi")
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(15.2025, 15.2025)
+texture = ExtResource("8_xfa7c")
 
 [node name="Stage2Instructions" type="Sprite2D" parent="."]
 position = Vector2(-3432.68, -1695.4)
