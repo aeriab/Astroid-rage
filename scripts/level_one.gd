@@ -21,6 +21,7 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		pause_menu.visible = true
+		Global.lastTimeScale = Global.gameTimeScale
 		Global.gameTimeScale = 0.0
 	
 	#if Input.is_action_just_pressed("ui_cancel") && pause_menu.visible:

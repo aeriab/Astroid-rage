@@ -25,5 +25,5 @@ func _process(_delta):
 		else:
 			theta = 2 * PI -  acos(x / snout_length)
 		
-		greenspot.set_motion(x,y,theta,1)
+		greenspot.set_motion(x,y,theta,false)
 		shotparticles.start_emit(x,y,theta)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://di6c7ve8350jp"]
+[gd_scene load_steps=26 format=3 uid="uid://di6c7ve8350jp"]
 
 [ext_resource type="Script" path="res://scripts/level_two.gd" id="1_10eie"]
 [ext_resource type="Texture2D" uid="uid://dr1r7f0eqyfec" path="res://assets/tankBird/TankBirdBod (1).png" id="2_3eu3e"]
@@ -11,7 +11,8 @@
 [ext_resource type="Script" path="res://scripts/EndlessWavesSt2.gd" id="9_8cern"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="9_tvsoy"]
 [ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="10_c4mor"]
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="11_eu36a"]
+[ext_resource type="Script" path="res://scripts/game_over_practice.gd" id="11_j34cl"]
+[ext_resource type="Script" path="res://scripts/pause_menu_practice.gd" id="12_7tlwg"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="12_uvx2n"]
 [ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="13_c62fy"]
 [ext_resource type="Script" path="res://scripts/PopHighscore.gd" id="14_v3axn"]
@@ -170,10 +171,11 @@ script = ExtResource("9_8cern")
 
 [node name="GameOver" parent="." instance=ExtResource("9_tvsoy")]
 visible = false
+script = ExtResource("11_j34cl")
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_c4mor")]
 visible = false
-script = ExtResource("11_eu36a")
+script = ExtResource("12_7tlwg")
 
 [node name="HealthBarRed" parent="." instance=ExtResource("12_uvx2n")]
 z_index = 7

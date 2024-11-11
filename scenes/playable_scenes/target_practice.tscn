@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c1yvy6ufkh83k"]
+[gd_scene load_steps=26 format=3 uid="uid://c1yvy6ufkh83k"]
 
 [ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bbqya"]
 [ext_resource type="Script" path="res://scripts/StOnePlayer.gd" id="2_1aebr"]
@@ -10,8 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://756wd12i4202" path="res://assets/StageBackground/Stage1Background (5).png" id="8_tx2co"]
 [ext_resource type="Script" path="res://scripts/EndlessWavesSt1.gd" id="9_sfit1"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="10_cc5vo"]
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_alpbm"]
+[ext_resource type="Script" path="res://scripts/game_over_practice.gd" id="11_lpwfu"]
 [ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="12_w60qr"]
+[ext_resource type="Script" path="res://scripts/pause_menu_practice.gd" id="13_hqpxy"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="13_m6ig4"]
 [ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="14_v1fya"]
 [ext_resource type="Script" path="res://scripts/HighscoreS1.gd" id="15_rwg8e"]
@@ -171,10 +172,11 @@ script = ExtResource("9_sfit1")
 
 [node name="GameOver" parent="." instance=ExtResource("10_cc5vo")]
 visible = false
+script = ExtResource("11_lpwfu")
 
 [node name="PauseMenu" parent="." instance=ExtResource("12_w60qr")]
 visible = false
-script = ExtResource("12_alpbm")
+script = ExtResource("13_hqpxy")
 
 [node name="HealthBarRed" parent="." instance=ExtResource("13_m6ig4")]
 z_index = 7

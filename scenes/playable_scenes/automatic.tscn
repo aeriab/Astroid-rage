@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxsc6vru56eai"]
+[gd_scene load_steps=22 format=3 uid="uid://dxsc6vru56eai"]
 
 [ext_resource type="Script" path="res://scripts/level_four.gd" id="1_udvp5"]
 [ext_resource type="Script" path="res://scripts/auto_player.gd" id="2_crlm2"]
@@ -10,8 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://756wd12i4202" path="res://assets/StageBackground/Stage1Background (5).png" id="8_45anf"]
 [ext_resource type="Script" path="res://scripts/EndlessWavesSt3.gd" id="9_uu26i"]
 [ext_resource type="PackedScene" uid="uid://cg1tr1w13owj1" path="res://scenes/game_over.tscn" id="10_ewwgo"]
+[ext_resource type="Script" path="res://scripts/game_over_practice.gd" id="11_3u8gc"]
 [ext_resource type="PackedScene" uid="uid://co2681xf6dre" path="res://scenes/pause_menu.tscn" id="11_bk3jo"]
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_jqkvu"]
+[ext_resource type="Script" path="res://scripts/pause_menu_practice.gd" id="13_cdwgv"]
 [ext_resource type="PackedScene" uid="uid://ywkm5lhkpww" path="res://scenes/health_bar_red.tscn" id="13_l0cxn"]
 [ext_resource type="Script" path="res://scripts/ScoreS1.gd" id="14_stnsh"]
 [ext_resource type="Script" path="res://scripts/ricoHighscore.gd" id="15_pjqat"]
@@ -89,10 +90,11 @@ script = ExtResource("9_uu26i")
 
 [node name="GameOver" parent="." instance=ExtResource("10_ewwgo")]
 visible = false
+script = ExtResource("11_3u8gc")
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_bk3jo")]
 visible = false
-script = ExtResource("12_jqkvu")
+script = ExtResource("13_cdwgv")
 
 [node name="HealthBarRed" parent="." instance=ExtResource("13_l0cxn")]
 z_index = 7

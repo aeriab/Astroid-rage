@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://n3pfbthhjb2o"]
+[gd_scene load_steps=13 format=3 uid="uid://n3pfbthhjb2o"]
 
 [ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_mbgcs"]
 [ext_resource type="Texture2D" uid="uid://bpu838e1u0kbo" path="res://assets/TankBirdBod (2).png" id="2_dvl5i"]
@@ -7,7 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://dbaqv6l82cm7m" path="res://assets/Target Enemy (1).png" id="3_m0f0e"]
 [ext_resource type="Script" path="res://scripts/SFXVolume.gd" id="4_bd81k"]
 [ext_resource type="Texture2D" uid="uid://c6swdgdjjlstd" path="res://assets/SpraySideBoost (1).png" id="4_mslvh"]
+[ext_resource type="Texture2D" uid="uid://dl0ldlfnm1ars" path="res://assets/SpraySBOutline (1).png" id="6_bl7g0"]
+[ext_resource type="Shader" path="res://shaders/titleBack.gdshader" id="8_c47cw"]
 [ext_resource type="Texture2D" uid="uid://fyqgbky4lcrw" path="res://assets/Splatcho Cover.png" id="8_ll4s6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_246gm"]
+shader = ExtResource("8_c47cw")
+shader_parameter/slow_by_mult = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bvk4"]
+shader = ExtResource("8_c47cw")
+shader_parameter/slow_by_mult = 7.0
 
 [node name="HomeMenu" type="Node2D"]
 
@@ -15,13 +25,14 @@
 script = ExtResource("1_mbgcs")
 
 [node name="OverWords" type="Label" parent="HomeCanvas"]
+material = SubResource("ShaderMaterial_246gm")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.705882, 0.862745, 0.980392, 1)
-theme_override_colors/font_shadow_color = Color(0.858824, 1, 1, 1)
+theme_override_colors/font_color = Color(0.1403, 0.652724, 0.677806, 1)
+theme_override_colors/font_shadow_color = Color(0.873973, 0.943492, 0.977213, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = -10
 theme_override_constants/shadow_offset_y = -5
@@ -31,66 +42,83 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="Button" parent="HomeCanvas"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 707.0
-offset_top = 514.0
-offset_right = -665.0
-offset_bottom = -396.0
+anchors_preset = -1
+anchor_left = -0.0140625
+anchor_top = -0.158333
+anchor_right = 1.01458
+anchor_bottom = 1.15833
+offset_left = 696.0
+offset_top = 479.0
+offset_right = -676.0
+offset_bottom = -431.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "PLAY GAME"
+text = "
+
+
+
+PLAY GAME"
 icon = ExtResource("2_dvl5i")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="GameLevelLabel" type="Label" parent="HomeCanvas/PlayButton"]
-layout_mode = 0
-offset_left = 156.0
-offset_top = 166.0
-offset_right = 390.0
-offset_bottom = 234.0
-theme_override_font_sizes/font_size = 30
-text = "Level: 1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="MinigameSelect" type="Button" parent="HomeCanvas"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 707.0
-offset_top = 241.0
-offset_right = -665.0
-offset_bottom = -669.0
+anchors_preset = -1
+anchor_left = 0.0244792
+anchor_top = -0.139815
+anchor_right = 0.944792
+anchor_bottom = 1.11389
+offset_left = 1358.0
+offset_top = 305.0
+offset_right = -14.0
+offset_bottom = -605.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "TRAINING"
-icon = ExtResource("3_m0f0e")
+text = "
+
+
+TRAINING"
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
+
+[node name="TargetEnemy(1)" type="Sprite2D" parent="HomeCanvas/MinigameSelect"]
+position = Vector2(194, 161)
+rotation = 0.373084
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_m0f0e")
 
 [node name="QuitButton" type="Button" parent="HomeCanvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1335.0
-offset_top = 901.0
-offset_right = -37.0
-offset_bottom = -27.0
+offset_left = 1318.0
+offset_top = 835.0
+offset_right = -54.0
+offset_bottom = -93.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "QUIT"
-icon = ExtResource("4_mslvh")
+text = "QUIT              "
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
+
+[node name="SpraySideBoost(1)" type="Sprite2D" parent="HomeCanvas/QuitButton"]
+z_index = 1
+z_as_relative = false
+position = Vector2(373, 72)
+rotation = -0.374238
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_mslvh")
+
+[node name="SpraySbOutline(1)" type="Sprite2D" parent="HomeCanvas/QuitButton/SpraySideBoost(1)"]
+z_as_relative = false
+rotation = -1.5708
+texture = ExtResource("6_bl7g0")
 
 [node name="MusicVolume" type="Control" parent="HomeCanvas"]
 layout_mode = 3
@@ -157,6 +185,7 @@ theme_override_font_sizes/font_size = 60
 text = "EFFECTS"
 
 [node name="SplatchoCover" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2bvk4")
 position = Vector2(960, 540)
 texture = ExtResource("8_ll4s6")
 

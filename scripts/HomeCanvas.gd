@@ -1,8 +1,4 @@
 extends CanvasLayer
-@onready var game_level_label = $PlayButton/GameLevelLabel
-
-func _ready():
-	game_level_label.text = "Level: " + str(Global.gameHighscore) + " PTS"
 
 func _on_play_button_pressed():
 	Global.resetStats()
