@@ -18,11 +18,12 @@ func _ready():
 	
 	Global.bulletSize = (2 + 1.2) * 2.0
 	Global.rotationSpeed = (2 * 0.35) + 1.2
-	Global.damage = (2.5 * 2) + 2.0
+	Global.damage = (2.5 * 50) + 2.0
 	
 	Global.rotationSpeed = 2.0
 	Global.bulletSpeed = 2.0
 	
+	Global.needBaseStarRevert = true
 	Global.temp_base_stars1 = Global.num_base_stars1
 	Global.temp_base_stars2 = Global.num_base_stars2
 	Global.temp_base_stars3 = Global.num_base_stars3

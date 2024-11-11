@@ -26,16 +26,16 @@ func _process(delta):
 	
 	if time >= next_time:
 		spawnEnemyGroup()
-		Global.gameTimeScale += 0.02
-		next_time = randf_range(8.0,16.0)
+		Global.gameTimeScale += 0.05
+		next_time = randf_range(6.0,12.0)
 		time = 0.0
 	
 	bossTime += delta * Global.gameTimeScale
 	
 	if bossTime >= next_boss_time:
 		spawnEnemyBoss()
-		Global.gameTimeScale += 0.01
-		next_boss_time = randf_range(15.0,25.0)
+		Global.gameTimeScale += 0.05
+		next_boss_time = randf_range(15.0,30.0)
 		bossTime = 0.0
 
 func spawnTargetEnemy():
@@ -94,7 +94,7 @@ func spawnEnemyGroup():
 	if randi_range(0,1) == 1:
 		y = -y
 	
-	globRadius = randf_range(2000.0,300.0)
+	globRadius = randf_range(2500.0,1000.0)
 	
 	var i = 0
 	while i < int(globRadius / 100):
