@@ -10,15 +10,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("ui_up") || Input.is_key_pressed(KEY_W):
-		position.y -= SPEED * delta
-	elif Input.is_action_pressed("ui_down") || Input.is_key_pressed(KEY_S):
-		position.y += SPEED * delta
+	print(str(-rotation + (3 * PI / 2)))
+	var heading = (-rotation)
 	
-	if Input.is_action_pressed("ui_left") || Input.is_key_pressed(KEY_A):
-		position.x -= SPEED * delta
-	elif Input.is_action_pressed("ui_right") || Input.is_key_pressed(KEY_D):
-		position.x += SPEED * delta
+	if Input.is_action_pressed("ui_up") || Input.is_key_pressed(KEY_W):
+		position.y += SPEED * delta * cos(heading)
+		position.x += SPEED * delta * sin(heading)
 	
 	if Input.is_key_pressed(KEY_E):
 		rotate(delta * ROT_SPEED)
