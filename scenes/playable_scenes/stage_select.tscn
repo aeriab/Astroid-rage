@@ -1841,6 +1841,7 @@ offset_bottom = 1058.0
 color = Color(0.728822, 0.728822, 0.728822, 0.760784)
 
 [node name="playBlocker" type="ColorRect" parent="MainCanvas/baseBlocker"]
+layout_mode = 0
 offset_left = 724.0
 offset_top = -221.0
 offset_right = 1219.0
@@ -1883,6 +1884,7 @@ offset_bottom = 1057.0
 color = Color(0.728822, 0.728822, 0.728822, 0.760784)
 
 [node name="playBlocker2" type="ColorRect" parent="MainCanvas/droneBlocker"]
+layout_mode = 0
 offset_left = 39.0
 offset_top = -185.0
 offset_right = 534.0

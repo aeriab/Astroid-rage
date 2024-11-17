@@ -17,7 +17,7 @@ var thrusting: bool = false
 
 var leftNow: bool = true
 
-var turningLeft: bool = true
+var turningLeft: int = -1
 
 var firstTimerTurn: bool = true
 
@@ -90,9 +90,9 @@ func _on_auto_timer_timeout():
 
 
 func _on_auto_timer_2_timeout():
-	if turningLeft:
+	if turningLeft == 1:
 		shootLeft()
-	else:
+	elif turningLeft == 0:
 		shootRight()
 	
 	if Global.startCrasher == false && Global.crashStarted == true:

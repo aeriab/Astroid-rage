@@ -107,11 +107,19 @@ func _process(delta):
 			clockwise = clockwise * -1
 		
 		if Input.is_action_pressed("ui_up") && Global.gameTimeScale > 0.1:
-			rotation += sin(sinFunctionProg) * Global.gameTimeScale * delta * 20.0
 			thrust = MAX_THRUST * 1.8
+			if Input.is_action_pressed("ui_right"):
+				rotation += Global.gameTimeScale * delta * 10.0
+			elif Input.is_action_pressed("ui_left"):
+				rotation -= Global.gameTimeScale * delta * 10.0
+			else:
+				rotation += sin(sinFunctionProg) * Global.gameTimeScale * delta * 5.0
 		else:
 			thrust = MAX_THRUST
-			rotation += Global.gameTimeScale * delta * clockwise * 13.0
+			if Input.is_action_pressed("ui_right"):
+				rotation += Global.gameTimeScale * delta * 10.0
+			elif Input.is_action_pressed("ui_left"):
+				rotation -= Global.gameTimeScale * delta * 10.0
 		
 		
 		force += thrust

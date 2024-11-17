@@ -1861,6 +1861,33 @@ visible = false
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("11_x60jw")
 
+[node name="Crasher3" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(1741, 156)
+scale = Vector2(0.668293, 0.668293)
+texture = ExtResource("20_slatg")
+
+[node name="SpraySideBoost(1)" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(1739, 174)
+scale = Vector2(0.190881, 0.190881)
+texture = ExtResource("60_nvmmr")
+
+[node name="FlingBack(1)" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(1740, 164)
+scale = Vector2(0.113492, 0.113492)
+texture = ExtResource("64_5bjyf")
+
+[node name="FlingFront" type="Sprite2D" parent="CanvasLayer/FlingBack(1)"]
+texture = ExtResource("65_rvxsy")
+
+[node name="Gob(2)" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(1738, 163)
+scale = Vector2(0.159385, 0.159385)
+texture = ExtResource("68_jf2pk")
+
 [node name="gameCircle" type="Area2D" parent="."]
 script = ExtResource("80_45w2x")
 

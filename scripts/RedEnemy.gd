@@ -189,6 +189,10 @@ func moveWithGob():
 	x += Global.gobXMovement
 	y += Global.gobYMovement
 	position = Vector2(x,y)
+	
+	if !alreadyFree:
+		collision_polygon_2d_left.disabled = true
+		collision_polygon_2d_right.disabled = true
 
 func _on_area_entered(area):
 	if area.is_in_group("BoogerArea"):

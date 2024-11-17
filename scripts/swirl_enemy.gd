@@ -204,6 +204,9 @@ func moveWithGob():
 	x += Global.gobXMovement
 	y += Global.gobYMovement
 	position = Vector2(x,y)
+	
+	if !alreadyFree:
+		collision_polygon_2d.disabled = true
 
 
 func _on_area_entered(area):

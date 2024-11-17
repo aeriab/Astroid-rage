@@ -65,18 +65,21 @@ func _process(delta):
 		
 		rotation += (delta * Global.gameTimeScale * clockwise) * rotScale * speedScale * ROT_UPGRADER
 		
-		if Input.is_action_pressed("ui_up") && Global.gameTimeScale > 0.1:
-			spray_bullet_handler.turningLeft = true
+		if Input.is_action_pressed("ui_right") && Global.gameTimeScale > 0.1:
+			spray_bullet_handler.turningLeft = 1
 			if rotScale < ROT_SCALE * ROT_UPGRADER:
 				rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
 			else:
 				rotScale = ROT_SCALE * ROT_UPGRADER
-		else:
-			spray_bullet_handler.turningLeft = false
+		elif Input.is_action_pressed("ui_left") && Global.gameTimeScale > 0.1:
+			spray_bullet_handler.turningLeft = 0
 			if rotScale > -(ROT_SCALE * ROT_UPGRADER):
 				rotScale -= delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
 			else:
 				rotScale = -(ROT_SCALE * ROT_UPGRADER)
+		else:
+			spray_bullet_handler.turningLeft = -1
+			rotScale = 0.0
 		
 		
 		force += thrust

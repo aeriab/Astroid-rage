@@ -83,10 +83,10 @@ func _process(delta):
 			curRotBuildup = rotBuildup
 		
 		thrust = MAX_THRUST * curRotBuildup * 3
-		if rotBuildup > 0.0:
+		if rotBuildup > 1.0:
 			rotBuildup -= 10.0 * Global.gameTimeScale * delta
 		else:
-			rotBuildup = 0.0
+			rotBuildup = 1.0
 		fling_back_sprite.rotate(Global.gameTimeScale * delta * rotBuildup * 30)
 		if curRotBuildup > 0.0:
 			curRotBuildup -= 10.0 * Global.gameTimeScale * delta
@@ -98,14 +98,24 @@ func _process(delta):
 					rotBuildup += 22.0 * Global.gameTimeScale * delta * charge_speed
 				else:
 					rotBuildup = max_fling * 3.0
-			
-			rotScale = 0.0
 		else:
 			if force <= 5.0 && force >= -5.0:
-				if rotScale < ROT_SCALE * ROT_UPGRADER:
-					rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
-				else:
-					rotScale = ROT_SCALE * ROT_UPGRADER
+				pass
+		
+		if Input.is_action_pressed("ui_right") && Global.gameTimeScale > 0.1:
+			clockwise = 1
+			if rotScale < ROT_SCALE * ROT_UPGRADER:
+				rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
+			else:
+				rotScale = ROT_SCALE * ROT_UPGRADER
+		elif Input.is_action_pressed("ui_left") && Global.gameTimeScale > 0.1:
+			clockwise = -1
+			if rotScale < ROT_SCALE * ROT_UPGRADER:
+				rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
+			else:
+				rotScale = ROT_SCALE * ROT_UPGRADER
+		else:
+			rotScale = 0.0
 		
 		
 		force += thrust

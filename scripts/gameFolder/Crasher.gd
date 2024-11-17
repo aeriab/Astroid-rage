@@ -63,14 +63,12 @@ func _process(delta):
 		
 		rotation += (delta * Global.gameTimeScale * clockwise) * rotScale * speedScale * ROT_UPGRADER
 		
-		if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1:
-			clockwise *= -1
+		#if Input.is_action_just_pressed("ui_up") && Global.gameTimeScale > 0.1:
+			#clockwise *= -1
 		
 		if Input.is_action_pressed("ui_up") && Global.gameTimeScale > 0.1:
 			cpu_particles_2d.emitting = true
 			thrust = MAX_THRUST
-			
-			rotScale = 0.0
 		else:
 			cpu_particles_2d.emitting = false
 			thrust = 0
@@ -81,6 +79,20 @@ func _process(delta):
 				else:
 					rotScale = ROT_SCALE * ROT_UPGRADER
 		
+		if Input.is_action_pressed("ui_left") && Global.gameTimeScale > 0.1:
+			clockwise = -1
+			if rotScale < ROT_SCALE * ROT_UPGRADER:
+				rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
+			else:
+				rotScale = ROT_SCALE * ROT_UPGRADER
+		elif Input.is_action_pressed("ui_right") && Global.gameTimeScale > 0.1:
+			clockwise = 1
+			if rotScale < ROT_SCALE * ROT_UPGRADER:
+				rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
+			else:
+				rotScale = ROT_SCALE * ROT_UPGRADER
+		else:
+			rotScale = 0.0
 		
 		force += thrust
 		
