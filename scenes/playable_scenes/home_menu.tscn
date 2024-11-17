@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://n3pfbthhjb2o"]
+[gd_scene load_steps=16 format=3 uid="uid://n3pfbthhjb2o"]
 
 [ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_mbgcs"]
 [ext_resource type="Texture2D" uid="uid://bpu838e1u0kbo" path="res://assets/TankBirdBod (2).png" id="2_dvl5i"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://c6swdgdjjlstd" path="res://assets/SpraySideBoost (1).png" id="4_mslvh"]
 [ext_resource type="Shader" path="res://shaders/titleBack.gdshader" id="8_c47cw"]
 [ext_resource type="Texture2D" uid="uid://fyqgbky4lcrw" path="res://assets/Splatcho Cover.png" id="8_ll4s6"]
+[ext_resource type="Texture2D" uid="uid://cjy8gs6cxalk3" path="res://assets/instructionIcons/FireIcon (1).png" id="10_f53fb"]
+[ext_resource type="Texture2D" uid="uid://d2hmyo1pe6dwd" path="res://assets/instructionIcons/DeployDroneIcon.png" id="11_e1hwi"]
+[ext_resource type="Texture2D" uid="uid://bh1p7tn07i72m" path="res://assets/instructionIcons/NavigateDroneIcon.png" id="12_lsc11"]
+[ext_resource type="Texture2D" uid="uid://co5fljlwhpjp3" path="res://assets/instructionIcons/EscapeIcon.png" id="13_k25h1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_246gm"]
 shader = ExtResource("8_c47cw")
@@ -67,12 +71,12 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = -1
 anchor_left = 0.0244792
 anchor_top = -0.139815
-anchor_right = 0.944792
-anchor_bottom = 1.11389
-offset_left = 1358.0
-offset_top = 305.0
-offset_right = -14.0
-offset_bottom = -605.0
+anchor_right = 0.939062
+anchor_bottom = 1.06574
+offset_left = 1390.0
+offset_top = 583.0
+offset_right = 18.0
+offset_bottom = -327.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
@@ -91,17 +95,17 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_m0f0e")
 
 [node name="QuitButton" type="Button" parent="HomeCanvas"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1318.0
-offset_top = 835.0
-offset_right = -54.0
-offset_bottom = -93.0
+anchors_preset = -1
+anchor_right = 0.959896
+anchor_bottom = 0.974074
+offset_left = 1390.0
+offset_top = 899.0
+offset_right = 18.0
+offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "QUIT              "
+text = "QUIT           "
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
@@ -109,7 +113,7 @@ metadata/_edit_use_anchors_ = true
 [node name="SpraySideBoost(1)" type="Sprite2D" parent="HomeCanvas/QuitButton"]
 z_index = 1
 z_as_relative = false
-position = Vector2(373, 72)
+position = Vector2(333, 55)
 rotation = -0.374238
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_mslvh")
@@ -117,10 +121,10 @@ texture = ExtResource("4_mslvh")
 [node name="MusicVolume" type="Control" parent="HomeCanvas"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 50.0
-offset_top = 400.0
-offset_right = 90.0
-offset_bottom = 440.0
+offset_left = 1386.0
+offset_top = 27.0
+offset_right = 1426.0
+offset_bottom = 67.0
 script = ExtResource("2_v7yv8")
 
 [node name="SplatchoVolumeSlider" type="Sprite2D" parent="HomeCanvas/MusicVolume"]
@@ -149,10 +153,10 @@ text = "MUSIC"
 [node name="SFXVolume" type="Control" parent="HomeCanvas"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 50.0
-offset_top = 600.0
-offset_right = 90.0
-offset_bottom = 640.0
+offset_left = 1386.0
+offset_top = 227.0
+offset_right = 1426.0
+offset_bottom = 267.0
 script = ExtResource("4_bd81k")
 
 [node name="SplatchoVolumeSlider" type="Sprite2D" parent="HomeCanvas/SFXVolume"]
@@ -182,6 +186,26 @@ text = "EFFECTS"
 material = SubResource("ShaderMaterial_2bvk4")
 position = Vector2(960, 540)
 texture = ExtResource("8_ll4s6")
+
+[node name="FireIcon" type="Sprite2D" parent="."]
+position = Vector2(329, 225)
+scale = Vector2(0.692408, 0.692408)
+texture = ExtResource("10_f53fb")
+
+[node name="DeployDroneIcon" type="Sprite2D" parent="."]
+position = Vector2(341, 581)
+scale = Vector2(0.628818, 0.628818)
+texture = ExtResource("11_e1hwi")
+
+[node name="NavigateDroneIcon" type="Sprite2D" parent="."]
+position = Vector2(332, 901)
+scale = Vector2(0.760255, 0.760255)
+texture = ExtResource("12_lsc11")
+
+[node name="EscapeIcon" type="Sprite2D" parent="."]
+position = Vector2(969, 946)
+scale = Vector2(0.720394, 0.720394)
+texture = ExtResource("13_k25h1")
 
 [connection signal="pressed" from="HomeCanvas/PlayButton" to="HomeCanvas" method="_on_play_button_pressed"]
 [connection signal="pressed" from="HomeCanvas/MinigameSelect" to="HomeCanvas" method="_on_minigame_select_pressed"]

@@ -102,13 +102,13 @@ func _process(delta):
 			if force <= 5.0 && force >= -5.0:
 				pass
 		
-		if Input.is_action_pressed("ui_right") && Global.gameTimeScale > 0.1:
+		if Input.is_action_pressed("ui_right") && Global.gameTimeScale > 0.1 && curRotBuildup < 3.0:
 			clockwise = 1
 			if rotScale < ROT_SCALE * ROT_UPGRADER:
 				rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
 			else:
 				rotScale = ROT_SCALE * ROT_UPGRADER
-		elif Input.is_action_pressed("ui_left") && Global.gameTimeScale > 0.1:
+		elif Input.is_action_pressed("ui_left") && Global.gameTimeScale > 0.1 && curRotBuildup < 3.0:
 			clockwise = -1
 			if rotScale < ROT_SCALE * ROT_UPGRADER:
 				rotScale += delta * rotAccel * Global.gameTimeScale * speedScale * ROT_UPGRADER
