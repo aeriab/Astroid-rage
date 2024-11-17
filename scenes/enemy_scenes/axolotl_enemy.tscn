@@ -1,77 +1,37 @@
-[gd_scene load_steps=13 format=3 uid="uid://dter2clju3pbw"]
+[gd_scene load_steps=7 format=3 uid="uid://dter2clju3pbw"]
 
 [ext_resource type="Script" path="res://scripts/AxolotlEnemy.gd" id="1_rnxsr"]
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_u6rdk"]
 [ext_resource type="Texture2D" uid="uid://4fc8l4trv34r" path="res://assets/movingGameAssets/Axl_FullTexture.png" id="2_wc1wf"]
-[ext_resource type="Script" path="res://scripts/WiggleTail.gd" id="3_kdqs5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2boh7"]
+resource_local_to_scene = true
 shader = ExtResource("1_u6rdk")
-shader_parameter/damage_value = null
-shader_parameter/alpha_value = null
+shader_parameter/damage_value = 0.0
+shader_parameter/alpha_value = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngq41"]
 radius = 92.0
-height = 602.0
-
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_65xii"]
-target_nodepath = NodePath("../../IKTargets/TLTarget")
-joint_one_bone_idx = 4
-joint_one_bone2d_node = NodePath("Torso/TopLeft")
-joint_two_bone_idx = 5
-joint_two_bone2d_node = NodePath("Torso/TopLeft/TL_Arm")
-
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_10llk"]
-target_nodepath = NodePath("../../IKTargets/BLTarget")
-joint_one_bone_idx = 7
-joint_one_bone2d_node = NodePath("Torso/BotLeft")
-joint_two_bone_idx = 8
-joint_two_bone2d_node = NodePath("Torso/BotLeft/BL_Arm")
-
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_opqlu"]
-target_nodepath = NodePath("../../IKTargets/TRTarget")
-flip_bend_direction = true
-joint_one_bone_idx = 10
-joint_one_bone2d_node = NodePath("Torso/TopRight")
-joint_two_bone_idx = 11
-joint_two_bone2d_node = NodePath("Torso/TopRight/TR_Arm")
-
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_17kcw"]
-target_nodepath = NodePath("../../IKTargets/BRTarget")
-flip_bend_direction = true
-joint_one_bone_idx = 13
-joint_one_bone2d_node = NodePath("Torso/BotRight")
-joint_two_bone_idx = 14
-joint_two_bone2d_node = NodePath("Torso/BotRight/BR_Arm")
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_im08y"]
-enabled = true
-strength = 0.869
-modification_count = 4
-modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_65xii")
-modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_10llk")
-modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_opqlu")
-modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_17kcw")
+height = 572.0
 
 [sub_resource type="Curve" id="Curve_05n75"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
 point_count = 2
 
-[node name="AxolotlEnemy" type="Area2D"]
+[node name="AxolotlEnemy" type="Area2D" groups=["Enemy"]]
 material = SubResource("ShaderMaterial_2boh7")
 script = ExtResource("1_rnxsr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 1
-position = Vector2(-12, -91)
-shape = SubResource("CapsuleShape2D_ngq41")
+[node name="SplatchoEnemy" type="Node2D" parent="."]
+use_parent_material = true
 
-[node name="PolygonContainer" type="Node2D" parent="."]
-position = Vector2(-12, -56)
+[node name="PolygonContainer" type="Node2D" parent="SplatchoEnemy"]
+use_parent_material = true
 
-[node name="Torso" type="Polygon2D" parent="PolygonContainer"]
+[node name="Torso" type="Polygon2D" parent="SplatchoEnemy/PolygonContainer"]
 z_index = 1
-position = Vector2(-458, -204)
+use_parent_material = true
+position = Vector2(-456, -221)
 texture = ExtResource("2_wc1wf")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(454, 461, 428, 455, 403, 431, 380, 392, 361, 325, 356, 260, 363, 205, 378, 144, 401, 100, 433, 75, 454, 70, 474, 74, 506, 99, 533, 149, 547, 207, 553, 269, 547, 327, 527, 398, 503, 435, 475, 456, 455.952, 263.095)
@@ -80,7 +40,8 @@ polygons = [PackedInt32Array(5, 20, 6), PackedInt32Array(7, 6, 20), PackedInt32A
 bones = ["Torso", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Torso/Head", PackedFloat32Array(1, 1, 0.56, 0.22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.22, 0.56, 1, 0), "Torso/Tail", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0.12, 0.48, 1, 1, 1, 0.48, 0.12, 0, 0, 0, 0, 0, 0, 0), "Torso/TopLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopLeft/TL_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotLeft/BL_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopRight/TR_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotRight/BR_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 internal_vertex_count = 1
 
-[node name="Head" type="Polygon2D" parent="PolygonContainer/Torso"]
+[node name="Head" type="Polygon2D" parent="SplatchoEnemy/PolygonContainer/Torso"]
+use_parent_material = true
 position = Vector2(-21, -198)
 texture = ExtResource("2_wc1wf")
 skeleton = NodePath("../../../Skeleton2D")
@@ -90,8 +51,9 @@ polygons = [PackedInt32Array(1, 30, 0), PackedInt32Array(2, 30, 1), PackedInt32A
 bones = ["Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/Head", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Torso/Tail", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopLeft/TL_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotLeft/BL_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopRight/TR_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotRight/BR_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 internal_vertex_count = 1
 
-[node name="Tail" type="Polygon2D" parent="PolygonContainer/Torso"]
+[node name="Tail" type="Polygon2D" parent="SplatchoEnemy/PolygonContainer/Torso"]
 z_index = -1
+use_parent_material = true
 position = Vector2(350, -442)
 texture = ExtResource("2_wc1wf")
 skeleton = NodePath("../../../Skeleton2D")
@@ -101,18 +63,16 @@ polygons = [PackedInt32Array(4, 18, 3), PackedInt32Array(4, 5, 18), PackedInt32A
 bones = ["Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/Tail", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Torso/Tail/End_Tail", PackedFloat32Array(0.86, 0.86, 0.72, 0.72, 0.28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.28, 0.58, 0.72, 0.86, 0.57), "Torso/TopLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopLeft/TL_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotLeft/BL_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/TopRight/TR_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Torso/BotRight/BR_Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 internal_vertex_count = 1
 
-[node name="Skeleton2D" type="Skeleton2D" parent="."]
-position = Vector2(-12, -56)
+[node name="Skeleton2D" type="Skeleton2D" parent="SplatchoEnemy"]
 rotation = -0.00170912
 scale = Vector2(1, 1)
-modification_stack = SubResource("SkeletonModificationStack2D_im08y")
 
-[node name="Torso" type="Bone2D" parent="Skeleton2D"]
+[node name="Torso" type="Bone2D" parent="SplatchoEnemy/Skeleton2D"]
 rotation = -1.5708
 scale = Vector2(0.99998, 0.99998)
 rest = Transform2D(-3.61999e-06, -1, 1, -3.61999e-06, 0, 0)
 
-[node name="Head" type="Bone2D" parent="Skeleton2D/Torso"]
+[node name="Head" type="Bone2D" parent="SplatchoEnemy/Skeleton2D/Torso"]
 position = Vector2(-133, -1.00001)
 rotation = 3.14159
 scale = Vector2(0.999984, 0.999984)
@@ -121,22 +81,29 @@ auto_calculate_length_and_angle = false
 length = 102.047
 bone_angle = 180.0
 
-[node name="Tail" type="Bone2D" parent="Skeleton2D/Torso"]
+[node name="Tail" type="Bone2D" parent="SplatchoEnemy/Skeleton2D/Torso"]
 position = Vector2(88, 3.8466e-06)
 scale = Vector2(0.999966, 0.999966)
 rest = Transform2D(1, 0, 0, 1, 88, 3.8466e-06)
 auto_calculate_length_and_angle = false
 length = 108.0
 bone_angle = 0.097928
-script = ExtResource("3_kdqs5")
 
-[node name="End_Tail" type="Bone2D" parent="Skeleton2D/Torso/Tail"]
+[node name="End_Tail" type="Bone2D" parent="SplatchoEnemy/Skeleton2D/Torso/Tail"]
 position = Vector2(108, 0.18459)
 scale = Vector2(0.999972, 0.999972)
 rest = Transform2D(1, 0, 0, 1, 108, 0.18459)
 auto_calculate_length_and_angle = false
 length = 130.729
 bone_angle = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(1, -34)
+shape = SubResource("CapsuleShape2D_ngq41")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 5
@@ -160,3 +127,6 @@ scale_amount_min = 30.0
 scale_amount_max = 45.0
 scale_amount_curve = SubResource("Curve_05n75")
 color = Color(0.807843, 0, 1, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

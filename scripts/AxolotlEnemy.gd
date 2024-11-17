@@ -5,8 +5,7 @@ const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
 
 
 @onready var cpu_particles_2d = $CPUParticles2D
-@onready var collision_polygon_2d_right = $CollisionPolygon2D_right
-@onready var collision_polygon_2d_left = $CollisionPolygon2D_left
+@onready var collision_shape_2d = $CollisionShape2D
 @onready var timer = $Timer
 
 var shader_value = material.get_shader_parameter("value")
@@ -43,26 +42,6 @@ var stopMoving: bool = false
 var alreadyFree: bool = false
 
 func _ready():
-	randEnSprite = randi_range(0,100)
-	if randEnSprite <= 15:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDefault.png")
-	elif randEnSprite <= 25:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyBored.png")
-	elif randEnSprite <= 35:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyDumb.png")
-	elif randEnSprite <= 45:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySad.png")
-	elif randEnSprite <= 60:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyUni.png")
-	elif randEnSprite <= 75:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyMouth.png")
-	elif randEnSprite <= 85:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyNose.png")
-	elif randEnSprite <= 99:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemySus.png")
-	else:
-		splatcho_enemy.texture = preload("res://assets/redEnemySprites/SplatchoEnemyEYES.png")
-	
 	cpu_particles_2d.scale_amount_min = 30.0 * sizeOfEnemy
 	cpu_particles_2d.scale_amount_max = 45.0 * sizeOfEnemy
 	cpu_particles_2d.amount = sizeOfEnemy * 3 + 10
@@ -99,7 +78,12 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 	else:
 		theta = 2 * PI -  acos(x / hypotenuse)
 	
-	rotation = -theta + PI
+	rotation = -theta + PI/2
+
+@onready var tail = $SplatchoEnemy/Skeleton2D/Torso/Tail
+@onready var end_tail = $SplatchoEnemy/Skeleton2D/Torso/Tail/End_Tail
+@onready var torso = $SplatchoEnemy/Skeleton2D/Torso
+@onready var head = $SplatchoEnemy/Skeleton2D/Torso/Head
 
 func _physics_process(delta):
 	
@@ -122,7 +106,12 @@ func _physics_process(delta):
 		setFreeSequence()
 		alreadyFree = true
 	
-	scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
+	#scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
+	head.rotation = ((0.02) * sin(time_ellapsed * 1) * PI) - PI
+	torso.rotation = ((0.01) * sin(time_ellapsed * 0.5) * PI) - PI/2
+	tail.rotation = (0.15) * sin(time_ellapsed * 2.5) * PI
+	end_tail.rotation = (0.3) * sin(time_ellapsed * 2.5) * PI
+	
 	time_ellapsed += delta * 5 * Global.gameTimeScale
 	if shader_alpha != 1.0:
 		shader_alpha += FADE_SPEED * delta * Global.gameTimeScale
@@ -240,8 +229,7 @@ func _on_area_entered(area):
 func setFreeSequence():
 	cpu_particles_2d.emitting = true
 	splatcho_enemy.free()
-	collision_polygon_2d_left.free()
-	collision_polygon_2d_right.free()
+	collision_shape_2d.free()
 	timer.start()
 
 func _on_timer_timeout():

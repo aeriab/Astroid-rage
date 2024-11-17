@@ -9,6 +9,8 @@ const BULK_ENEMY = preload("res://scenes/enemy_scenes/bulk_enemy.tscn")
 const BOSS_ENEMY = preload("res://scenes/enemy_scenes/boss_enemy.tscn")
 const COUNTER_ENEMY = preload("res://scenes/enemy_scenes/counter_enemy.tscn")
 
+const AXOL_ENEMY = preload("res://scenes/enemy_scenes/axolotl_enemy.tscn")
+
 var difficulty: float = 1.0
 
 var randomEnNum: int
@@ -63,6 +65,8 @@ var firstSp7: bool = true
 var waveFinishedCreating: bool = false
 
 func _process(delta):
+	
+	
 	
 	if Global.current_stage == "Learner Lagoon":
 		if onWave == 3 && firstSp3:
@@ -401,6 +405,8 @@ func _on_next_en_timer_timeout():
 		spawnBossEnemy()
 	elif genEnemy == "counter":
 		spawnCounterEnemy()
+	elif genEnemy == "axol":
+		spawnAxolEnemy()
 	
 	if nextEnAmount >= 1:
 		if nextEnAmount == 1 && waveEndHere:
@@ -436,6 +442,8 @@ func _on_next_en_timer_2_timeout():
 		spawnBossEnemy()
 	elif genEnemy2 == "counter":
 		spawnCounterEnemy()
+	elif genEnemy2 == "axol":
+		spawnAxolEnemy()
 	
 	if nextEnAmount2 >= 1:
 		if nextEnAmount2 == 1 && waveEndHere2:
@@ -490,6 +498,10 @@ func generalPerfSpawn(amount,enemy):
 			var counter = COUNTER_ENEMY.instantiate()
 			counter.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 			get_parent().add_child.call_deferred(counter)
+		elif enemy == "axol":
+			var axol = AXOL_ENEMY.instantiate()
+			axol.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
+			get_parent().add_child.call_deferred(axol)
 		
 		i += 1
 
@@ -536,6 +548,10 @@ func spawnCounterEnemy():
 	var enemy = COUNTER_ENEMY.instantiate()
 	spawnGeneral(enemy)
 
+func spawnAxolEnemy():
+	var enemy = AXOL_ENEMY.instantiate()
+	spawnGeneral(enemy)
+
 func spawnStarEnemy():
 	theta = randf_range(0.0, 6.283)
 	if theta >= PI/2 && theta <= 3 * PI / 2:
@@ -563,3 +579,28 @@ func spawnStarEnemy():
 	if onWave == 7:
 		starEn7.spawn(1.0,radius * cos(theta),radius * sin(theta),flipSprite)
 		get_parent().add_child.call_deferred(starEn7)
+
+@onready var axol_timer = $AxolTimer
+
+func _on_axol_timer_timeout():
+	var axol_wave_fate: int = 0
+	axol_wave_fate = randf_range(1,100)
+	if axol_wave_fate < 65:
+		spawnAxolEnemy()
+	elif axol_wave_fate < 90:
+		spawnAxolEnemy()
+		spawnAxolEnemy()
+	elif axol_wave_fate < 99:
+		spawnAxolEnemy()
+		spawnAxolEnemy()
+		spawnAxolEnemy()
+	else:
+		spawnAxolEnemy()
+		spawnAxolEnemy()
+		spawnAxolEnemy()
+		spawnAxolEnemy()
+		spawnAxolEnemy()
+	
+	axol_timer.wait_time = randf_range(5.0,7.0)
+	axol_timer.start()
+	
