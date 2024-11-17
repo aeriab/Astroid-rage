@@ -6,6 +6,8 @@ var MAX_STAGE: int = 10
 @onready var left_stage_arrow = $LeftStageArrow
 @onready var right_stage_arrow = $RightStageArrow
 @onready var upgrades_left_label = $UpgradesLeftLabel
+@onready var lotl_souls = $LotlSouls
+
 
 #######################################################################################################
 
@@ -219,7 +221,126 @@ func establish_arrows():
 
 var playAnimTheta: float = 0.0
 
+###########################################################################################################
+
+var canPlayD: bool = true
+var canPlayB: bool = true
+
+var goingDronePrice: int = 15
+@onready var drone_blocker = $droneBlocker
+@onready var drone_unlock_button = $droneUnlockButton
+
+func _on_drone_unlock_button_pressed():
+	if Global.lotlSouls >= goingDronePrice:
+		Global.lotlSouls -= goingDronePrice
+		if Global.curDroneNumber == 2:
+			Global.droneTwoUnlocked = true
+		if Global.curDroneNumber == 3:
+			Global.droneThreeUnlocked = true
+		if Global.curDroneNumber == 4:
+			Global.droneFourUnlocked = true
+
+var canPlay: bool = true
+var goingBasePrice: int = 10
+@onready var base_blocker = $baseBlocker
+@onready var base_unlock_button = $baseUnlockButton
+func _on_base_unlock_button_pressed():
+	if Global.lotlSouls >= goingBasePrice:
+		Global.lotlSouls -= goingBasePrice
+		if Global.curBaseNumber == 2:
+			Global.baseTwoUnlocked = true
+		if Global.curBaseNumber == 3:
+			Global.baseThreeUnlocked = true
+		if Global.curBaseNumber == 4:
+			Global.baseFourUnlocked = true
+
 func _process(delta):
+	
+	if Global.curDroneNumber == 1:
+		drone_blocker.visible = false
+		drone_unlock_button.visible = false
+		canPlayD = true
+	elif Global.curDroneNumber == 2:
+		if Global.droneTwoUnlocked:
+			drone_blocker.visible = false
+			drone_unlock_button.visible = false
+			canPlayD = true
+		elif !Global.droneTwoUnlocked:
+			goingDronePrice = 15
+			drone_unlock_button.text = "UNLOCK FOR \n15 'LOTL SOULS"
+			drone_blocker.visible = true
+			drone_unlock_button.visible = true
+			canPlayD = false
+	elif Global.curDroneNumber == 3:
+		if Global.droneThreeUnlocked:
+			drone_blocker.visible = false
+			drone_unlock_button.visible = false
+			canPlayD = true
+		elif !Global.droneThreeUnlocked:
+			goingDronePrice = 50
+			drone_unlock_button.text = "UNLOCK FOR \n50 'LOTL SOULS"
+			drone_blocker.visible = true
+			drone_unlock_button.visible = true
+			canPlayD = false
+	elif Global.curDroneNumber == 4:
+		if Global.droneFourUnlocked:
+			drone_blocker.visible = false
+			drone_unlock_button.visible = false
+			canPlayD = true
+		elif !Global.droneFourUnlocked:
+			goingDronePrice = 75
+			drone_unlock_button.text = "UNLOCK FOR \n75 'LOTL SOULS"
+			drone_blocker.visible = true
+			drone_unlock_button.visible = true
+			canPlayD = false
+	
+	
+	
+	if Global.curBaseNumber == 1:
+		base_blocker.visible = false
+		base_unlock_button.visible = false
+		canPlayB = true
+	elif Global.curBaseNumber == 2:
+		if Global.baseTwoUnlocked:
+			base_blocker.visible = false
+			base_unlock_button.visible = false
+			canPlayB = true
+		elif !Global.baseTwoUnlocked:
+			goingBasePrice = 10
+			base_unlock_button.text = "UNLOCK FOR \n10 'LOTL SOULS"
+			base_blocker.visible = true
+			base_unlock_button.visible = true
+			canPlayB = false
+	elif Global.curBaseNumber == 3:
+		if Global.baseThreeUnlocked:
+			base_blocker.visible = false
+			base_unlock_button.visible = false
+			canPlayB = true
+		elif !Global.baseThreeUnlocked:
+			goingBasePrice = 30
+			base_unlock_button.text = "UNLOCK FOR \n30 'LOTL SOULS"
+			base_blocker.visible = true
+			base_unlock_button.visible = true
+			canPlayB = false
+	elif Global.curBaseNumber == 4:
+		if Global.baseFourUnlocked:
+			base_blocker.visible = false
+			base_unlock_button.visible = false
+			canPlayB = true
+		elif !Global.baseFourUnlocked:
+			goingBasePrice = 100
+			base_unlock_button.text = "UNLOCK FOR \n100 'LOTL SOULS"
+			base_blocker.visible = true
+			base_unlock_button.visible = true
+			canPlayB = false
+	
+	if canPlayD && canPlayB:
+		canPlay = true
+	else:
+		canPlay = false
+	
+	lotl_souls.text = "'LOTL SOULS: " + str(Global.lotlSouls)
+	
 	if Global.unspentPoints == 0:
 		upgrades_left_label.visible = false
 		playAnimTheta += 7.0 * delta
@@ -486,7 +607,8 @@ func hideStageSprites():
 	stage_10_sprites.visible = false
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/playable_scenes/game.tscn")
+	if canPlay:
+		get_tree().change_scene_to_file("res://scenes/playable_scenes/game.tscn")
 
 
 func _on_right_stage_arrow_pressed():
@@ -517,6 +639,12 @@ func checkDroneStars():
 	Global.num_drone_stars3 = int(star3_dparticle_1.visible) + int(star3_dparticle_2.visible) + int(star3_dparticle_3.visible) + int(star3_dparticle_4.visible) + int(star3_dparticle_5.visible)
 	Global.num_drone_stars4 = int(star4_dparticle_1.visible) + int(star4_dparticle_2.visible) + int(star4_dparticle_3.visible) + int(star4_dparticle_4.visible) + int(star4_dparticle_5.visible)
 	Global.num_drone_stars5 = int(star5_dparticle_1.visible) + int(star5_dparticle_2.visible) + int(star5_dparticle_3.visible) + int(star5_dparticle_4.visible) + int(star5_dparticle_5.visible)
+
+
+
+
+
+
 
 
 

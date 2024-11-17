@@ -1,8 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=43 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
 [ext_resource type="Texture2D" uid="uid://du2hhb0k4p8hp" path="res://assets/Dark Star Particle.png" id="2_bhtqa"]
+[ext_resource type="Script" path="res://scripts/gameFolder/InitPlayButton.gd" id="2_inc2r"]
 [ext_resource type="Texture2D" uid="uid://bpu838e1u0kbo" path="res://assets/TankBirdBod (2).png" id="3_0wowd"]
 [ext_resource type="Texture2D" uid="uid://bur11uk6ccfqd" path="res://assets/MinusSign.png" id="3_2hqk3"]
 [ext_resource type="Script" path="res://scripts/StageSelect/star_manipulating.gd" id="3_51fws"]
@@ -61,6 +62,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="Button" parent="MainCanvas"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -73,7 +75,13 @@ grow_vertical = 2
 pivot_offset = Vector2(203.5, 93)
 theme_override_font_sizes/font_size = 130
 text = "PLAY"
+script = ExtResource("2_inc2r")
 metadata/_edit_use_anchors_ = true
+
+[node name="InitTimer" type="Timer" parent="MainCanvas/PlayButton"]
+wait_time = 0.04
+one_shot = true
+autostart = true
 
 [node name="RightStageArrow" type="Button" parent="MainCanvas"]
 anchors_preset = 15
@@ -253,9 +261,9 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 22.0
+offset_left = -16.0
 offset_top = 647.0
-offset_right = -1575.0
+offset_right = -1613.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -275,60 +283,60 @@ script = ExtResource("3_51fws")
 
 [node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_1"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 361.0
+offset_left = 320.0
 offset_top = 668.0
-offset_right = 1329.0
+offset_right = 1288.0
 offset_bottom = 1636.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("3_2hqk3")
 
 [node name="up1Backing" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_1"]
-offset_left = 414.0
+offset_left = 373.0
 offset_top = 668.0
-offset_right = 744.0
+offset_right = 703.0
 offset_bottom = 716.0
 color = Color(0.485703, 0.485704, 0.485703, 1)
 
 [node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_1"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 749.0
+offset_left = 708.0
 offset_top = 668.0
-offset_right = 1717.0
+offset_right = 1676.0
 offset_bottom = 1636.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("4_hdwke")
 
 [node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
 visible = false
-position = Vector2(439, 688)
+position = Vector2(401.37, 688)
 rotation = -0.3735
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
 visible = false
-position = Vector2(508, 691)
+position = Vector2(470.37, 691)
 rotation = -2.48884
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
 visible = false
-position = Vector2(577, 687)
+position = Vector2(539.37, 687)
 rotation = 0.3735
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
 visible = false
-position = Vector2(647, 687)
+position = Vector2(609.37, 687)
 rotation = -0.621337
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_1"]
 visible = false
-position = Vector2(715, 688)
+position = Vector2(677.37, 688)
 rotation = 0.0704764
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
@@ -338,60 +346,60 @@ script = ExtResource("3_51fws")
 
 [node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_2"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 361.0
+offset_left = 320.0
 offset_top = 747.0
-offset_right = 1329.0
+offset_right = 1288.0
 offset_bottom = 1715.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("3_2hqk3")
 
 [node name="up1Backing2" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_2"]
-offset_left = 414.0
+offset_left = 373.0
 offset_top = 747.0
-offset_right = 744.0
+offset_right = 703.0
 offset_bottom = 795.0
 color = Color(0.485703, 0.485704, 0.485703, 1)
 
 [node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_2"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 749.0
+offset_left = 708.0
 offset_top = 747.0
-offset_right = 1717.0
+offset_right = 1676.0
 offset_bottom = 1715.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("4_hdwke")
 
 [node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
 visible = false
-position = Vector2(439, 768)
+position = Vector2(399.37, 768)
 rotation = 0.3735
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
 visible = false
-position = Vector2(508, 771)
+position = Vector2(468.37, 771)
 rotation = -3.35976
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
 visible = false
-position = Vector2(577, 767)
+position = Vector2(537.37, 767)
 rotation = -4.32318
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
 visible = false
-position = Vector2(647, 767)
+position = Vector2(607.37, 767)
 rotation = -0.870919
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_2"]
 visible = false
-position = Vector2(715, 768)
+position = Vector2(675.37, 768)
 rotation = -0.551524
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
@@ -401,60 +409,60 @@ script = ExtResource("3_51fws")
 
 [node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_3"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 361.0
+offset_left = 320.0
 offset_top = 827.0
-offset_right = 1329.0
+offset_right = 1288.0
 offset_bottom = 1795.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("3_2hqk3")
 
 [node name="up1Backing3" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_3"]
-offset_left = 414.0
+offset_left = 373.0
 offset_top = 827.0
-offset_right = 744.0
+offset_right = 703.0
 offset_bottom = 875.0
 color = Color(0.485703, 0.485704, 0.485703, 1)
 
 [node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_3"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 749.0
+offset_left = 708.0
 offset_top = 827.0
-offset_right = 1717.0
+offset_right = 1676.0
 offset_bottom = 1795.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("4_hdwke")
 
 [node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
 visible = false
-position = Vector2(439, 848)
+position = Vector2(397.118, 848)
 rotation = 5.34943
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
 visible = false
-position = Vector2(508, 848)
+position = Vector2(466.118, 848)
 rotation = -0.551524
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
 visible = false
-position = Vector2(577, 848)
+position = Vector2(535.118, 848)
 rotation = 0.303687
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
 visible = false
-position = Vector2(647, 848)
+position = Vector2(605.118, 848)
 rotation = -0.123918
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_3"]
 visible = false
-position = Vector2(715, 848)
+position = Vector2(673.118, 848)
 rotation = -3.91128
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
@@ -464,60 +472,60 @@ script = ExtResource("3_51fws")
 
 [node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_4"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 361.0
+offset_left = 320.0
 offset_top = 907.0
-offset_right = 1329.0
+offset_right = 1288.0
 offset_bottom = 1875.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("3_2hqk3")
 
 [node name="up1Backing4" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_4"]
-offset_left = 414.0
+offset_left = 373.0
 offset_top = 907.0
-offset_right = 744.0
+offset_right = 703.0
 offset_bottom = 955.0
 color = Color(0.485703, 0.485704, 0.485703, 1)
 
 [node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_4"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 749.0
+offset_left = 708.0
 offset_top = 907.0
-offset_right = 1717.0
+offset_right = 1676.0
 offset_bottom = 1875.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("4_hdwke")
 
 [node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
 visible = false
-position = Vector2(439, 928)
+position = Vector2(399.37, 928)
 rotation = -0.3735
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
 visible = false
-position = Vector2(508, 928)
+position = Vector2(468.37, 928)
 rotation = 0.3735
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
 visible = false
-position = Vector2(577, 928)
+position = Vector2(537.37, 928)
 rotation = -0.3735
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
 visible = false
-position = Vector2(647, 928)
+position = Vector2(607.37, 928)
 rotation = -0.621337
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_4"]
 visible = false
-position = Vector2(715, 928)
+position = Vector2(675.37, 928)
 rotation = 0.0715585
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
@@ -527,60 +535,63 @@ script = ExtResource("3_51fws")
 
 [node name="upMinus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_5"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 361.0
+offset_left = 320.0
 offset_top = 983.0
-offset_right = 1329.0
+offset_right = 1288.0
 offset_bottom = 1951.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("3_2hqk3")
+metadata/_edit_use_anchors_ = true
 
 [node name="up1Backing5" type="ColorRect" parent="MainCanvas/BaseUpgrades/upgrade_5"]
-offset_left = 414.0
+offset_left = 373.0
 offset_top = 983.0
-offset_right = 744.0
+offset_right = 703.0
 offset_bottom = 1031.0
 color = Color(0.485703, 0.485704, 0.485703, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="upPlus" type="Button" parent="MainCanvas/BaseUpgrades/upgrade_5"]
 modulate = Color(1, 1, 1, 0.658824)
-offset_left = 749.0
+offset_left = 708.0
 offset_top = 983.0
-offset_right = 1717.0
+offset_right = 1676.0
 offset_bottom = 1951.0
 scale = Vector2(0.05, 0.05)
 icon = ExtResource("4_hdwke")
+metadata/_edit_use_anchors_ = true
 
 [node name="StarParticle1" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
 visible = false
-position = Vector2(439, 1004)
+position = Vector2(398.684, 1004)
 rotation = -1.91986
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle2" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
 visible = false
-position = Vector2(508, 1004)
+position = Vector2(467.684, 1004)
 rotation = -2.73668
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle3" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
 visible = false
-position = Vector2(577, 1004)
+position = Vector2(536.684, 1004)
 rotation = 0.747001
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle4" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
 visible = false
-position = Vector2(647, 1004)
+position = Vector2(606.684, 1004)
 rotation = -5.34943
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
 
 [node name="StarParticle5" type="Sprite2D" parent="MainCanvas/BaseUpgrades/upgrade_5"]
 visible = false
-position = Vector2(715, 1004)
+position = Vector2(674.684, 1004)
 rotation = 0.3735
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_2hyju")
@@ -993,19 +1004,48 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -130.0
+offset_left = -168.0
 offset_top = 158.0
-offset_right = 131.0
+offset_right = 169.0
 offset_bottom = 271.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(130.475, 56.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.482353, 1, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 15
 theme_override_font_sizes/font_size = 40
-text = "UPGRADES 
-LEFT: 0"
+text = "UPGRADES LEFT: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LotlSouls" type="Label" parent="MainCanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = 292.0
+offset_right = 141.0
+offset_bottom = 405.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(130.475, 56.5)
+theme_override_colors/font_color = Color(1, 0.784314, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 40
+text = "'LOTL SOULS: 
+0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="DarkStarParticle" type="Sprite2D" parent="MainCanvas"]
 visible = false
@@ -1792,12 +1832,97 @@ rotation = 3.44356
 scale = Vector2(0.298869, 0.298869)
 texture = ExtResource("14_nhpey")
 
+[node name="baseBlocker" type="ColorRect" parent="MainCanvas"]
+visible = false
+offset_left = 13.0
+offset_top = 651.0
+offset_right = 767.0
+offset_bottom = 1058.0
+color = Color(0.728822, 0.728822, 0.728822, 0.760784)
+
+[node name="playBlocker" type="ColorRect" parent="MainCanvas/baseBlocker"]
+offset_left = 724.0
+offset_top = -221.0
+offset_right = 1219.0
+offset_bottom = -184.0
+rotation = 0.40141
+color = Color(1, 0, 0, 0.760784)
+
+[node name="baseUnlockButton" type="Button" parent="MainCanvas"]
+visible = false
+modulate = Color(1, 1, 1, 0.658824)
+z_as_relative = false
+offset_left = 126.0
+offset_top = 757.0
+offset_right = 914.0
+offset_bottom = 1060.0
+scale = Vector2(0.651309, 0.651309)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0.776471, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "UNLOCK FOR
+10 'LOTL SOULS"
+
+[node name="droneBlocker" type="ColorRect" parent="MainCanvas"]
+visible = false
+offset_left = 1150.0
+offset_top = 650.0
+offset_right = 1904.0
+offset_bottom = 1057.0
+color = Color(0.728822, 0.728822, 0.728822, 0.760784)
+
+[node name="playBlocker2" type="ColorRect" parent="MainCanvas/droneBlocker"]
+offset_left = 39.0
+offset_top = -185.0
+offset_right = 534.0
+offset_bottom = -148.0
+rotation = 2.73222
+color = Color(1, 0, 0, 0.760784)
+
+[node name="droneUnlockButton" type="Button" parent="MainCanvas"]
+visible = false
+modulate = Color(1, 1, 1, 0.658824)
+z_as_relative = false
+offset_left = 1280.0
+offset_top = 764.0
+offset_right = 2068.0
+offset_bottom = 1067.0
+scale = Vector2(0.651309, 0.651309)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.776471, 1, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0.776471, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "UNLOCK FOR
+15 'LOTL SOULS"
+
 [node name="StageSelectBack" type="Sprite2D" parent="."]
 position = Vector2(951, 604)
 scale = Vector2(0.819349, 0.819349)
 texture = ExtResource("24_hq3ol")
 
 [connection signal="pressed" from="MainCanvas/PlayButton" to="MainCanvas" method="_on_play_button_pressed"]
+[connection signal="timeout" from="MainCanvas/PlayButton/InitTimer" to="MainCanvas/PlayButton" method="_on_init_timer_timeout"]
 [connection signal="pressed" from="MainCanvas/RightStageArrow" to="MainCanvas" method="_on_right_stage_arrow_pressed"]
 [connection signal="pressed" from="MainCanvas/LeftStageArrow" to="MainCanvas" method="_on_left_stage_arrow_pressed"]
 [connection signal="pressed" from="MainCanvas/HomeButton" to="MainCanvas" method="_on_home_button_pressed"]
@@ -1805,3 +1930,5 @@ texture = ExtResource("24_hq3ol")
 [connection signal="pressed" from="MainCanvas/BaseSelect/LeftBaseArrow" to="MainCanvas/BaseSelect" method="_on_left_base_arrow_pressed"]
 [connection signal="pressed" from="MainCanvas/DroneSelect/RightDroneArrow" to="MainCanvas/DroneSelect" method="_on_right_drone_arrow_pressed"]
 [connection signal="pressed" from="MainCanvas/DroneSelect/LeftDroneArrow" to="MainCanvas/DroneSelect" method="_on_left_drone_arrow_pressed"]
+[connection signal="pressed" from="MainCanvas/baseUnlockButton" to="MainCanvas" method="_on_base_unlock_button_pressed"]
+[connection signal="pressed" from="MainCanvas/droneUnlockButton" to="MainCanvas" method="_on_drone_unlock_button_pressed"]

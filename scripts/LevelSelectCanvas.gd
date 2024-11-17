@@ -11,6 +11,7 @@ func _ready():
 	auto_highscore.text = "HIGHSCORE: " + str(Global.autoHighscore) + " PTS"
 
 func _on_home_button_pressed():
+	Global.inPracticeMode = false
 	get_tree().change_scene_to_file("res://scenes/playable_scenes/home_menu.tscn")
 
 

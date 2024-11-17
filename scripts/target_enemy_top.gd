@@ -123,7 +123,7 @@ func addDamage():
 	Global.addXP(xpAmount)
 	var pointsNotif = DEFAULT_NOTIFICATION.instantiate()
 	pointsNotif.position = Vector2 (x,y)
-	pointsNotif.establishText(str(points) + " POINTS",tsize,tcolor,fadeSpeed,0.0)
+	pointsNotif.establishText(str(points) + " POINTS",tsize,tcolor,fadeSpeed,0.0,Global.inPracticeMode)
 	get_parent().add_child.call_deferred(pointsNotif)
 	setFreeSequence()
 
@@ -227,7 +227,7 @@ func _on_target_enemy_3_area_entered(area):
 		if Global.consecBulls >= 2:
 			var bonusNotif = DEFAULT_NOTIFICATION.instantiate()
 			bonusNotif.position = Vector2 (x + 900,y - 600)
-			bonusNotif.establishText("x" + str(Global.consecBulls) + "  BULL'S EYE!",tsize/5 + (tsize / 10) * Global.consecBulls,tcolor,fadeSpeed,20)
+			bonusNotif.establishText("x" + str(Global.consecBulls) + "  BULL'S EYE!",tsize/5 + (tsize / 10) * Global.consecBulls,tcolor,fadeSpeed,20,Global.inPracticeMode)
 			get_parent().add_child.call_deferred(bonusNotif)
 		
 		cpu_particles_2d.speed_scale = 2.0

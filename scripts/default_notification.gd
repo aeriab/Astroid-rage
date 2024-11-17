@@ -13,12 +13,14 @@ func _ready():
 	scale.x = tsize
 	scale.y = tsize
 
-func establishText(txt,sze,clr,fdspd,degoff):
+func establishText(txt,sze,clr,fdspd,degoff,display):
 	ttext = txt
 	tsize = sze
 	tclr = clr
 	fadeSpeed = fdspd
 	degreesClockwise = degoff
+	if !display:
+		queue_free()
 
 func _process(delta):
 	position.y -= (delta / (tsize + 0.3)) * 200.0

@@ -1,5 +1,7 @@
 extends Area2D
 
+var popupSize: float = 2.5
+
 const XP_NOTIFICATION = preload("res://scenes/xp_notification.tscn")
 const DEFAULT_NOTIFICATION = preload("res://scenes/default_notification.tscn")
 
@@ -51,11 +53,11 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 	Global.enemyNum += 1
 	enemyIndex = Global.enemyNum
 	
-	sizeOfEnemy = randf_range(0.5 * difficulty,1.5 * difficulty)
+	sizeOfEnemy = randf_range(0.8,1.5)
 	
 	xpAmount = sizeOfEnemy + pow(sizeOfEnemy,2.0)
-	if sizeOfEnemy >= 1.48 * difficulty:
-		sizeOfEnemy = 3.0 * difficulty
+	if sizeOfEnemy >= 1.49:
+		sizeOfEnemy = 3.0
 	scale.x = sizeOfEnemy
 	scale.y = sizeOfEnemy
 	damage_chunk = Global.damage / (pow(sizeOfEnemy,2) * 2)
@@ -87,10 +89,17 @@ func spawn(dif,xgiven,ygiven,flipgiven):
 
 func _physics_process(delta):
 	
+	if !alreadyFree:
+		head.rotation = ((0.02) * sin(time_ellapsed * 1) * PI) - PI
+		torso.rotation = ((0.01) * sin(time_ellapsed * 0.5) * PI) - PI/2
+		tail.rotation = (0.15) * sin(time_ellapsed * 2.5) * PI
+		end_tail.rotation = (0.3) * sin(time_ellapsed * 2.5) * PI
+	
 	if !stopMoving:
 		x -= cos(theta) * SPEED * delta * Global.gameTimeScale
 		y -= -sin(theta) * SPEED * delta * Global.gameTimeScale
 		position = Vector2(x,y)
+		
 	else:
 		moveWithGob()
 	
@@ -101,16 +110,12 @@ func _physics_process(delta):
 		pointsNotif.position = Vector2 (x,y)
 		points = sizeOfEnemy * 100
 		Global.points += int(points)
-		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		pointsNotif.establishText("+1 'LOTL SOUL",popupSize,Color.PINK,0.1,0.0,true)
 		get_parent().add_child.call_deferred(pointsNotif)
 		setFreeSequence()
 		alreadyFree = true
 	
 	#scale.y = ((sin(time_ellapsed / sizeOfEnemy) * (sizeOfEnemy) * 0.2) + sizeOfEnemy) * flipSprite
-	head.rotation = ((0.02) * sin(time_ellapsed * 1) * PI) - PI
-	torso.rotation = ((0.01) * sin(time_ellapsed * 0.5) * PI) - PI/2
-	tail.rotation = (0.15) * sin(time_ellapsed * 2.5) * PI
-	end_tail.rotation = (0.3) * sin(time_ellapsed * 2.5) * PI
 	
 	time_ellapsed += delta * 5 * Global.gameTimeScale
 	if shader_alpha != 1.0:
@@ -133,7 +138,7 @@ func _physics_process(delta):
 					pointsNotif.position = Vector2 (x,y)
 					points = sizeOfEnemy * 100
 					Global.points += int(points)
-					pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+					pointsNotif.establishText("+1 'LOTL SOUL",popupSize,Color.PINK,0.1,0.0,true)
 					get_parent().add_child.call_deferred(pointsNotif)
 					setFreeSequence()
 					alreadyFree = true
@@ -152,7 +157,7 @@ func tickleDamage():
 			pointsNotif.position = Vector2 (x,y)
 			points = sizeOfEnemy * 100
 			Global.points += int(points)
-			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+			pointsNotif.establishText("+1 'LOTL SOUL",popupSize,Color.PINK,0.1,0.0,true)
 			get_parent().add_child.call_deferred(pointsNotif)
 			setFreeSequence()
 			alreadyFree = true
@@ -169,7 +174,7 @@ func addDamage():
 			pointsNotif.position = Vector2 (x,y)
 			points = sizeOfEnemy * 100
 			Global.points += int(points)
-			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+			pointsNotif.establishText("+1 'LOTL SOUL",popupSize,Color.PINK,0.1,0.0,true)
 			get_parent().add_child.call_deferred(pointsNotif)
 			setFreeSequence()
 			alreadyFree = true
@@ -199,7 +204,7 @@ func _on_area_entered(area):
 				pointsNotif.position = Vector2 (x,y)
 				points = sizeOfEnemy * 100
 				Global.points += int(points)
-				pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+				pointsNotif.establishText("+1 'LOTL SOUL",popupSize,Color.PINK,0.1,0.0,true)
 				get_parent().add_child.call_deferred(pointsNotif)
 				setFreeSequence()
 				alreadyFree = true
@@ -214,7 +219,7 @@ func _on_area_entered(area):
 			pointsNotif.position = Vector2 (x,y)
 			points = sizeOfEnemy * 100
 			Global.points += int(points)
-			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+			pointsNotif.establishText("+1 'LOTL SOUL",popupSize,Color.PINK,0.1,0.0,true)
 			get_parent().add_child.call_deferred(pointsNotif)
 			setFreeSequence()
 			alreadyFree = true
@@ -227,6 +232,7 @@ func _on_area_entered(area):
 			alreadyFree = true
 
 func setFreeSequence():
+	Global.lotlSouls += 1
 	cpu_particles_2d.emitting = true
 	splatcho_enemy.free()
 	collision_shape_2d.free()

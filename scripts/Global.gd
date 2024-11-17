@@ -1,5 +1,18 @@
 extends Node
 
+
+var droneTwoUnlocked: bool = false
+var droneThreeUnlocked: bool = false
+var droneFourUnlocked: bool = false
+
+var baseTwoUnlocked: bool = false
+var baseThreeUnlocked: bool = false
+var baseFourUnlocked: bool = false
+
+var lotlSouls: int = 100
+
+var inPracticeMode: bool = false
+
 var levelProgress: int = 1
 
 var enemiesOnGob: int = 0

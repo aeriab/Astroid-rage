@@ -59,7 +59,7 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/lazerMaskControl.gd" id="29_vnsh3"]
 [ext_resource type="Texture2D" uid="uid://88vek8sx0ok0" path="res://assets/LazyOnEye (2).png" id="31_75xop"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_canvas.gd" id="32_mtphb"]
-[ext_resource type="Script" path="res://scenes/playable_scenes/LazerBoogArea.gd" id="34_6baf1"]
+[ext_resource type="Script" path="res://scripts/LazerBoogArea.gd" id="34_6baf1"]
 [ext_resource type="Shader" path="res://shaders/midgameStar.gdshader" id="34_vtmkp"]
 [ext_resource type="Script" path="res://scripts/gameFolder/RadialBackground.gd" id="35_6ygm5"]
 [ext_resource type="Script" path="res://scripts/gameFolder/progressToStar1.gd" id="35_bi7cs"]

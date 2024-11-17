@@ -603,7 +603,6 @@ internal_vertex_count = 2
 [node name="Skeleton2D" type="Skeleton2D" parent="Axolotl"]
 position = Vector2(-12, -56)
 rotation = -0.00170912
-scale = Vector2(1, 1)
 modification_stack = SubResource("SkeletonModificationStack2D_2a3aj")
 
 [node name="Torso" type="Bone2D" parent="Axolotl/Skeleton2D"]
@@ -657,6 +656,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="TL_Hand" type="Bone2D" parent="Axolotl/Skeleton2D/Torso/TopLeft/TL_Arm"]
 position = Vector2(127.387, 5.81836)
 rotation = 0.433811
+scale = Vector2(1, 1)
 rest = Transform2D(0.907371, 0.420332, -0.420332, 0.907371, 127.387, 5.81836)
 auto_calculate_length_and_angle = false
 length = 28.425

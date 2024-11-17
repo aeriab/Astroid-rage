@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dter2clju3pbw"]
+[gd_scene load_steps=8 format=3 uid="uid://dter2clju3pbw"]
 
 [ext_resource type="Script" path="res://scripts/AxolotlEnemy.gd" id="1_rnxsr"]
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="1_u6rdk"]
@@ -17,6 +17,10 @@ height = 572.0
 [sub_resource type="Curve" id="Curve_05n75"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.72592, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ee6v3"]
+offsets = PackedFloat32Array(0, 0.532468, 1)
+colors = PackedColorArray(0.952941, 0.780392, 0.788235, 1, 0.929412, 0.443137, 0.537255, 1, 1, 0, 0, 1)
 
 [node name="AxolotlEnemy" type="Area2D" groups=["Enemy"]]
 material = SubResource("ShaderMaterial_2boh7")
@@ -65,7 +69,6 @@ internal_vertex_count = 1
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SplatchoEnemy"]
 rotation = -0.00170912
-scale = Vector2(1, 1)
 
 [node name="Torso" type="Bone2D" parent="SplatchoEnemy/Skeleton2D"]
 rotation = -1.5708
@@ -109,16 +112,16 @@ one_shot = true
 z_index = 5
 scale = Vector2(15, 15)
 emitting = false
-amount = 10
+amount = 15
 lifetime = 2.0
 one_shot = true
 speed_scale = 2.0
-explosiveness = 0.9
+explosiveness = 0.5
 emission_shape = 1
 emission_sphere_radius = 5.0
 direction = Vector2(1, 1)
 spread = 180.0
-gravity = Vector2(0, 600)
+gravity = Vector2(0, -600)
 initial_velocity_min = 25.0
 initial_velocity_max = 50.0
 angle_min = -90.0
@@ -126,7 +129,8 @@ angle_max = 90.0
 scale_amount_min = 30.0
 scale_amount_max = 45.0
 scale_amount_curve = SubResource("Curve_05n75")
-color = Color(0.807843, 0, 1, 1)
+color = Color(0.952941, 0.780392, 0.788235, 1)
+color_ramp = SubResource("Gradient_ee6v3")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

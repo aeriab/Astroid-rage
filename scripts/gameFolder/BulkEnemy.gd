@@ -108,7 +108,7 @@ func _physics_process(delta):
 		pointsNotif.position = Vector2 (x,y)
 		points = sizeOfEnemy * 100
 		Global.points += int(points)
-		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+		pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0,Global.inPracticeMode)
 		get_parent().add_child.call_deferred(pointsNotif)
 		setFreeSequence()
 		alreadyFree = true
@@ -140,7 +140,7 @@ func addDamage():
 			pointsNotif.position = Vector2 (x,y)
 			points = sizeOfEnemy * 100
 			Global.points += int(points)
-			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0,Global.inPracticeMode)
 			get_parent().add_child.call_deferred(pointsNotif)
 			setFreeSequence()
 			alreadyFree = true
@@ -168,7 +168,7 @@ func _on_area_entered(area):
 				pointsNotif.position = Vector2 (x,y)
 				points = sizeOfEnemy * 100
 				Global.points += int(points)
-				pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+				pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0,Global.inPracticeMode)
 				get_parent().add_child.call_deferred(pointsNotif)
 				setFreeSequence()
 				alreadyFree = true
@@ -183,7 +183,7 @@ func _on_area_entered(area):
 			pointsNotif.position = Vector2 (x,y)
 			points = sizeOfEnemy * 100
 			Global.points += int(points)
-			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0)
+			pointsNotif.establishText(str(int(points)) + " POINTS",sizeOfEnemy,Color.WHITE,0.1,0.0,Global.inPracticeMode)
 			get_parent().add_child.call_deferred(pointsNotif)
 			setFreeSequence()
 			alreadyFree = true
