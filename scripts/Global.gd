@@ -1,5 +1,6 @@
 extends Node
 
+var didTutorial: bool = false
 
 var droneTwoUnlocked: bool = false
 var droneThreeUnlocked: bool = false
@@ -65,7 +66,7 @@ var curS5: int = 20
 var curS6: int = 50
 var curS7: int = 100
 
-var curStage: int = 0
+var curStage: int = -1
 
 var gameOver: bool = false
 

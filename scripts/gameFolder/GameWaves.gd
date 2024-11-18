@@ -39,6 +39,10 @@ var stage1EnArray = []
 
 
 func _ready():
+	
+	if Global.current_stage == "Tutorial Tidepool":
+		axol_timer.stop()
+	
 	if Global.waveNum == 7:
 		onWave = 1
 	elif Global.waveNum == 5:
@@ -65,8 +69,6 @@ var firstSp7: bool = true
 var waveFinishedCreating: bool = false
 
 func _process(delta):
-	
-	
 	
 	if Global.current_stage == "Learner Lagoon":
 		if onWave == 3 && firstSp3:

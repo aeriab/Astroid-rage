@@ -26,9 +26,15 @@ var first_impact: bool = true
 @onready var fling = $FlingNode2D
 @onready var gob = $GobNode2D
 
+@onready var tutorial_stuff = $tutorialStuff
 
 
 func _ready():
+	
+	if Global.curStage == -1:
+		tutorial_stuff.visible = true
+	else:
+		tutorial_stuff.visible = false
 	
 	if Global.curDroneNumber != 1:
 		crasher_area_2d.queue_free()

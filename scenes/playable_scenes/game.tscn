@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=118 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -82,6 +82,11 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/Gob.gd" id="67_2s431"]
 [ext_resource type="Texture2D" uid="uid://ctegyd5kf3a5g" path="res://assets/Gob (2).png" id="68_jf2pk"]
 [ext_resource type="Script" path="res://scripts/gameFolder/gameCircle.gd" id="80_45w2x"]
+[ext_resource type="Texture2D" uid="uid://d2hmyo1pe6dwd" path="res://assets/instructionIcons/DeployDroneIcon.png" id="83_60uab"]
+[ext_resource type="Script" path="res://scripts/gameFolder/tutorialStuff.gd" id="83_lvetm"]
+[ext_resource type="Texture2D" uid="uid://co5fljlwhpjp3" path="res://assets/instructionIcons/EscapeIcon.png" id="84_w487j"]
+[ext_resource type="Texture2D" uid="uid://cjy8gs6cxalk3" path="res://assets/instructionIcons/FireIcon (1).png" id="85_d1mro"]
+[ext_resource type="Texture2D" uid="uid://bh1p7tn07i72m" path="res://assets/instructionIcons/NavigateDroneIcon.png" id="86_v3vjy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -1896,6 +1901,34 @@ visible = false
 scale = Vector2(1.5, 1.5)
 polygon = PackedVector2Array(-441.16, 2993.43, -660.099, 2952.93, -902.572, 2888.89, -1117.68, 2811.71, -1298.85, 2732.9, -1467.43, 2646.96, -1666.67, 2524.36, -1811.71, 2422.55, -2007.12, 2263.27, -2172.41, 2104.54, -2343.19, 1913.52, -2493.71, 1713.74, -2671.05, 1421.46, -2790.37, 1171.32, -2898.19, 870.826, -2980.84, 532.02, -3016.97, 233.716, -3024.63, -51.4505, -3012.04, -306.513, -2962.23, -623.974, -2845.1, -1031.75, -2687.47, -1394.64, -2504.65, -1698.41, -2315.82, -1946.91, -2064.04, -2211.82, -1810.62, -2425.83, -1500.82, -2629.99, -1137.93, -2806.24, -777.778, -2923.37, -424.74, -2996.17, -65.6814, -3025.73, 67.3235, -3024.63, 340.996, -4527.64, -2.73673, -4542.42, -370.279, -4525.45, -667.488, -4490.15, -935.14, -4444.17, -1178.98, -4386.7, -1441.71, -4305.42, -1655.99, -4225.78, -1995.07, -4082.1, -2270.11, -3931.03, -2544.33, -3760.26, -2824.3, -3551.72, -3022.99, -3385.88, -3167.49, -3250.41, -3345.65, -3068.14, -3510.67, -2876.85, -3662.56, -2679.8, -3800.49, -2481.12, -3977.83, -2185.55, -4114.12, -1917.08, -4206.9, -1706.08, -4279.97, -1509.03, -4349.75, -1298.03, -4416.26, -1049.26, -4459.77, -842.365, -4496.72, -604.269, -4522.17, -387.521, -4534.48, -151.067, -4536.12, 146.141, -4517.24, 444.171, -4477.83, 736.453, -4426.93, 1002.46, -4359.61, 1269.29, -4285.71, 1494.25, -4199.51, 1727.42, -4097.7, 1954.02, -3975.37, 2189.66, -3842.36, 2417.9, -3690.48, 2640.39, -3505.75, 2883.42, -3301.31, 3113.3, -3077.18, 3334.98, -2821.84, 3553.37, -2592.77, 3725.78, -2358.78, 3876.85, -2067.32, 4041.87, -1697.04, 4210.18, -1323.48, 4342.36, -1008.21, 4426.11, -694.581, 4486.04, -388.342, 4521.35, -64.0394, 4535.3, 320.197, 4528.74, 640.394, 4495.07, 986.864, 4431.03, 1302.96, 4348.11, 1614.12, 4242.2, 1972.09, 4087.03, 2303.78, 3908.87, 2628.9, 3699.51, 2990.15, 3412.97, 3250.41, 3165.02, 3518.88, 2866.17, 3758.62, 2542.69, 3989.33, 2165.02, 4188.83, 1749.59, 4287.36, 1495.07, 4359.61, 1267.65, 4412.97, 1064.86, 4471.26, 781.609, 4507.39, 537.767, 4523.81, 343.186, 4536.95, 89.491, 4536.95, -175.698, 4515.6, -463.054, 4483.58, -718.391, 4447.45, -912.972, 4388.34, -1163.38, 4318.55, -1398.19, 4243.84, -1617.41, 4145.32, -1848.11, 4057.47, -2036.95, 3964.7, -2211.82, 3857.96, -2391.63, 3733.17, -2580.46, 3582.92, -2785.71, 3434.32, -2966.34, 3279.97, -3137.93, 3105.09, -3307.06, 2935.96, -3459.77, 2749.59, -3610.84, 2550.9, -3754.52, 2316.09, -3901.48, 2094.42, -4025.45, 1865.35, -4137.93, 1601.81, -4245.48, 1266.01, -4358.78, 912.151, -4447.45, 637.931, -4493.43, 340.722, -4527.09, 67.3235, -3024.63, 231.527, -3016.97, 516.694, -2981.39, 807.882, -2916.26, 1085.39, -2824.3, 1329.5, -2717.57, 1569.79, -2586.21, 1779.97, -2447.73, 1991.24, -2279.15, 2174.6, -2104, 2357.96, -1898.19, 2512.86, -1687.47, 2683.09, -1403.94, 2803.5, -1141.22, 2894.36, -886.152, 2970.44, -577.997, 3015.33, -263.82, 3026.27, -0.547345, 3010.4, 301.587, 2965.52, 602.08, 2900.38, 863.164, 2802.41, 1139.03, 2695.68, 1373.29, 2559.93, 1610.29, 2385.88, 1858.78, 2180.08, 2097.97, 1966.61, 2298.85, 1773.95, 2451.01, 1557.2, 2593.87, 1320.2, 2720.85, 1062.4, 2832.51, 784.893, 2922.28, 497.537, 2984.13, 170.772, 3020.8, -120.963, 3022.44)
 one_way_collision_margin = 0.0
+
+[node name="tutorialStuff" type="Node2D" parent="."]
+script = ExtResource("83_lvetm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="tutorialStuff"]
+
+[node name="DeployDroneIcon" type="Sprite2D" parent="tutorialStuff/CanvasLayer"]
+visible = false
+position = Vector2(943.64, 386.48)
+scale = Vector2(1.218, 1.218)
+texture = ExtResource("83_60uab")
+
+[node name="EscapeIcon" type="Sprite2D" parent="tutorialStuff/CanvasLayer"]
+visible = false
+position = Vector2(943.64, 386.48)
+scale = Vector2(1.218, 1.218)
+texture = ExtResource("84_w487j")
+
+[node name="FireIcon(1)" type="Sprite2D" parent="tutorialStuff/CanvasLayer"]
+position = Vector2(333, 243)
+scale = Vector2(0.684606, 0.684606)
+texture = ExtResource("85_d1mro")
+
+[node name="NavigateDroneIcon" type="Sprite2D" parent="tutorialStuff/CanvasLayer"]
+visible = false
+position = Vector2(943.64, 386.48)
+scale = Vector2(1.218, 1.218)
+texture = ExtResource("86_v3vjy")
 
 [connection signal="timeout" from="Tank/GameBulletHandler/AutoTimer" to="Tank/GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="timeout" from="Ball/BulletHandlerSt2/AutoTimer" to="Ball/BulletHandlerSt2" method="_on_auto_timer_timeout"]
