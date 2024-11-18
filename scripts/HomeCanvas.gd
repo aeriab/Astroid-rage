@@ -1,5 +1,14 @@
 extends CanvasLayer
 
+@onready var lotl_kills = $LotlKills
+
+func _ready():
+	lotl_kills.text = "You've killed " + str(Global.lotlKills) + " axolotls!"
+	lotl_kills.material.set_shader_parameter("slow_by_mult",maxf(1.0/13.0,1.0/(Global.lotlKills * 0.02 + 1.0)))
+	#print("slow mult: " + str(maxf(1.0/13.0,1.0/(Global.lotlKills * 0.02 + 1.0))))
+	lotl_kills.material.set_shader_parameter("vibrant_color",minf(20,10 + (Global.lotlKills * 0.1)))
+	#print("color: " + str(minf(20,10 + (Global.lotlKills * 0.1))))
+
 func _on_play_button_pressed():
 	Global.resetStats()
 	if Global.didTutorial == true:

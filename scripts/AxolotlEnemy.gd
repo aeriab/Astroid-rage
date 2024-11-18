@@ -236,6 +236,7 @@ func _on_area_entered(area):
 
 func setFreeSequence():
 	Global.lotlSouls += 1
+	Global.lotlKills += 1
 	cpu_particles_2d.emitting = true
 	splatcho_enemy.free()
 	collision_shape_2d.free()

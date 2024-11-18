@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=123 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -69,6 +69,7 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/progressToStar5.gd" id="39_fhnw6"]
 [ext_resource type="Script" path="res://scripts/gameFolder/progressToStar6.gd" id="40_ataey"]
 [ext_resource type="Script" path="res://scripts/gameFolder/progressToStar7.gd" id="41_111ek"]
+[ext_resource type="Texture2D" uid="uid://d3uwmxnjwcrug" path="res://assets/instructionIcons/InstructionBack.png" id="47_pgjer"]
 [ext_resource type="Shader" path="res://shaders/customOpacity.gdshader" id="50_50fig"]
 [ext_resource type="Texture2D" uid="uid://dpt5yjm2aol3o" path="res://assets/Health Lazer (2).png" id="50_f82w8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Spray.gd" id="59_qes72"]
@@ -89,6 +90,7 @@
 [ext_resource type="Texture2D" uid="uid://cjy8gs6cxalk3" path="res://assets/instructionIcons/FireIcon (1).png" id="85_d1mro"]
 [ext_resource type="Texture2D" uid="uid://bh1p7tn07i72m" path="res://assets/instructionIcons/NavigateDroneIcon.png" id="86_v3vjy"]
 [ext_resource type="Texture2D" uid="uid://dpsvribughbtx" path="res://assets/instructionIcons/WaveStarInstructions.png" id="89_r8nt3"]
+[ext_resource type="Texture2D" uid="uid://b7m5dxwdsot1c" path="res://assets/instructionIcons/WaveStarInstructions (2).png" id="90_gps3d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -1472,10 +1474,10 @@ metadata/_edit_use_anchors_ = true
 [node name="MusicVolume" type="Control" parent="PauseMenu"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 50.0
-offset_top = 409.0
-offset_right = 90.0
-offset_bottom = 449.0
+offset_left = 1345.0
+offset_top = 439.0
+offset_right = 1385.0
+offset_bottom = 479.0
 script = ExtResource("18_ewn7p")
 
 [node name="SplatchoVolumeSlider" type="Sprite2D" parent="PauseMenu/MusicVolume"]
@@ -1504,10 +1506,10 @@ text = "MUSIC"
 [node name="SFXVolume" type="Control" parent="PauseMenu"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 50.0
-offset_top = 631.0
-offset_right = 90.0
-offset_bottom = 671.0
+offset_left = 1345.0
+offset_top = 661.0
+offset_right = 1385.0
+offset_bottom = 701.0
 script = ExtResource("20_nejok")
 
 [node name="SplatchoVolumeSlider" type="Sprite2D" parent="PauseMenu/SFXVolume"]
@@ -1533,37 +1535,30 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "EFFECTS"
 
-[node name="DeployDroneIcon" type="Sprite2D" parent="PauseMenu"]
-z_index = -10
-z_as_relative = false
-use_parent_material = true
-position = Vector2(1658, 644)
-scale = Vector2(0.389047, 0.389047)
-texture = ExtResource("83_60uab")
+[node name="InstructionBack" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(272.897, 540.498)
+scale = Vector2(1.28937, 1.63472)
+texture = ExtResource("47_pgjer")
 
-[node name="EscapeIcon" type="Sprite2D" parent="PauseMenu"]
-z_index = -10
-z_as_relative = false
-use_parent_material = true
-position = Vector2(1650, 417)
-scale = Vector2(0.441391, 0.441391)
-texture = ExtResource("84_w487j")
-
-[node name="FireIcon(1)" type="Sprite2D" parent="PauseMenu"]
-z_index = -10
-z_as_relative = false
-use_parent_material = true
-position = Vector2(1648, 223)
-scale = Vector2(0.349469, 0.349469)
+[node name="FireIcon" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(276.897, 197.498)
+scale = Vector2(0.49717, 0.49717)
 texture = ExtResource("85_d1mro")
 
-[node name="NavigateDroneIcon" type="Sprite2D" parent="PauseMenu"]
-z_index = -10
-z_as_relative = false
-use_parent_material = true
-position = Vector2(1620, 917)
-scale = Vector2(0.525538, 0.525538)
+[node name="DeployDroneIcon2" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(286.897, 485.498)
+scale = Vector2(0.520613, 0.520613)
+texture = ExtResource("83_60uab")
+
+[node name="NavigateDroneIcon2" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(269.897, 739.498)
+scale = Vector2(0.516608, 0.516608)
 texture = ExtResource("86_v3vjy")
+
+[node name="EscapeIcon2" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(258.897, 958.498)
+scale = Vector2(0.465215, 0.465215)
+texture = ExtResource("84_w487j")
 
 [node name="HealthBarRed" type="Sprite2D" parent="."]
 z_index = 7
@@ -1946,7 +1941,6 @@ visible = false
 script = ExtResource("83_lvetm")
 
 [node name="tutCanvasLayer" type="CanvasLayer" parent="tutorialStuff"]
-visible = false
 
 [node name="MaterialParent" type="Node2D" parent="tutorialStuff/tutCanvasLayer"]
 material = SubResource("ShaderMaterial_34m8u")
@@ -1957,9 +1951,14 @@ visible = false
 z_index = -10
 z_as_relative = false
 use_parent_material = true
-position = Vector2(368, 230)
+position = Vector2(339, 211)
 scale = Vector2(0.763797, 0.763797)
 texture = ExtResource("83_60uab")
+
+[node name="WaveStarInstructions(2)" type="Sprite2D" parent="tutorialStuff/tutCanvasLayer/MaterialParent/DeployDroneIcon"]
+position = Vector2(792.095, -26.185)
+scale = Vector2(1.04435, 1.04435)
+texture = ExtResource("90_gps3d")
 
 [node name="FireIcon(1)" type="Sprite2D" parent="tutorialStuff/tutCanvasLayer/MaterialParent"]
 z_index = -10

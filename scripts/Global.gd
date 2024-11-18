@@ -10,7 +10,8 @@ var baseTwoUnlocked: bool = false
 var baseThreeUnlocked: bool = false
 var baseFourUnlocked: bool = false
 
-var lotlSouls: int = 1000
+var lotlSouls: int = 0
+var lotlKills: int = 0
 
 var inPracticeMode: bool = false
 

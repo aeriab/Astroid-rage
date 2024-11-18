@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://n3pfbthhjb2o"]
+[gd_scene load_steps=17 format=3 uid="uid://n3pfbthhjb2o"]
 
 [ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_mbgcs"]
-[ext_resource type="Texture2D" uid="uid://bpu838e1u0kbo" path="res://assets/TankBirdBod (2).png" id="2_dvl5i"]
 [ext_resource type="Script" path="res://scripts/MusicVolume.gd" id="2_v7yv8"]
 [ext_resource type="Texture2D" uid="uid://cva3wsbyec1c2" path="res://assets/VolumeSprites/Splatcho Volume Slider (1).png" id="3_aovcj"]
 [ext_resource type="Texture2D" uid="uid://dbaqv6l82cm7m" path="res://assets/Target Enemy (1).png" id="3_m0f0e"]
@@ -9,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c6swdgdjjlstd" path="res://assets/SpraySideBoost (1).png" id="4_mslvh"]
 [ext_resource type="Shader" path="res://shaders/titleBack.gdshader" id="8_c47cw"]
 [ext_resource type="Texture2D" uid="uid://fyqgbky4lcrw" path="res://assets/Splatcho Cover.png" id="8_ll4s6"]
+[ext_resource type="Texture2D" uid="uid://d3uwmxnjwcrug" path="res://assets/instructionIcons/InstructionBack.png" id="9_pf0bt"]
 [ext_resource type="Texture2D" uid="uid://cjy8gs6cxalk3" path="res://assets/instructionIcons/FireIcon (1).png" id="10_f53fb"]
 [ext_resource type="Texture2D" uid="uid://d2hmyo1pe6dwd" path="res://assets/instructionIcons/DeployDroneIcon.png" id="11_e1hwi"]
 [ext_resource type="Texture2D" uid="uid://bh1p7tn07i72m" path="res://assets/instructionIcons/NavigateDroneIcon.png" id="12_lsc11"]
@@ -16,11 +16,18 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_246gm"]
 shader = ExtResource("8_c47cw")
-shader_parameter/slow_by_mult = 0.5
+shader_parameter/slow_by_mult = 1.5
+shader_parameter/vibrant_color = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kp0t1"]
+shader = ExtResource("8_c47cw")
+shader_parameter/slow_by_mult = 1.0
+shader_parameter/vibrant_color = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bvk4"]
 shader = ExtResource("8_c47cw")
 shader_parameter/slow_by_mult = 7.0
+shader_parameter/vibrant_color = 20.0
 
 [node name="HomeMenu" type="Node2D"]
 
@@ -44,16 +51,37 @@ text = "SPLATCHO"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="LotlKills" type="Label" parent="HomeCanvas"]
+material = SubResource("ShaderMaterial_kp0t1")
+anchors_preset = -1
+anchor_right = 0.459375
+anchor_bottom = 0.341667
+offset_left = 668.0
+offset_top = 833.0
+offset_right = 668.0
+offset_bottom = 833.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.625826, 0.625826)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -10
+theme_override_constants/shadow_offset_y = -5
+theme_override_font_sizes/font_size = 126
+text = "You've killed 0 axolotls!"
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="PlayButton" type="Button" parent="HomeCanvas"]
 anchors_preset = -1
 anchor_left = -0.0140625
 anchor_top = -0.158333
 anchor_right = 1.01458
 anchor_bottom = 1.15833
-offset_left = 696.0
-offset_top = 479.0
-offset_right = -676.0
-offset_bottom = -431.0
+offset_left = 678.0
+offset_top = 475.0
+offset_right = -694.0
+offset_bottom = -435.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -62,7 +90,6 @@ theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 145
 text = "PLAY 
 GAME"
-icon = ExtResource("2_dvl5i")
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
@@ -187,24 +214,29 @@ material = SubResource("ShaderMaterial_2bvk4")
 position = Vector2(960, 540)
 texture = ExtResource("8_ll4s6")
 
+[node name="InstructionBack" type="Sprite2D" parent="."]
+position = Vector2(272.897, 540.498)
+scale = Vector2(1.28937, 1.63472)
+texture = ExtResource("9_pf0bt")
+
 [node name="FireIcon" type="Sprite2D" parent="."]
-position = Vector2(329, 225)
-scale = Vector2(0.692408, 0.692408)
+position = Vector2(276.897, 197.498)
+scale = Vector2(0.49717, 0.49717)
 texture = ExtResource("10_f53fb")
 
 [node name="DeployDroneIcon" type="Sprite2D" parent="."]
-position = Vector2(341, 581)
-scale = Vector2(0.628818, 0.628818)
+position = Vector2(286.897, 485.498)
+scale = Vector2(0.520613, 0.520613)
 texture = ExtResource("11_e1hwi")
 
 [node name="NavigateDroneIcon" type="Sprite2D" parent="."]
-position = Vector2(332, 901)
-scale = Vector2(0.760255, 0.760255)
+position = Vector2(269.897, 739.498)
+scale = Vector2(0.516608, 0.516608)
 texture = ExtResource("12_lsc11")
 
 [node name="EscapeIcon" type="Sprite2D" parent="."]
-position = Vector2(969, 946)
-scale = Vector2(0.720394, 0.720394)
+position = Vector2(258.897, 958.498)
+scale = Vector2(0.465215, 0.465215)
 texture = ExtResource("13_k25h1")
 
 [connection signal="pressed" from="HomeCanvas/PlayButton" to="HomeCanvas" method="_on_play_button_pressed"]
