@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dny3m1xm1ubkg"]
+
+[ext_resource type="AudioStream" uid="uid://bavisljogj0k" path="res://assets/popSFX/LaserSound - Made with Clipchamp.mp3" id="1_xuolb"]
+[ext_resource type="Script" path="res://scripts/LaserPreload.gd" id="2_m26s3"]
+
+[node name="LaserPreload" type="AudioStreamPlayer"]
+stream = ExtResource("1_xuolb")
+script = ExtResource("2_m26s3")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -111,8 +111,36 @@ func _ready():
 		tut_canvas_layer.visible = false
 		tutorial_stuff.visible = false
 
+@onready var pop_sfx_player = $PopSfxPlayer
+@onready var pop_sfx_player_2 = $PopSfxPlayer2
+@onready var laser_preload = $LaserPreload
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1 && Global.curBaseNumber != 4:
+		pop_sfx_player.volume_db = AudioPreload.effectsVolDB
+		pop_sfx_player.pitch_scale = randf_range(0.40,1.1)
+		var k = randi_range(0,2)
+		if k == 0:
+			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-1-185286.mp3")
+		if k == 1:
+			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-2-185287.mp3")
+		else:
+			pop_sfx_player.stream = preload("res://assets/popSFX/happy-pop-3-185288.mp3")
+		pop_sfx_player.play()
+	
+	if Global.curBaseNumber == 4:
+		pop_sfx_player.volume_db = AudioPreload.effectsVolDB
+		pop_sfx_player.pitch_scale = randf_range(0.80,1.2)
+		pop_sfx_player.stream = preload("res://assets/popSFX/LaserSound - Made with Clipchamp.mp3")
+		if Input.is_action_just_pressed("switch") && Global.gameTimeScale > 0.1:
+			print("should be playing")
+			laser_preload.play_laser()
+		if Input.is_action_just_released("switch") || Global.gameTimeScale <= 0.1:
+			print("stopping")
+			laser_preload.pause_laser()
+			pop_sfx_player.playing = false
 	
 	if !Global.startCrasher and !Global.crashStarted:
 		firstCrash = true

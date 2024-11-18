@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=125 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -72,7 +72,9 @@
 [ext_resource type="Texture2D" uid="uid://d3uwmxnjwcrug" path="res://assets/instructionIcons/InstructionBack.png" id="47_pgjer"]
 [ext_resource type="Shader" path="res://shaders/customOpacity.gdshader" id="50_50fig"]
 [ext_resource type="Texture2D" uid="uid://dpt5yjm2aol3o" path="res://assets/Health Lazer (2).png" id="50_f82w8"]
+[ext_resource type="AudioStream" uid="uid://bavisljogj0k" path="res://assets/popSFX/LaserSound - Made with Clipchamp.mp3" id="58_lfhpr"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Spray.gd" id="59_qes72"]
+[ext_resource type="PackedScene" uid="uid://dny3m1xm1ubkg" path="res://scenes/laser_preload.tscn" id="59_qp21m"]
 [ext_resource type="Texture2D" uid="uid://c6swdgdjjlstd" path="res://assets/SpraySideBoost (1).png" id="60_nvmmr"]
 [ext_resource type="Texture2D" uid="uid://dl0ldlfnm1ars" path="res://assets/SpraySBOutline (1).png" id="61_2povb"]
 [ext_resource type="Script" path="res://scripts/gameFolder/Fling.gd" id="63_d3n1w"]
@@ -1577,6 +1579,12 @@ texture = ExtResource("50_f82w8")
 
 [node name="PopSfxPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_j4gmb")
+
+[node name="PopSfxPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("58_lfhpr")
+pitch_scale = 0.97
+
+[node name="LaserPreload" parent="." instance=ExtResource("59_qp21m")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.3, 0.3)

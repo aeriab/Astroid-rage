@@ -203,6 +203,9 @@ func _on_stage_button_pressed():
 	if Global.current_stage == "Learner Lagoon":
 		Global.current_stage = "Perfect Pond"
 		Global.stage_index += 1
+	elif Global.current_stage == "Tutorial Tidepool":
+		Global.current_stage = "Learner Lagoon"
+		Global.stage_index = 1
 	elif Global.current_stage == "Perfect Pond":
 		Global.current_stage = "Giga Geyser"
 		Global.stage_index += 1
@@ -228,11 +231,16 @@ func _on_stage_button_pressed():
 		Global.current_stage = "Massive Marsh"
 		Global.stage_index += 1
 	
-	
-	Global.gameOver = false
-	Global.gameTimeScale = 1.0
-	Global.resetStats()
-	get_tree().change_scene_to_file("res://scenes/playable_scenes/stage_select.tscn")
+	if Global.didTutorial:
+		Global.gameOver = false
+		Global.gameTimeScale = 1.0
+		Global.resetStats()
+		get_tree().change_scene_to_file("res://scenes/playable_scenes/stage_select.tscn")
+	else:
+		Global.gameOver = false
+		Global.gameTimeScale = 1.0
+		Global.resetStats()
+		get_tree().change_scene_to_file("res://scenes/playable_scenes/intro_video.tscn")
 
 func three_star_level():
 	outline_star_particle_1.visible = false

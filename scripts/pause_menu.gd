@@ -41,6 +41,13 @@ func _on_stage_button_pressed():
 	elif Global.stage_index == 10 && starsAwarding() > Global.Stage10StarsAchieved:
 		Global.Stage10StarsAchieved = starsAwarding()
 	
-	Global.resetStats()
-	get_tree().change_scene_to_file("res://scenes/playable_scenes/stage_select.tscn")
-	Global.gameTimeScale = 1.0
+	if Global.didTutorial:
+		Global.resetStats()
+		get_tree().change_scene_to_file("res://scenes/playable_scenes/stage_select.tscn")
+		Global.gameTimeScale = 1.0
+	else:
+		Global.resetStats()
+		Global.current_stage = "Learner Lagoon"
+		Global.stage_index = 1
+		get_tree().change_scene_to_file("res://scenes/playable_scenes/intro_video.tscn")
+		Global.gameTimeScale = 1.0
