@@ -5,6 +5,7 @@ func _on_play_button_pressed():
 	if Global.didTutorial == true:
 		get_tree().change_scene_to_file("res://scenes/playable_scenes/stage_select.tscn")
 	else:
+		Global.current_stage = "Tutorial Tidepool"
 		get_tree().change_scene_to_file("res://scenes/playable_scenes/game.tscn")
 
 func _on_quit_button_pressed():

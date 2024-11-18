@@ -10,7 +10,7 @@ var baseTwoUnlocked: bool = false
 var baseThreeUnlocked: bool = false
 var baseFourUnlocked: bool = false
 
-var lotlSouls: int = 100
+var lotlSouls: int = 1000
 
 var inPracticeMode: bool = false
 
@@ -173,7 +173,8 @@ var wave5Wait: float = 25.0
 var wave6Wait: float = 25.0
 var wave7Wait: float = 25.0
 
-var Stage1StarsAchieved: int = 2
+var Stage0StarsAchieved: int = 3
+var Stage1StarsAchieved: int = 0
 var Stage2StarsAchieved: int = 0
 var Stage3StarsAchieved: int = 0
 var Stage4StarsAchieved: int = 0

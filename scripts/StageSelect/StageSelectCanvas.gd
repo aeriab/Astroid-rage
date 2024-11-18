@@ -109,6 +109,11 @@ var MAX_STAGE: int = 10
 
 
 func _ready():
+	
+	if !Global.didTutorial:
+		Global.didTutorial = true
+		Global.current_stage == "Learner Lagoon"
+	
 	if Global.Stage1StarsAchieved <= 0:
 		Global.levelProgress = 1
 	elif Global.Stage2StarsAchieved <= 0:

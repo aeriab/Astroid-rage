@@ -67,8 +67,22 @@ var firstSp6: bool = true
 var firstSp7: bool = true
 
 var waveFinishedCreating: bool = false
+@onready var health_bar_red = $"../HealthBarRed"
 
 func _process(delta):
+	
+	if Global.current_stage == "Tutorial Tidepool":
+		Global.player_health += delta * Global.gameTimeScale * 10
+		if onWave == 3 && firstSp3:
+			firstSp3 = false
+			generalMultiSpawn(1,"empty",0.1,true,0.1)
+		if onWave == 4 && firstSp4:
+			firstSp4 = false
+			generalMultiSpawn(3,"axol",1,true,10)
+		if onWave == 5 && firstSp5:
+			firstSp5 = false
+			generalMultiSpawn(40,"red",2,false,5)
+			generalMultiSpawn2(3,"axol",1,true)
 	
 	if Global.current_stage == "Learner Lagoon":
 		if onWave == 3 && firstSp3:

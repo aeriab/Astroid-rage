@@ -27,14 +27,13 @@ var first_impact: bool = true
 @onready var gob = $GobNode2D
 
 @onready var tutorial_stuff = $tutorialStuff
+@onready var tut_canvas_layer = $tutorialStuff/tutCanvasLayer
 
 
 func _ready():
 	
-	if Global.curStage == -1:
-		tutorial_stuff.visible = true
-	else:
-		tutorial_stuff.visible = false
+	Global.resetStats()
+	
 	
 	if Global.curDroneNumber != 1:
 		crasher_area_2d.queue_free()
@@ -57,7 +56,6 @@ func _ready():
 	elif Global.curDroneNumber == 4:
 		drone = $GobNode2D/Gob
 		gob.visible = true
-
 	
 	
 	
@@ -95,19 +93,27 @@ func _ready():
 		mutation_part = $Lazy/Player/mutationPart
 	
 	
+	Global.gameTimeScale = 1.0
+	
 	Global.bulletSize = (Global.num_base_stars4 + 1.2) * 2.0
 	Global.rotationSpeed = (Global.num_base_stars5 * 0.35) + 1.2
 	Global.damage = (2.5 * Global.num_base_stars3) + 2.0
-	
-	Global.gameTimeScale = 1.0
-	Global.resetStats()
 	Global.curHighscore = Global.gameHighscore
 	Global.curStage = -1
 	
 	Global.startCrasher = false
+	
+	if Global.current_stage == "Tutorial Tidepool":
+		tutorial_stuff.visible = true
+		tut_canvas_layer.visible = true
+		Global.damage = (2.5 * 2) + 2.0
+	else:
+		tut_canvas_layer.visible = false
+		tutorial_stuff.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if !Global.startCrasher and !Global.crashStarted:
 		firstCrash = true
 		if crashTransPlace > 0.0:

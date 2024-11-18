@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=121 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -84,9 +84,11 @@
 [ext_resource type="Script" path="res://scripts/gameFolder/gameCircle.gd" id="80_45w2x"]
 [ext_resource type="Texture2D" uid="uid://d2hmyo1pe6dwd" path="res://assets/instructionIcons/DeployDroneIcon.png" id="83_60uab"]
 [ext_resource type="Script" path="res://scripts/gameFolder/tutorialStuff.gd" id="83_lvetm"]
+[ext_resource type="Script" path="res://scripts/gameFolder/MaterialParent.gd" id="84_bmse1"]
 [ext_resource type="Texture2D" uid="uid://co5fljlwhpjp3" path="res://assets/instructionIcons/EscapeIcon.png" id="84_w487j"]
 [ext_resource type="Texture2D" uid="uid://cjy8gs6cxalk3" path="res://assets/instructionIcons/FireIcon (1).png" id="85_d1mro"]
 [ext_resource type="Texture2D" uid="uid://bh1p7tn07i72m" path="res://assets/instructionIcons/NavigateDroneIcon.png" id="86_v3vjy"]
+[ext_resource type="Texture2D" uid="uid://dpsvribughbtx" path="res://assets/instructionIcons/WaveStarInstructions.png" id="89_r8nt3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j54jy"]
 
@@ -148,7 +150,7 @@ shader_parameter/health_value = 100.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ofoq"]
 shader = ExtResource("50_50fig")
-shader_parameter/opacity_value = 40.0
+shader_parameter/opacity_value = 1.0
 
 [sub_resource type="Curve" id="Curve_p1bkv"]
 min_value = -360.0
@@ -208,6 +210,10 @@ shader_parameter/wave_progress = null
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2odep"]
 shader = ExtResource("34_vtmkp")
 shader_parameter/wave_progress = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34m8u"]
+shader = ExtResource("50_50fig")
+shader_parameter/opacity_value = 0.5
 
 [node name="game" type="Node2D"]
 scale = Vector2(1.218, 1.218)
@@ -1381,15 +1387,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1243.0
+offset_left = -926.0
 offset_top = 101.0
-offset_right = 21.0
+offset_right = -296.0
 offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 80
 text = "Learner Lagoon"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="StarAward" type="Timer" parent="GameOver"]
 wait_time = 0.4
@@ -1525,6 +1532,38 @@ offset_bottom = 96.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "EFFECTS"
+
+[node name="DeployDroneIcon" type="Sprite2D" parent="PauseMenu"]
+z_index = -10
+z_as_relative = false
+use_parent_material = true
+position = Vector2(1658, 644)
+scale = Vector2(0.389047, 0.389047)
+texture = ExtResource("83_60uab")
+
+[node name="EscapeIcon" type="Sprite2D" parent="PauseMenu"]
+z_index = -10
+z_as_relative = false
+use_parent_material = true
+position = Vector2(1650, 417)
+scale = Vector2(0.441391, 0.441391)
+texture = ExtResource("84_w487j")
+
+[node name="FireIcon(1)" type="Sprite2D" parent="PauseMenu"]
+z_index = -10
+z_as_relative = false
+use_parent_material = true
+position = Vector2(1648, 223)
+scale = Vector2(0.349469, 0.349469)
+texture = ExtResource("85_d1mro")
+
+[node name="NavigateDroneIcon" type="Sprite2D" parent="PauseMenu"]
+z_index = -10
+z_as_relative = false
+use_parent_material = true
+position = Vector2(1620, 917)
+scale = Vector2(0.525538, 0.525538)
+texture = ExtResource("86_v3vjy")
 
 [node name="HealthBarRed" type="Sprite2D" parent="."]
 z_index = 7
@@ -1903,32 +1942,59 @@ polygon = PackedVector2Array(-441.16, 2993.43, -660.099, 2952.93, -902.572, 2888
 one_way_collision_margin = 0.0
 
 [node name="tutorialStuff" type="Node2D" parent="."]
+visible = false
 script = ExtResource("83_lvetm")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="tutorialStuff"]
-
-[node name="DeployDroneIcon" type="Sprite2D" parent="tutorialStuff/CanvasLayer"]
+[node name="tutCanvasLayer" type="CanvasLayer" parent="tutorialStuff"]
 visible = false
-position = Vector2(943.64, 386.48)
-scale = Vector2(1.218, 1.218)
+
+[node name="MaterialParent" type="Node2D" parent="tutorialStuff/tutCanvasLayer"]
+material = SubResource("ShaderMaterial_34m8u")
+script = ExtResource("84_bmse1")
+
+[node name="DeployDroneIcon" type="Sprite2D" parent="tutorialStuff/tutCanvasLayer/MaterialParent"]
+visible = false
+z_index = -10
+z_as_relative = false
+use_parent_material = true
+position = Vector2(368, 230)
+scale = Vector2(0.763797, 0.763797)
 texture = ExtResource("83_60uab")
 
-[node name="EscapeIcon" type="Sprite2D" parent="tutorialStuff/CanvasLayer"]
-visible = false
-position = Vector2(943.64, 386.48)
-scale = Vector2(1.218, 1.218)
-texture = ExtResource("84_w487j")
-
-[node name="FireIcon(1)" type="Sprite2D" parent="tutorialStuff/CanvasLayer"]
+[node name="FireIcon(1)" type="Sprite2D" parent="tutorialStuff/tutCanvasLayer/MaterialParent"]
+z_index = -10
+z_as_relative = false
+use_parent_material = true
 position = Vector2(333, 243)
 scale = Vector2(0.684606, 0.684606)
 texture = ExtResource("85_d1mro")
 
-[node name="NavigateDroneIcon" type="Sprite2D" parent="tutorialStuff/CanvasLayer"]
+[node name="FireTimer" type="Timer" parent="tutorialStuff/tutCanvasLayer/MaterialParent/FireIcon(1)"]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="WaveStarInstructions" type="Sprite2D" parent="tutorialStuff/tutCanvasLayer/MaterialParent/FireIcon(1)"]
+position = Vector2(914.395, -74.4954)
+scale = Vector2(0.983738, 0.983738)
+texture = ExtResource("89_r8nt3")
+
+[node name="NavigateDroneIcon" type="Sprite2D" parent="tutorialStuff/tutCanvasLayer/MaterialParent"]
 visible = false
-position = Vector2(943.64, 386.48)
-scale = Vector2(1.218, 1.218)
+z_index = -10
+z_as_relative = false
+use_parent_material = true
+position = Vector2(367, 244)
+scale = Vector2(0.859521, 0.859521)
 texture = ExtResource("86_v3vjy")
+
+[node name="NavTimer" type="Timer" parent="tutorialStuff/tutCanvasLayer/MaterialParent/NavigateDroneIcon"]
+wait_time = 10.0
+one_shot = true
+
+[node name="NextInstructTimer" type="Timer" parent="tutorialStuff/tutCanvasLayer/MaterialParent"]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="timeout" from="Tank/GameBulletHandler/AutoTimer" to="Tank/GameBulletHandler" method="_on_auto_timer_timeout"]
 [connection signal="timeout" from="Ball/BulletHandlerSt2/AutoTimer" to="Ball/BulletHandlerSt2" method="_on_auto_timer_timeout"]
@@ -1951,3 +2017,6 @@ texture = ExtResource("86_v3vjy")
 [connection signal="area_entered" from="FlingNode2D/Fling" to="FlingNode2D/Fling" method="_on_area_entered"]
 [connection signal="area_entered" from="GobNode2D/Gob" to="GobNode2D/Gob" method="_on_area_entered"]
 [connection signal="area_entered" from="gameCircle" to="gameCircle" method="_on_area_entered"]
+[connection signal="timeout" from="tutorialStuff/tutCanvasLayer/MaterialParent/FireIcon(1)/FireTimer" to="tutorialStuff" method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="tutorialStuff/tutCanvasLayer/MaterialParent/NavigateDroneIcon/NavTimer" to="tutorialStuff" method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="tutorialStuff/tutCanvasLayer/MaterialParent/NextInstructTimer" to="tutorialStuff" method="_on_next_instruct_timer_timeout"]
