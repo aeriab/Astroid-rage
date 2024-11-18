@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var stageSelecting: int
+var stageSelecting: int = 1
 var MAX_STAGE: int = 10
 @onready var stage_words = $StageWords
 @onready var left_stage_arrow = $LeftStageArrow
@@ -113,6 +113,7 @@ func _ready():
 	if !Global.didTutorial:
 		Global.didTutorial = true
 		Global.current_stage == "Learner Lagoon"
+		stageSelecting = 1
 	
 	if Global.Stage1StarsAchieved <= 0:
 		Global.levelProgress = 1
@@ -155,10 +156,12 @@ func _ready():
 	base_select.updateBaseName()
 	drone_select.updateDroneName()
 	
-	Global.unspentPoints = (Global.Stage1StarsAchieved + Global.Stage2StarsAchieved + Global.Stage3StarsAchieved + Global.Stage4StarsAchieved + Global.Stage5StarsAchieved + Global.Stage6StarsAchieved + Global.Stage7StarsAchieved + Global.Stage8StarsAchieved + Global.Stage9StarsAchieved + Global.Stage10StarsAchieved) - (bupgrade_1.star_count+bupgrade_2.star_count+bupgrade_3.star_count+bupgrade_4.star_count+bupgrade_5.star_count + dupgrade_1.star_count+dupgrade_2.star_count+dupgrade_3.star_count+dupgrade_4.star_count+dupgrade_5.star_count)
+	Global.unspentPoints = (3 + Global.Stage1StarsAchieved + Global.Stage2StarsAchieved + Global.Stage3StarsAchieved + Global.Stage4StarsAchieved + Global.Stage5StarsAchieved + Global.Stage6StarsAchieved + Global.Stage7StarsAchieved + Global.Stage8StarsAchieved + Global.Stage9StarsAchieved + Global.Stage10StarsAchieved) - (bupgrade_1.star_count+bupgrade_2.star_count+bupgrade_3.star_count+bupgrade_4.star_count+bupgrade_5.star_count + dupgrade_1.star_count+dupgrade_2.star_count+dupgrade_3.star_count+dupgrade_4.star_count+dupgrade_5.star_count)
 	
 	if Global.current_stage == "Learner Lagoon":
 		stageSelecting = 1
+	elif Global.current_stage == "Tutorial Tidepool":
+		stageSelecting = 0
 	elif Global.current_stage == "Perfect Pond":
 		stageSelecting = 2
 	elif Global.current_stage == "Giga Geyser":
@@ -186,6 +189,8 @@ func resetStarParticles():
 	star_particle_5.visible = false
 	star_particle_6.visible = false
 	star_particle_7.visible = false
+
+@onready var stage_0_sprites = $Stage0Sprites
 
 @onready var stage_1_sprites = $Stage1Sprites
 @onready var stage_2_sprites = $Stage2Sprites
@@ -216,7 +221,7 @@ func establish_arrows():
 	else:
 		right_stage_arrow.visible = true
 	
-	if stageSelecting == 1:
+	if stageSelecting == 0:
 		left_stage_arrow.visible = false
 	else:
 		left_stage_arrow.visible = true
@@ -377,6 +382,7 @@ func _process(delta):
 	
 	if stageSelecting == 1:
 		
+		stage_0_sprites.visible = false
 		stage_1_sprites.visible = true
 		stage_2_sprites.visible = false
 		stage_3_sprites.visible = false
@@ -399,8 +405,32 @@ func _process(delta):
 			star_particle_4.visible = true
 		if Global.Stage1StarsAchieved >= 3:
 			star_particle_5.visible = true
-	elif stageSelecting == 2:
+	elif stageSelecting == 0:
+		stage_0_sprites.visible = true
+		stage_1_sprites.visible = false
+		stage_2_sprites.visible = false
+		stage_3_sprites.visible = false
+		stage_4_sprites.visible = false
+		stage_select_back.texture = STAGE_SELECT_BACK_S_1
 		
+		Global.waveNum = 3
+		Global.current_stage = "Tutorial Tidepool"
+		stage_words.text = "Tutorial Tidepool"
+		establish_arrows()
+		resetStarParticles()
+		
+		Global.wave3Wait = 25.0
+		Global.wave4Wait = 25.0
+		Global.wave5Wait = 30.0
+		
+		if Global.Stage0StarsAchieved >= 1:
+			star_particle_3.visible = true
+		if Global.Stage0StarsAchieved >= 2:
+			star_particle_4.visible = true
+		if Global.Stage0StarsAchieved >= 3:
+			star_particle_5.visible = true
+	elif stageSelecting == 2:
+		stage_0_sprites.visible = false
 		stage_1_sprites.visible = false
 		stage_2_sprites.visible = true
 		stage_3_sprites.visible = false
@@ -419,7 +449,7 @@ func _process(delta):
 		if Global.Stage2StarsAchieved >= 3:
 			star_particle_5.visible = true
 	elif stageSelecting == 3:
-		
+		stage_0_sprites.visible = false
 		stage_1_sprites.visible = false
 		stage_2_sprites.visible = false
 		stage_3_sprites.visible = true
@@ -600,6 +630,7 @@ func _process(delta):
 
 
 func hideStageSprites():
+	stage_0_sprites.visible = false
 	stage_1_sprites.visible = false
 	stage_2_sprites.visible = false
 	stage_3_sprites.visible = false
@@ -624,7 +655,7 @@ func _on_right_stage_arrow_pressed():
 
 func _on_left_stage_arrow_pressed():
 	right_stage_arrow.visible = true
-	if stageSelecting >= 2:
+	if stageSelecting >= 1:
 		stageSelecting -= 1
 
 func _on_home_button_pressed():
