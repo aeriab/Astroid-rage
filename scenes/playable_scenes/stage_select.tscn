@@ -1837,7 +1837,6 @@ scale = Vector2(0.262987, 0.262987)
 texture = ExtResource("40_6dbs1")
 
 [node name="Stage10Sprites" type="Node2D" parent="MainCanvas"]
-visible = false
 z_index = -1
 
 [node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]

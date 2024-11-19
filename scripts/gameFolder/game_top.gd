@@ -32,6 +32,7 @@ var first_impact: bool = true
 
 func _ready():
 	
+	
 	Global.resetStats()
 	
 	

@@ -37,8 +37,14 @@ var wave_time_7: float = 0.0
 
 var stage1EnArray = []
 
+@onready var final_level_stuff = $"../FinalLevelStuff"
+@onready var axolotl = $"../FinalLevelStuff/Axolotl"
 
 func _ready():
+	
+	if Global.current_stage != "Massive Marsh":
+		final_level_stuff.queue_free()
+	
 	
 	if Global.current_stage == "Tutorial Tidepool":
 		axol_timer.stop()
