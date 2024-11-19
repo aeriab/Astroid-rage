@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=46 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://col0upwvugoqr" path="res://assets/redEnemySprites/SplatchoEnemySad.png" id="38_sro3a"]
 [ext_resource type="Texture2D" uid="uid://uersu7jc2vks" path="res://assets/redEnemySprites/SplatchoEnemyNose.png" id="39_tu1fw"]
 [ext_resource type="Texture2D" uid="uid://b6v3o4pytvhde" path="res://assets/redEnemySprites/SplatchoEnemySus.png" id="40_6dbs1"]
+[ext_resource type="Texture2D" uid="uid://clicdmobo2vx3" path="res://assets/movingGameAssets/Axl_FullBody.png" id="44_s6863"]
 
 [node name="stage_select" type="Node2D"]
 
@@ -1837,6 +1838,7 @@ scale = Vector2(0.262987, 0.262987)
 texture = ExtResource("40_6dbs1")
 
 [node name="Stage10Sprites" type="Node2D" parent="MainCanvas"]
+visible = false
 z_index = -1
 
 [node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
@@ -1932,6 +1934,11 @@ position = Vector2(1567, 289)
 rotation = 0.0748837
 scale = Vector2(0.171043, 0.171043)
 texture = ExtResource("21_24qxl")
+
+[node name="AxlFullBody" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
+position = Vector2(923, 249)
+rotation = -0.760132
+texture = ExtResource("44_s6863")
 
 [node name="SwirlEnemySquare" type="Sprite2D" parent="MainCanvas/Stage10Sprites"]
 position = Vector2(891, 253)
