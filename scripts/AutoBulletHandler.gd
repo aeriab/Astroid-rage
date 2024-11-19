@@ -33,7 +33,7 @@ func shootBall():
 	else:
 		theta = 2 * PI -  acos(x / snout_length)
 	
-	booger_area.set_motion(x,y,theta,1)
+	booger_area.set_motion(x,y,theta,0)
 	shotparticles.start_emit(x,y,theta)
 
 func _on_auto_timer_timeout():

@@ -93,28 +93,28 @@ func _process(delta):
 	if Global.current_stage == "Learner Lagoon":
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalMultiSpawn(10,"red",0.5,true,10)
+			generalMultiSpawn(5,"red",1,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
-			generalMultiSpawn(5,"swirl",3,true,10)
+			generalMultiSpawn(3,"swirl",3,true,10)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
-			generalMultiSpawn(30,"red",0.8,false,10)
-			generalMultiSpawn2(10,"swirl",3,true)
+			generalMultiSpawn(15,"red",1.6,false,10)
+			generalMultiSpawn2(5,"swirl",3,true)
 	
 	if Global.current_stage == "Perfect Pond":
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalPerfSpawn(15,"purple")
+			generalPerfSpawn(10,"purple")
 			generalMultiSpawn(5,"zag",0.5,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
-			generalPerfSpawn(10,"swirl")
+			generalPerfSpawn(5,"swirl")
 			generalMultiSpawn(10,"red",2,true,10)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
 			generalMultiSpawn(10,"purple",1.5,false,10)
-			generalPerfSpawn(20,"zag")
+			generalPerfSpawn(10,"zag")
 			generalMultiSpawn2(2,"bulk",5,true)
 	
 	if Global.current_stage == "Giga Geyser":
@@ -123,20 +123,20 @@ func _process(delta):
 			generalMultiSpawn(1,"boss",5,true,10)
 		if onWave == 3 && firstSp3:
 			firstSp3 = false
-			generalPerfSpawn(35,"purple")
+			generalPerfSpawn(25,"purple")
 			generalMultiSpawn(10,"zag",1.5,true,10)
 		if onWave == 4 && firstSp4:
 			firstSp4 = false
 			generalPerfSpawn(10,"swirl")
 			generalMultiSpawn(10,"red",1.5,false,10)
-			generalMultiSpawn2(3,"boss",5,true)
+			generalMultiSpawn2(2,"boss",5,true)
 		if onWave == 5 && firstSp5:
 			firstSp5 = false
 			generalMultiSpawn(10,"zag",1.5,true,10)
-			generalPerfSpawn(8,"bulk")
+			generalPerfSpawn(5,"bulk")
 		if onWave == 6 && firstSp6:
 			firstSp6 = false
-			generalPerfSpawn(5,"boss")
+			generalPerfSpawn(4,"boss")
 			generalMultiSpawn(10,"swirl",1.5,true,10)
 	
 	if Global.current_stage == "Swirly Swamp":
@@ -606,7 +606,7 @@ func spawnStarEnemy():
 
 func _on_axol_timer_timeout():
 	var axol_wave_fate: int = 0
-	axol_wave_fate = randf_range(1,100)
+	axol_wave_fate = randf_range(1,101)
 	if axol_wave_fate < 65:
 		spawnAxolEnemy()
 	elif axol_wave_fate < 90:

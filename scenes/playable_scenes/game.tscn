@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://dkb3s58dnfp3v"]
+[gd_scene load_steps=143 format=3 uid="uid://dkb3s58dnfp3v"]
 
 [ext_resource type="Script" path="res://scripts/gameFolder/game_top.gd" id="1_hchh8"]
 [ext_resource type="Script" path="res://scripts/gameFolder/game_player.gd" id="2_8ueva"]
@@ -92,7 +92,6 @@
 [ext_resource type="Texture2D" uid="uid://cjy8gs6cxalk3" path="res://assets/instructionIcons/FireIcon (1).png" id="85_d1mro"]
 [ext_resource type="Texture2D" uid="uid://bh1p7tn07i72m" path="res://assets/instructionIcons/NavigateDroneIcon.png" id="86_v3vjy"]
 [ext_resource type="Texture2D" uid="uid://dpsvribughbtx" path="res://assets/instructionIcons/WaveStarInstructions.png" id="89_r8nt3"]
-[ext_resource type="Texture2D" uid="uid://b7m5dxwdsot1c" path="res://assets/instructionIcons/WaveStarInstructions (2).png" id="90_gps3d"]
 [ext_resource type="Script" path="res://scripts/gameFolder/moveMama.gd" id="94_8ieyu"]
 [ext_resource type="Shader" path="res://shaders/redEnemy.gdshader" id="94_t2kak"]
 [ext_resource type="Texture2D" uid="uid://4fc8l4trv34r" path="res://assets/movingGameAssets/Axl_FullTexture.png" id="95_yftf8"]
@@ -1047,7 +1046,7 @@ wait_time = 10.0
 wait_time = 10.0
 
 [node name="AxolTimer" type="Timer" parent="GameWaves"]
-wait_time = 5.0
+wait_time = 8.0
 autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
@@ -2027,11 +2026,6 @@ position = Vector2(339, 211)
 scale = Vector2(0.763797, 0.763797)
 texture = ExtResource("83_60uab")
 
-[node name="WaveStarInstructions(2)" type="Sprite2D" parent="tutorialStuff/tutCanvasLayer/MaterialParent/DeployDroneIcon"]
-position = Vector2(792.095, -26.185)
-scale = Vector2(1.04435, 1.04435)
-texture = ExtResource("90_gps3d")
-
 [node name="FireIcon(1)" type="Sprite2D" parent="tutorialStuff/tutCanvasLayer/MaterialParent"]
 z_index = -10
 z_as_relative = false
@@ -2259,7 +2253,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="TL_Arm" type="Bone2D" parent="FinalLevelStuff/Axolotl/Skeleton2D/Torso/TopLeft"]
 position = Vector2(106.055, -3.21704)
 rotation = 1.64145
-scale = Vector2(1, 1)
 rest = Transform2D(0.870299, -0.492524, 0.492524, 0.870299, 106.055, -3.21704)
 auto_calculate_length_and_angle = false
 length = 121.168
@@ -2278,6 +2271,7 @@ bone_angle = 0.0
 [node name="BotLeft" type="Bone2D" parent="FinalLevelStuff/Axolotl/Skeleton2D/Torso"]
 position = Vector2(-61, -89)
 rotation = -2.08867
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -61, -89)
 metadata/_local_pose_override_enabled_ = true
 
@@ -2297,7 +2291,6 @@ rest = Transform2D(1, 0, 0, 1, 131.579, 5.60405)
 [node name="TopRight" type="Bone2D" parent="FinalLevelStuff/Axolotl/Skeleton2D/Torso"]
 position = Vector2(23, 85)
 rotation = 2.80501
-scale = Vector2(1, 1)
 rest = Transform2D(0.698897, 0.715222, -0.715222, 0.698897, 23, 85)
 auto_calculate_length_and_angle = false
 length = 106.104
@@ -2328,6 +2321,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="BR_Arm" type="Bone2D" parent="FinalLevelStuff/Axolotl/Skeleton2D/Torso/BotRight"]
 position = Vector2(48, -99)
 rotation = 3.1232
+scale = Vector2(1, 1)
 rest = Transform2D(0.763949, -0.645276, 0.645276, 0.763949, 48, -99)
 auto_calculate_length_and_angle = false
 length = 121.168

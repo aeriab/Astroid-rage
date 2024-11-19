@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bakjt0er5opos"]
+[gd_scene load_steps=48 format=3 uid="uid://bakjt0er5opos"]
 
 [ext_resource type="Texture2D" uid="uid://covwb7m26mven" path="res://assets/BaseArrow.png" id="1_opoq4"]
 [ext_resource type="Script" path="res://scripts/StageSelect/StageSelectCanvas.gd" id="1_xyryf"]
@@ -37,8 +37,10 @@
 [ext_resource type="Texture2D" uid="uid://2frefqog7kq1" path="res://assets/CounterEnemySymbol (1).png" id="23_x2cgo"]
 [ext_resource type="Texture2D" uid="uid://dwtvp8gcx42a5" path="res://assets/StageSelectBack/StageSelectBackS1.png" id="24_hq3ol"]
 [ext_resource type="Texture2D" uid="uid://4fc8l4trv34r" path="res://assets/movingGameAssets/Axl_FullTexture.png" id="24_lrda8"]
+[ext_resource type="Texture2D" uid="uid://bnv22l1b77u1a" path="res://assets/instructionIcons/WaveStarInstructions (1).png" id="28_fsllh"]
 [ext_resource type="Texture2D" uid="uid://bgms8u43fio8r" path="res://assets/swirlEnemySprites/SwirlEnemyTriangle.png" id="34_v5dn6"]
 [ext_resource type="Texture2D" uid="uid://dmmnwgwhopfe2" path="res://assets/redEnemySprites/SplatchoEnemyDefault.png" id="35_41h27"]
+[ext_resource type="Texture2D" uid="uid://b7m5dxwdsot1c" path="res://assets/instructionIcons/WaveStarInstructions (2).png" id="35_ea01o"]
 [ext_resource type="Texture2D" uid="uid://d287ouradyjyd" path="res://assets/redEnemySprites/SplatchoEnemyDumb.png" id="36_yxahn"]
 [ext_resource type="Texture2D" uid="uid://dd452ygqrpm6f" path="res://assets/redEnemySprites/SplatchoEnemyEYES.png" id="37_bqhp8"]
 [ext_resource type="Texture2D" uid="uid://col0upwvugoqr" path="res://assets/redEnemySprites/SplatchoEnemySad.png" id="38_sro3a"]
@@ -1273,11 +1275,6 @@ position = Vector2(115, 325)
 scale = Vector2(0.262987, 0.262987)
 texture = ExtResource("11_duxm2")
 
-[node name="RedEnemy" type="Sprite2D" parent="MainCanvas/Stage1Sprites"]
-position = Vector2(487, 289)
-scale = Vector2(0.351389, 0.351389)
-texture = ExtResource("9_2f42f")
-
 [node name="RedEnemy2" type="Sprite2D" parent="MainCanvas/Stage1Sprites"]
 position = Vector2(295, 235)
 scale = Vector2(0.343964, 0.343964)
@@ -1289,12 +1286,17 @@ rotation = -2.71767
 scale = Vector2(0.397984, 0.397984)
 texture = ExtResource("14_nhpey")
 
+[node name="WaveStarInstructions(1)" type="Sprite2D" parent="MainCanvas/Stage1Sprites"]
+position = Vector2(441, 407)
+scale = Vector2(0.539584, 0.539584)
+texture = ExtResource("28_fsllh")
+
 [node name="Stage2Sprites" type="Node2D" parent="MainCanvas"]
 visible = false
 z_index = -1
 
 [node name="SpiralEnemyStar" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
-position = Vector2(450, 267)
+position = Vector2(493, 243)
 scale = Vector2(0.449712, 0.449712)
 texture = ExtResource("15_j5dc3")
 
@@ -1304,7 +1306,7 @@ scale = Vector2(-0.369723, 0.369723)
 texture = ExtResource("16_ljf16")
 
 [node name="SwirlEnemyBoth" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
-position = Vector2(306, 302)
+position = Vector2(289, 100)
 rotation = 0.563871
 scale = Vector2(0.235457, 0.235457)
 texture = ExtResource("17_77lvj")
@@ -1316,12 +1318,12 @@ scale = Vector2(0.235457, 0.235457)
 texture = ExtResource("18_wnxyd")
 
 [node name="SplatchoEnemyUni" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
-position = Vector2(115, 325)
+position = Vector2(108, 223)
 scale = Vector2(0.262987, 0.262987)
 texture = ExtResource("11_duxm2")
 
 [node name="ZigZagEnemy(1)" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
-position = Vector2(450, 312)
+position = Vector2(514, 93)
 rotation = -1.24457
 scale = Vector2(0.230841, 0.230841)
 texture = ExtResource("19_3gc6u")
@@ -1336,6 +1338,11 @@ texture = ExtResource("19_3gc6u")
 position = Vector2(1768, 338)
 scale = Vector2(0.140292, 0.140292)
 texture = ExtResource("10_v3quy")
+
+[node name="WaveStarInstructions(2)" type="Sprite2D" parent="MainCanvas/Stage2Sprites"]
+position = Vector2(307, 374)
+scale = Vector2(0.459493, 0.459493)
+texture = ExtResource("35_ea01o")
 
 [node name="Stage3Sprites" type="Node2D" parent="MainCanvas"]
 visible = false
