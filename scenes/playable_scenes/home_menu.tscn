@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://n3pfbthhjb2o"]
+[gd_scene load_steps=18 format=3 uid="uid://n3pfbthhjb2o"]
 
 [ext_resource type="Script" path="res://scripts/HomeCanvas.gd" id="1_mbgcs"]
 [ext_resource type="Script" path="res://scripts/MusicVolume.gd" id="2_v7yv8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d2hmyo1pe6dwd" path="res://assets/instructionIcons/DeployDroneIcon.png" id="11_e1hwi"]
 [ext_resource type="Texture2D" uid="uid://bh1p7tn07i72m" path="res://assets/instructionIcons/NavigateDroneIcon.png" id="12_lsc11"]
 [ext_resource type="Texture2D" uid="uid://co5fljlwhpjp3" path="res://assets/instructionIcons/EscapeIcon.png" id="13_k25h1"]
+[ext_resource type="Script" path="res://scripts/CheckButton.gd" id="14_gv0da"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_246gm"]
 shader = ExtResource("8_c47cw")
@@ -239,8 +240,24 @@ position = Vector2(258.897, 958.498)
 scale = Vector2(0.465215, 0.465215)
 texture = ExtResource("13_k25h1")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.1, 0.1)
+transform = Transform2D(0.1, 0, 0, 0.1, 0, 0)
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer"]
+offset_left = 14430.0
+offset_top = 8510.0
+offset_right = 14577.0
+offset_bottom = 8546.0
+scale = Vector2(20.3906, 20.3906)
+theme_override_font_sizes/font_size = 20
+text = "Fullscreen"
+icon_alignment = 1
+script = ExtResource("14_gv0da")
+
 [connection signal="pressed" from="HomeCanvas/PlayButton" to="HomeCanvas" method="_on_play_button_pressed"]
 [connection signal="pressed" from="HomeCanvas/MinigameSelect" to="HomeCanvas" method="_on_minigame_select_pressed"]
 [connection signal="pressed" from="HomeCanvas/QuitButton" to="HomeCanvas" method="_on_quit_button_pressed"]
 [connection signal="value_changed" from="HomeCanvas/MusicVolume/HSlider" to="HomeCanvas/MusicVolume" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="HomeCanvas/SFXVolume/HSlider" to="HomeCanvas/SFXVolume" method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="CanvasLayer/CheckButton" to="CanvasLayer/CheckButton" method="_on_toggled"]
