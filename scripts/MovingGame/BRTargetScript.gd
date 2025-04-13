@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var tl_target_point = $"../../Axolotl/BRTargetPoint"
 @onready var axolotl = $"../../Axolotl"
-var maxDistance: float = 600.0
+var maxDistance: float = 400.0
 
 var KEEPUP_SPEED = 3000.0
 

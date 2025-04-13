@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var skeleton_2d = $"../../Skeleton2D"
 @onready var tl_target_point = $"../../Axolotl/TLTargetPoint"
-var maxDistance: float = 600.0
+var maxDistance: float = 400.0
 @onready var axolotl = $"../../Axolotl"
 
 var KEEPUP_SPEED = 3000.0
